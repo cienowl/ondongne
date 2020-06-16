@@ -1,0 +1,14 @@
+.like-btn {
+	background: pink;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+    min-width: 75px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    top: -176px;
+    left: 160px;
+}

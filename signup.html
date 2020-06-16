@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <!-- signup css & js import -->
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/signup.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/footer.css">
+        <link rel="shortcut icon" type="image/x-icon" href="img/image_signup/ON_SYMBOL.png">
+        <script src="js/signup.js"></script>
+        <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    </head>
+
+    <body>
+        <!-- header start -->
+        <header role="presentation" style="position: fixed;">
+
+            <div id="header_nav">
+                <nav>
+
+                    <ul class="header_logo">
+                        <li>
+                            <a href="index.html" style="line-height: 50px;">ON동네</a>  
+                        </li>
+                    </ul>
+
+                    <ul class="header_main_menu">
+                        <li>
+                            <a href="about.html">용호(About)</a>    
+                        </li>
+                        <li>
+                            <a href="circle.html">소모임(나예)</a>    
+                        </li>
+                        <li>
+                            <a href="sell.html">판매(호준)</a>    
+                        </li>
+                        <li>
+                            <a href="hotplace.html">명소(송희)</a>    
+                        </li>
+                        <li>
+                            <a href="">재훈(게시판_공사중)</a>    
+                        </li>
+                    </ul>
+
+                    <ul class="header_login_menu">
+                        <!-- <li>
+                            <a href="">공지사항</a>    
+                        </li>               -->
+                        <li>
+                            <a href="signup.html">회원가입</a>/<a href="signin.html">로그인</a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        
+        </header>
+
+        <main>
+            <div class="login-page">
+                <center>
+                <!-- 
+                <center>
+                    <b>
+                        <font size="25" color="blue">ON 동네</font>
+                    </b>
+                </center>
+                -->
+                
+                <!-- <img src="img/image_signup/Symbol_NEW_sign.png" style="float:center ; width:150px ; height:auto;"> -->
+                <!-- <h1 style="font-family: 나눔고딕; color: rgb(247, 150, 25);">온동네 회원가입</h1> -->
+
+                <form id="signup_form" name="regForm" method="" action="" onsubmit=""> 
+                    <span style="color:rgb(177, 235, 44); font-weight: bold"></span>
+                    <br>
+                    <table width="800" cellpadding="3" cellspacing="6" height="250" border="1" align="center"
+                        style="padding:5px 0 5px 0; ">
+        
+                        <tr>
+                            <th colspan="2" bgcolor="white">회원 필수 정보</th>
+                        </tr>
+                        <tr>
+                            <th>아이디</th>
+        
+                            <td style="text-align: left;"> <input type="text" name="id" id="id" maxlength="10" size="20"
+                                    placeholder="아이디를 입력하세요">
+                                <input type="button" value="ID중복확인" onsubmit="return blankCheck(this)"> </td>
+                        </tr>
+                        <tr>
+                            <th>비밀번호</th>
+                            <td style="text-align: left;"><input type="password" name="password" id="password" size="20"
+                                placeholder="비밀번호를 입력하세요" required >
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>비밀번호 확인</th>
+                            <td style="text-align: left;"><input type="password" name="repassword" id="repassword" size="20"
+                                placeholder="비밀번호를 재입력하세요" required>
+                            </td>
+                        </tr>
+        
+        
+        
+                        <tr>
+                            <th>이메일</th>
+                            <td style="text-align: left;"> <input type="text" name="email" id="email" size="20"> <input
+                                    type="button" value="Email 중복확인" placeholder="이메일을 입력하세요" onclick="emailCheck()">
+                                <select name="emailaddr" id="emailaddr" style="text-align: center;">
+                                    <option value="emailinput">직접입력</option>
+                                    <option value="daum.net">daum.net</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="gmail.com">gmail.com</option>
+                                    <option value="hanmail.net">hanmail.net</option>
+                                    <option value="nate.com">nate.com</option>
+                                    <option value="yahoo.com">yahoo.com</option>
+        
+                                </select>
+        
+                            </td>
+                        </tr>
+                        <tr height='30'>
+                            <th>통신사 선택</th>
+                            <td><input type="radio" name="tel1" /> SKT
+                                <input type="radio" name="tel1" /> KT
+                                <input type="radio" name="tel1" /> LGU+
+                                <input type="radio" name="tel1" /> 알뜰폰 SKT
+                                <input type="radio" name="tel1" /> 알뜰폰 KT
+                                <input type="radio" name="tel1" /> 알뜰폰 LGU+
+                                <br /></br>
+                            </td></tr>
+                            <tr><th>휴대폰 번호 입력</th>
+                                <td style="align-self: flex-start;"><select class="sel1" style="left: 10;">
+                                    <option> 010 </option>
+                                    <option> 011 </option>
+                                    <option> 017 </option>
+                                    <option> 019 </option>
+                                </select>
+                                <input type="text" name="tel2" size="8" /> -
+                                <input type="text" name="tel3" size="8" />
+                              </td>
+                        </tr>
+                        <tr>
+                            <th>이름</th>
+                            <td style="text-align: left;"><input type="text" name="mname" id="mname" size="20" placeholder="이름을 입력하세요"required></td>
+                        </tr>
+        
+                        <tr>
+                  
+        
+                        </tr>
+        
+                        <tr>
+                            <th>생년월일</th>
+                            <td style="text-align: left;"><input type="text" name="myyear" size="10" id="myyear"
+                                    maxlength="10">년 &nbsp; &nbsp; &nbsp;
+                      
+                                    <!-- 달력으로 넣을지 확인 .. -->
+                                    <!-- <p><input type="date"></p> -->
+                  
+                                <select class="sel2" name="mymonth" id="mymonth">
+                                    <option value="1" size="5">월</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <select class="sel2" name="mydate" id="mydate" tyle="overflow-y: hidden;s"> &nbsp;&nbsp; &nbsp;
+                                    <option value="1" style="font-size: inherit;">일</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <th>성별</th>
+                            <td style="text-align: left;">
+                                <input type="checkbox" name="U_checkAgreement1" id="U_checkAgreement1" value="" /> 여성 &nbsp;
+                                <input type="checkbox" name="U_checkAgreement2" id="U_checkAgreement2" value="" /> 남성
+                            </td>
+                        </tr>
+                        <tr height="50">
+                            <!-- <td style="text-align: left;"><input type="text" name="address1" id="address1" size="45" readonly></td> -->
+        
+        
+                            <!-- =================== 다음 주소 api1 시작 ==================  -->
+        
+                            <th>주소정보</th>
+                            <td style="text-align: left;">
+                                <input type="text" id="postcode" placeholder="우편번호">
+                                <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                                <input type="text" id="roadAddress" placeholder="도로명주소">
+                                <input type="text" id="jibunAddress" placeholder="지번주소">
+                                <span id="guide" style="color:#999"></span>
+                                   </td>
+                        </tr>
+        
+                        <script>
+                              function sample4_execDaumPostcode() {
+                                new daum.Postcode({
+                                    oncomplete: function(data) {                   
+                                        var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                                        var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+                                         
+                                        // 법정동의 경우 마지막 문자가 "동/로/가"
+                                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                                            extraRoadAddr += data.bname;
+                                        }
+                                        // 건물명이 있고, 공동주택일 경우 추가
+                                        if(data.buildingName !== '' && data.apartment === 'Y'){
+                                           extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                                        }
+                         
+                                        if(extraRoadAddr !== ''){
+                                            extraRoadAddr = ' (' + extraRoadAddr + ')';
+                                        }
+                                        // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가
+                                        if(fullRoadAddr !== ''){
+                                            fullRoadAddr += extraRoadAddr;
+                                        }
+                         
+                                        // 우편번호와 주소 정보를 해당 필드입력
+                                        document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
+                                        document.getElementById('roadAddress').value = fullRoadAddr;
+                                        document.getElementById('jibunAddress').value = data.jibunAddress;
+                         
+                                        // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시
+                                        if(data.autoRoadAddress) {
+                                            //예상되는 도로명 주소에 조합형 주소를 추가
+                                            var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                                            document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                         
+                                        } else if(data.autoJibunAddress) {
+                                            var expJibunAddr = data.autoJibunAddress;
+                                            document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                         
+                                        } else {
+                                            document.getElementById('guide').innerHTML = '';
+                                        }
+                                    }
+                                }).open();
+                            }
+                        </script>
+        
+                        <!-- =================== 다음 주소 api1 끝 ==================  -->
+        
+        
+        
+                        <!-- 추가 정보 입력 파일 업로드 및 지역 선택 등-->
+        
+                    </table>
+        
+                    <table width="800" cellpadding="3" cellspacing="6" height="150" border="1" align="center" <tr>
+        
+                        <tr>
+                            <th colspan="2" bgcolor="white">회원 추가 정보</th>
+                        </tr>
+        
+                        <tr>  
+                            <th>프로필 사진등록</th>
+                        <td>                 
+                           <div class="filebox bs3-primary">
+                           <input class="upload-name" value="프로필사진 업로드" disabled="disabled">
+                           <label for="ex_filename">업로드</label> &nbsp; &nbsp;
+                           <input type="file" id="ex_filename" class="upload-hidden">
+                           <label for="ex_filename" tpye='reset'> 취소</label>
+                       </div>
+                    </td></tr>
+        
+                        <tr>
+                            <th>닉네임</th>
+                            <td style="text-align: left;"> <input type="text" name="id" id="id" size="20"
+                                    placeholder="아이디를 입력하세요" readonly> <input type="button" value="중복확인"
+                                    onclick="nickNameCheck()"> </td>
+                        </tr>
+        
+                        <tr>
+        
+                      <table width="800" cellpadding="3" cellspacing="6" height="150" border="1" align="center" <tr>
+        
+        
+                        <tr>
+                            <th colspan="3" bgcolor="white">관심지역등록</th>
+                        </tr>
+                        <td style="text-align: center;">관심지역 1</td>
+                        <td style="text-align: center;">관심지역 2</td>
+                        <td style="text-align: center;">관심지역 3</td>
+        
+                        <tr>
+                        <td style="text-align: left;"><select class="sel3" name="focus_region1">
+                                <option> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    구</option>
+                                <option>강남구</option>
+                                <option>강동구</option>
+                                <option>강북구</option>
+                                <option>강서구</option>
+                                <option>관악구</option>
+                                <option>광진구</option>
+                                <option>구로구</option>
+                                <option>금천구</option>
+                                <option>노원구</option>
+                                <option>도봉구</option>
+                                <option>동대문구</option>
+                                <option>동작구</option>
+                                <option>마포구</option>
+                                <option>서대문구</option>
+                                <option>서초구</option>
+                                <option>성동구</option>
+                                <option>성북구</option>
+                                <option>송파구</option>
+                                <option>양천구</option>
+                                <option>영등포구</option>
+                                <option>용산구</option>
+                                <option>은평구</option>
+                                <option>종로구</option>
+                                <option>중구</option>
+                                <option>중랑구</option>
+                            </select></td>
+                     
+                            <td style="text-align: left;"><select class="sel3" name="focus_region1">
+                                    <option> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    구</option>
+                                    <option>강남구</option>
+                                    <option>강동구</option>
+                                    <option>강북구</option>
+                                    <option>강서구</option>
+                                    <option>관악구</option>
+                                    <option>광진구</option>
+                                    <option>구로구</option>
+                                    <option>금천구</option>
+                                    <option>노원구</option>
+                                    <option>도봉구</option>
+                                    <option>동대문구</option>
+                                    <option>동작구</option>
+                                    <option>마포구</option>
+                                    <option>서대문구</option>
+                                    <option>서초구</option>
+                                    <option>성동구</option>
+                                    <option>성북구</option>
+                                    <option>송파구</option>
+                                    <option>양천구</option>
+                                    <option>영등포구</option>
+                                    <option>용산구</option>
+                                    <option>은평구</option>
+                                    <option>종로구</option>
+                                    <option>중구</option>
+                                    <option>중랑구</option>
+                                </select></td>
+                  
+        
+                        <td style="text-align: left;"><select class="sel3" name="focus_region1">
+                                <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    구</option>
+                                <option>강남구</option>
+                                <option>강동구</option>
+                                <option>강북구</option>
+                                <option>강서구</option>
+                                <option>관악구</option>
+                                <option>광진구</option>
+                                <option>구로구</option>
+                                <option>금천구</option>
+                                <option>노원구</option>
+                                <option>도봉구</option>
+                                <option>동대문구</option>
+                                <option>동작구</option>
+                                <option>마포구</option>
+                                <option>서대문구</option>
+                                <option>서초구</option>
+                                <option>성동구</option>
+                                <option>성북구</option>
+                                <option>송파구</option>
+                                <option>양천구</option>
+                                <option>영등포구</option>
+                                <option>용산구</option>
+                                <option>은평구</option>
+                                <option>종로구</option>
+                                <option>중구</option>
+                                <option>중랑구</option>
+                            </select></td></tr>
+        
+        
+                          <table width="800" cellpadding="3" cellspacing="6" height="150" border="1" align="center" <tr>
+        
+                      
+        
+                        <tr>
+                            <td>
+                                <h3>이용약관</h3>
+                               <form id="terms_form" class="f" action="">
+                                    <textarea style="font-size:1em;">내용입니다. </textarea>
+                                    <p>
+                                        <input type="checkbox" id="check_1" name="" /> 위의 약관에 동의 합니다.
+                                    </p></td>
+                        
+                   
+                               <td> <h3>개인정보취급방침</h3>
+                                <textarea style="font-size:1em;">내용입니다. </textarea>
+                                <p></p>
+                                    <input type="checkbox" id="check_2" name="" /> 위의 약관에 동의 합니다.<br />
+                                    <!-- <input type="button" id="nextBtn" class="button_big" style="padding:0 10px 10px 10px;height:24px;" value="다음단다음단계로" /> -->
+                                </p></td>
+                            
+                        <tr>
+                            <td colspan="2"> <input type="submit" value="회원가입" /> <input type="reset" value="취소" /> </td>
+                        </tr>
+        
+                    </table>
+        
+                </form>
+
+            </div>
+            </center>
+        </main>
+
+        <!-- footer start -->
+        <footer>
+                
+            <div id="footer_info">
+                <div class="footer_left">
+
+                    <div class="footer_logo">
+                        <img src="" alt=""/>
+                    </div>
+
+                    <div class="footer_nav">
+                        <div>
+                            <a href="">서비스 소개</a>
+                            <a href="">이용약관</a>
+                        </div>
+                        <div>
+                            <a href="">개인정보처리방침</a>
+                            <a href="">고객센터</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="footer_right">
+                    오른쪽 내용
+                </div>
+            </div>
+
+            <div id="footer_info_company">
+                <p class="company_information">
+                    (주)온동네랩 (대표이사:온달수) | 서울특별시 강남구 테헤란로 142 | 개인정보보호관리자 : 김보안 | 통신판매번호 : 2016-서울강남-00xxx<br/>
+                    유료직업소개사업등록번호 : (국내) 제2020-3220163-xx-x-xxxx1호 | (국외) F120102017xxx5 | 사업자등록번호 : 299-86-xxx21<br/>
+                    서비스 및 기업문의 02-xxx-xxxx<br/>
+                    © Ondongnelab, Inc.
+                </p>
+            </div>
+
+        </footer>
+
+
+    </body>
+
+
+</html>

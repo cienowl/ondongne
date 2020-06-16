@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="js/signin.js"></script>
+
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/signin.css">
+
+        <title>로그인</title>
+    </head>
+
+    <body>
+        <main>
+            <div style="margin-top: 50px;"></div>
+            <div class="login-page">
+
+                <center>
+                    <b>
+                        <font size="25" color="blue">ON 동네</font>
+                    </b>
+                </center>
+
+                <br/><br/><br/><br/>
+                
+                <div class="form">
+                    <!-- <form class="register-form"> <input type="text" placeholder="name" />
+                    <input type="password" placeholder="password" /> <input type="text"
+                    placeholder="email address" /> <button>create</button> <p
+                    class="message">Already registered? <a href="#">Sign In</a></p> </form> ((
+                    display - none => css)) -->
+
+                    <form id="LoginForm" class="login-form" name="LoginForm" action="" method="post">
+                        <input type="text" id="LoginID" name="LoginID" placeholder="ID를 입력해 주세요"/>
+                        <input type="password" id="LoginPW" name="LoginPW" placeholder="비밀번호를 입력 해주세요"/>
+
+                        <button onclick="Login();">로그인</button>
+
+                        <p class="message">회원이 아니신가요? &nbsp;&nbsp;
+                            <a href="#">회원가입</a>
+                        </p>
+                        <p class="message">ID를 잊으셨나요? &nbsp;&nbsp;
+                            <a href="#">ID찾기</a>
+                        </p>
+                        <p class="message">비밀번호를 잊으셨나요? &nbsp;&nbsp;
+                            <a href="#">비밀번호찾기</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+    </body>
+
+</html>

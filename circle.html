@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/2.9.33/bluebird.js"></script>
+        
+        <script src="js/circle.js"></script>
+        <script src="js/popup_content.js"></script>
+        <script src="js/like-btn.js"></script>
+       
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/circle.css"/>
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" href="css/popup_content.css"/>
+        <link rel="stylesheet" href="css/like-btn.css">	
+
+        <title>소모임 메인페이지</title>
+    </head>
+
+    <body>
+        <!-- header start -->
+        <header role="presentation" style="position: fixed;">
+
+            <div id="header_nav">
+                <nav>
+
+                    <ul class="header_logo">
+                        <li>
+                            <a href="index.html" style="line-height: 50px;">ON동네</a>  
+                        </li>
+                    </ul>
+
+                    <ul class="header_main_menu">
+                        <li>
+                            <a href="about.html">용호(About)</a>    
+                        </li>
+                        <li>
+                            <a href="circle.html">소모임(나예)</a>    
+                        </li>
+                        <li>
+                            <a href="sell.html">판매(호준)</a>    
+                        </li>
+                        <li>
+                            <a href="hotplace.html">명소(송희)</a>    
+                        </li>
+                        <li>
+                            <a href="">재훈(게시판_공사중)</a>    
+                        </li>
+                    </ul>
+
+                    <ul class="header_login_menu">
+                        <!-- <li>
+                            <a href="">공지사항</a>    
+                        </li>               -->
+                        <li>
+                            <a href="signup.html">회원가입</a>/<a href="signin.html">로그인</a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        
+        </header>
+
+
+        <!-- main start -->
+        <main>
+            <section class="section_top">
+                <!-- 맨 위에 검색, 우리동네 소모임 둘러보기 -->
+                <div class="circle_search">  
+                    <div id="circle_searchMain">
+                        <div id="search_title">우리 동네 소모임 둘러보기</div>
+                        <h4 id="search_title2">나에게 딱 맞는 소모임, ON동네에서 찾아보세요!</h4>
+                        <input type="search" id="keyword_search" name="keyword" placeholder="검색(지역 or 종목)" />
+                    </div>
+                </div>
+                <!-- 소모임 등록하기 버튼 -->
+                                                                                <!--#:소모임 등록하는 페이지 이동-->
+                <button type="button" id="circle_enroll" class="btn btn-default" name="circle_enrollb">소모임등록하기</button>
+            </section>
+
+            <!-- 게시물 미리보기 -->
+            <section  class="section_bottom">
+                <div class="circle_listAll">
+                    <ul>
+                        <li>
+                            <div class="circle_list">
+                                <!--#:해당 소모임 팝업창 띄워줌-->
+                                <a href="#layer2" class="content-card" style="color:black;">
+                                    <div class="list_image">
+                                        <img src="img/image_circle/list_sample3.jpg">
+                                        <button type="button" class="js-like-button like-btn">♥︎&nbsp; Like</button>
+                                    </div>
+                                    <div class="list_info">
+                                            <ul>
+                                                <li class="title">소모임제목</li>
+                                                <li class="author">작성자(아이디)</li>
+                                                <li class="circleDate">소모임날짜/모집마감일</li>
+                                                <li class="tag">태그</li>
+                                            </ul>
+                                    </div>
+                                </a>
+
+                                <div class="dim-layer">
+                                    <div class="dimBg"></div>
+                                    <!-- 팝업 레이어 시작 -->
+                                    <div id="layer2" class="pop-layer">
+                                        <div class="pop-container">
+                                        <div class="pop-conts">
+                                            <!--content //-->
+                                            <img src="img/image_circle/heart1.png" alt=""/>
+                                            <img src="img/image_circle/heart2.png" alt=""/>
+                                            <p class="ctxt mb20">
+                                                <h2>글제목</h2><br/>
+                                                <h5>작성자아이디</h6><br/>
+                                                내용내용내용<br/>
+                                                Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+                                                Hope to see you soon!
+                                            </p>
+                                            <div id="tags">태그태그태그</div>
+                                            <div class="btn-r">
+                                                <a href="#" class="btn-layerClose">Close</a>
+                                            </div>
+                                            <!--// content-->
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="circle_list">
+                                <!--#:해당 소모임 팝업창 띄워줌-->
+                                <a href="#layer3" class="content-card" style="color:black;">
+                                    <div class="list_image">
+                                        <img src="img/image_circle/list_sample3.jpg">
+                                        <button type="button" class="js-like-button like-btn">♥︎&nbsp; Like</button>
+                                    </div>
+                                    <div class="list_info">
+                                            <ul>
+                                                <li class="title">소모임제목</li>
+                                                <li class="author">작성자(아이디)</li>
+                                                <li class="circleDate">소모임날짜/모집마감일</li>
+                                                <li class="tag">태그</li>
+                                            </ul>
+                                    </div>
+                                </a>
+
+                                <div class="dim-layer">
+                                    <div class="dimBg"></div>
+                                    <!-- 팝업 레이어 시작 -->
+                                    <div id="layer3" class="pop-layer">
+                                        <div class="pop-container">
+                                        <div class="pop-conts">
+                                            <!--content //-->
+                                            <img src="img/image_circle/heart1.png" alt=""/>
+                                            <img src="img/image_circle/heart2.png" alt=""/>
+                                            <p class="ctxt mb20">
+                                                <h2>글제목</h2><br/>
+                                                <h5>작성자아이디</h6><br/>
+                                                내용내용내용<br/>
+                                                Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+                                                Hope to see you soon!
+                                            </p>
+                                            <div id="tags">태그태그태그</div>
+                                            <div class="btn-r">
+                                                <a href="#" class="btn-layerClose">Close</a>
+                                            </div>
+                                            <!--// content-->
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        
+                    </ul>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- footer start -->
+        <footer>
+                
+            <div id="footer_info">
+                <div class="footer_left">
+
+                    <div class="footer_logo">
+                        <img src="" alt=""/>
+                    </div>
+
+                    <div class="footer_nav">
+                        <div>
+                            <a href="">서비스 소개</a>
+                            <a href="">이용약관</a>
+                        </div>
+                        <div>
+                            <a href="">개인정보처리방침</a>
+                            <a href="">고객센터</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="footer_right">
+                    오른쪽 내용
+                </div>
+            </div>
+
+            <div id="footer_info_company">
+                <p class="company_information">
+                    (주)온동네랩 (대표이사:온달수) | 서울특별시 강남구 테헤란로 142 | 개인정보보호관리자 : 김보안 | 통신판매번호 : 2016-서울강남-00xxx<br/>
+                    유료직업소개사업등록번호 : (국내) 제2020-3220163-xx-x-xxxx1호 | (국외) F120102017xxx5 | 사업자등록번호 : 299-86-xxx21<br/>
+                    서비스 및 기업문의 02-xxx-xxxx<br/>
+                    © Ondongnelab, Inc.
+                </p>
+            </div>
+
+        </footer>
+
+    </body>
+</html>

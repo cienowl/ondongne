@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="js/hotplace.js"></script>
+
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/hotplace.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/footer.css">        
+
+        <title>동네 명소</title>
+    </head>
+      
+    <body>
+
+        <div class="wrap"> 
+            <!-- header start -->
+            <header role="presentation" style="position: fixed;">
+
+                <div id="header_nav">
+                    <nav>
+
+                        <ul class="header_logo">
+                            <li>
+                                <a href="index.html" style="line-height: 50px;">ON동네</a>  
+                            </li>
+                        </ul>
+
+                        <ul class="header_main_menu">
+                            <li>
+                                <a href="about.html">용호(About)</a>    
+                            </li>
+                            <li>
+                                <a href="circle.html">소모임(나예)</a>    
+                            </li>
+                            <li>
+                                <a href="sell.html">판매(호준)</a>    
+                            </li>
+                            <li>
+                                <a href="hotplace.html">명소(송희)</a>    
+                            </li>
+                            <li>
+                                <a href="">재훈(게시판_공사중)</a>    
+                            </li>
+                        </ul>
+
+                        <ul class="header_login_menu">
+                            <!-- <li>
+                                <a href="">공지사항</a>    
+                            </li>               -->
+                            <li>
+                                <a href="signup.html">회원가입</a>/<a href="signin.html">로그인</a>
+                            </li>
+                        </ul>
+
+                    </nav>
+                </div>
+            
+            </header>
+           
+            <!-- main start -->
+            <main>
+                
+                <div style="padding-top: 70px;">
+                    <div id="listTitle">우리동네 명소</div>
+                    <div><button id="searchBox" type="button">검색</div>
+                    <input class="search" type="text">
+                    <div class="line">
+                    <img class="icon" src="img/image_hotplace/icon_eat.png" />
+                    <img class="icon" src="img/image_hotplace/icon_cafe.png" />
+                    <img class="icon" src="img/image_hotplace/icon_hotel.png" />
+                    <img class="icon" src="img/image_hotplace/icon_sightseeing.png" />
+                </div>
+                
+                <div id="mainMap">지도</div>
+                <section style="height: 300px;">
+
+                    <article>
+                        <div id = "recommendTit">추천 명소</div>
+                        <div id= "bottom_wrap">
+                            <a href="javascript:void(0)" id="prev"><img src = "img/image_hotplace/left.png"/></a>
+                                <div id = "recommend">
+                                    <ul style="width:1300px;">
+                                        <li><img src="" class = "recommendpicture">1번 추천장소</li>
+                                        <li><img src="" class = "recommendpicture">2번 추천장소</li>
+                                        <li><img src="" class = "recommendpicture">3번 추천장소</li>
+                                        <li ><img src="" class = "recommendpicture">4번 추천장소</li>
+                                        <li ><img src="" class = "recommendpicture">5번 추천장소</li>
+                                        <li ><img src="" class = "recommendpicture">6번 추천장소</li>
+                                        <li ><img src="" class = "recommendpicture">1번 추천장소</li>
+                                        <li ><img src="" class = "recommendpicture">2번 추천장소</li>
+                                        <li ><img src="" class = "recommendpicture">3번 추천장소</li>
+                                        <li ><img src="" class = "recommendpicture">4번 추천장소</li>
+                                        <li ><img src="" class = "recommendpicture">5번 추천장소</li>
+                                        <li ><img src="" class = "recommendpicture">6번 추천장소</li>
+                                    </ul>
+                                </div>
+                            <a href="javascript:void(0)" id="next"><img src = "img/image_hotplace/right.png"/></a>
+                        </div>
+
+                    </article>
+                </section>
+
+            </main>
+            
+            <!-- footer start -->
+            <footer>
+                
+                <div id="footer_info">
+                    <div class="footer_left">
+
+                        <div class="footer_logo">
+                            <img src="" alt=""/>
+                        </div>
+
+                        <div class="footer_nav">
+                            <div>
+                                <a href="">서비스 소개</a>
+                                <a href="">이용약관</a>
+                            </div>
+                            <div>
+                                <a href="">개인정보처리방침</a>
+                                <a href="">고객센터</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="footer_right">
+                        오른쪽 내용
+                    </div>
+                </div>
+
+                <div id="footer_info_company">
+                    <p class="company_information">
+                        (주)온동네랩 (대표이사:온달수) | 서울특별시 강남구 테헤란로 142 | 개인정보보호관리자 : 김보안 | 통신판매번호 : 2016-서울강남-00xxx<br/>
+                        유료직업소개사업등록번호 : (국내) 제2020-3220163-xx-x-xxxx1호 | (국외) F120102017xxx5 | 사업자등록번호 : 299-86-xxx21<br/>
+                        서비스 및 기업문의 02-xxx-xxxx<br/>
+                        © Ondongnelab, Inc.
+                    </p>
+                </div>
+
+            </footer>
+
+        </div>        
+    </body>
+
+</html>

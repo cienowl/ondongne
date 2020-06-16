@@ -1,0 +1,457 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h, td, tr, input, textarea, select, FORM
+{
+  font-family:고도 B;
+ font-size:1em;
+ border-radius:5px;
+ 
+}
+
+#wrap_in {
+
+    width:760px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2cm;
+    padding-top:5px;
+    padding-bottom: 20px;
+    background-color:rgb(195, 245, 60)
+    ;
+  
+}
+
+h1 {
+  font-family: 굴림체;
+   color: rgb(22, 108, 189);
+}
+
+
+h6 {
+  font-family: 굴림체;
+   color: rgb(22, 108, 189);
+}
+
+.inputinfo .h7 {
+    font-size: x-small;
+    font-family: 굴림체;
+    color: rgb(182, 49, 194)
+    /* color: rgb(119, 17, 17); */
+}
+main{
+    padding-top: 50px;
+}
+/* .login_page{
+    margin: 0px auto;
+} */
+
+#signup_form{
+    margin: 0px auto;
+}
+
+.addr {
+    margin-top: auto;
+    
+}
+
+p.margin1 {
+
+margin-top: 6px;
+margin-bottom: 6px;
+margin-right: 6px;
+margin-left: 6px;
+
+}
+
+p.margin2 {
+
+  margin-top: 12px;
+  margin-bottom: 6px;
+  margin-right: 0px;
+  margin-left: 70px;
+  
+  }
+
+.login_text1 {
+    position: static;
+    font-size: larger;
+    text-align: center;
+    text-shadow: chartreuse;
+    color:darkslateblue;
+    top: 100px;
+    background-color: rgb(29, 209, 170);
+    width: 770px;
+    height: 30px;
+ }
+
+ .login_text2 {
+    /* input[type="text"]; */
+    height: auto;  
+    line-height: normal; 
+    padding: .8em .5em; 
+
+ }
+ .where {
+    display: block;
+    margin: 25px 15px;
+    font-size: 11px;
+    color: #000;
+    text-decoration: none;
+    font-family: verdana;
+    font-style: italic;
+  }
+  
+  .textbox {position: relative; width: 200px; margin: 15px}
+  
+  .textbox label {
+    position: absolute;
+    top: 1px;  /* input 요소의 border-top 설정값 만큼 */
+    left: 1px;  /* input 요소의 border-left 설정값 만큼 */
+    padding: .8em .5em;  /* input 요소의 padding 값 만큼 */
+    color: #999;
+    cursor: text;
+  }
+  
+  .textbox input[type="text"],
+  .textbox input[type="password"] {
+    width: 100%;  /* 원하는 너비 설정 */ 
+    height: auto;  /* 높이값 초기화 */
+    line-height : normal;  /* line-height 초기화 */
+    padding: .10em .7em; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */
+    border: 1px solid #999;
+    border-radius: 0;  /* iSO 둥근모서리 제거 */
+    outline-style: none;  /* 포커스시 발생하는 효과 제거를 원한다면 */
+    -webkit-appearance: none;  /* 브라우저별 기본 스타일링 제거 */
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .id_button {
+
+    background-color: rgb(231, 173, 202);
+  
+    border: none;
+  
+    color: rgb(11, 17, 4);
+  
+    padding: 3px 8px;
+  
+    text-align: center;
+  
+    text-decoration: none;
+  
+    display: inline-block;
+  
+    font-size: 16px;
+  
+    margin: 4px 2px;
+  
+    cursor: pointer;
+  
+  }
+
+  #header {
+    padding-top: 62px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+#wrapper {
+    position: relative;
+    height: 100%;
+}
+
+#content {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 460px;
+}
+
+
+
+
+/* 입력폼 */
+
+
+h3 {
+    margin: 19px 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.box {
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+
+.int {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+}
+
+input {
+    font-family: Dotum,'돋움',Helvetica,sans-serif;    
+}
+
+.box.int_id {
+    padding-right: 110px;
+}
+
+.box.int_pass {
+    padding-right: 40px;
+}
+
+.box.int_pass_check {
+    padding-right: 40px;
+}
+
+.step_url {
+    /*@naver.com*/
+    position: absolute;
+    top: 16px;
+    right: 13px;
+    font-size: 15px;
+    color: #8e8e8e;
+}
+
+.pswdImg {
+    width: 18px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -10px;
+    cursor: pointer;
+}
+table{
+    border: none;
+}
+
+#bir_wrap {
+    display: table;
+    width: 100%;
+}
+
+#bir_yy {
+    display: table-cell;
+    width: 147px;
+    
+}
+
+#bir_mm {
+    display: table-cell;
+    width: 147px;
+    vertical-align: middle;
+}
+
+#bir_dd {
+    display: table-cell;
+    width: 147px;
+}
+
+#bir_mm, #bir_dd {
+    padding-left: 10px;
+}
+
+select {
+    width: 100%;
+    height: 29px;
+    font-size: 15px;
+    background: #fff url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 100% 50% no-repeat;
+    background-size: 20px 8px;
+    -webkit-appearance: none;
+    display: inline-block;
+    text-align: start;
+    border: none;
+    cursor: default;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+
+/* 에러메세지 */
+
+.error_next_box {
+    margin-top: 9px;
+    font-size: 12px;
+    color: red;    
+    display: none;
+}
+
+#alertTxt {
+    position: absolute;
+    top: 19px;
+    right: 38px;
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+
+/* 버튼 */
+
+.btn_area {
+    margin: 30px 0 91px;
+}
+
+#btnJoin {
+    width: 100%;
+    padding: 21px 0 17px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #08a600;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+
+/* 파일업로드 */
+
+body {margin: px}
+.where {
+  display: block;
+  margin: 25px 15px;
+  font-size: 11px;
+  color: #000;
+  text-decoration: none;
+  font-family: verdana;
+  font-style: italic;
+} 
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 3px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+}
+
+/* named upload */
+.filebox .upload-name {
+    display: inline-block;
+    padding: .5em .75em;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #f5f5f5;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.filebox.bs3-primary label {
+  color: #fff;
+    background-color: #8dce14;
+    border-color:  #8dce14;
+}
+
+/* 파일업로드 끝 */
+
+
+/* 이용약관 및 개인정보처리방침 시작 */
+
+*{
+    font-family:'malgun gothic';
+}
+
+#content.cols-d { width: 583px; min-width: 583px; }
+
+.f { position: relative; margin: 0; padding: 0; color: #666; }        
+.f p { width: 100%; margin: 0 0 13px; font-size: 1.3em; text-align:center;margin-top:20px;}
+.f p:after { content: ""; display: block; overflow: hidden; clear: both; height: 0; }    
+.f textarea {
+     position: relative; 
+     width: 570px; height: 118px; min-height: 118px; 
+     padding: 3px 3px 3px 6px; 
+     border: 1px solid #ececec; 
+     border-top-color: #e1e1e1; 
+     border-left-color: #e1e1e1; 
+     background: #ececec; 
+     border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
+}        
+.scheme-g { 
+    margin: 26px 0 8px; 
+    padding: 0px; 
+    font-size: 1.2em; 
+    font-weight: 100;
+}        
+.button_big { 
+    /* float: right; */
+    border: 0; border-radius: 3px; 
+    cursor: pointer; display: inline-block; 
+    font-size: 12px; font-weight: bold; 
+    line-height: 24px; 
+    margin-left: 5px; 
+    padding: 8px 16px; 
+    text-decoration: none; color:#fff; 
+    background:#0080ff; 
+    text-shadow: 1px 1px 1px #0066cc; 
+    /* -webkit-transition: all 0.2s ease-out; */
+ }
+
+    /* 이용약관 및 개인정보처리방침 시작 끝 */
+
+/* Select 박스  */
+
+.sel1 { 
+    width: 60px;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none; 
+    background: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fe.kakao.com%2Ft%2Fcute-friends&psig=AOvVaw2fLxYyQSekW46fSGszhR3j&ust=1591844111752000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDWqcmf9ukCFQAAAAAdAAAAABAD) 
+    no-repeat 95% 50%; 
+}
+
+.sel2 { 
+        width: 30px;
+        -webkit-appearance: none; 
+        -moz-appearance: none; 
+        appearance: none; 
+        background: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fe.kakao.com%2Ft%2Fcute-friends&psig=AOvVaw2fLxYyQSekW46fSGszhR3j&ust=1591844111752000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDWqcmf9ukCFQAAAAAdAAAAABAD) 
+        no-repeat 95% 50%;
+}
+.sel3 { 
+        width: 140px;
+        -webkit-appearance: none; 
+        -moz-appearance: none; 
+         appearance: none; 
+         background-color: #0066cc
+            no-repeat 95% 50%;
+}/* Select 박스 끝  */
