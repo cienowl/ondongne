@@ -1,5 +1,5 @@
 footer{
-    height: 266px;
+    height: 166px;
     padding: 30px 0 70px;
     background-color: #2b2d2e;
 }
@@ -19,6 +19,9 @@ footer{
 #footer_info .footer_left{
     width: calc(100% - 250px);
     float: left;
+}
+.footer_right{
+    float: right;
 }
 #footer_nav > div{
     float: left;
