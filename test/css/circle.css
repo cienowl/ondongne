@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    height:50px;
+}
+.section_top{
+    height:360px;
+}
+.section_bottom{
+    padding-left: 140px;
+    margin: 30px auto;
+}
+.circle_search{
+    height:300px;
+    background-color:#D5D5D5;
+}
+#keyword_search{
+    padding:0 60px;
+    border-radius: 12px;
+    box-shadow:0 4px 4px rgba(0,0,0,.25);
+    width:700px;
+    height:60px;
+    font-size: 15pt;
+    background-image: url("../img/image_circle/searchIcon.PNG");
+    background-repeat: no-repeat;
+    background-position: left;
+}
+#circle_searchMain{
+    width:850px;
+    height:300px;
+    padding:72px;
+    margin:0 auto;
+}
+#search_title{
+    font-size:36px;
+    text-align:left;
+    margin-bottom:10px;
+}
+#circle_enroll{
+    float:right;
+    margin:20px 120px 20px 40px;
+}
+.circle_listAll ul{
+    list-style-type: none;
+    background-color: cornflowerblue;
+}
+.circle_listAll li{
+    float:left;
+    padding:10px;
+}
+.circle_list{
+    width:250px;
+    height:360px;
+}
+.circle_list img{
+    width:250px;
+    height:187px;
+    border-radius: 6px;
+}
+.list_image{
+    width:250px;
+    height:187px;
+}
+.list_info{
+    width:250px;
+    height:175px;
+    padding:14px 10px;
+    background-color:wheat;
+}
+.list_info ul{
+    list-style-type: none;
+    text-align: left;
+}
+.list_info li{
+    clear:both;
+    padding:0;
+    line-height: 1.6;
+}
+.title{
+    font-size:18pt;
+    font-weight: bold;
+    margin-bottom:8px;
+}
+.likeButton{
+    position: relative;
+    top:-170px;
+    left:190px;
+}

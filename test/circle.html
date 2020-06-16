@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/circle.css">	<!--css-->
+        <link rel="stylesheet" type="text/css" href="css/popup_content.css">	
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="js/circle.js"></script>							<!--js/jquery-->
+        <script src="js/popup_content.js"></script>
+       
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+       
+        <!-- 부가적인 테마 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+       
+        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <title>소모임 메인페이지</title>
+    </head>
+    <body>
+        <!-- 헤더 : 로고, 메뉴nav, 로그인/회원가입 -->
+        <header>
+        </header>
+        <main>
+            <section class="section_top">
+                <!-- 맨 위에 검색, 우리동네 소모임 둘러보기 -->
+                <div class="circle_search">  
+                    <div id="circle_searchMain">
+                        <div id="search_title">우리 동네 소모임 둘러보기</div>
+                        <input type="search" id="keyword_search" name="keyword" placeholder="검색(지역 or 종목)" />
+                    </div>
+                </div>
+                <!-- 소모임 등록하기 버튼 -->
+                <input type="button" id="circle_enroll"  name="circle_enrollb"  value="소모임등록하기" />
+            </section>
+            <!-- 게시물 미리보기 -->
+            <section  class="section_bottom">
+                <div class="circle_listAll">
+                    <ul>
+                        <li>
+                            <div class="circle_list">
+                                <a href="#layer2" class="btn-example" style="color:black;">
+                                    <div class="list_image">
+                                        <img src="img/image_circle/list_sample3.jpg">
+                                        <button type="button" class="likeButton" >HEART</button>
+                                    </div>
+                                    <div class="list_info">
+                                        <ul>
+                                            <li class="title">소모임제목</li>
+                                            <li class="author">작성자(아이디)</li>
+                                            <li class="circleDate">소모임날짜/모집마감일</li>
+                                            <li class="tag">태그</li>
+                                        </ul>
+                                    </div>
+                                </a>
+
+                                <div class="dim-layer">
+                                    <div class="dimBg"></div>
+                        
+                                    <div id="layer2" class="pop-layer">
+                                        <div class="pop-container">
+                                        <div class="pop-conts">
+                                            <!--content //-->
+                                            <img src="img/image_circle/heart1.png" alt=""/>
+                                            <img src="img/image_circle/heart2.png" alt=""/>
+                                            <p class="ctxt mb20">
+                                            <h2>글제목</h2><br/>
+                                            <h5>작성자아이디</h6><br/>
+                                            내용내용내용<br>
+                                            Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+                                            Hope to see you soon!
+                                            </p>
+                                            <div>태그태그태그</div>
+                                            <div class="btn-r">
+                                            <a href="#" class="btn-layerClose">Close</a>
+                                            </div>
+                                            <!--// content-->
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                            <div class="list_image">
+                                <img src="img/image_circle/list_sample3.jpg">
+                                <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                            <div class="list_image">
+                                <img src="img/image_circle/list_sample3.jpg">
+                                <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                            <div class="list_image">
+                                <img src="img/image_circle/list_sample3.jpg">
+                                <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                            <div class="list_image">
+                                <img src="img/image_circle/list_sample3.jpg">
+                                <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                            <div class="list_image">
+                                <img src="img/image_circle/list_sample3.jpg">
+                                <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                            <div class="list_image">
+                                <img src="img/image_circle/list_sample3.jpg">
+                                <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                            <div class="list_image">
+                                <img src="img/image_circle/list_sample3.jpg">
+                                <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                            <div class="list_image">
+                                <img src="img/image_circle/list_sample3.jpg">
+                                <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                            <div class="list_image">
+                                <img src="img/image_circle/list_sample3.jpg">
+                                <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                             <div class="list_image">
+                                 <img src="img/image_circle/list_sample3.jpg">
+                                 <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                        <li><div class="circle_list">
+                            <a href="#" style="color:black;">
+                            <div class="list_image">
+                                <img src="img/image_circle/list_sample3.jpg">
+                                <button type="button" class="likeButton" >HEART</button>
+                            </div>
+                            <div class="list_info">
+                                    <ul>
+                                        <li class="title">소모임제목</li>
+                                        <li class="author">작성자(아이디)</li>
+                                        <li class="circleDate">소모임날짜/모집마감일</li>
+                                        <li class="tag">태그</li>
+                                    </ul>
+                            </div>
+                        </a></div></li>
+                    
+                    </ul>
+                </div>
+
+            </section>
+
+        </main>
+    </body>
+</html>
