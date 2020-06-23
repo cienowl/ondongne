@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/circle_post.css">	<!--css-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="js/circle_post.js"></script>	<!--js-->
+        
+        
+        <link rel="stylesheet" href="css/jquery.tagbox.css" /> <!--tag박스 css-->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.tagbox.js"></script>  <!--tag박스 js-->
+        
+        
+
+        <title>소모임 등록하기</title>
+    </head>
+    <body>
+         <!-- 헤더 : 로고, 메뉴nav, 로그인/회원가입 -->
+        <header>
+        </header>
+        <main>
+            <div class="wrap">
+                <h2>소모임 정보를 등록해주세요.</h2>
+                <!--소모임 등록 폼-->
+                <form>
+                    <div id="circle_photo">
+                        <ul>
+                            <li><button type="button" name="add_photo"></button></li>
+                            <li><button type="button" name="view_photo"></button></li>
+                        </ul>
+                    </div>
+                    <div id="circle_title">
+                        <label for="circle_title" class="required_inputLabel">소모임 제목</label><br/>
+                        <input type="text" name="circle_title" placeholder="소모임 제목 입력" class="required_input"/>
+                    </div>
+                    <div id="circle_place1">
+                        <label for="circle_place1" class="required_inputLabel">지역구</label><br/>
+                        <select name="circle_place1" class="required_input">
+                            <option value="none" selected disabled>선택</option>
+                            <option value="">종로구</option>
+                            <option value="">중구</option>
+                            <option value="">용산구</option>
+                            <option value="">성동구</option>
+                            <option value="">광진구</option>
+                            <option value="">동대문구</option>
+                            <option value="">중랑구</option>
+                            <option value="">성북구</option>
+                            <option value="">강북구</option>
+                            <option value="">도봉구</option>
+                            <option value="">노원구</option>
+                            <option value="">은평구</option>
+                            <option value="">서대문구</option>
+                            <option value="">마포구</option>
+                            <option value="">양천구</option>
+                            <option value="">강서구</option>
+                            <option value="">구로구</option>
+                            <option value="">금천구</option>
+                            <option value="">영등포구</option>
+                            <option value="">동작구</option>
+                            <option value="">관악구</option>
+                            <option value="">서초구</option>
+                            <option value="">강남구</option>
+                            <option value="">송파구</option>
+                            <option value="">강동구</option>
+                        </select>
+                    </div>
+                    <div id="circle_place2">
+                        <label for="circle_place2" class="required_inputLabel">상세주소</label><br/>
+                        <input type="text" name="circle_place2" placeholder="상세주소" class="required_input" />
+                    </div>
+                    <div id="circle_place3">
+                        <input type="text" name="circle_place3" placeholder="정확한 주소 링크" />
+                    </div>
+                    <div>
+                        <label for="circle_memnumber" class="required_inputLabel">인원수<small>(최대15명)</small></label><br/>
+                        <select name="circle_memnumber" id="circle_memnumber" class="required_input">
+                            <option value="none" selected disabled>선택</option>
+                            <option value="">15명</option>
+                            <option value="">14명</option>
+                            <option value="">13명</option>
+                            <option value="">12명</option>
+                            <option value="">11명</option>
+                            <option value="">10명</option>
+                            <option value="">9명</option>
+                            <option value="">8명</option>
+                            <option value="">7명</option>
+                            <option value="">6명</option>
+                            <option value="">5명</option>
+                            <option value="">4명</option>
+                            <option value="">3명</option>
+                            <option value="">2명</option>
+                            <option value="">1명</option>
+                        </select>
+                    </div>
+                    <div id="circle_date1">
+                        <label for="circle_date" class="required_inputLabel">모집날짜</label><br/>
+                        <input type="date" class="required_input" />
+                    </div>
+                    <div id="circle_date2">
+                        <label for="circle_deadline" class="required_inputLabel">모집마감일</label><br/>
+                        <input type="date" class="required_input" />
+                    </div>
+                    <div style="clear: both;">
+                        <label for="sex">성별<small>(선택)</small></label><br/>
+                        <input type="radio" name="sex" value="male" />남
+                        <input type="radio" name="sex" value="female" style="margin-left: 30px;"/>여
+                    </div>
+                    <div id="circle_age">
+                        <label for="age">연령대<small>(선택)</small></label><br/>
+                        <input type="checkbox" name="age" style="margin-left: 0;">10대
+                        <input type="checkbox" name="age">20대
+                        <input type="checkbox" name="age">30대
+                        <input type="checkbox" name="age">40대
+                        <input type="checkbox" name="age">50대
+                        <input type="checkbox" name="age">60대
+                        <input type="checkbox" name="age">70대
+                        <input type="checkbox" name="age">80대
+                        <input type="checkbox" name="age">90대
+                    </div>
+                    <div class="row">
+                        <label for="jquery-tagbox-text">태그<small>(최대5개)</small></label><br/>
+                        <input type="text" name="circle_tag" id="jquery-tagbox-text"/>
+                    </div>
+                    <div>
+                        <label for="circle_explain" class="required_inputLabel">설명</label><br/>
+                        <textarea name="circle_explain" placeholder="소모임 관련 설명을 작성해주세요." class="required_input"></textarea>
+                    </div>
+                </form>
+                <ul class="bottom_button">
+                    <li><button type="button">게시물미리보기</button></li>
+                    <li><button type="button" onclick="printinfo()">등록</button></li>
+                    <li><button type="button">취소</button></li>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            
+        </footer>
+    </body>
+</html>

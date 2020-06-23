@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    height:50px;
+    background-color: darkgray;
+}
+h2{
+    font-size:26px;
+    font-weight: bold;
+    line-height: 36.4px;
+    margin:40px auto;
+}
+input, select, textarea{
+    font-family:inherit;
+    font-size:100%;
+    line-height: 1.15;
+}
+.wrap{
+    width:1060px;
+    margin:0px auto;
+}
+textarea{
+	width:1028px;
+	height:100px; 
+    resize:none;
+    padding:15px;
+    margin-top:10px;
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(219, 219, 219);
+}
+#circle_photo ul{
+    list-style-type: none;
+    float: right;
+}
+#circle_photo li{
+    display: inline;
+}
+form div{
+    margin-bottom:30px;
+}
+input{
+    margin-top:10px;
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(219, 219, 219);
+}
+select{
+    margin-top:10px;
+    width:513px;
+    height:46px;
+    padding:0 15px;
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(219, 219, 219);
+}
+label{
+    margin-top: 10px;
+}
+#circle_title{
+    clear:both;
+}
+#circle_title input{
+    width:1028px;
+    height:48px;
+    padding:0 15px;
+}
+#circle_place1{
+    float:left;
+}
+
+#circle_place2{
+    float:right;
+}
+#circle_place2 input{
+    width:483px;
+    height:46px;
+    padding:0 15px;
+}
+#circle_place3{
+    clear:both;
+}
+#circle_place3 input{
+    width:1028px;
+    height:48px;
+    padding:0 15px;
+}
+#circle_date1{
+    float:left;
+    margin-bottom:30px;
+}
+#circle_date1 input{
+    width:483px;
+    height:46px;
+    padding:0 15px;
+}
+#circle_date2{
+    float:right;
+}
+#circle_date2 input{
+    width:483px;
+    height:46px;
+    padding:0 15px;
+}
+#circle_age input{
+    margin-left:15px;
+}
+#jquery-tagbox-text input{
+    width:1058px;
+    height:48px;
+    padding:0 15px;
+}
+.bottom_button{
+    list-style-type: none;
+    float:right;
+}
+.bottom_button button{
+    cursor: pointer;
+    background-color:#258bf7;
+    font-weight: 600;
+    color:white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+    border-radius: 3px;
+    padding:10px 15px;
+    margin:40px 0 40px 15px;
+    font-size: 11pt;
+    font-weight: Bold;
+}
+.bottom_button li{
+    display: inline;
+}
+.row{
+    height:90px;
+}
