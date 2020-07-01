@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <title>ON동네 페이지</title>
+    </head>
+
+    <body>
+        <!-- header navigation -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index_new.html">ON동네</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline">
+                    <!-- Signin modal connector -->
+                    <!-- <a href="bs_signin.html"> -->
+                        <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#signinModal">로그인</button>
+                    <!-- </a> -->
+                    <!-- Signup modal connector -->
+                    <!-- <a href="bs_signup.html"> -->
+                        <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#signupModal">회원가입</button>
+                    <!-- </a> -->
+                </form>
+            </div>
+        </nav>
+        <!-- header navigation end -->
+
+
+        <!-- Signin Modal -->
+        <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">ON동네 로그인</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <!-- signin form -->
+                        <form action="singinSelect.jsp" method="POST" onsubmit="return signinValidate();" name="userinfoInsert">
+                            <div class="form-group">
+                                <label for="signinEmail">이메일</label>
+                                <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="이메일을 입력해 주세요.">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="signinPassword">비밀번호</label>
+                                <input type="password" class="form-control" id="signinPassword" name="signinPassword">
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="storeId" name="storeId" value="true">
+                                <label class="form-check-label" for="storeId">아이디 저장</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAEtUlEQVRoge2Yy3IbRRSGv+65y5YVlysQiIE4VRBYpCo8A0seg6pseR2y4TVYsGZBpVIkmOBc7PgS21J8lWTrNpL6sJBkzWhGshQbQVX0V6mk/qel+f8+5/TpEcwwwwwzzPAhQ0UHrV9/+F6QRwK3/ytBo6CEXWXx0P7u5196nI5OEJGf/q/iAUSxbAyPopwenDBdSe+Fz6KDmAEjUpqulslhjClHxzEDmxu7rfNq49l0JY2PcrF0uP74t0yUs6ODGxmWTgr7S6de5unyJx99qbSam67EdBjTlvzGuqq+27k578X2nXgENJD1LXRYefD69Va9Wmu+mKbQNFRKJdaf/K5ap3tkfY2O649HQMSAQOBobCVLe5ubS172xh/Lyze/1koF0xRujOFge4tifocFX7CVQowgEp8XiwAiFy9bQy6wMJXit6+evy7XauHLaYmvnpXZePqE2tEOixmNY6mhcxMGpPtCBEvBvGcx5/Dx1qv1r/b3jp+KSPhvCRcRDvffsrv2jIA6Wd/C0qO/M5BCAgLQeRcRQAgchY2lzo4KD14cHxdW7q3Ufc+5c53iG9Uqe29eIY0KuUDj6E5KD6bMIFJTqJNrEk8pC7KBhaeat9ZXX3yRzx+tAu2rSxdO3hXYWVvFadfIZTSuPTxlBhGLQCeFukYuxv3PtoI5V2Mh6nRv73758LSw8s1d4zrWp+8jvdlosL+1Qbt2RtYHz9YoOgs4LuJHCRNddZOIAiKobkplPY1qVm69fPLnrULhaBUwk4gvHh2ytbaKblZYCCwCN7lFjoNEBDpvEotCn4NuceDZCo1GYfTB5vb9s8Pjxp17dzzH9UbesBWG5LffEFbPmPM0nq1wLVK3yHEweBpNrPpQznS22nlXk/U0YeXMe/74L04Pj4be7Lx0wvbLvzHhOdnAYs5TE+V7GpIRiK74BQcgqZwCfFuhRNFA2Frb4PTgmNt3P8cLOr2vUa9xnN+lel4m4ypcy8K3Vfw3r8uADKTORWEjA2Z6HCgRfFuhAY2melLk+cEJQS7Ay1iYdgtXd44pbjdl+r97NaT0gTThfQOjOEeDtkGjcLXGVGu0Q838oofraFwbLMWVV32ogUQKjRTeb3RRTisIHIWxwBgFIrSLdVTOxXLt7tzrQ3oKDYhN57qGY2a4WACNoBSdp24RaqUGzWpI5oaPvmLhDjXQ323SRca5/rXxOGg2DOV3FfwFF38+vnbXYgATufmIoh0l8rIeIiLUinXCqmZu0UeNOGlObCCW0zJoZkBQKseIrThuplVvUcp3o5F1rsdAMqfTijZt3ijhENvvE9Go0aw2yCwGqEuOzmMZuFTkkKJ93x6CSDca5wQ5BzczWTSG9IHJijYmMsH1r43mhNpJnWa1RZBzGPdkN6QPTFqgw4t2kh4iIjRrTVr1EG/BxclcvlMNSaExi3Zg5a+rh4jpRcPCz3mDj13DDfT+lRh/Z4mITHBxkZdz/Ws9rlVrcd5o4S242L51uQFEdhGWLy3QRDGOyyVFRu8TS8ceDDSKIS3Pws1aoHgbvRwPjpGHHRM9AYKY5JNZ/xnBpHDSaYjjcGnfHYJ2o0291AxV2/w4dNIMM8wwwwwfHP4B7yJw+/VSLXUAAAAASUVORK5CYII="/>
+                                이메일로 시작하기
+                            </button>
+                            <div>
+                                <a href="https://icons8.com/icon/MFd4aKzItnZK/envelope" class="text-right small">Envelope icon by Icons8</a>
+                            </div>
+                        </form>
+                        <!-- signin form end -->
+                    </div>
+                       
+                </div>
+            </div>
+        </div>
+        <!-- Signin Modal End -->
+
+
+        <!-- Signup Modal -->
+        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">ON동네 회원가입</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <!-- signup form -->
+                    <form action="userinfoInsert.jsp" method="POST" name="userinfoInsert">
+                        <div class="modal-body">
+                            
+                            <div class="form-group">
+                                <label for="signupEmail">이메일</label>
+                                <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="이메일을 입력해 주세요.">
+                                <small id="emailHelp" class="form-text text-muted">이메일 중복확인 결과</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="signupPassword1">비밀번호</label>
+                                <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="비밀번호를 입력해 주세요.">
+                            </div>
+                            <div class="form-group">
+                                <label for="signupPassword2">비밀번호 확인</label>
+                                <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="비밀번호를 확인해 주세요.">
+                                <small id="emailHelp" class="form-text text-muted">비밀번호 확인 결과</small>
+                            </div>
+                            <div class="form-group form-check">
+                                
+                                <p class="small">
+                                    <input type="checkbox" class="form-check-input" id="checkAgree" name="checkAgree">
+                                    <label class="form-check-label" for="checkAgree"></label>
+                                    회원가입 시 
+                                    <a href="" target="_blank">
+                                        개인정보 처리방침
+                                    </a>과 
+                                    <a href="" target="_blank">
+                                        이용약관
+                                    </a>
+                                    을 확인하였으며, 동의합니다.<br/>
+                                </p>
+
+                            </div>
+                            
+                            <!-- <button type="submit" class="btn btn-primary btn-block">
+                                가입하기                                
+                            </button> -->
+                            
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary btn-block" onclick="return signupValidate();" >
+                                가입하기                                
+                            </button>
+                            <!-- <p class="small">
+                                회원가입 시 <a href="bs_signup.html" target="_blank">개인정보 처리방침</a>과 <a href="bs_signup.html" target="_blank">이용약관</a>을 확인하였으며, 동의합니다. <br/>
+                            </p> -->
+                            
+                            <!-- <button type="button" class="btn btn-secondary" data-sdismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!-- Signup Modal End -->
+
+
+        <!-- Main Start -->
+        <div style="padding-top: 56px"></div>
+        <div class="container">
+            <a href="additional_info.html">
+                <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#signupModal">상세정보 입력</button>
+            </a>
+
+            <div class="alert alert-primary" role="alert">
+                A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- <script src="js/index_new.js"></script> -->
+        <script>
+            //Signin Form Checker
+            function signinValidate() {
+                
+            }
+
+            //Singin Form Checker
+            function signupValidate() {
+                var inputEmail = document.getElementById("signupEmail");
+                var inputPassword1 = document.getElementById("signupPassword1");
+                var inputPassword2 = document.getElementById("signupPassword2");
+                var checkAgree = document.getElementById("checkAgree");
+
+                // alert(checkAgree.value);
+
+                // 패스워드 값 데이터 정규화 공식
+                var regulationPassword = /^[a-zA-Z0-9]{4,}$/;
+                //이메일 값 데이터 유효성 체크
+                //[]안에 있는 값만 쓰겠다
+
+                //이메일 정규화 공식
+                var regulationEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+                //이름 정규화 공식
+                // var regulationName = /^[가-힝a-zA-Z]{2,}$/;
+                //var email = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+
+                //이메일을 입력하지 않았을 경우
+                if (inputEmail.value == "") {
+                    alert("이메일을 입력하세요.");
+                    inputEmail.focus();
+                    return false;
+                }
+
+                //이메일이 잘못된 경우
+                if (!check(regulationEmail, inputEmail, "이메일을 잘못 입력 했습니다.")) {
+                    return false;
+                }
+
+                //패스워드1을 입력하지 않았을 경우
+                if (inputPassword1.value == "") {
+                    alert("패스워드를 입력하세요.");
+                    inputPassword1.focus();
+                    return false;
+                }
+                
+                //패스워드2를 입력하지 않았을 경우
+                if (inputPassword2.value == "") {
+                    alert("패스워드 확인을 입력하세요.");
+                    inputPassword2.focus();
+                    return false;
+                }
+
+                //비밀번호와 비밀번호 확인이 일치 하지 않을 경우
+                if (inputPassword1.value != inputPassword2.value) {
+                    alert("비밀번호가 일치 하지 않습니다.");
+                    inputPassword1.focus();
+                    inputPassword2.focus();
+                    return false;
+                }
+                
+                //비밀번호 유효성 검사
+                if (!check(regulationPassword, inputPassword1, "비밀번호는 4자 이상의 대소문자와 숫자로만 입력 가능합니다.")) {
+                    return false;
+                }
+
+                alert(checkAgree.value);
+                //개인정보 처리방침과 이용약관에 동의하지 않았을 경우
+                if (checkAgree.value != "true") {
+                    alert("개인정보 처리방침과 이용약관에 동의해주세요.");
+                    // checkAgree.focus();
+                    return false;
+                }
+            }
+
+            function check(regulationRule, targetObj, errorMessage){//정규화데이터,아이템 id,메세지
+                if (regulationRule.test(targetObj.value)) {//what의 문자열에 re의 패턴이 있는지 나타내는 함수 test
+                //만약 내가 입력한 곳의 값이 정규화 데이터를 썼다면 true를 반환해서 호출 된 곳으로 리턴됨
+                    return true;
+                }
+                alert(errorMessage);
+                targetObj.value = "";
+                targetObj.focus();
+            }
+        </script>
+        
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </body>
+</html>
