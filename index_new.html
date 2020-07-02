@@ -82,10 +82,10 @@
                                 <input type="password" class="form-control" id="signinPassword" name="signinPassword">
                             </div>
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="storeId" name="storeId" value="true">
-                                <label class="form-check-label" for="storeId">아이디 저장</label>
+                                <input type="checkbox" class="form-check-input" id="storeEmail" name="storeId" value="true">
+                                <label class="form-check-label" for="storeEmail">아이디 저장</label>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block">
+                            <button type="submit" class="btn btn-primary btn-block" onclick="return signinValidate();">
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAEtUlEQVRoge2Yy3IbRRSGv+65y5YVlysQiIE4VRBYpCo8A0seg6pseR2y4TVYsGZBpVIkmOBc7PgS21J8lWTrNpL6sJBkzWhGshQbQVX0V6mk/qel+f8+5/TpEcwwwwwzzPAhQ0UHrV9/+F6QRwK3/ytBo6CEXWXx0P7u5196nI5OEJGf/q/iAUSxbAyPopwenDBdSe+Fz6KDmAEjUpqulslhjClHxzEDmxu7rfNq49l0JY2PcrF0uP74t0yUs6ODGxmWTgr7S6de5unyJx99qbSam67EdBjTlvzGuqq+27k578X2nXgENJD1LXRYefD69Va9Wmu+mKbQNFRKJdaf/K5ap3tkfY2O649HQMSAQOBobCVLe5ubS172xh/Lyze/1koF0xRujOFge4tifocFX7CVQowgEp8XiwAiFy9bQy6wMJXit6+evy7XauHLaYmvnpXZePqE2tEOixmNY6mhcxMGpPtCBEvBvGcx5/Dx1qv1r/b3jp+KSPhvCRcRDvffsrv2jIA6Wd/C0qO/M5BCAgLQeRcRQAgchY2lzo4KD14cHxdW7q3Ufc+5c53iG9Uqe29eIY0KuUDj6E5KD6bMIFJTqJNrEk8pC7KBhaeat9ZXX3yRzx+tAu2rSxdO3hXYWVvFadfIZTSuPTxlBhGLQCeFukYuxv3PtoI5V2Mh6nRv73758LSw8s1d4zrWp+8jvdlosL+1Qbt2RtYHz9YoOgs4LuJHCRNddZOIAiKobkplPY1qVm69fPLnrULhaBUwk4gvHh2ytbaKblZYCCwCN7lFjoNEBDpvEotCn4NuceDZCo1GYfTB5vb9s8Pjxp17dzzH9UbesBWG5LffEFbPmPM0nq1wLVK3yHEweBpNrPpQznS22nlXk/U0YeXMe/74L04Pj4be7Lx0wvbLvzHhOdnAYs5TE+V7GpIRiK74BQcgqZwCfFuhRNFA2Frb4PTgmNt3P8cLOr2vUa9xnN+lel4m4ypcy8K3Vfw3r8uADKTORWEjA2Z6HCgRfFuhAY2melLk+cEJQS7Ay1iYdgtXd44pbjdl+r97NaT0gTThfQOjOEeDtkGjcLXGVGu0Q838oofraFwbLMWVV32ogUQKjRTeb3RRTisIHIWxwBgFIrSLdVTOxXLt7tzrQ3oKDYhN57qGY2a4WACNoBSdp24RaqUGzWpI5oaPvmLhDjXQ323SRca5/rXxOGg2DOV3FfwFF38+vnbXYgATufmIoh0l8rIeIiLUinXCqmZu0UeNOGlObCCW0zJoZkBQKseIrThuplVvUcp3o5F1rsdAMqfTijZt3ijhENvvE9Go0aw2yCwGqEuOzmMZuFTkkKJ93x6CSDca5wQ5BzczWTSG9IHJijYmMsH1r43mhNpJnWa1RZBzGPdkN6QPTFqgw4t2kh4iIjRrTVr1EG/BxclcvlMNSaExi3Zg5a+rh4jpRcPCz3mDj13DDfT+lRh/Z4mITHBxkZdz/Ws9rlVrcd5o4S242L51uQFEdhGWLy3QRDGOyyVFRu8TS8ceDDSKIS3Pws1aoHgbvRwPjpGHHRM9AYKY5JNZ/xnBpHDSaYjjcGnfHYJ2o0291AxV2/w4dNIMM8wwwwwfHP4B7yJw+/VSLXUAAAAASUVORK5CYII="/>
                                 이메일로 시작하기
                             </button>
@@ -189,13 +189,37 @@
         <!-- Optional JavaScript -->
         <!-- <script src="js/index_new.js"></script> -->
         <script>
+
             //Signin Form Checker
             function signinValidate() {
-                
+                var inputEmail = document.getElementById("signinEmail");
+                var inputPassword = document.getElementById("signinPassword");
+                var checkStoreEmail = document.getElementById("storeEmail");
+
+                if (inputEmail.value == "") {
+                    alert("이메일을 입력하세요.");
+                    inputEmail.focus();
+                    return false;
+                }
+
+                if (inputPassword.value == "") {
+                    alert("패스워드를 입력하세요.");
+                    inputPassword.focus();
+                    return false;
+                }
+
+                // alert(checkStoreEmail.checked);
+
+                //TODO: storeId 일 경우 쿠키에 저장
+                if (checkStoreEmail.checked == true) {
+                    //쿠키에 로그임 이메일 저장
+                }
+
             }
 
-            //Singin Form Checker
+            //Singup Form Checker
             function signupValidate() {
+
                 var inputEmail = document.getElementById("signupEmail");
                 var inputPassword1 = document.getElementById("signupPassword1");
                 var inputPassword2 = document.getElementById("signupPassword2");
@@ -253,11 +277,10 @@
                     return false;
                 }
 
-                alert(checkAgree.value);
                 //개인정보 처리방침과 이용약관에 동의하지 않았을 경우
-                if (checkAgree.value != "true") {
+                if (checkAgree.checked == false) {
                     alert("개인정보 처리방침과 이용약관에 동의해주세요.");
-                    // checkAgree.focus();
+                    checkAgree.focus();
                     return false;
                 }
             }
@@ -271,6 +294,7 @@
                 targetObj.value = "";
                 targetObj.focus();
             }
+
         </script>
         
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
