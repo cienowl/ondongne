@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        
+        <title>CIENOWL - 안전운전</title>
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <!-- Your custom styles (optional) -->
+        <link href="css/style.min.css" rel="stylesheet">
+        
+        <!-- half-page-carousel image-->
+        <style type="text/css">
+            html, body, header, .carousel {
+                height: 60vh;
+            }
+            @media (max-width: 740px) {
+                html, body, header, .carousel {
+                    height: 100vh;
+                }
+            }
+            @media (min-width: 800px) and (max-width: 850px) {
+                html, body, header, .carousel {
+                    height: 100vh;
+                }
+            }
+            @media (min-width: 800px) and (max-width: 850px) {
+                .navbar:not(.top-nav-collapse) {
+                    background: #1C2331 !important;
+                }
+            }
+            /* 다른 색상 네비바
+            @media (min-width: 800px) and (max-width: 850px) {
+                .navbar:not(.top-nav-collapse) {
+                    background: #929FBA !important;
+                }
+            } */    
+        </style>
+
+        <!-- footer social icon style -->
+        <style type="text/css">
+            .social-icons {
+                padding-left:0;
+                margin-bottom:0;
+                list-style:none
+            }
+            .social-icons li {
+                display:inline-block;
+                margin-bottom:4px
+            }
+            .social-icons li.title {
+                margin-right:15px;
+                text-transform:uppercase;
+                color:#96a2b2;
+                font-weight:700;
+                font-size:13px
+            }
+            .social-icons a {
+                background-color:#eceeef;
+                color:#818a91;
+                font-size:16px;
+                display:inline-block;
+                line-height:44px;
+                width:44px;
+                height:44px;
+                text-align:center;
+                margin-right:8px;
+                border-radius:100%;
+                -webkit-transition:all .2s linear;
+                -o-transition:all .2s linear;
+                transition:all .2s linear
+            }
+            .social-icons a:active,.social-icons a:focus,.social-icons a:hover {
+                color:#fff;
+                background-color:#29aafe
+            }
+            .social-icons.size-sm a {
+                line-height:34px;
+                height:34px;
+                width:34px;
+                font-size:14px
+            }
+            .social-icons a.facebook:hover {
+                background-color:#3b5998;
+            }
+            .social-icons a.twitter:hover {
+                background-color:#1DA1F2;
+            }
+            .social-icons a.instagram:hover {
+                background-color:#C13584;
+            }
+            .social-icons a.youtube:hover{
+                background-color:#ff0000;
+            }
+            @media (max-width:767px) {
+                .social-icons li.title {
+                    display:block;
+                    margin-right:0;
+                    font-weight:600
+                }
+            }
+        </style>
+
+        <!-- Modal login form -->
+        <style>
+            .form-elegant .font-small {
+                font-size: 0.8rem;
+            }
+            .form-elegant .z-depth-1a {
+                -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+                box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+            }
+            .form-elegant .z-depth-1-half, .form-elegant .btn:hover {
+                -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+                box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+            }
+            .form-elegant .modal-header {
+                border-bottom: none;
+            }
+            .modal-dialog .form-elegant .btn .fab {
+                color: #2196f3!important;
+            }
+            .form-elegant .modal-body, .form-elegant .modal-footer {
+                font-weight: 400;
+            }
+        </style>
+        <style>
+            .modal-open .navbar-expand-lg {
+                padding-right: 16px !important;
+            }
+        </style>
+    </head>
+    
+    <body>
+
+        <!--Main Navigation-->
+        <header>
+            <!-- Navbar -->
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+                <div class="container">
+
+                    <!-- Brand -->
+                    <a class="navbar-brand" href="index.html" target="_blank">
+                        <strong>CIENOWL</strong>
+                    </a>
+
+                    <!-- Collapse -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Links -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left -->
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">홈
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" target="_blank">통계</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" target="_blank">법률</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" target="_blank">About</a>
+                            </li>
+                        </ul>
+
+                        <!-- Right -->
+                        <ul class="navbar-nav nav-flex-icons">
+                            <!-- <li class="nav-item">
+                                <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a href="#" class="nav-link border border-light rounded" data-toggle="modal" data-target="#elegantModalForm">
+                                    <i class="fas fa-envelope mr-2"></i>로그인
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+            <!-- Navbar -->
+
+
+            <!-- Modal Sign up-->
+            <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"   aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <!--Content-->
+                    <div class="modal-content form-elegant">
+                        <!--Header-->
+                        <div class="modal-header text-center">
+                            <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Sign in</strong></h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body mx-4">
+                        <!--Body-->
+                        <div class="md-form mb-5">
+                            <input type="email" id="Form-email1" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="Form-email1">Your email</label>
+                        </div>
+
+                        <div class="md-form pb-3">
+                            <input type="password" id="Form-pass1" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="Form-pass1">Your password</label>
+                            <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1">
+                                Password?</a></p>
+                        </div>
+
+                        <div class="text-center mb-3">
+                            <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
+                        </div>
+                        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in with:</p>
+
+                        <div class="row my-3 d-flex justify-content-center">
+                            <!--Facebook-->
+                            <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-facebook-f text-center"></i></button>
+                            <!--Twitter-->
+                            <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-twitter"></i></button>
+                            <!--Google +-->
+                            <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g"></i></button>
+                        </div>
+                        </div>
+                        <!--Footer-->
+                        <div class="modal-footer mx-5 pt-3 mb-1">
+                            <p class="font-small grey-text d-flex justify-content-end">Not a member? <a href="#" class="blue-text ml-1">Sign Up</a></p>
+                        </div>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+            <!-- Modal Sign up-->
+
+
+            <!--Carousel Wrapper-->
+            <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+
+                <!--Indicators-->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                </ol>
+                <!--/.Indicators-->
+        
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+        
+                    <!--First slide-->
+                    <div class="carousel-item active">
+                        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/nature7.jpg'); background-repeat: no-repeat; background-size: cover;">
+            
+                        <!-- Mask & flexbox options-->
+                        <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+            
+                            <!-- Content -->
+                            <div class="text-center white-text mx-5 wow fadeIn">
+                                <h1 class="mb-4">
+                                    <strong>Learn Bootstrap 4 with MDB</strong>
+                                </h1>
+                
+                                <p>
+                                    <strong>Best & free guide of responsive web design</strong>
+                                </p>
+                
+                                <p class="mb-4 d-none d-md-block">
+                                    <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
+                                    written versions
+                                    available. Create your own, stunning website.</strong>
+                                </p>
+                
+                                <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
+                                    free tutorial
+                                    <i class="fas fa-graduation-cap ml-2"></i>
+                                </a>
+                            </div>
+                            <!-- Content -->
+            
+                        </div>
+                        <!-- Mask & flexbox options-->
+            
+                        </div>
+                    </div>
+                    <!--/First slide-->
+            
+                    <!--Second slide-->
+                    <div class="carousel-item">
+                        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg'); background-repeat: no-repeat; background-size: cover;">
+            
+                        <!-- Mask & flexbox options-->
+                        <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+            
+                            <!-- Content -->
+                            <div class="text-center white-text mx-5 wow fadeIn">
+                                <h1 class="mb-4">
+                                    <strong>Learn Bootstrap 4 with MDB</strong>
+                                </h1>
+                
+                                <p>
+                                    <strong>Best & free guide of responsive web design</strong>
+                                </p>
+                
+                                <p class="mb-4 d-none d-md-block">
+                                    <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
+                                    written versions
+                                    available. Create your own, stunning website.</strong>
+                                </p>
+                
+                                <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
+                                    free tutorial
+                                    <i class="fas fa-graduation-cap ml-2"></i>
+                                </a>
+                            </div>
+                            <!-- Content -->
+            
+                        </div>
+                        <!-- Mask & flexbox options-->
+            
+                        </div>
+                    </div>
+                    <!--/Second slide-->
+            
+                    <!--Third slide-->
+                    <div class="carousel-item">
+                        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/47.jpg'); background-repeat: no-repeat; background-size: cover;">
+            
+                        <!-- Mask & flexbox options-->
+                        <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+            
+                            <!-- Content -->
+                            <div class="text-center white-text mx-5 wow fadeIn">
+                                <h1 class="mb-4">
+                                    <strong>Learn Bootstrap 4 with MDB</strong>
+                                </h1>
+                
+                                <p>
+                                    <strong>Best & free guide of responsive web design</strong>
+                                </p>
+                
+                                <p class="mb-4 d-none d-md-block">
+                                    <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
+                                    written versions
+                                    available. Create your own, stunning website.</strong>
+                                </p>
+                
+                                <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
+                                    free tutorial
+                                    <i class="fas fa-graduation-cap ml-2"></i>
+                                </a>
+                            </div>
+                            <!-- Content -->
+            
+                        </div>
+                        <!-- Mask & flexbox options-->
+            
+                        </div>
+                    </div>
+                    <!--/Third slide-->
+        
+                </div>
+                <!--/.Slides-->
+        
+                <!--Controls-->
+                <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                <!--/.Controls-->
+        
+            </div>
+            <!--/.Carousel Wrapper-->
+        </header>
+        <!--Main Navigation-->
+
+
+        <!--Main layout-->
+        <main>
+            <div class="container my-5">
+
+                <!-- Section -->
+                <section>
+                  
+                <style>
+                    .md-pills .nav-link.active {
+                        color: #fff;
+                        background-color: #616161;
+                    }
+                    button.close {
+                        position: absolute;
+                        right: 0;
+                        z-index: 2;
+                        padding-right: 1rem;
+                        padding-top: .6rem;
+                    }
+                </style>
+                  
+                <!-- Modal -->
+                <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                      
+                                <!-- Grid row -->
+                                <div class="row">                                      
+                                    <!-- Grid column -->
+                                    <div class="col-md-6 py-5 pl-5">
+                                              
+                                        <h5 class="font-weight-normal mb-3">Paper cup mockup</h5>
+              
+                                        <p class="text-muted">Key letters, explain which writing we he carpeting or fame, the itch expand medical amped through constructing time. And scarfs, gain, get showed accounts decades.</p>
+              
+                                        <ul class="list-unstyled font-small mt-5">
+                                            <li>
+                                                <p class="text-uppercase mb-2"><strong>Client</strong></p>
+                                                <p class="text-muted mb-4">Envato Inc.</p>
+                                            </li>
+        
+                                            <li>
+                                                <p class="text-uppercase mb-2"><strong>Date</strong></p>
+                                                <p class="text-muted mb-4">June 27, 2019</p>
+                                            </li>
+        
+                                            <li>
+                                                <p class="text-uppercase mb-2"><strong>Skills</strong></p>
+                                                <p class="text-muted mb-4">Design, HTML, CSS, Javascript</p>
+                                            </li>
+        
+                                            <li>
+                                                <p class="text-uppercase mb-2"><strong>Address</strong></p>
+                                                <a href="https://mdbootstrap.com/docs/jquery/design-blocks/">MDBootstrap</a>
+                                            </li>
+                                        </ul>
+                                              
+                                    </div>
+                                    <!-- Grid column -->
+                                      
+                                    <!-- Grid column -->
+                                    <div class="col-md-6">
+                                        
+                                        <div class="view rounded-right">
+                                            <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/5.jpg" alt="Sample image">
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- Grid column -->
+                                      
+                                </div>
+                                <!-- Grid row -->
+                                      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal end -->
+              
+                <h6 class="font-weight-bold text-center grey-text text-uppercase small mb-4">portfolio</h6>
+                <h3 class="font-weight-bold text-center dark-grey-text pb-2">Product Designs</h3>
+                <hr class="w-header my-4">
+                <p class="lead text-center text-muted pt-2 mb-5">You can find several product design by our professional team in this section.</p>
+                      
+                <!--First row-->
+                <div class="row">
+              
+                    <!--First column: filter button-->
+                    <div class="col-12 my-4">              
+                        <!-- Nav tabs -->
+                        <ul class="nav md-pills flex-center flex-wrap mx-0" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active font-weight-bold text-uppercase" data-toggle="tab" href="#panel31" role="tab">전체</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold text-uppercase" data-toggle="tab" href="#panel32" role="tab">소모임</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold text-uppercase" data-toggle="tab" href="#panel33" role="tab">판매</a>
+                            </li>
+                        </ul>              
+                    </div>
+                    <!--First column-->
+
+                </div>
+                <!--First row-->
+              
+                <!--Tab panels-->
+                <div class="tab-content mb-5">
+
+                    <!--Panel 1-->
+                    <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
+              
+                        <!-- Grid row -->
+                        <div class="row">
+              
+                            <!-- Grid column 1 -->
+                            <div class="col-md-6 col-lg-3">                
+                                <!-- Card -->
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">                
+                                    <!-- Card image -->
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" alt="Card image cap">
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <h5 class="mb-3">글제목1</h5>
+                                        <p class="font-small grey-text mb-2">Anna Smith</p>
+                                        <p class="card-text mb-3">내용내용내용</p>   
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="far fa-heart"></i>27/08/2019</p>
+                                    </div>
+                                </a>
+                                <!-- Card -->
+                            </div>
+                            <!-- Grid column 1 -->
+
+                            
+                            <!-- Grid column 2 -->
+                            <div class="col-md-6 col-lg-3">     
+                                <!-- Card -->
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">                
+                                    <!-- Card image -->
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img9.jpg" alt="Card image cap">                    
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <h5 class="mb-3">글제목1</h5>
+                                        <p class="font-small grey-text mb-2">Anna Smith</p>
+                                        <p class="card-text mb-3">내용내용내용</p>   
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>                  
+                                    </div>                
+                                </a>
+                                <!-- Card -->                
+                            </div>
+                            <!-- Grid column 2 -->
+              
+
+                            <!-- Grid column 3 -->
+                            <div class="col-md-6 col-lg-3">                
+                                <!-- Card -->
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">                    
+                                    <!-- Card image -->
+                                    <img class="card-img-top" src=" https://mdbootstrap.com/img/Photos/Others/img4.jpg" alt="Card image cap">                    
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <h5 class="mb-3">글제목1</h5>
+                                        <p class="font-small grey-text mb-2">Anna Smith</p>
+                                        <p class="card-text mb-3">내용내용내용</p>   
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>                  
+                                    </div>                    
+                                </a>
+                                <!-- Card -->
+                            </div>
+                            <!-- Grid column 3 -->
+
+                    
+                            <!-- Grid column 4 -->
+                            <div class="col-md-6 col-lg-3">    
+                                <!-- Card -->
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">                    
+                                    <!-- Card image -->
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img5.jpg" alt="Card image cap">                    
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <h5 class="mb-3">글제목1</h5>
+                                        <p class="font-small grey-text mb-2">Anna Smith</p>
+                                        <p class="card-text mb-3">내용내용내용</p>   
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>                  
+                                    </div>                    
+                                </a>
+                                <!-- Card -->                
+                            </div>
+                            <!-- Grid column 4 -->
+
+              
+                            <!-- Grid column 5 -->
+                            <div class="col-md-6 col-lg-3">                
+                                <!-- Card -->
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">                    
+                                    <!-- Card image -->
+                                    <img class="card-img-top" src=" https://mdbootstrap.com/img/Photos/Others/img10.jpg" alt="Card image cap">                    
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <h5 class="mb-3">글제목1</h5>
+                                        <p class="font-small grey-text mb-2">Anna Smith</p>
+                                        <p class="card-text mb-3">내용내용내용</p>   
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>                                   
+                                    </div>                    
+                                </a>
+                                <!-- Card -->                
+                            </div>
+                            <!-- Grid column 5 -->
+                    
+                            <!-- Grid column 6 -->
+                            <div class="col-md-6 col-lg-3"> 
+                                <!-- Card -->
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">                    
+                                    <!-- Card image -->
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" alt="Card image cap">                    
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <h5 class="mb-3">글제목1</h5>
+                                        <p class="font-small grey-text mb-2">Anna Smith</p>
+                                        <p class="card-text mb-3">내용내용내용</p>   
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>                                      
+                                    </div>                    
+                                </a>
+                                <!-- Card -->                
+                            </div>
+                            <!-- Grid column 6 -->
+              
+                        </div>
+                        <!-- Grid row -->
+              
+                    </div>
+                    <!--Panel 1-->
+              
+                    
+                    <!--Panel 2-->
+                    <div class="tab-pane fade" id="panel32" role="tabpanel">
+              
+                        <!-- Grid row -->
+                        <div class="row">
+                
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-3">                    
+                                <!-- Card -->
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">                    
+                                    <!-- Card image -->
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img9.jpg" alt="Card image cap">                    
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <h5 class="mb-3">글제목1</h5>
+                                        <p class="font-small grey-text mb-2">Anna Smith</p>
+                                        <p class="card-text mb-3">내용내용내용</p>   
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>                 
+                                    </div>                    
+                                </a>
+                                <!-- Card -->                    
+                            </div>
+                            <!-- Grid column -->
+              
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-3">                
+                                <!-- Card -->
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">                    
+                                    <!-- Card image -->
+                                    <img class="card-img-top" src=" https://mdbootstrap.com/img/Photos/Others/img4.jpg" alt="Card image cap">                    
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <h5 class="mb-3">글제목1</h5>
+                                        <p class="font-small grey-text mb-2">Anna Smith</p>
+                                        <p class="card-text mb-3">내용내용내용</p>   
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>                     
+                                    </div>                    
+                                </a>
+                                <!-- Card -->                
+                            </div>
+                            <!-- Grid column -->
+              
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-3">                
+                                <!-- Card -->
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">                
+                                    <!-- Card image -->
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" alt="Card image cap">                
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <h5 class="mb-3">글제목1</h5>
+                                        <p class="font-small grey-text mb-2">Anna Smith</p>
+                                        <p class="card-text mb-3">내용내용내용</p>   
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>                   
+                                    </div>                
+                                </a>
+                                <!-- Card -->                
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-3">                
+                                <!-- Card -->
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">                
+                                    <!-- Card image -->
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" alt="Card image cap">                
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <h5 class="mb-3">글제목1</h5>
+                                        <p class="font-small grey-text mb-2">Anna Smith</p>
+                                        <p class="card-text mb-3">내용내용내용</p>   
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>                   
+                                    </div>                
+                                </a>
+                                <!-- Card -->                
+                            </div>
+                            <!-- Grid column -->
+              
+                        </div>
+                        <!-- Grid row -->
+              
+                    </div>
+                    <!--Panel 2-->
+              
+                    <!--Panel 3-->
+                    <div class="tab-pane fade" id="panel33" role="tabpanel">
+              
+                      <!-- Grid row -->
+                      <div class="row">
+              
+                        <!-- Grid column -->
+                        <div class="col-md-12 col-lg-4">
+              
+                          <!-- Card -->
+                          <div class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
+              
+                            <!-- Card image -->
+                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" alt="Card image cap">
+              
+                            <!-- Card content -->
+                            <div class="card-body">
+              
+                              <h5 class="my-3">Phone Bag</h5>
+                              <p class="card-text text-uppercase mb-3">Bag, Box</p>
+              
+                            </div>
+              
+                          </div>
+                          <!-- Card -->
+              
+                        </div>
+                        <!-- Grid column -->
+              
+                        <!-- Grid column -->
+                        <div class="col-md-6 col-lg-4">
+              
+                          <!-- Card -->
+                          <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
+              
+                            <!-- Card image -->
+                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img5.jpg" alt="Card image cap">
+              
+                            <!-- Card content -->
+                            <div class="card-body">
+              
+                              <h5 class="my-3">Notes</h5>
+                              <p class="card-text text-uppercase mb-3">Note</p>
+              
+                            </div>
+              
+                          </a>
+                          <!-- Card -->
+              
+                        </div>
+                        <!-- Grid column -->
+              
+                        <!-- Grid column -->
+                        <div class="col-md-6 col-lg-4">
+              
+                          <!-- Card -->
+                          <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
+              
+                            <!-- Card image -->
+                            <img class="card-img-top" src=" https://mdbootstrap.com/img/Photos/Others/img10.jpg" alt="Card image cap">
+              
+                            <!-- Card content -->
+                            <div class="card-body">
+              
+                              <h5 class="my-3">T-shirt</h5>
+                              <p class="card-text text-uppercase mb-3">Box</p>
+              
+                            </div>
+              
+                          </a>
+                          <!-- Card -->
+              
+                        </div>
+                        <!-- Grid column -->
+              
+                      </div>
+                      <!-- Grid row -->
+              
+                    </div>
+                    <!--Panel 3-->
+              
+                  </div>
+                  <!--Tab panels-->
+              
+                </section>
+                <!-- Section -->
+              
+              </div>
+
+            
+
+
+        </main>
+        <!--Main layout-->
+
+
+        <!-- Footer -->
+        <footer class="page-footer font-small mdb-color lighten-3 pt-4 wow fadeIn">
+
+            <!-- Footer Links -->
+            <div class="container text-center text-md-left">
+        
+            <!-- Grid row -->
+            <div class="row">
+        
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+        
+                <!-- Content -->
+                <h5 class="font-weight-bold text-uppercase mb-4">Footer Content</h5>
+                <p>Here you can use rows and columns to organize your footer content.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit amet numquam iure provident voluptate
+                    esse
+                    quasi, veritatis totam voluptas nostrum.</p>
+        
+                </div>
+                <!-- Grid column -->
+        
+                <hr class="clearfix w-100 d-md-none">
+        
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+        
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
+        
+                <ul class="list-unstyled">
+                    <li>
+                    <p>
+                        <a href="#!">PROJECTS</a>
+                    </p>
+                    </li>
+                    <li>
+                    <p>
+                        <a href="#!">ABOUT US</a>
+                    </p>
+                    </li>
+                    <li>
+                    <p>
+                        <a href="#!">BLOG</a>
+                    </p>
+                    </li>
+                    <li>
+                    <p>
+                        <a href="#!">AWARDS</a>
+                    </p>
+                    </li>
+                </ul>
+        
+                </div>
+                <!-- Grid column -->
+        
+                <hr class="clearfix w-100 d-md-none">
+        
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+        
+                <!-- Contact details -->
+                <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
+        
+                <ul class="list-unstyled">
+                    <li>
+                    <p>
+                        <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                    </li>
+                    <li>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                    </li>
+                    <li>
+                    <p>
+                        <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                    </li>
+                    <li>
+                    <p>
+                        <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                    </li>
+                </ul>
+        
+                </div>
+                <!-- Grid column -->
+        
+                <hr class="clearfix w-100 d-md-none">
+        
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+                    <!-- Social buttons -->
+                    <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
+
+                    <div class="col-md col-sm-6 col-xs-12">
+                        <ul class="social-icons">
+                            <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+                            <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Grid column -->
+        
+            </div>
+            <!-- Grid row -->
+        
+            </div>
+            <!-- Footer Links -->
+        
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">Copyright © 2020 All Rights Reserved by
+                <a href="https://mdbootstrap.com/"> cienowl.com</a>
+            </div>
+            <!-- Copyright -->
+        
+        </footer>
+        <!-- Footer -->
+        
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- Optional JavaScript -->
+        <script type="text/javascript" src="js/optional/counter.js"></script>
+
+        <!-- cards effect -->
+        <script>
+            $(function () {
+                var selectedClass = "";
+                $(".filter").click(function () {
+                    selectedClass = $(this).attr("data-rel");
+                    $("#gallery").fadeTo(100, 0.1);
+                    $("#gallery div").not("." + selectedClass).fadeOut().removeClass('animation');
+
+                    setTimeout(function () {
+                        $("." + selectedClass).fadeIn().addClass('animation');
+                        $("#gallery").fadeTo(300, 1);
+                    }, 300);
+                });
+            });
+        </script>
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+        </script>
+    </body>
+
+</html>
