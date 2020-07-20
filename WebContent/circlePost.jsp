@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("utf-8"); %>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 
-<%@page import="com.ondongne.teampjt.circle.dao.Dao" %>
-<%@page import="com.ondongne.teampjt.circle.dto.Dto" %>
+<%@page import="com.ondongne.teampjt.circle.dao.DataAccessCircle" %>
+<%@page import="com.ondongne.teampjt.circle.dto.DataTransferCircle" %>
 
 <!DOCTYPE html>
 <html>
@@ -25,7 +27,7 @@
 		String gender = request.getParameter("gender");
 		String description = request.getParameter("description");
 
-		Dto dto = new Dto();
+		DataTransferCircle dto = new DataTransferCircle();
 		dto.setTitle(title);
 		dto.setRegion(region);
 		dto.setZipcode(zipcode);
@@ -36,14 +38,13 @@
 		dto.setGender(gender);
 		dto.setDescription(description);
 		
-		SqlSessionFactory factory = Dao.getConn();
+		SqlSessionFactory factory = DataAccessCircle.getConn();
 		SqlSession sqlsession = factory.openSession();
 		sqlsession.insert("circleInsert",dto);
 		sqlsession.commit();
 		sqlsession.close();
 		
 		response.sendRedirect("circlePost.html");
-	
 	%>
 </body>
 </html>
