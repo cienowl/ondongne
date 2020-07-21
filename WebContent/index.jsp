@@ -1,4 +1,4 @@
-<!-- 
+<!--
 작성자:
     html        - 이호준, 김나예, 한송희
     JSP         - 이호준, 김나예, 한송희
@@ -75,7 +75,7 @@
                 }
             }
         </style>
-        
+
         <!-- Modal scrolling place -->
         <style>
             .modal-open .navbar-expand-lg {
@@ -89,48 +89,40 @@
 
         <!-- Header Start -->
         <header>
-
-            <!-- Navbar -->
-            <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+            <!--Navbar -->
+            <nav class="mb-1 navbar navbar-expand-lg navbar-dark blue elegant-color fixed-top">
                 <div class="container">
-                    <!-- Brand -->
-                    <a class="navbar-brand" href="index.jsp" target="#">
-                        <strong>ON동네</strong>
-                    </a>
-                    <!-- Collapse -->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <a class="navbar-brand" href="index.jsp">ON동네</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+                    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                     </button>
-                    <!-- Links -->
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">홈
+                            <!-- <li class="nav-item active">
+                            <a class="nav-link" href="#">Home
                                 <span class="sr-only">(current)</span>
+                            </a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="circle.html">동네소모임</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="sell.html">동네장터</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="hotplace.jsp">동네명소</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">게시판
                                 </a>
+                                <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+                                    <a class="dropdown-item" href="#">자유게시판</a>
+                                    <a class="dropdown-item" href="#">동네게시판</a>
+                                    <a class="dropdown-item" href="#">질문게시판</a>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="circle.html" target="">동네소모임</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="sell.html" target="">동네장터</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="hotplace.jsp" target="">동네명소</a>
-                            </li>
-                            
-                            <!-- Dropdown -->
-						    <li class="nav-item dropdown">
-						        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-						          aria-haspopup="true" aria-expanded="false">게시판</a>
-						        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-						        	<a class="dropdown-item" href="#" id="freeBoard">자유게시판</a>
-						        	<a class="dropdown-item" href="#" id="regionBoard">동네게시판</a>
-						        	<a class="dropdown-item" href="#" id="qnaBoard">질문게시판</a>
-						        </div>
-					      	</li>
-					      	
                         </ul>
                         <!-- Right -->
                         <ul class="navbar-nav nav-flex-icons">
@@ -155,20 +147,10 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- Signin modal connector -->
-                        <!-- <a href="bs_signin.html"> -->
-                            <%-- <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#signinModal">로그인</button> --%>
-                        <!-- </a> -->
-                        <!-- Signup modal connector -->
-                        <!-- <a href="bs_signup.html"> -->
-                            <%-- <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#signupModal">회원가입</button> --%>
-                        <!-- </a> -->
                     </div>
-
                 </div>
             </nav>
-            <!-- Navbar -->
-            
+            <!--/.Navbar -->
 
             <!-- Signin Modal -->
             <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -181,7 +163,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        
+
                         <div class="modal-body">
                             <!-- signin form -->
                             <form action="signin.jsp" method="POST" name="userinfoInsert">
@@ -198,23 +180,23 @@
                                     <input type="checkbox" class="form-check-input" id="storeEmail" name="storeEmail" value="true">
                                     <label class="form-check-label" for="storeEmail">아이디 저장</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block" id="signinSubmit" onclick="return signinValidate();">    
+                                <button type="submit" class="btn btn-primary btn-block" id="signinSubmit" onclick="return signinValidate();">
                                     시작하기
-                                </button>                            
+                                </button>
                             </form>
                             <!-- signin form end -->
                         </div>
 
                         <div class="modal-footer">
-                            
+
                             <p class="small">
                                 <a href="bs_signup.html" target="_blank">아이디 찾기</a> <a href="bs_signup.html" target="_blank">비밀번호 찾기</a><br/>
                             </p>
-                            
+
                             <!-- <button type="button" class="btn btn-secondary" data-sdismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Save changes</button> -->
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -236,7 +218,7 @@
                         <!-- signup form -->
                         <form action="signupBasic.jsp" method="GET" name="userinfoInsert">
                             <div class="modal-body">
-                                
+
                                 <div class="form-group">
                                     <label for="signupEmail">이메일</label>
                                     <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="이메일을 입력해 주세요." onchange="test(signupEmail.value);">
@@ -252,14 +234,14 @@
                                     <small id="checkPassword" class="form-text text-danger" style="height: 19px;"></small>
                                 </div>
                                 <div class="form-group form-check">
-                                    
+
                                     <p class="small">
                                         <input type="checkbox" class="form-check-input" id="checkAgree" name="checkAgree">
                                         <label class="form-check-label" for="checkAgree"></label>
-                                        회원가입 시 
+                                        회원가입 시
                                         <a href="" target="_blank">
                                             개인정보 처리방침
-                                        </a>과 
+                                        </a>과
                                         <a href="" target="_blank">
                                             이용약관
                                         </a>
@@ -267,21 +249,21 @@
                                     </p>
 
                                 </div>
-                                
+
                                 <!-- <button type="submit" class="btn btn-primary btn-block">
-                                    가입하기                                
+                                    가입하기
                                 </button> -->
-                                
+
                             </div>
 
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary btn-block" onclick="return signupValidate();" >
-                                    가입하기                                
+                                    가입하기
                                 </button>
                                 <!-- <p class="small">
                                     회원가입 시 <a href="bs_signup.html" target="_blank">개인정보 처리방침</a>과 <a href="bs_signup.html" target="_blank">이용약관</a>을 확인하였으며, 동의합니다. <br/>
                                 </p> -->
-                                
+
                                 <!-- <button type="button" class="btn btn-secondary" data-sdismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary">Save changes</button> -->
                             </div>
@@ -441,7 +423,7 @@
 
 
 
-            
+
 
 
             <!--Section: Content-->
@@ -450,7 +432,7 @@
 
                     <!-- Section heading -->
                     <h3 class="text-center font-weight-bold mb-5">서비스 소개</h3>
-                    
+
                     <!-- Grid row -->
                     <div class="row">
 
@@ -465,8 +447,8 @@
                                     <!-- Title -->
                                     <a href="#!" class="black-text">우리동네 소모임</a>
                                     <!-- Text -->
-                                    <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>                                            
-                                    <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button>                                
+                                    <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
+                                    <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button>
                                 </div>
                             </div>
                             <!-- Card -->
@@ -484,8 +466,8 @@
                                     <!-- Title -->
                                     <a href="#!" class="black-text">우리동네 장터</a>
                                     <!-- Text -->
-                                    <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>                                        
-                                    <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button>                            
+                                    <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
+                                    <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button>
                                 </div>
                             </div>
                             <!-- Card -->
@@ -503,8 +485,8 @@
                                     <!-- Title -->
                                     <a href="#!" class="black-text">우리동네 명소</a>
                                     <!-- Text -->
-                                    <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>                                            
-                                    <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button>                                
+                                    <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
+                                    <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button>
                                 </div>
                             </div>
                             <!-- Card -->
@@ -513,13 +495,13 @@
 
                     </div>
                     <!-- Grid row -->
-                    
+
                 </section>
             </div>
             <!--Section: Content-->
 
 
-            <!-- Section: QnA -->            
+            <!-- Section: QnA -->
             <div class="container my-5 wow fadeIn">
                 <section>
                     <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">FAQ</h6>
@@ -560,7 +542,7 @@
                             <p class="text-muted">Unfortunately, not. We do not issue full or partial refunds for any reason.</p>
                         </div>
                     </div>
-                </section>            
+                </section>
             </div>
             <!-- Section: QnA -->
 
@@ -606,7 +588,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-6 col-xs-12">
-                        <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
+                        <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
                             <a href="index.jsp">Ondongne</a>.
                         </p>
                     </div>
@@ -625,8 +607,8 @@
         <!-- Footer End-->
 
 
-        
-        
+
+
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
@@ -710,7 +692,7 @@
                     inputPassword1.focus();
                     return false;
                 }
-                
+
                 //패스워드2를 입력하지 않았을 경우
                 if (inputPassword2.value == "") {
                     //lert("패스워드 확인을 입력하세요.");
@@ -721,15 +703,15 @@
                 //비밀번호와 비밀번호 확인이 일치 하지 않을 경우
                 if (inputPassword1.value != inputPassword2.value) {
                     //alert("비밀번호가 일치 하지 않습니다.");
-                   
+
                     inputPassword1.focus();
                     inputPassword2.focus();
                     return false;
                 } else {
                     //TODO: 일치할 경우 색상변경
-                 
+
                 }
-                
+
                 //비밀번호 유효성 검사
                 if (!check(regulationPassword, inputPassword1, "비밀번호는 4자 이상의 대소문자와 숫자로만 입력 가능합니다.")) {
                     return false;
@@ -756,7 +738,7 @@
             function confirmPassword(initialPassword, finalPassword) {
                 if (initialPassword == "" || finalPassword == "") {
                     document.getElementById("checkPassword").innerText = "";
-                } else {    
+                } else {
                     if (initialPassword == finalPassword) {
                         document.getElementById("checkPassword").setAttribute("class", "form-text text-success");
                         document.getElementById("checkPassword").innerText = "비밀번호가 일치 합니다.";
@@ -786,7 +768,7 @@
                             type:"GET",
                             // dataType:"html",             //연결하는 문서의 타입
                             success:function(request){
-                                $("#checkEmail").append(request);                                
+                                $("#checkEmail").append(request);
                             },
                             error:function(request,status,error){
                                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -800,7 +782,7 @@
                 $("#signupEmail").blur(function(){
                     var email = $("#signupEmail").val();
                     $("#checkDupEmail").empty();
-                    
+
                     if (email != "") {
                         $.ajax({
                             url:'checkDupEmail.jsp',

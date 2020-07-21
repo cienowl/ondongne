@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SQLData">
+	<insert id="circleInsert" parameterType="com.ondongne.teampjt.circle.dto.DataTransferCircle">
+		insert into circle(email,pictures, post_date, title, region, zipcode, address, address_detail, event_date, end_date, gender, description, tags) values ('naye@naver.com','a',NOW(), #{title},#{region},#{zipcode},#{address},#{address_detail},#{event_date},#{end_date},#{gender},#{description},'tag');
+	</insert>
+</mapper>

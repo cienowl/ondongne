@@ -1,31 +1,51 @@
+<%@page import="com.ondongne.teampjt.sell.dto.DataTransferSell"%>
+<%@page import="com.ondongne.teampjt.sell.dao.DataAccessSell"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
-<%@page import="com.ondongne.teampjt.users.dao.DataAccessUsers"%>
 <%@page import="java.sql.*"%>
 <%
 	/*
-    작성자:
-        JSP	- 이호준
+    작성자: 이호준
     */
 
     request.setCharacterEncoding("utf-8"); 
 
-    String email = request.getParameter("inputEmail");
-    String getEmail = null;
-    String result = null;
+    //String email = session.getAttribute("email");
+    String email = "leehj.david@gmail.com";
+    String title = request.getParameter("title");
+    String isAuction = request.getParameter("isAuction");
+    String sellMethod = request.getParameter("sellMethod");
+    String sellPrice = request.getParameter("sellPrice");
+    String endDate = request.getParameter("end_date");
+    String endTime = request.getParameter("end_time");
+    String region = request.getParameter("region");
+    String description = request.getParameter("description");
+    //String pictures = request.getParameter("pictures");
+    String pictures = "pictures";
+    //String tags = request.getParameter("tags");
+    String tags = "tags";
     
-    DataAccessUsers dao = DataAccessUsers.getInstance();
-    SqlSessionFactory factory = DataAccessUsers.getConnection();
+    
+    DataTransferSell dto = new DataTransferSell();
+    dto.setEmail(email);
+    dto.setTitle(title);
+    dto.setPictures(pictures);
+    dto.setRegion(region);
+    dto.setStarting_price(sellPrice);
+    dto.setIs_auction(isAuction);
+    dto.setSell_method(sellMethod);
+    dto.setEnd_date(endDate);
+    dto.setEnd_time(endTime);    
+    dto.setDescription(description);
+    dto.setTags(tags);
+    
+    DataAccessSell dao = DataAccessSell.getInstance();
+    SqlSessionFactory factory = DataAccessSell.getConnection();
     SqlSession sqlSession = factory.openSession();
+    sqlSession.insert("sellPost", dto);
+    sqlSession.commit();
+    sqlSession.close();
     
-    getEmail = sqlSession.selectOne("checkEmail", email);
-        
-    if (getEmail != null) {
-    	result = "이미 존재하는 이메일입니다.";
-    } else {
-    	result = "사용 가능한 이메일입니다.";
-    }
-    
-    out.println(result);
+    response.sendRedirect("sell.html");    
 %>

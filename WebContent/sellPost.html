@@ -23,6 +23,13 @@
         <link href="css/style.min.css" rel="stylesheet"/>
         <link href="css/optional/footer.css" rel="stylesheet"/>
 
+        <!-- Modal scrolling place -->
+        <style>
+            .modal-open .navbar-expand-lg {
+                padding-right: 16px !important;
+            }
+        </style>
+
         <!-- tags css -->
         <style>
             /* More info: https://github.com/sniperwolf/taggingJS */
@@ -101,7 +108,7 @@
             <!--Navbar -->
             <nav class="mb-1 navbar navbar-expand-lg navbar-dark blue elegant-color fixed-top">
                 <div class="container">
-                    <a class="navbar-brand" href="#">ON동네</a>
+                    <a class="navbar-brand" href="index.jsp">ON동네</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
                     aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -113,14 +120,14 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                             </li> -->
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">동네소모임</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="circle.html">동네소모임</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">동네장터</a>
+                                <a class="nav-link" href="sell.html">동네장터</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">동네명소</a>
+                                <a class="nav-link" href="hotplace.jsp">동네명소</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
@@ -161,9 +168,6 @@
 
             </nav>
             <!--/.Navbar -->
-
-
-
         </header>
         <!-- Header End -->
 
@@ -171,20 +175,60 @@
         <!-- Main Start -->
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn">
-                <h3>판매/옥션 정보를 등록해주세요.</h3>
 
-                <form action="" method="GET">
+                <div class="row mb-4">
+                    <h2>판매/경매 정보를 등록해주세요.</h2>
+                </div>
 
+                <form action="sellPost.jsp" method="POST">
                     <div class="form-row">
-                        <div class="form-group col-md-8">
+                        <div class="form-group col-md-12">
                             <label for="inputTitle">판매글 제목</label>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="소모임 제목을 입력하세요." name="title"/>
+                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title"/>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputRegion">지역구</label>
+                        <div class="form-group col-md-6">
+                            <label for="isAuction">판매방법</label>
+                            <select id="isAuction" class="form-control" name="isAuction">
+                                <option selected disabled value="">선택</option>
+                                <option value="false">판매</option>
+                                <option value="true">경매</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="sellmethod">거래방법</label>
+                            <select id="sellMethod" class="form-control" name="sellMethod">
+                                <option selected disabled value="">선택</option>
+                                <option value="direct">직거래</option>
+                                <option value="parcel">택배거래</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label for="sellPrice">판매가격</label>
+                            <input type="text" class="form-control" id="sellPrice" placeholder="판매가/경매시작가" name="sellPrice">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="sell_deadline">판매/경매 마감일</label>
+                            <input type="date" class="form-control" id="sell_deadline" name="end_date"/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="sell_endtime">판매/경매 마감시간</label>
+                            <input type="time" class="form-control" id="sell_endtime" name="end_time"/>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputRegion">판매지역</label>
                             <select id="inputRegion" class="form-control" name="region">
                                 <option selected disabled value="">선택</option>
                                 <option>강남구</option>
@@ -217,117 +261,41 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="sample4_postcode">우편번호</label>
-                            <input type="text" class="form-control" id="sample4_postcode" placeholder="우편번호" name="zipcode" readonly/>
-                        </div>
-                        <div class="form-group col-md-6" style="padding-top: 32px">
-                            <label for="findAddress"></label>
-                            <input type="button" class="btn btn-primary" id="findAddress" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"/>
+                        <div class="form-group col-md-12">
+                            <label for="description">판매 설명글</label>
+                            <textarea class="form-control" id="description" rows="12" name="description"></textarea>
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="sample4_roadAddress">도로명주소</label>
-                            <input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" name="address" readonly/>
-                        </div>
-                        <span id="guide" style="color:#999;display:none"></span>
-                        <div class="form-group col-md-6">
-                            <label for="sample4_detailAddress">상세주소</label>
-                            <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" name="address_detail"/>
-                        </div>
-                        <!-- <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="display: none;"/> -->
-                        <!-- <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="display: none;"/> -->
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="memnumber">인원수<small>(최대15명)</small></label>
-                            <select id="memnumber" class="form-control" name="memnumber">
-                                <option value="none" selected disabled>선택</option>
-                                <option value="15">15명</option>
-                                <option value="14">14명</option>
-                                <option value="13">13명</option>
-                                <option value="12">12명</option>
-                                <option value="11">11명</option>
-                                <option value="10">10명</option>
-                                <option value="9">9명</option>
-                                <option value="8">8명</option>
-                                <option value="7">7명</option>
-                                <option value="6">6명</option>
-                                <option value="5">5명</option>
-                                <option value="4">4명</option>
-                                <option value="3">3명</option>
-                                <option value="2">2명</option>
-                                <option value="1">1명</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="circle_date">모집날짜</label>
-                            <input type="date" class="form-control" name="event_date"/>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="circle_deadline">모집마감일</label>
-                            <input type="date" class="form-control" name="end_date"/>
-                        </div>
-                    </div>
-
+                    <!-- TODO: 사진 입력 -->
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="gender">성별</label><br/>
-                            <input type="radio" name="gender" value="male"/>남
-                            <input class="ml-2" type="radio" name="gender" value="female"/>여
-                            <input class="ml-2" type="radio" name="gender" value="none" checked/>무관
+                            <label for="pictures">사진</label>
+                            <!-- <textarea class="form-control" id="description" rows="7" class="description" style="width: 100%;"></textarea> -->
                         </div>
                     </div>
 
-
-
                     <div class="form-row">
-                        <!-- <div class="form-group col-md-8"> -->
-
-
-                        <!-- The example Code -->
                         <div class="example-wrapper form-group col-md-12">
                             <div class="tags well">
-                                <label for="tagg">태그<small>(최대5개)</small></label><br/>
-                                <div data-tags-input-name="taggone" id="tag">preexisting-tag, another-tag</div>
+                                <label for="tag">태그<small>(최대5개)</small></label><br/>
+                                <div data-tags-input-name="taggone" id="tag" name="tags">preexisting-tag, another-tag</div>
                                 <!-- <p class="help-block">Press Enter, Comma or Spacebar to create a new tag, Backspace or Delete to remove the last one.</p> -->
                             </div>
-                        </div>
-
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group md-form">
-                            <textarea id="form7" class="md-textarea form-control" rows="3" style="width:1100px;" name="description"></textarea>
-                            <label for="form7">소모임 관련 설명</label>
                         </div>
                     </div>
 
                     <div class="form-row float-right">
-                        <!-- <ul class="form-group bottom_button">
-                            <li><button type="button" class="btn btn-primary">게시물미리보기</button></li>
-                            <li><button type="submit" class="btn btn-primary" onclick="">등록</button></li>
-                            <li><a href="../circle/circle.html"><button type="button" class="btn btn-primary">취소</button></a></li>
-                        </ul> -->
-
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
+                        <button type="submit" class="btn btn-lg btn-primary">등록</button>
+                        <button type="button" class="btn btn-lg btn-danger" href="sell.html">취소</button>
                     </div>
 
                     <div class="clearfix mb-4"></div>
 
                 </form>
 
-
             </div>
-
         </main>
         <!-- Main End -->
 
@@ -389,8 +357,6 @@
         <!-- Footer End-->
 
 
-
-
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
@@ -405,164 +371,6 @@
         <script type="text/javascript">
             // Animations initialization
             new WOW().init();
-        </script>
-
-        <!-- kakao 우편번호 서비스 http://postcode.map.daum.net/guide -->
-        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        <script>
-            //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-            function sample4_execDaumPostcode() {
-                new daum.Postcode({
-                    oncomplete: function(data) {
-                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                        // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                        var roadAddr = data.roadAddress; // 도로명 주소 변수
-                        var extraRoadAddr = ''; // 참고 항목 변수
-
-                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                            extraRoadAddr += data.bname;
-                        }
-                        // 건물명이 있고, 공동주택일 경우 추가한다.
-                        if(data.buildingName !== '' && data.apartment === 'Y'){
-                           extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                        }
-                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                        if(extraRoadAddr !== ''){
-                            extraRoadAddr = ' (' + extraRoadAddr + ')';
-                        }
-
-                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                        document.getElementById('sample4_postcode').value = data.zonecode;
-                        document.getElementById("sample4_roadAddress").value = roadAddr;
-                        document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-
-                        // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-                        if(roadAddr !== ''){
-                            document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-                        } else {
-                            document.getElementById("sample4_extraAddress").value = '';
-                        }
-
-                        var guideTextBox = document.getElementById("guide");
-                        // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-                        if(data.autoRoadAddress) {
-                            var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                            guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-                            guideTextBox.style.display = 'block';
-
-                        } else if(data.autoJibunAddress) {
-                            var expJibunAddr = data.autoJibunAddress;
-                            guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-                            guideTextBox.style.display = 'block';
-                        } else {
-                            guideTextBox.innerHTML = '';
-                            guideTextBox.style.display = 'none';
-                        }
-                    }
-                }).open();
-            }
-        </script>
-
-        <!-- multi-range slider js -->
-        <script>
-            var multiRange = document.querySelector('[data-multi-range]'),
-            rangeMin = multiRange.querySelector('input:nth-of-type(1)'),
-            rangeMax = multiRange.querySelector('input:nth-of-type(2)'),
-            inputMin = document.getElementById('input-min'),
-            inputMax = document.getElementById('input-max'),
-            max = rangeMin.max,
-            min = rangeMin.min,
-            diff = max - min;
-
-            rangeMin.nextElementSibling.style.setProperty('--width', window.getComputedStyle(rangeMin).width);
-            rangeMax.nextElementSibling.style.setProperty('--width', window.getComputedStyle(rangeMax).width);
-
-            function toSpacedInt(value) {
-                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-            }
-
-            function sliderChange(range) {
-                inputMin.value = toSpacedInt(rangeMin.value);
-                inputMax.value = toSpacedInt(rangeMax.value);
-            }
-
-            function sliderInput(range) {
-                var ranngeMinValuePc = (100 / diff) * (rangeMin.value - min), // To %
-                ranngeMaxValuePc = (100 / diff) * (rangeMax.value - min),
-                gradient = `linear-gradient(
-                    to right,
-                    var(--range-bg-color) ${ranngeMinValuePc}%,
-                    var(--range-fg-color) ${ranngeMinValuePc}% ${ranngeMaxValuePc}%,
-                    var(--range-bg-color) ${ranngeMaxValuePc}%
-                )`;
-
-                rangeMin.style.setProperty('--range-track-gradient', gradient);
-                rangeMax.style.setProperty('--range-track-gradient', gradient);
-                rangeMin.nextElementSibling.style.setProperty('--pc', ranngeMinValuePc / 100);
-                rangeMax.nextElementSibling.style.setProperty('--pc', ranngeMaxValuePc / 100);
-                rangeMin.nextElementSibling.value = toSpacedInt(rangeMin.value);
-                rangeMax.nextElementSibling.value = toSpacedInt(rangeMax.value);
-
-                if (range === rangeMin) {
-                    if (parseInt(rangeMin.value) > parseInt(rangeMax.value)) {
-                        rangeMax.value = range.value;
-                    }
-                }
-
-                if (range === rangeMax) {
-                    if (parseInt(rangeMax.value) < parseInt(rangeMin.value)) {
-                        rangeMin.value = range.value;
-                    }
-                }
-            }
-
-            function inputChange(input) {
-            if (input === inputMin) {
-                rangeMin.value = parseInt(inputMin.value.replace(/\s+/g, ''));
-                sliderInput(rangeMin);
-                return;
-            }
-
-            if (input === inputMax) {
-                rangeMax.value = parseInt(inputMax.value.replace(/\s+/g, ''));
-                sliderInput(rangeMax);
-                return;
-            }
-            }
-
-            multiRange.addEventListener('mousemove', mouseMove);
-
-            sliderInput(rangeMin);
-            sliderInput(rangeMax);
-            sliderChange();
-
-            function mouseMove(e) {
-                var clickPoint = e.offsetX  / rangeMin.offsetWidth,
-                    clickPointVal = parseInt((diff * clickPoint)) + parseInt(min),
-                    da = Math.abs(rangeMin.value - clickPointVal),
-                    db = Math.abs(rangeMax.value - clickPointVal);
-
-                if (da < db) {
-                    rangeMin.classList.remove('c-multi-slider__range--background');
-                    rangeMax.classList.add('c-multi-slider__range--background');
-                } else if (da > db) {
-                    rangeMax.classList.remove('c-multi-slider__range--background');
-                    rangeMin.classList.add('c-multi-slider__range--background');
-                }
-            }
-
-            function resetSliders(low, high) {
-                rangeMin.value = low;
-                rangeMax.value = high;
-                sliderInput(rangeMin);
-                sliderInput(rangeMax);
-                sliderChange();
-            }
-
         </script>
 
         <!-- tag js url: https://codepen.io/sniperwolf/pen/geFxq-->

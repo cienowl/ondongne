@@ -2,30 +2,30 @@
 
 package com.ondongne.teampjt.users.dto;
 
-//ondongne.users
-//+----------------------+--------------+------+-----+---------+-------+
-//| Field                | Type         | Null | Key | Default | Extra |
-//+----------------------+--------------+------+-----+---------+-------+
-//| email                | varchar(50)  | NO   | PRI | NULL    |       |
-//| password             | varchar(20)  | NO   |     | NULL    |       |
-//| nickname             | varchar(20)  | YES  |     | NULL    |       |
-//| profile_picture      | varchar(100) | YES  |     | NULL    |       |
-//| birthday             | varchar(10)  | YES  |     | NULL    |       |
-//| phone                | varchar(20)  | YES  |     | NULL    |       |
-//| gender               | varchar(10)  | YES  |     | NULL    |       |
-//| zipcode              | varchar(10)  | YES  |     | NULL    |       |
-//| address              | varchar(50)  | YES  |     | NULL    |       |
-//| address_detail       | varchar(50)  | YES  |     | NULL    |       |
-//| region1              | varchar(10)  | YES  |     | NULL    |       |
-//| region2              | varchar(10)  | YES  |     | NULL    |       |
-//| region3              | varchar(10)  | YES  |     | NULL    |       |
-//| joindate             | date         | YES  |     | NULL    |       |
-//| last_signin_date     | date         | YES  |     | NULL    |       |
-//| business_owner       | varchar(10)  | YES  |     | NULL    |       |
-//| hibernate            | varchar(10)  | YES  |     | NULL    |       |
-//| hibernate_start_date | date         | YES  |     | NULL    |       |
-//| warning_count        | int(11)      | YES  |     | NULL    |       |
-//+----------------------+--------------+------+-----+---------+-------+
+//	ondongne.users
+//	+----------------------+--------------+------+-----+---------+-------+
+//	| Field                | Type         | Null | Key | Default | Extra |
+//	+----------------------+--------------+------+-----+---------+-------+
+//	| email                | varchar(50)  | NO   | PRI | NULL    |       |
+//	| password             | varchar(20)  | NO   |     | NULL    |       |
+//	| nickname             | varchar(20)  | YES  |     | NULL    |       |
+//	| profile_picture      | varchar(100) | YES  |     | NULL    |       |
+//	| birthday             | varchar(10)  | YES  |     | NULL    |       |
+//	| phone                | varchar(20)  | YES  |     | NULL    |       |
+//	| gender               | varchar(10)  | YES  |     | NULL    |       |
+//	| zipcode              | varchar(10)  | YES  |     | NULL    |       |
+//	| address              | varchar(50)  | YES  |     | NULL    |       |
+//	| address_detail       | varchar(50)  | YES  |     | NULL    |       |
+//	| region1              | varchar(10)  | YES  |     | NULL    |       |
+//	| region2              | varchar(10)  | YES  |     | NULL    |       |
+//	| region3              | varchar(10)  | YES  |     | NULL    |       |
+//	| joindate             | date         | YES  |     | NULL    |       |
+//	| last_signin_date     | date         | YES  |     | NULL    |       |
+//	| business_owner       | varchar(10)  | YES  |     | NULL    |       |
+//	| hibernate            | varchar(10)  | YES  |     | NULL    |       |
+//	| hibernate_start_date | date         | YES  |     | NULL    |       |
+//	| warning_count        | int(11)      | YES  |     | NULL    |       |
+//	+----------------------+--------------+------+-----+---------+-------+
 
 public class DataTransferSignup {
 	

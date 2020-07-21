@@ -23,7 +23,6 @@ public class DataAccessUsers {
 		return instance;
 	}
 
-	
 	static SqlSessionFactory sqlFactory;
 	
 	public static SqlSessionFactory getConnection() {		
