@@ -20,5 +20,4 @@
 	<mapper resource="com/ondongne/teampjt/users/mapper.xml"/>
 </mappers>
 
-
 </configuration>

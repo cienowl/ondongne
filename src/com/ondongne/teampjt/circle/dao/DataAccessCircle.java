@@ -27,31 +27,22 @@ public class DataAccessCircle {
 		return instance;
 	}
 
-	Reader reader;
-
 	public static SqlSessionFactory getConnection() {
+		Reader reader;
+
 		try {
 			reader = Resources.getResourceAsReader("com/ondongne/teampjt/circle/mybatis_config.xml");
 			sqlFactory = new SqlSessionFactoryBuilder().build(reader);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return sqlFactory;
 
+		return sqlFactory;
 	}
 
 	public void circleInsert(DataTransferCircle dto) {
 
 		SqlSession sqlsession = sqlFactory.openSession();
-		String title =  dto.getTitle();
-		String region = dto.getRegion();
-		String zipcode = dto.getZipcode();
-		String address = dto.getAddress();
-		String address_detail = dto.getAddress_detail();
-		String event_date = dto.getEvent_date();
-		String end_date = dto.getEnd_date();
-		String gender = dto.getGender();
-		String description = dto.getDescription();
 
 		sqlsession.insert("circleInsert", dto);
 		sqlsession.commit();
