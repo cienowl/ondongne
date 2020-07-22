@@ -11,7 +11,7 @@
 
     request.setCharacterEncoding("utf-8"); 
 
-    String email = (String)session.getAttribute("email");
+    String email = (String) session.getAttribute("email");
     //String email = "leehj.david@gmail.com";
     String title = request.getParameter("title");
     String isAuction = request.getParameter("isAuction");

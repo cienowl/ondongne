@@ -24,7 +24,6 @@
         <link href="css/mdb.min.css" rel="stylesheet">
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet">
-        <link href="css/optional/footer.css" rel="stylesheet"/>
 
         <!-- half-page-carousel image-->
         <style type="text/css">
@@ -307,7 +306,7 @@
 
                 <!-- 글쓰기 버튼 -->
                 <div class="row">
-                    <a class="btn btn-primary" href="circlePost.html" role="button">소모임 글쓰기</a>
+                    <a class="btn btn-primary" href="circlePostForm.jsp" role="button">소모임 글쓰기</a>
                 </div>
 
                 <!--First row-->
@@ -633,8 +632,6 @@
                 <!-- Section -->
 
               </div>
-
-
 
 
         </main>

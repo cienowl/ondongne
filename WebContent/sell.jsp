@@ -24,8 +24,7 @@
         <link href="css/mdb.min.css" rel="stylesheet">
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet">
-        <link href="css/optional/footer.css" rel="stylesheet"/>
-
+        
         <!-- half-page-carousel image-->
         <style type="text/css">
             html, body, header, .carousel {
@@ -307,7 +306,7 @@
 
                 <!-- 글쓰기 버튼 -->
                 <div class="row">
-                    <a class="btn btn-primary" href="sellPost.html" role="button">판매/경매 글쓰기</a>
+                    <a class="btn btn-primary" href="sellPostForm.jsp" role="button">판매/경매 글쓰기</a>
                 </div>
 
                 <!--First row-->
