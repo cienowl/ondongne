@@ -1,15 +1,14 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="com.ondongne.teampjt.circle.dao.DataAccessCircle" %>
 <%@page import="com.ondongne.teampjt.circle.dto.DataTransferCircle" %>
 
 <%
-	/*
-	작성자: 김나예
-	*/
+	// 작성자: 김나예
 	request.setCharacterEncoding("utf-8");
 
+	String email = (String) session.getAttribute("email");
 	String title = request.getParameter("title");
 	String region = request.getParameter("region");
 	String zipcode = request.getParameter("zipcode");
@@ -21,6 +20,7 @@
 	String description = request.getParameter("description");
 
 	DataTransferCircle dto = new DataTransferCircle();
+	dto.setEmail(email);
 	dto.setTitle(title);
 	dto.setRegion(region);
 	dto.setZipcode(zipcode);
@@ -30,12 +30,12 @@
 	dto.setEnd_date(end_date);
 	dto.setGender(gender);
 	dto.setDescription(description);
-	
-	SqlSessionFactory factory = DataAccessCircle.getConn();
+
+	SqlSessionFactory factory = DataAccessCircle.getConnection();
 	SqlSession sqlsession = factory.openSession();
-	sqlsession.insert("circleInsert",dto);
+	sqlsession.insert("circleInsert", dto);
 	sqlsession.commit();
 	sqlsession.close();
-	
-	response.sendRedirect("circlePost.html");
+
+	response.sendRedirect("circle.html");
 %>

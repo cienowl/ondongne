@@ -2,7 +2,7 @@
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="com.ondongne.teampjt.users.dao.DataAccessUsers"%>
-<%@page import="com.ondongne.teampjt.users.dto.DataTransferSignup"%>
+<%@page import="com.ondongne.teampjt.users.dto.DataTransferUsers"%>
 <%@page import="java.sql.*"%>
 <%
 	/*
@@ -18,7 +18,7 @@
 	//if(email == null || password == null)
 	//	throw new Exception("정보를 입력해주세요.");
 
-	DataTransferSignup dto = new DataTransferSignup();
+	DataTransferUsers dto = new DataTransferUsers();
 	
 	dto.setEmail(email);
 	dto.setPassword(password);

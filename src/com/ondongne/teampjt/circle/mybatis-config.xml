@@ -17,7 +17,7 @@
 </environments>
 
 <mappers>
-	<mapper resource="com/ondongne/teampjt/users/mapper.xml"/>
+	<mapper resource="com/ondongne/teampjt/circle/mapper.xml" />
 </mappers>
 
 </configuration>

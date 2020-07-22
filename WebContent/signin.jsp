@@ -1,17 +1,17 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.ondongne.teampjt.users.dto.DataTransferSignup"%>
+<%@page import="com.ondongne.teampjt.users.dto.DataTransferUsers"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="com.ondongne.teampjt.users.dao.DataAccessUsers"%>
 <%@page import="java.sql.*"%>
 
 <%
-    /*
+	/*
     작성자:
         JSP	- 이호준
     */
 
-    request.setCharacterEncoding("utf-8"); 
+    request.setCharacterEncoding("utf-8");
 
     //로그인 정보 확인 페이지
     String email = request.getParameter("signinEmail");
@@ -20,23 +20,22 @@
     String dbPassword = null;
     String targetUrl = null;
     Cookie cookie = null;
-    
+
     //아이디 저장클릭시 쿠키에 아이디 저장
     String storeEmail = request.getParameter("storeEmail");
     if (storeEmail == null) {
         storeEmail = "false";
     }
 
-    
     DataAccessUsers dao = DataAccessUsers.getInstance();
     SqlSessionFactory factory = DataAccessUsers.getConnection();
     SqlSession sqlSession = factory.openSession();
-    
-    DataTransferSignup dto = sqlSession.selectOne("checkSignin", email);
-    
+
+    DataTransferUsers dto = sqlSession.selectOne("checkSignin", email);
+
     dbEmail = dto.getEmail();
     dbPassword = dto.getPassword();
-	
+
     //정보가 DB와 일치하면 입력한 이메일 세션에 등록 후 mypage.html 로 이동, 틀리면 이전페이지로 이동
     if(email.equals(dbEmail) && password.equals(dbPassword)) {
         session.setAttribute("email", email);   //세션 등록

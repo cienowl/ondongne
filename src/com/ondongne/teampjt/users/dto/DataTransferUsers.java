@@ -1,5 +1,3 @@
-//작성자: 이호준
-
 package com.ondongne.teampjt.users.dto;
 
 //	ondongne.users
@@ -27,8 +25,8 @@ package com.ondongne.teampjt.users.dto;
 //	| warning_count        | int(11)      | YES  |     | NULL    |       |
 //	+----------------------+--------------+------+-----+---------+-------+
 
-public class DataTransferSignup {
-	
+public class DataTransferUsers {
+
 	private String email;
 	private String password;
 	private String nickname;
@@ -48,7 +46,7 @@ public class DataTransferSignup {
 	private String hibernate;
 	private String hibernate_start_date;
 	private int warning_count;
-	
+
 	public String getEmail() {
 		return email;
 	}
