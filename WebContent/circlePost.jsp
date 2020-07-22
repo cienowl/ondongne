@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
+
 <%@page import="com.ondongne.teampjt.circle.dao.DataAccessCircle" %>
 <%@page import="com.ondongne.teampjt.circle.dto.DataTransferCircle" %>
 
@@ -30,12 +32,13 @@
 	dto.setEnd_date(end_date);
 	dto.setGender(gender);
 	dto.setDescription(description);
-
+	
+	DataAccessCircle dao = DataAccessCircle.getinstance();
 	SqlSessionFactory factory = DataAccessCircle.getConnection();
 	SqlSession sqlsession = factory.openSession();
 	sqlsession.insert("circleInsert", dto);
 	sqlsession.commit();
 	sqlsession.close();
 
-	response.sendRedirect("circle.html");
+	response.sendRedirect("circle.jsp");
 %>

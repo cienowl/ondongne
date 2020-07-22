@@ -7,13 +7,14 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
-	String email = (String) session.getAttribute("email");
-	//String signed_email = "naye@naver.com";
-	SqlSessionFactory factory = DataAccessUsers.getConn();
+	String sessionEmail = (String) session.getAttribute("email");
+	SqlSessionFactory factory = DataAccessUsers.getConnection();
 	SqlSession sqlsession = factory.openSession();
-	sqlsession.delete("userDelete", email);
+	sqlsession.delete("userDelete", sessionEmail);
 	sqlsession.commit();
 	sqlsession.close();
+	
+	session.invalidate();
 	
 	response.sendRedirect("index.jsp");
 %>

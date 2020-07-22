@@ -11,8 +11,8 @@
 
     request.setCharacterEncoding("utf-8"); 
 
-    //String email = session.getAttribute("email");
-    String email = "leehj.david@gmail.com";
+    String email = (String)session.getAttribute("email");
+    //String email = "leehj.david@gmail.com";
     String title = request.getParameter("title");
     String isAuction = request.getParameter("isAuction");
     String sellMethod = request.getParameter("sellMethod");
@@ -47,5 +47,5 @@
     sqlSession.commit();
     sqlSession.close();
     
-    response.sendRedirect("sell.html");    
+    response.sendRedirect("sell.jsp");    
 %>

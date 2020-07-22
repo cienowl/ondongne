@@ -87,8 +87,10 @@
                         following
                     </a>
                     <a href="#" class="list-group-item list-group-item-action waves-effect">
-                        내동네(주소)
+                        	내동네(주소)
                     </a>
+                    <a href="deleteAccount.jsp" class="list-group-item list-group-item-action waves-effect">
+            				탈퇴하기</a>
                 </div>
             </div>
             <!-- Sidebar -->

@@ -1,4 +1,4 @@
-// 작성자: 김나예
+// �옉�꽦�옄: 源��굹�삁
 
 package com.ondongne.teampjt.circle.dao;
 
@@ -31,7 +31,7 @@ public class DataAccessCircle {
 		Reader reader;
 
 		try {
-			reader = Resources.getResourceAsReader("com/ondongne/teampjt/circle/mybatis_config.xml");
+			reader = Resources.getResourceAsReader("com/ondongne/teampjt/circle/mybatis-config.xml");
 			sqlFactory = new SqlSessionFactoryBuilder().build(reader);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -26,7 +26,7 @@ package com.ondongne.teampjt.users.dto;
 //	+----------------------+--------------+------+-----+---------+-------+
 
 public class DataTransferUsers {
-
+	private String sessionEmail;
 	private String email;
 	private String password;
 	private String nickname;
@@ -46,7 +46,14 @@ public class DataTransferUsers {
 	private String hibernate;
 	private String hibernate_start_date;
 	private int warning_count;
-
+	
+	public String getSessionEmail() {
+		return sessionEmail;
+	}
+	public void setSessionEmail(String sessionEmail) {
+		this.sessionEmail = sessionEmail;
+	}
+	
 	public String getEmail() {
 		return email;
 	}

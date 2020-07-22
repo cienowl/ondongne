@@ -4,6 +4,6 @@
 
 <mapper namespace="SQLData">
 	<insert id="circleInsert" parameterType="com.ondongne.teampjt.circle.dto.DataTransferCircle">
-		insert into circle(email,pictures, post_date, title, region, zipcode, address, address_detail, event_date, end_date, gender, description, tags) values ('naye@naver.com','a',NOW(), #{title},#{region},#{zipcode},#{address},#{address_detail},#{event_date},#{end_date},#{gender},#{description},'tag');
+		insert into circle(email,pictures, post_date, title, region, zipcode, address, address_detail, event_date, end_date, gender, description, tags) values (#{email},'a',NOW(), #{title},#{region},#{zipcode},#{address},#{address_detail},#{event_date},#{end_date},#{gender},#{description},'tag');
 	</insert>
 </mapper>

@@ -7,8 +7,8 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
-	String email = (String) session.getAttribute("email");
-	//String email = request.getParameter("inputEmail");
+	String sessionEmail = (String) session.getAttribute("email");
+	String email = request.getParameter("inputEmail");
 	String password = request.getParameter("inputPassword1");
 	String phone = request.getParameter("inputPhone");
 	String birthday = request.getParameter("inputBirthday");
@@ -22,6 +22,7 @@
 	String region3 = request.getParameter("inputRegion3");
 
 	DataTransferUsers dto = new DataTransferUsers();
+	dto.setSessionEmail(sessionEmail);
 	dto.setEmail(email);
 	dto.setPassword(password);
 	dto.setPhone(phone);
@@ -40,6 +41,8 @@
 	sqlsession.update("userUpdate", dto);
 	sqlsession.commit();
 	sqlsession.close();
-
+	
+	session.setAttribute("email", email);
+	
 	response.sendRedirect("mypage.html");
 %>

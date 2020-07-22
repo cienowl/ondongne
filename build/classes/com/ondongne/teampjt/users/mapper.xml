@@ -18,10 +18,10 @@
 	</select>
 
 	<update id="userUpdate" parameterType="com.ondongne.teampjt.users.dto.DataTransferUsers">
-		update users set email=#{email}, password=#{password}, phone=#{phone}, birthday='1996-05-03', gender=#{gender}, nickname=#{nickname}, zipcode=#{zipcode}, address=#{address}, address_detail=#{address_detail}, region1=#{region1}, region2=#{region2}, region3=#{region3} where email='naye@naver.com';
+		update users set email=#{email}, password=#{password}, phone=#{phone}, birthday=#{birthday}, gender=#{gender}, nickname=#{nickname}, zipcode=#{zipcode}, address=#{address}, address_detail=#{address_detail}, region1=#{region1}, region2=#{region2}, region3=#{region3} where email=#{sessionEmail};
 	</update>
 
 	<delete id="userDelete" parameterType="String">
-		delete from users where email=#{signed_email};
+		delete from users where email=#{sessionEmail};
 	</delete>
 </mapper>
