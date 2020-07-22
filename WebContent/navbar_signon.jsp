@@ -55,7 +55,7 @@
                         <i class="fas fa-user"></i> <%= session.getAttribute("email") %>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                        <a class="dropdown-item" href="#">마이페이지</a>
+                        <a class="dropdown-item" href="mypage.html">마이페이지</a>
                         <a class="dropdown-item" href="signout.jsp">로그아웃</a>
                     </div>
                 </li>
