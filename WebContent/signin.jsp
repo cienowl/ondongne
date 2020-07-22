@@ -4,6 +4,7 @@
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="com.ondongne.teampjt.users.dao.DataAccessUsers"%>
 <%@page import="java.sql.*"%>
+
 <%
     /*
     작성자:
@@ -38,8 +39,8 @@
 	
     //정보가 DB와 일치하면 입력한 이메일 세션에 등록 후 mypage.html 로 이동, 틀리면 이전페이지로 이동
     if(email.equals(dbEmail) && password.equals(dbPassword)) {
-        session.setAttribute("email", email);
-        targetUrl = "mypage.html";
+        session.setAttribute("email", email);   //세션 등록
+        targetUrl = "mypage.jsp";
 
         if (storeEmail.equals("true")) {
             cookie = new Cookie("EMAIL", email);
