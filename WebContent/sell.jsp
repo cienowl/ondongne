@@ -306,7 +306,7 @@
 
                 <!-- 글쓰기 버튼 -->
                 <div class="row">
-                    <a class="btn btn-primary" href="sellPostForm.jsp" role="button">판매/경매 글쓰기</a>
+                    <a class="btn btn-primary" role="button" onclick="checksession();">판매/경매 글쓰기</a>
                 </div>
 
                 <!--First row-->
@@ -678,6 +678,24 @@
             // Animations initialization
             new WOW().init();
         </script>
+        
+              
+        <!-- login check -->
+        <script>
+        
+        	function checksession(){
+
+        		var checksession = '<%= (String)session.getAttribute("email") %>';
+        		
+        	   	if(checksession=="null"){
+        	   		alert("로그인 모달창");
+        	   	}
+        	   	else{
+        	   		window.location.href='sellPostForm.jsp';
+        	   	}	
+        	}
+        </script>
+        
 
     </body>
 

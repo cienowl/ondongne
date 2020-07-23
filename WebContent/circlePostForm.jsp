@@ -324,6 +324,7 @@
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
+			
         </header>
         <!-- Header End -->
 

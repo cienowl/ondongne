@@ -1,12 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!--
 작성자:
     html        - 김나예
     css         - 김나예
     JavaScript  - 김나예
 -->
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 
@@ -306,9 +304,9 @@
 
                 <!-- 글쓰기 버튼 -->
                 <div class="row">
-                    <a class="btn btn-primary" href="circlePostForm.jsp" role="button">소모임 글쓰기</a>
+                    <a class="btn btn-primary" role="button" onclick="checksession();" >소모임 글쓰기</a>
                 </div>
-
+				
                 <!--First row-->
                 <div class="row">
 
@@ -652,7 +650,7 @@
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <!-- Optional JavaScript -->
-        <script type="text/javascript" src="js/optional/counter.js"></script>
+      
 
         <!-- cards effect -->
         <script>
@@ -670,11 +668,32 @@
                 });
             });
         </script>
-        <!-- Initializations -->
+    
+ 		<!-- Initializations -->
         <script type="text/javascript">
             // Animations initialization
             new WOW().init();
         </script>
+        
+        <!-- login check -->
+        <script>
+        
+        	function checksession(){
+
+        		var checksession = '<%= (String)session.getAttribute("email") %>';
+        		
+        	   	if(checksession=="null"){
+        	   		alert("로그인 모달창");
+        	   	}
+        	   	else{
+        	   		window.location.href='circlePostForm.jsp';
+        	   	}	
+        	}
+        </script>
+        
+    
+      
+
     </body>
 
 </html>
