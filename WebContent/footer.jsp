@@ -23,7 +23,7 @@
                     <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
                     <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
                     <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-                    <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+                    <li><a href="admin_index.html" target="_blank">Admin</a></li>
                 </ul>
             </div>
 
