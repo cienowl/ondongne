@@ -103,7 +103,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ON동네 로그인</h5>
+                <p class="h4 text-center" id="exampleModalLabel">ON동네 로그인</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -111,32 +111,47 @@
 
             <div class="modal-body">
                 <!-- signin form -->
-                <form action="signin.jsp" method="POST" name="userinfoInsert">
-                    <div class="form-group">
-                        <label for="signinEmail">이메일</label>
-                        <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="이메일을 입력해 주세요."  value="<%= getCookieValue(cookies, "EMAIL") %>">
-                        <small id="checkEmail" class="form-text text-danger" style="height: 19px;"></small>
+                <form class="text-center p-5" action="signin.jsp" method="POST" name="userinfoInsert">
+                        <input type="email" class="form-control mb-4" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail"  value="<%= getCookieValue(cookies, "EMAIL") %>">
+                        <%-- <small id="checkEmail" class="form-text text-danger" style="height: 19px;"></small> --%>
+                    
+                        <input type="password" class="form-control mb-4" id="signinPassword" placeholder="Password" name="signinPassword">
+                    
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <input type="checkbox" class="custom-control-input" id="storeEmail" name="storeEmail" value="true">
+                            <label class="custom-control-label" for="storeEmail">아이디 저장</label>
+                        </div>
+                        <div>
+                            <!--TODO:비밀번호 찾기-->
+                            <a href="">Forgot password?</a>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="signinPassword">비밀번호</label>
-                        <input type="password" class="form-control" id="signinPassword" name="signinPassword">
-                    </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="storeEmail" name="storeEmail" value="true">
-                        <label class="form-check-label" for="storeEmail">아이디 저장</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block" id="signinSubmit" onclick="return signinValidate();">
-                        시작하기
+                    <button type="submit" class="btn btn-info btn-block my-4 waves-effect waves-light" id="signinSubmit" onclick="return signinValidate();">
+                       Sign in
                     </button>
+                    <!-- Register -->
+                    <!--TODO:회원가입 모달창으로 이동-->
+                    <p>Not a member?
+                        <a href="">Register</a>
+                    </p>
+
+                    <!-- Social login -->
+                    <p>or sign in with:</p>
+
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
                 </form>
                 <!-- signin form end -->
             </div>
 
             <div class="modal-footer">
 
-                <p class="small">
+                <%-- <p class="small">
                     <a href="bs_signup.html" target="_blank">아이디 찾기</a> <a href="bs_signup.html" target="_blank">비밀번호 찾기</a><br/>
-                </p>
+                </p> --%>
 
                 <!-- <button type="button" class="btn btn-secondary" data-sdismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button> -->
