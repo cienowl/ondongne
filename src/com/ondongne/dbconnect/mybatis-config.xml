@@ -17,7 +17,10 @@
 </environments>
 
 <mappers>
-	<mapper resource="com/ondongne/teampjt/circle/mapper.xml" />
+	<mapper resource="com/ondongne/dbconnect/mapper_circle.xml"/>
+	<mapper resource="com/ondongne/dbconnect/mapper_sell.xml"/>
+	<mapper resource="com/ondongne/dbconnect/mapper_users.xml"/>
+	<mapper resource="com/ondongne/dbconnect/mapper_hotplace.xml"/>
 </mappers>
 
 </configuration>
