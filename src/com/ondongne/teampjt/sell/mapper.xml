@@ -4,7 +4,7 @@
 
 <mapper namespace="sell">
 
-	<insert id="sellPost" parameterType="com.ondongne.teampjt.sell.dto.DataTransferSell">
+	<insert id="sellPost" parameterType="com.ondongne.dto.DataTransferSell">
 		insert into sell(
 			email,
 			id,

@@ -1,4 +1,4 @@
-package com.ondongne.teampjt.sell.dao;
+package com.ondongne.dao;
 
 import java.io.IOException;
 import java.io.Reader;

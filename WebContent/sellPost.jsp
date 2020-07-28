@@ -1,6 +1,6 @@
-<%@page import="com.ondongne.teampjt.sell.dto.DataTransferSell"%>
-<%@page import="com.ondongne.teampjt.sell.dao.DataAccessSell"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.ondongne.dto.DataTransferSell"%>
+<%@page import="com.ondongne.dao.DataAccessSell"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="java.sql.*"%>

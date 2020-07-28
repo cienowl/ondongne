@@ -11,7 +11,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.ondongne.dto.DataTransferUsers;
-import com.ondongne.teampjt.users.dto.*;
 
 public class DataAccessUsers {
 

@@ -1,6 +1,6 @@
 // 작성자: 이호준
 
-package com.ondongne.teampjt.sell.dto;
+package com.ondongne.dto;
 
 //	ondongne.sell
 //	+----------------+--------------+------+-----+---------+----------------+

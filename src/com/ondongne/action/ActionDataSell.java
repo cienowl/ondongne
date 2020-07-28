@@ -1,4 +1,4 @@
-package com.ondongne.teampjt.sell.action;
+package com.ondongne.action;
 
 public interface ActionDataSell {
 	
