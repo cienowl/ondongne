@@ -26,7 +26,7 @@ public class DataAccessSell {
 		Reader reader;
 
 		try {
-			reader = Resources.getResourceAsReader("com/ondongne/teampjt/sell/mybatis-config.xml");
+			reader = Resources.getResourceAsReader("com/ondongne/dbconnect/mybatis-config.xml");
 			sqlFactory = new SqlSessionFactoryBuilder().build(reader);
 		} catch (IOException e) {
 			e.printStackTrace();
