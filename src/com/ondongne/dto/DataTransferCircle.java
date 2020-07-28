@@ -1,6 +1,6 @@
 // 작성자: 김나예
 
-package com.ondongne.teampjt.circle.dto;
+package com.ondongne.dto;
 
 public class DataTransferCircle {
 	private String email;

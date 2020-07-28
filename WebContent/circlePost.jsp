@@ -3,8 +3,8 @@
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 
-<%@page import="com.ondongne.teampjt.circle.dao.DataAccessCircle" %>
-<%@page import="com.ondongne.teampjt.circle.dto.DataTransferCircle" %>
+<%@page import="com.ondongne.dao.DataAccessCircle" %>
+<%@page import="com.ondongne.dto.DataTransferCircle" %>
 
 <%
 	// 작성자: 김나예

@@ -1,6 +1,6 @@
 // �옉�꽦�옄: 源��굹�삁
 
-package com.ondongne.teampjt.circle.dao;
+package com.ondongne.dao;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -9,7 +9,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import com.ondongne.teampjt.circle.dto.DataTransferCircle;
+
+import com.ondongne.dto.DataTransferCircle;
 
 public class DataAccessCircle {
 

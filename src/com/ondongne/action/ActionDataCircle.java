@@ -1,6 +1,6 @@
 // 작성자: 김나예
 
-package com.ondongne.teampjt.circle.action;
+package com.ondongne.action;
 
 public interface ActionDataCircle{
 	
