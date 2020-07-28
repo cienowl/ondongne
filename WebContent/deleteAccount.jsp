@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
-<%@page import="com.ondongne.teampjt.users.dao.DataAccessUsers" %>
-<%@page import="com.ondongne.teampjt.users.dto.DataTransferUsers" %>
+<%@page import="com.ondongne.dao.DataAccessUsers" %>
+<%@page import="com.ondongne.dto.DataTransferUsers" %>
 
 <%
 	request.setCharacterEncoding("utf-8");

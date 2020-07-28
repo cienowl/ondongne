@@ -1,6 +1,6 @@
 //작성자: 이호준, 김나예
 
-package com.ondongne.teampjt.users.dao;
+package com.ondongne.dao;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -9,6 +9,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.ondongne.dto.DataTransferUsers;
 import com.ondongne.teampjt.users.dto.*;
 
 public class DataAccessUsers {

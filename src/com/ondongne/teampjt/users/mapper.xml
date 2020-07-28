@@ -4,7 +4,7 @@
 
 <mapper namespace="signup">
 
-	<insert id="insertBasicInfo" parameterType="com.ondongne.teampjt.users.dto.DataTransferUsers">
+	<insert id="insertBasicInfo" parameterType="com.ondongne.dto.DataTransferUsers">
 		insert into users(email, password, joindate)
 		values(#{email}, #{password}, now())
 	</insert>
@@ -13,11 +13,11 @@
 		select email from users where email=#{email}
 	</select>
 
-	<select id="checkSignin" resultType="com.ondongne.teampjt.users.dto.DataTransferUsers">
+	<select id="checkSignin" resultType="com.ondongne.dto.DataTransferUsers">
 		select email, password from users where email=#{email}
 	</select>
 
-	<update id="userUpdate" parameterType="com.ondongne.teampjt.users.dto.DataTransferUsers">
+	<update id="userUpdate" parameterType="com.ondongne.dto.DataTransferUsers">
 		update users set email=#{email}, password=#{password}, phone=#{phone}, birthday=#{birthday}, gender=#{gender}, nickname=#{nickname}, zipcode=#{zipcode}, address=#{address}, address_detail=#{address_detail}, region1=#{region1}, region2=#{region2}, region3=#{region3} where email=#{sessionEmail};
 	</update>
 

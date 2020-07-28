@@ -1,4 +1,4 @@
-package com.ondongne.teampjt.users.dto;
+package com.ondongne.dto;
 
 //	ondongne.users
 //	+----------------------+--------------+------+-----+---------+-------+
