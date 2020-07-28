@@ -20,13 +20,13 @@
                 </a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="circle.jsp">동네소모임</a>
+                    <a class="nav-link" href="view.circle">동네소모임</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="sell.jsp">동네장터</a>
+                    <a class="nav-link" href="view.sell">동네장터</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="hotplace.jsp">동네명소</a>
+                    <a class="nav-link" href="view.hotplace">동네명소</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"

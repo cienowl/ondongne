@@ -50,13 +50,13 @@
                 </a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="circle.jsp">동네소모임</a>
+                    <a class="nav-link" href="view.circle">동네소모임</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="sell.jsp">동네장터</a>
+                    <a class="nav-link" href="view.sell">동네장터</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="hotplace.jsp">동네명소</a>
+                    <a class="nav-link" href="view.hotplace">동네명소</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
@@ -114,9 +114,9 @@
                 <form class="text-center p-5" action="signin.jsp" method="POST" name="userinfoInsert">
                         <input type="email" class="form-control mb-4" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail"  value="<%= getCookieValue(cookies, "EMAIL") %>">
                         <%-- <small id="checkEmail" class="form-text text-danger" style="height: 19px;"></small> --%>
-                    
+
                         <input type="password" class="form-control mb-4" id="signinPassword" placeholder="Password" name="signinPassword">
-                    
+
                     <div class="d-flex justify-content-around">
                         <div>
                             <input type="checkbox" class="custom-control-input" id="storeEmail" name="storeEmail" value="true">
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-info btn-block my-4 waves-effect waves-light" id="signinSubmit" onclick="return signinValidate();">
-                       Sign in
+                    Sign in
                     </button>
                     <!-- Register -->
                     <!--TODO:회원가입 모달창으로 이동-->
@@ -175,20 +175,19 @@
             </div>
 
             <div class="modal-body">
-            <!-- signup form -->
-            <form class="text-center p-5" action="signupBasic.jsp" method="GET" name="userinfoInsert">
+                <!-- signup form -->
+                <form class="text-center p-5" action="signupBasic.jsp" method="GET" name="userinfoInsert">
                 <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="E-mail" onchange="test(signupEmail.value);">
                 <small id="checkDupEmail" class="form-text text-success mb-4" style="height: 19px;"></small>
 
-                <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);">    
+                <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);">
                 <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                     At least 8 characters and 1 digit
                 </small>
-                   
+
                 <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="Check Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);">
                 <small id="checkPassword" class="form-text text-danger" style="height: 19px;"></small>
 
-               
                 <div class="custom-control custom-checkbox small mt-4" >
                     <input type="checkbox" class="custom-control-input" id="checkAgree" name="checkAgree">
                     <label class="custom-control-label" for="checkAgree"></label>
@@ -200,8 +199,7 @@
                         이용약관
                     </a>
                     을 확인하였으며, 동의합니다.<br/>
-                </div> 
-                
+                </div>
 
                     <!-- <button type="submit" class="btn btn-primary btn-block">
                         가입하기
@@ -227,7 +225,8 @@
                     <p>By clicking
                         <em>Sign up</em> you agree to our
                         <a href="" target="_blank">terms of service</a>
-          
+                    </p>
+
                 </div>
             </form>
 
