@@ -691,7 +691,7 @@
         	   		alert("로그인 모달창");
         	   	}
         	   	else{
-        	   		window.location.href='sellPostForm.jsp';
+        	   		window.location.href='postform.sell';
         	   	}	
         	}
         </script>
