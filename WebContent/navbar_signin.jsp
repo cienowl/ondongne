@@ -103,7 +103,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <p class="h4 text-center" id="exampleModalLabel">ON동네 로그인</p>
+                <p class="h4 text-center" id="exampleModalLabel" style="margin-bottom: 0;">ON동네 로그인</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -168,46 +168,40 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ON동네 회원가입</h5>
+                <p class="h4 text-center" id="exampleModalLabel" style="margin-bottom: 0;" >ON동네 회원가입</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
+            <div class="modal-body">
             <!-- signup form -->
-            <form action="signupBasic.jsp" method="GET" name="userinfoInsert">
-                <div class="modal-body">
+            <form class="text-center p-5" action="signupBasic.jsp" method="GET" name="userinfoInsert">
+                <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="E-mail" onchange="test(signupEmail.value);">
+                <small id="checkDupEmail" class="form-text text-success mb-4" style="height: 19px;"></small>
 
-                    <div class="form-group">
-                        <label for="signupEmail">이메일</label>
-                        <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="이메일을 입력해 주세요." onchange="test(signupEmail.value);">
-                        <small id="checkDupEmail" class="form-text text-success" style="height: 19px;"></small>
-                    </div>
-                    <div class="form-group">
-                        <label for="signupPassword1">비밀번호</label>
-                        <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="비밀번호를 입력해 주세요." onchange="confirmPassword(signupPassword1.value, signupPassword2.value);">
-                    </div>
-                    <div class="form-group">
-                        <label for="signupPassword2">비밀번호 확인</label>
-                        <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="비밀번호를 확인해 주세요." onchange="confirmPassword(signupPassword1.value, signupPassword2.value);">
-                        <small id="checkPassword" class="form-text text-danger" style="height: 19px;"></small>
-                    </div>
-                    <div class="form-group form-check">
+                <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);">    
+                <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                    At least 8 characters and 1 digit
+                </small>
+                   
+                <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="Check Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);">
+                <small id="checkPassword" class="form-text text-danger" style="height: 19px;"></small>
 
-                        <p class="small">
-                            <input type="checkbox" class="form-check-input" id="checkAgree" name="checkAgree">
-                            <label class="form-check-label" for="checkAgree"></label>
-                            회원가입 시
-                            <a href="" target="_blank">
-                                개인정보 처리방침
-                            </a>과
-                            <a href="" target="_blank">
-                                이용약관
-                            </a>
-                            을 확인하였으며, 동의합니다.<br/>
-                        </p>
-
-                    </div>
+               
+                <div class="custom-control custom-checkbox small mt-4" >
+                    <input type="checkbox" class="custom-control-input" id="checkAgree" name="checkAgree">
+                    <label class="custom-control-label" for="checkAgree"></label>
+                    회원가입 시
+                    <a href="" target="_blank">
+                        개인정보 처리방침
+                    </a>과
+                    <a href="" target="_blank">
+                        이용약관
+                    </a>
+                    을 확인하였으며, 동의합니다.<br/>
+                </div> 
+                
 
                     <!-- <button type="submit" class="btn btn-primary btn-block">
                         가입하기
@@ -216,15 +210,24 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-block" onclick="return signupValidate();" >
-                        가입하기
+                    <button type="submit" class="btn btn-info my-4 btn-block" onclick="return signupValidate();" >
+                        Sign up
                     </button>
-                    <!-- <p class="small">
-                        회원가입 시 <a href="bs_signup.html" target="_blank">개인정보 처리방침</a>과 <a href="bs_signup.html" target="_blank">이용약관</a>을 확인하였으며, 동의합니다. <br/>
-                    </p> -->
+                    <!-- Social register -->
+                    <p>or sign up with:</p>
 
-                    <!-- <button type="button" class="btn btn-secondary" data-sdismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
+                    <hr>
+
+                    <!-- Terms of service -->
+                    <p>By clicking
+                        <em>Sign up</em> you agree to our
+                        <a href="" target="_blank">terms of service</a>
+          
                 </div>
             </form>
 
