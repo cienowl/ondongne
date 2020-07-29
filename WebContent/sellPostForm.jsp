@@ -124,7 +124,7 @@
                     <h2>판매/경매 정보를 등록해주세요.</h2>
                 </div>
 
-                <form action="sellPost.jsp" method="POST">
+                <form action="submit.sell" method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputTitle">판매글 제목</label>

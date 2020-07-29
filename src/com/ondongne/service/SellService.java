@@ -7,7 +7,7 @@ public class SellService {
 	
 	public boolean postSell(DataTransferSell dtoSell) {
 
-		DataAccessSell daoSell = new DataAccessSell();
+		DataAccessSell daoSell = DataAccessSell.getInstance();
 		int insertCount = daoSell.insertSellPost(dtoSell);	//mybatis 쿼리 실행후 리턴으로 성공 줄수 확인
 
 		boolean isWriteSuccess = false;

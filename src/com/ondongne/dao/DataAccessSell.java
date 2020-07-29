@@ -37,9 +37,10 @@ public class DataAccessSell {
 	}
 	
 	public int insertSellPost(DataTransferSell dtoSell) {
-				
-		SqlSession sqlSession = sqlFactory.openSession();
 		
+		sqlFactory = getConnection();
+	    SqlSession sqlSession = sqlFactory.openSession();
+				
 		int insertCount = sqlSession.insert("sellPost", dtoSell);	//insert리턴 확인		
 		sqlSession.commit();	//commit()
 		sqlSession.close();
