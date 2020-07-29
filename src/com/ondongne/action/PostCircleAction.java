@@ -12,7 +12,7 @@ import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.DataTransferCircle;
 import com.ondongne.service.CircleService;
 
-public class PostCircleAction extends HttpServlet implements ActionDataCircle{
+public class PostCircleAction extends HttpServlet implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

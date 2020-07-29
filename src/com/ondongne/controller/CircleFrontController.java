@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ondongne.action.ActionDataCircle;
+import com.ondongne.action.Action;
 import com.ondongne.action.PostCircleAction;
 import com.ondongne.dto.ActionForward;
 
@@ -24,7 +24,7 @@ public class CircleFrontController extends HttpServlet
 			String contextPath = request.getContextPath();
 			String command = requestURI.substring(contextPath.length());
 			ActionForward forward = null;
-			ActionDataCircle action = null;
+			Action action = null;
 			
 			// 소모임 게시판으로 이동
 			if(command.equals("/view.circle")) {
