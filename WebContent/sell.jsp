@@ -4,8 +4,13 @@
     css         - 이호준
     JavaScript  - 이호준
 -->
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.ondongne.dto.DataTransferSell"%>
+<%@page import="java.util.List"%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	List<DataTransferSell> sellList = (List<DataTransferSell>) request.getAttribute("sellList");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +29,7 @@
         <link href="css/mdb.min.css" rel="stylesheet">
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet">
-        
+
         <!-- half-page-carousel image-->
         <style type="text/css">
             html, body, header, .carousel {
@@ -84,116 +89,56 @@
                 <!--Slides-->
                 <div class="carousel-inner" role="listbox">
 
-                    <!--First slide-->
-                    <div class="carousel-item active">
-                        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/nature7.jpg'); background-repeat: no-repeat; background-size: cover;">
+                    <%
+                    String[] imgUrl = {
+                        "https://mdbootstrap.com/img/Photos/Others/nature7.jpg",
+                        "https://mdbootstrap.com/img/Photos/Others/images/77.jpg",
+                        "https://mdbootstrap.com/img/Photos/Others/images/47.jpg"
+                    };
+                    String[] carouselClass = {
+                        "carousel-item active",
+                        "carousel-item",
+                        "carousel-item"
+                    };
+                    %>
+                    <% for (int i = 0; i < 3; i++) { %>
+                        <!-- slide -->
+                        <div class="<%= carouselClass[i] %>">
+                            <div class="view" style="background-image: url('<%= imgUrl[i] %>'); background-repeat: no-repeat; background-size: cover;">
 
-                        <!-- Mask & flexbox options-->
-                        <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+                            <!-- Mask & flexbox options -->
+                            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
-                            <!-- Content -->
-                            <div class="text-center white-text mx-5 wow fadeIn">
-                                <h1 class="mb-4">
-                                    <strong>Learn Bootstrap 4 with MDB</strong>
-                                </h1>
+                                <!-- Content -->
+                                <div class="text-center white-text mx-5 wow fadeIn">
+                                    <h1 class="mb-4">
+                                        <strong>Learn Bootstrap 4 with MDB</strong>
+                                    </h1>
 
-                                <p>
-                                    <strong>Best & free guide of responsive web design</strong>
-                                </p>
+                                    <p>
+                                        <strong>Best & free guide of responsive web design</strong>
+                                    </p>
 
-                                <p class="mb-4 d-none d-md-block">
-                                    <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                                    written versions
-                                    available. Create your own, stunning website.</strong>
-                                </p>
+                                    <p class="mb-4 d-none d-md-block">
+                                        <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
+                                        written versions
+                                        available. Create your own, stunning website.</strong>
+                                    </p>
 
-                                <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                                    free tutorial
-                                    <i class="fas fa-graduation-cap ml-2"></i>
-                                </a>
+                                    <a class="btn btn-outline-white btn-lg" onclick="checksession();" >판매/경매글 쓰기
+                                        <i class="fas fa-pen ml-2"></i>
+                                    </a>
+                                </div>
+                                <!-- Content -->
+
                             </div>
-                            <!-- Content -->
+                            <!-- Mask & flexbox options -->
 
-                        </div>
-                        <!-- Mask & flexbox options-->
-
-                        </div>
-                    </div>
-                    <!--/First slide-->
-
-                    <!--Second slide-->
-                    <div class="carousel-item">
-                        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                        <!-- Mask & flexbox options-->
-                        <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-
-                            <!-- Content -->
-                            <div class="text-center white-text mx-5 wow fadeIn">
-                                <h1 class="mb-4">
-                                    <strong>Learn Bootstrap 4 with MDB</strong>
-                                </h1>
-
-                                <p>
-                                    <strong>Best & free guide of responsive web design</strong>
-                                </p>
-
-                                <p class="mb-4 d-none d-md-block">
-                                    <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                                    written versions
-                                    available. Create your own, stunning website.</strong>
-                                </p>
-
-                                <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                                    free tutorial
-                                    <i class="fas fa-graduation-cap ml-2"></i>
-                                </a>
                             </div>
-                            <!-- Content -->
-
                         </div>
-                        <!-- Mask & flexbox options-->
+                        <!-- /slide -->
 
-                        </div>
-                    </div>
-                    <!--/Second slide-->
-
-                    <!--Third slide-->
-                    <div class="carousel-item">
-                        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/47.jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                        <!-- Mask & flexbox options-->
-                        <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-
-                            <!-- Content -->
-                            <div class="text-center white-text mx-5 wow fadeIn">
-                                <h1 class="mb-4">
-                                    <strong>Learn Bootstrap 4 with MDB</strong>
-                                </h1>
-
-                                <p>
-                                    <strong>Best & free guide of responsive web design</strong>
-                                </p>
-
-                                <p class="mb-4 d-none d-md-block">
-                                    <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                                    written versions
-                                    available. Create your own, stunning website.</strong>
-                                </p>
-
-                                <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                                    free tutorial
-                                    <i class="fas fa-graduation-cap ml-2"></i>
-                                </a>
-                            </div>
-                            <!-- Content -->
-
-                        </div>
-                        <!-- Mask & flexbox options-->
-
-                        </div>
-                    </div>
-                    <!--/Third slide-->
+                    <% } %>
 
                 </div>
                 <!--/.Slides-->
@@ -298,16 +243,11 @@
                     </div>
                 </div>
                 <!-- Modal end -->
-
+<%--
                 <h6 class="font-weight-bold text-center grey-text text-uppercase small mb-4">portfolio</h6>
                 <h3 class="font-weight-bold text-center dark-grey-text pb-2">Product Designs</h3>
                 <hr class="w-header my-4">
                 <p class="lead text-center text-muted pt-2 mb-5">You can find several product design by our professional team in this section.</p>
-
-                <!-- 글쓰기 버튼 -->
-                <div class="row">
-                    <a class="btn btn-primary" role="button" onclick="checksession();">판매/경매 글쓰기</a>
-                </div>
 
                 <!--First row-->
                 <div class="row">
@@ -331,17 +271,16 @@
 
                 </div>
                 <!--First row-->
-
-                <!--Tab panels-->
+--%>
+                <!-- Tab panels -->
                 <div class="tab-content mb-5">
-
                     <!--Panel 1-->
                     <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
 
                         <!-- Grid row -->
                         <div class="row">
-
-                            <!-- Grid column 1 -->
+                        <% for (int i = 0; i < sellList.size(); i++) { %>
+                            <!-- Grid column -->
                             <div class="col-md-6 col-lg-3">
                                 <!-- Card -->
                                 <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
@@ -349,117 +288,24 @@
                                     <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" alt="Card image cap">
                                     <!-- Card content -->
                                     <div class="card-body">
-                                        <h5 class="mb-3">글제목1</h5>
-                                        <p class="font-small grey-text mb-2">Anna Smith</p>
-                                        <p class="card-text mb-3">내용내용내용</p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="far fa-heart"></i>27/08/2019</p>
+                                        <h5 class="mb-3"><%= sellList.get(i).getTitle() %></h5>
+                                        <p class="font-small grey-text mb-2"><%= sellList.get(i).getEmail() %></p>
+                                        <p class="card-text mb-3" style="100px"><%= sellList.get(i).getDescription() %></p>
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="far fa-heart"></i><%= sellList.get(i).getEnd_date() %></p>
                                     </div>
                                 </a>
                                 <!-- Card -->
                             </div>
-                            <!-- Grid column 1 -->
-
-
-                            <!-- Grid column 2 -->
-                            <div class="col-md-6 col-lg-3">
-                                <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-                                    <!-- Card image -->
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img9.jpg" alt="Card image cap">
-                                    <!-- Card content -->
-                                    <div class="card-body">
-                                        <h5 class="mb-3">글제목1</h5>
-                                        <p class="font-small grey-text mb-2">Anna Smith</p>
-                                        <p class="card-text mb-3">내용내용내용</p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>
-                                    </div>
-                                </a>
-                                <!-- Card -->
-                            </div>
-                            <!-- Grid column 2 -->
-
-
-                            <!-- Grid column 3 -->
-                            <div class="col-md-6 col-lg-3">
-                                <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-                                    <!-- Card image -->
-                                    <img class="card-img-top" src=" https://mdbootstrap.com/img/Photos/Others/img4.jpg" alt="Card image cap">
-                                    <!-- Card content -->
-                                    <div class="card-body">
-                                        <h5 class="mb-3">글제목1</h5>
-                                        <p class="font-small grey-text mb-2">Anna Smith</p>
-                                        <p class="card-text mb-3">내용내용내용</p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>
-                                    </div>
-                                </a>
-                                <!-- Card -->
-                            </div>
-                            <!-- Grid column 3 -->
-
-
-                            <!-- Grid column 4 -->
-                            <div class="col-md-6 col-lg-3">
-                                <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-                                    <!-- Card image -->
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img5.jpg" alt="Card image cap">
-                                    <!-- Card content -->
-                                    <div class="card-body">
-                                        <h5 class="mb-3">글제목1</h5>
-                                        <p class="font-small grey-text mb-2">Anna Smith</p>
-                                        <p class="card-text mb-3">내용내용내용</p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>
-                                    </div>
-                                </a>
-                                <!-- Card -->
-                            </div>
-                            <!-- Grid column 4 -->
-
-
-                            <!-- Grid column 5 -->
-                            <div class="col-md-6 col-lg-3">
-                                <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-                                    <!-- Card image -->
-                                    <img class="card-img-top" src=" https://mdbootstrap.com/img/Photos/Others/img10.jpg" alt="Card image cap">
-                                    <!-- Card content -->
-                                    <div class="card-body">
-                                        <h5 class="mb-3">글제목1</h5>
-                                        <p class="font-small grey-text mb-2">Anna Smith</p>
-                                        <p class="card-text mb-3">내용내용내용</p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>
-                                    </div>
-                                </a>
-                                <!-- Card -->
-                            </div>
-                            <!-- Grid column 5 -->
-
-                            <!-- Grid column 6 -->
-                            <div class="col-md-6 col-lg-3">
-                                <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-                                    <!-- Card image -->
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" alt="Card image cap">
-                                    <!-- Card content -->
-                                    <div class="card-body">
-                                        <h5 class="mb-3">글제목1</h5>
-                                        <p class="font-small grey-text mb-2">Anna Smith</p>
-                                        <p class="card-text mb-3">내용내용내용</p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>
-                                    </div>
-                                </a>
-                                <!-- Card -->
-                            </div>
-                            <!-- Grid column 6 -->
-
+                            <!-- Grid column -->
+                        <% } %>
                         </div>
                         <!-- Grid row -->
 
                     </div>
                     <!--Panel 1-->
-
-
+                </div>
+                <!-- Tab panels -->
+<%--
                     <!--Panel 2-->
                     <div class="tab-pane fade" id="panel32" role="tabpanel">
 
@@ -625,17 +471,13 @@
                     </div>
                     <!--Panel 3-->
 
-                  </div>
-                  <!--Tab panels-->
-
+                    </div>
+                    <!--Tab panels-->
+--%>
                 </section>
                 <!-- Section -->
 
-              </div>
-
-
-
-
+            </div>
         </main>
         <!--Main layout-->
 
@@ -678,24 +520,20 @@
             // Animations initialization
             new WOW().init();
         </script>
-        
-              
+
         <!-- login check -->
         <script>
-        
-        	function checksession(){
+            function checksession(){
 
-        		var checksession = '<%= (String)session.getAttribute("email") %>';
-        		
-        	   	if(checksession=="null"){
+                var checksession = '<%= (String)session.getAttribute("email") %>';
+
+         	   	if (checksession=="null") {
         	   		alert("로그인 모달창");
+        	   	} else {
+        	   	    window.location.href='postform.sell';
         	   	}
-        	   	else{
-        	   		window.location.href='postform.sell';
-        	   	}	
         	}
         </script>
-        
 
     </body>
 

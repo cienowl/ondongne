@@ -2,6 +2,7 @@ package com.ondongne.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -47,6 +48,15 @@ public class DataAccessSell {
 		
 		return insertCount;	//sql insert 성공하면 true 아니면 false 리턴
 		
+	}
+	
+	public List<DataTransferSell> selectSellAll() {
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		
+		List<DataTransferSell> sellList = sqlSession.selectList("getSellPostAll");
+		
+		return sellList;
 	}
 
 }

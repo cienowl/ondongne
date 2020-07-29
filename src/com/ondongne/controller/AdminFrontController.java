@@ -31,7 +31,7 @@ public class AdminFrontController extends HttpServlet {
 		if (command.equals("/index.admin")) {
 //			footer 에서 admin 버튼 누르면 admin_index.html 로 이동
 			forward = new ActionForward();
-			forward.setPath("/admin_index.html");
+			forward.setPath("/admin_index.jsp");
 		}
 
 		else if (command.equals("/signin.admin")) {
@@ -57,7 +57,7 @@ public class AdminFrontController extends HttpServlet {
 		else if (command.equals("/dashboard.admin")) {
 //			dashboard로 이동
 			forward = new ActionForward();
-			forward.setPath("/admin_dashboard.html");
+			forward.setPath("/admin_dashboard.jsp");
 		}
 		
 		

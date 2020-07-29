@@ -1,5 +1,7 @@
 package com.ondongne.service;
 
+import java.util.List;
+
 import com.ondongne.dao.DataAccessSell;
 import com.ondongne.dto.DataTransferSell;
 
@@ -22,8 +24,14 @@ public class SellService {
 //		TODO: 한개 내용만 가져오기
 	}
 	
-	public void selectSellAll() {
-//		TODO: 화면에 뿌려줄 전체 가져오기
+	public List<DataTransferSell> selectSellAll() {
+		
+		DataAccessSell daoSell = DataAccessSell.getInstance();
+		
+		List<DataTransferSell> sellList = daoSell.selectSellAll();		
+		
+		return sellList;
+		
 	}
 
 //	public void getUser(String signinEmail) throws Exception{	//로그인을 위한 DB 정보 읽어오는 메소드
