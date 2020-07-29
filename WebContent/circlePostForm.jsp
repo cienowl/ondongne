@@ -337,7 +337,7 @@
                     <h2>소모임 정보를 등록해주세요.</h2>
                 </div>
 
-                <form action="circlePost.jsp" method="POST">
+                <form action="postinsert.circle" method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputTitle">소모임 제목</label>
@@ -516,7 +516,7 @@
                     <div class="form-row float-right">
                         <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
                         <button type="submit" class="btn btn-lg btn-primary">등록</button>
-                        <button type="button" class="btn btn-lg btn-danger" href="circle.html">취소</button>
+                        <button type="button" class="btn btn-lg btn-danger" href="view.circle">취소</button>
                     </div>
 
                     <div class="clearfix mb-4"></div>

@@ -41,14 +41,16 @@ public class DataAccessCircle {
 		return sqlFactory;
 	}
 
-	public void circleInsert(DataTransferCircle dto) {
-
+	public int circleInsert(DataTransferCircle dto) {
+		
+		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();
 
-		sqlsession.insert("circleInsert", dto);
+		int insertCount =  sqlsession.insert("circleInsert", dto);
 		sqlsession.commit();
 		sqlsession.close();
 
+		return insertCount;
 	}
 
 }

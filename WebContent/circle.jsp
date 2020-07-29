@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!--
 작성자:
     html        - 김나예
@@ -686,7 +686,7 @@
         	   		alert("로그인 모달창");
         	   	}
         	   	else{
-        	   		window.location.href='circlePostForm.jsp';
+        	   		window.location.href='postform.circle';
         	   	}	
         	}
         </script>
