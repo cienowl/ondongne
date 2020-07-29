@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.PostSellAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.sell")
@@ -26,7 +27,7 @@ public class SellFrontController extends HttpServlet {
 		ActionForward forward = null;
 		Action action = null;
 		
-//		navbar 에서 처음 들어오면 sell.jsp 페이지 보여줌 redirect
+//		navbar 에서 처음 들어오거나 sellpostform.jsp 에서 글쓰기 취소 버튼을 누르면 sell.jsp 페이지 보여줌 redirect
 		if (command.equals("/view.sell")) {
 //			TODO: DB에서 내용 가져와서 들고 가기
 			forward = new ActionForward();
@@ -35,12 +36,23 @@ public class SellFrontController extends HttpServlet {
 
 //		TODO: 글 등록 버튼 누르면 sellpostform.jsp 로 이동
 		else if (command.equals("/postform.sell")) {
+//			action = new PostSellAction();
+//			try {
+//				forward = action.execute(request, response);	//action 진행 후 리턴된 forward 대입
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+			
+//			TODO: 위내용 완성되면 아래 내용 지우기
 			forward = new ActionForward();
 			forward.setPath("/sellPostForm.jsp");
 		}
 		
 //		TODO: sellpostform.jsp 에서 submit 하면 action으로 가서 DB 저장
 //		else if (command.equals("/submit.sell")))
+		
+		
+//		TODO: 게시물 미리보기 누르면 현재 데이터로 모달창 띄우기
 		
 		
 		if (forward != null) {		//forward 내 값이 있으면

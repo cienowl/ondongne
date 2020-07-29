@@ -232,7 +232,7 @@
                     <div class="form-row float-right">
                         <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
                         <button type="submit" class="btn btn-lg btn-primary">등록</button>
-                        <button type="button" class="btn btn-lg btn-danger" href="sell.html">취소</button>
+                        <button type="button" class="btn btn-lg btn-danger" href="view.sell">취소</button>
                     </div>
 
                     <div class="clearfix mb-4"></div>
