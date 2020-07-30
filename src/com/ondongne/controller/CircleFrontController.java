@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.GetCircleAction;
 import com.ondongne.action.PostCircleAction;
 import com.ondongne.dto.ActionForward;
 
@@ -28,8 +29,13 @@ public class CircleFrontController extends HttpServlet
 			
 			// 소모임 게시판으로 이동
 			if(command.equals("/view.circle")) {
-				forward = new ActionForward();
-				forward.setPath("/circle.jsp");
+				
+				action = new GetCircleAction();
+				try {
+					forward = action.execute(request, response);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
 			}
 			
 			// 소모임 페이지의 글작성 버튼을 눌렀을때

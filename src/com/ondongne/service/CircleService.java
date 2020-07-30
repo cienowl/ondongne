@@ -1,5 +1,7 @@
 package com.ondongne.service;
 
+import java.util.List;
+
 import com.ondongne.dao.DataAccessCircle;
 import com.ondongne.dto.DataTransferCircle;
 
@@ -20,5 +22,13 @@ public class CircleService {
 		}
 		//System.out.print(isWriteSuccess);
 		return isWriteSuccess;
+	}
+	
+	public List<DataTransferCircle> selectCircleAll(){
+		
+		DataAccessCircle daoCircle = DataAccessCircle.getinstance();
+		List<DataTransferCircle> circleList = daoCircle.selectCircleAll();
+		
+		return circleList;
 	}
 }
