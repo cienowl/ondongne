@@ -36,7 +36,7 @@ public class PostSellAction implements Action {
 		SellService sellService = new SellService();
 		boolean isWriteSuccess = sellService.postSell(dtoSell);	//dtoSell 들고 글등록해주는 서비스로 이동
 				
-		System.out.println("sellPost" + isWriteSuccess);	//sql 처리 성공여부 프린트 (true or false)
+		System.out.println("sellPost " + isWriteSuccess);	//sql 처리 성공여부 프린트 (true or false)
 		
 		if (!isWriteSuccess) {		//sql 문 실패시
 			response.setContentType("text/html;charset=UTF-8");

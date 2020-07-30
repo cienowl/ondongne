@@ -80,4 +80,15 @@ public class DataAccessUsers {
 		
 	}
 	
+	public int userInsert (DataTransferUsers dtoUser) {
+		
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		int insertCount = sqlSession.insert("insertBasicInfo", dtoUser);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return insertCount;
+	}
+	
 }

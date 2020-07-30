@@ -118,7 +118,7 @@
                     <!-- Register -->
                     <!--TODO:회원가입 모달창으로 이동-->
                     <p>Not a member?
-                        <a href="">Register</a>
+                        <a href="" class="nav-link" type="button" data-toggle="modal" data-target="#signupModal">Register</a>
                     </p>
 
                     <!-- Social login -->
@@ -161,30 +161,30 @@
 
             <div class="modal-body">
                 <!-- signup form -->
-                <form class="text-center p-5" action="signupBasic.jsp" method="GET" name="userinfoInsert">
-                <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="E-mail" onchange="test(signupEmail.value);">
-                <small id="checkDupEmail" class="form-text text-success mb-4" style="height: 19px;"></small>
+                <form class="text-center p-5" action="signup.users" method="POST" name="userinfoInsert">
+                    <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="E-mail" onchange="test(signupEmail.value);"/>
+                    <small id="checkDupEmail" class="form-text text-success mb-4" style="height: 19px;"></small>
 
-                <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);">
-                <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                    At least 8 characters and 1 digit
-                </small>
+                    <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);"/>
+                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        At least 8 characters and 1 digit
+                    </small>
 
-                <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="Check Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);">
-                <small id="checkPassword" class="form-text text-danger" style="height: 19px;"></small>
+                    <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="Check Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);"/>
+                    <small id="checkPassword" class="form-text text-danger" style="height: 19px;"></small>
 
-                <div class="custom-control custom-checkbox small mt-4" >
-                    <input type="checkbox" class="custom-control-input" id="checkAgree" name="checkAgree">
-                    <label class="custom-control-label" for="checkAgree"></label>
-                    회원가입 시
-                    <a href="" target="_blank">
-                        개인정보 처리방침
-                    </a>과
-                    <a href="" target="_blank">
-                        이용약관
-                    </a>
-                    을 확인하였으며, 동의합니다.<br/>
-                </div>
+                    <div class="custom-control custom-checkbox small mt-4" >
+                        <input type="checkbox" class="custom-control-input" id="checkAgree" name="checkAgree"/>
+                        <label class="custom-control-label" for="checkAgree"></label>
+                        회원가입 시
+                        <a href="privacy.ondongne" target="_blank">
+                            개인정보 처리방침
+                        </a>과
+                        <a href="terms.ondongne" target="_blank">
+                            이용약관
+                        </a>
+                        을 확인하였으며, 동의합니다.<br/>
+                    </div>
 
                     <!-- <button type="submit" class="btn btn-primary btn-block">
                         가입하기

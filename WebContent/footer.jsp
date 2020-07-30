@@ -18,10 +18,10 @@
             <div class="col-xs-6 col-md-3">
                 <h6>Categories</h6>
                 <ul class="footer-links">
-                    <li><a href="#">C</a></li>
+                    <li><a href="#">공지사항</a></li>
                     <li><a href="#">UI Design</a></li>
                     <li><a href="#">PHP</a></li>
-                    <li><a href="#">Java</a></li>
+                    <li><a href="#">자주묻는질문</a></li>
                     <li><a href="#">Android</a></li>
                     <li><a href="#">Kotlin</a></li>
                 </ul>
@@ -32,8 +32,8 @@
                 <ul class="footer-links">
                     <li><a href="service.ondongne">프로젝트소개</a></li>
                     <li><a href="team.ondongne">팀 ON동네</a></li>
-                    <li><a href="terms.ondongne">이용약관</a></li>
-                    <li><a href="privacy.ondongne">개인정보취급방침</a></li>
+                    <li><a href="terms.ondongne" target="_blank">이용약관</a></li>
+                    <li><a href="privacy.ondongne" target="_blank">개인정보취급방침</a></li>
                     <li><a href="index.admin">관리자페이지</a></li>                    
                 </ul>
             </div>

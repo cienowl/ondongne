@@ -4,8 +4,7 @@
     css         - 이호준
     JavaScript  - 이호준
 -->
-
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -62,12 +61,12 @@
         <!-- Header Start -->
         <header>
             <!-- Navbar signin form -->
-            <!-- <% if (session.getAttribute("email") != null) {%>
+            <% if (session.getAttribute("email") != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
-            -->
+            
             <!-- Sidebar -->
             <div class="sidebar-fixed position-fixed">
                 <div class="col-md-12 mb-5 mt-5 text-center">

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
 import com.ondongne.action.UserSigninAction;
+import com.ondongne.action.UserSignoutAction;
+import com.ondongne.action.UserSignupBasicAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.users")
@@ -26,18 +28,48 @@ public class UsersFrontController extends HttpServlet
 			ActionForward forward = null;
 			Action action = null;
 			
-			// 로그인 눌렀을때
-			if(command.equals("/signin.users")) {
+			if (command.equals("/signin.users")) {
+//				로그인
 				action = new UserSigninAction();
 				try {
 					forward=action.execute(request, response);	
-				}catch(Exception e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 			
-			// 회원가입 눌렀을때
+			else if (command.equals("/signout.users")) {
+//				로그아웃
+				action = new UserSignoutAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
 			else if(command.equals("/signup.users")) {
+//				최초 회원가입
+				action = new UserSignupBasicAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}				
+			}
+			
+//			TODO: 회원가입 추가정보
+			else if(command.equals("/signupadd.users")) {
+				
+			}
+			
+//			TODO: 회원정보 수정
+			else if(command.equals("/update.users")) {
+				
+			}
+			
+//			TODO: 회원탈퇴
+			else if(command.equals("/")) {
 				
 			}
 			

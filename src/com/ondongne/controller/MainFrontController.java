@@ -51,6 +51,11 @@ public class MainFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("project.jsp");			
 		}
+		
+		else if (command.equals("/mypage.ondongne")) {
+			forward = new ActionForward();
+			forward.setPath("mypage.jsp");
+		}
 
 		
 		

@@ -24,4 +24,5 @@
 	<delete id="userDelete" parameterType="String">
 		delete from users where email=#{sessionEmail};
 	</delete>
+	
 </mapper>
