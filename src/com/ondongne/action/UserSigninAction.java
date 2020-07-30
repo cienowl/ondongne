@@ -61,7 +61,7 @@ public class UserSigninAction extends HttpServlet implements Action{
 			session.setAttribute("email", userBean.getEmail());
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("index.ondongne");
+			forward.setPath("mypage.ondongne");
 		}
 		
 		return forward;
