@@ -40,6 +40,7 @@ public class DataAccessUsers {
 		return sqlFactory;
 	}
 	
+	
 	public void userUpdate(DataTransferUsers dto) {
 
 		SqlSession sqlsession = sqlFactory.openSession();
@@ -68,6 +69,15 @@ public class DataAccessUsers {
 		sqlsession.commit();
 		sqlsession.close();
 
+	}
+	
+	public DataTransferUsers userSelectOne (String checkEmail) {
+
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		DataTransferUsers dto = sqlsession.selectOne("checkSignin", checkEmail);
+		return dto;
+		
 	}
 	
 }

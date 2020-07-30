@@ -4,34 +4,19 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%
-    Cookie[] cookies = request.getCookies();
-%>
-
+<% Cookie[] cookies = request.getCookies(); %>
 <%!
-    private String getCookieValue(Cookie[] cookies, String name) {
-        String value = null;
+	private String getCookieValue(Cookie[] cookies, String email){
+		String value=null;
+		if(cookies == null)
+			return null;
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals(email))
+				return cookie.getValue();
+		}
+		return null;
+	}
 
-        if(cookies == null)
-            return null;
-        for(Cookie cookie : cookies) {
-            if (cookie.getName().equals(name))
-                return cookie.getValue();
-        }
-        return null;
-    }
-%>
-
-<%
-    String cookieEmail;
-    String email = getCookieValue(cookies, "EMAIL");
-/*
-    if (email == null) {
-        cookieEmail = "";
-    } else {
-        cookieEmail = email;
-    }
-*/
 %>
 
 <!--Navbar -->
@@ -111,8 +96,8 @@
 
             <div class="modal-body">
                 <!-- signin form -->
-                <form class="text-center p-5" action="signin.jsp" method="POST" name="userinfoInsert">
-                        <input type="email" class="form-control mb-4" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail"  value="<%= getCookieValue(cookies, "EMAIL") %>">
+                <form class="text-center p-5" action="signin.users" method="POST" name="userinfoInsert">
+                        <input type="email" class="form-control mb-4" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail" value="<%=getCookieValue(cookies,"cookieEmail") %>"  >
                         <%-- <small id="checkEmail" class="form-text text-danger" style="height: 19px;"></small> --%>
 
                         <input type="password" class="form-control mb-4" id="signinPassword" placeholder="Password" name="signinPassword">
