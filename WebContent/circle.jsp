@@ -8,6 +8,7 @@
 <%@page import="com.ondongne.dto.DataTransferCircle" %>
 <%@page import="java.util.List" %>
 
+
 <%
 	List<DataTransferCircle> circleList = (List<DataTransferCircle>) request.getAttribute("circleList");
 	String dataTarget = null;
@@ -126,7 +127,7 @@
                                         available. Create your own, stunning website.</strong>
                                     </p>
 
-                                    <a class="btn btn-outline-white btn-lg" onclick="checksession();" >소모임 글쓰기
+                                    <a class="btn btn-outline-white btn-lg" onclick="checksession();">소모임 글쓰기
                                         <i class="fas fa-pen ml-2"></i>
                                     </a>
                                 </div>
@@ -200,9 +201,9 @@
 
                                         <h5 class="font-weight-normal mb-3"><%= circleList.get(i).getTitle() %></h5>
 
-                                        <p class="text-muted"><%= circleList.get(i).getDescription() %></p>
+                                        <p class="text-muted" style="overflow:scroll; height:100px;  word-break:break-all;"><%= circleList.get(i).getDescription() %></p>
 
-                                        <ul class="list-unstyled font-small mt-5">
+                                        <ul class="list-unstyled font-small mt-3">
                                             <li>
                                                 <p class="text-uppercase mb-2"><strong>작성자</strong></p>
                                                 <p class="text-muted mb-4"><a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= circleList.get(i).getEmail() %></a></p>
@@ -223,7 +224,8 @@
                                                 <a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= circleList.get(i).getEnd_date() %></a>
                                             </li>
                                         </ul>
-
+                                        <button type="submit" class="btn btn-outline-primary" style="position:absolute;">참여하기</button>
+		
                                     </div>
                                     <!-- Grid column -->
 
@@ -297,8 +299,9 @@
                                     <div class="card-body">
                                         <h5 class="mb-3"><%= circleList.get(i).getTitle() %></h5>
                                         <p class="font-small grey-text mb-2"><%= circleList.get(i).getEmail() %></p>
-                                        <p class="card-text mb-3"><%= circleList.get(i).getDescription() %></p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="far fa-heart"></i><%= circleList.get(i).getEvent_date() %>(마감 : <%=circleList.get(i).getEnd_date() %> )</p>
+                                        <p class="card-text mb-3" style="overflow:hidden; text-overflow: ellipsis; height:40px; white-space: nowrap; word-break:break-all;"><%= circleList.get(i).getDescription() %></p>
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"> <i class="far fa-heart" ></i><%= circleList.get(i).getEvent_date() %></p>
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0">(마감 : <%=circleList.get(i).getEnd_date() %> )</p>
                                     </div>
                                 </a>
                                 <!-- Card -->
@@ -540,6 +543,7 @@
         		
         	   	if(checksession=="null"){
         	   		alert("로그인 모달창");
+			
         	   	}
         	   	else{
         	   		window.location.href='postform.circle';

@@ -339,9 +339,10 @@
 
                 <form action="postinsert.circle" method="POST">
                     <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="inputTitle">소모임 제목</label>
+                        <div class="form-group col-md-6">
+                            <label for="inputTitle" >소모임 제목</label>
                             <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title"/>
+                            <label for="inputPhoto">사진등록</label>
                         </div>
                     </div>
 
@@ -719,6 +720,12 @@
                 });
             })( window.jQuery, window, document );
         </script>
+        
+        <script>
+			$(document).ready(function(){
+				$("#inputTitle").focus();
+			})
+		</script>
 
     </body>
 </html>
