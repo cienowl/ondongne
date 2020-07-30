@@ -23,16 +23,16 @@
                     <li><a href="#">PHP</a></li>
                     <li><a href="#">Java</a></li>
                     <li><a href="#">Android</a></li>
-                    <li><a href="index.admin">Admin</a></li>
+                    <li><a href="#">Kotlin</a></li>
                 </ul>
             </div>
 
             <div class="col-xs-6 col-md-3">
                 <h6>Quick Links</h6>
                 <ul class="footer-links">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Contribute</a></li>
+                    <li><a href="aboutus.ondongne">About Us</a></li>
+                    <li><a href="team.ondongne">Team</a></li>
+                    <li><a href="index.admin">admin</a></li>                    
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Sitemap</a></li>
                 </ul>

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
-import com.ondongne.action.AdminSigninAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.ondongne")
@@ -25,12 +24,17 @@ public class MainFrontController extends HttpServlet {
 		String command = requestURI.substring(contextPath.length());
 		
 		ActionForward forward = null;
-		Action action = null;
+//		Action action = null;
 	
 		if (command.equals("/index.ondongne")) {
 //			index 페이지로 이동
 			forward = new ActionForward();
 			forward.setPath("/index.jsp");
+		}
+		
+		else if (command.equals("/aboutus.ondongne")) {
+			forward = new ActionForward();
+			forward.setPath("aboutus.jsp");			
 		}
 
 		

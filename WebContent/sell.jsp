@@ -10,6 +10,7 @@
 
 <%
 	List<DataTransferSell> sellList = (List<DataTransferSell>) request.getAttribute("sellList");
+    String dataTarget = null;
 %>
 
 <!DOCTYPE html>
@@ -181,8 +182,10 @@
                     }
                 </style>
 
+                <% for (int i = 0; i < sellList.size(); i++) { %>          
+               	<% dataTarget = "sellList" + Integer.toString(i); %>
                 <!-- Modal: Card Content -->
-                <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="<%= dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-body p-0">
@@ -196,30 +199,35 @@
                                     <!-- Grid column -->
                                     <div class="col-md-6 py-5 pl-5">
 
-                                        <h5 class="font-weight-normal mb-3">Paper cup mockup</h5>
+                                        <h5 class="font-weight-normal mb-3"><%= sellList.get(i).getTitle() %></h5>
 
-                                        <p class="text-muted">Key letters, explain which writing we he carpeting or fame, the itch expand medical amped through constructing time. And scarfs, gain, get showed accounts decades.</p>
+                                        <p class="text-muted"><%= sellList.get(i).getDescription() %></p>
 
                                         <ul class="list-unstyled font-small mt-5">
+                                        	<li>
+                                                <p class="text-uppercase mb-2"><strong>작성자</strong></p>
+                                                <p class="text-muted mb-4"><a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= sellList.get(i).getEmail() %></a></p>
+                                            </li>
+                                            
                                             <li>
-                                                <p class="text-uppercase mb-2"><strong>Client</strong></p>
-                                                <p class="text-muted mb-4">Envato Inc.</p>
+                                                <p class="text-uppercase mb-2"><strong>가격</strong></p>
+                                                <p class="text-muted mb-4"><%= sellList.get(i).getStarting_price() %></p>
                                             </li>
 
                                             <li>
-                                                <p class="text-uppercase mb-2"><strong>Date</strong></p>
-                                                <p class="text-muted mb-4">June 27, 2019</p>
+                                                <p class="text-uppercase mb-2"><strong>지역</strong></p>
+                                                <p class="text-muted mb-4"><%= sellList.get(i).getRegion() %></p>
                                             </li>
-
+                                            
                                             <li>
-                                                <p class="text-uppercase mb-2"><strong>Skills</strong></p>
-                                                <p class="text-muted mb-4">Design, HTML, CSS, Javascript</p>
+                                                <p class="text-uppercase mb-2"><strong>종료날짜</strong></p>
+                                                <p class="text-muted mb-4"><%= sellList.get(i).getEnd_date() %></p>
                                             </li>
-
+                                            
                                             <li>
-                                                <p class="text-uppercase mb-2"><strong>Address</strong></p>
-                                                <a href="https://mdbootstrap.com/docs/jquery/design-blocks/">MDBootstrap</a>
-                                            </li>
+                                                <p class="text-uppercase mb-2"><strong>종료시간</strong></p>
+                                                <p class="text-muted mb-4"><%= sellList.get(i).getEnd_time() %></p>
+                                            </li>                                                                                      
                                         </ul>
 
                                     </div>
@@ -243,6 +251,7 @@
                     </div>
                 </div>
                 <!-- Modal end -->
+                <% } %>
 <%--
                 <h6 class="font-weight-bold text-center grey-text text-uppercase small mb-4">portfolio</h6>
                 <h3 class="font-weight-bold text-center dark-grey-text pb-2">Product Designs</h3>
@@ -279,11 +288,13 @@
 
                         <!-- Grid row -->
                         <div class="row">
+
                         <% for (int i = 0; i < sellList.size(); i++) { %>
+                            <% dataTarget = "#sellList" + Integer.toString(i); %>
                             <!-- Grid column -->
                             <div class="col-md-6 col-lg-3">
                                 <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="<%= dataTarget %>">
                                     <!-- Card image -->
                                     <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" alt="Card image cap">
                                     <!-- Card content -->
@@ -298,6 +309,7 @@
                             </div>
                             <!-- Grid column -->
                         <% } %>
+
                         </div>
                         <!-- Grid row -->
 

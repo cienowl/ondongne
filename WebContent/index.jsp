@@ -47,7 +47,29 @@
                 }
             }
         </style>
-
+<%--
+        <style>
+            html, body, header, .carousel {
+                height: 100%;
+            }
+            @media (max-width: 740px) {
+                html, body, header, .carousel {
+                height: 100vh;
+                }
+            }
+            .top-nav-collapse {
+                background-color: #78909c !important;
+            }
+            .navbar:not(.top-nav-collapse) {
+                background: transparent !important;
+            }
+            @media (max-width: 991px) {
+                .navbar:not(.top-nav-collapse) {
+                    background: #78909c !important;
+                }
+            }
+        </style>
+--%>
         <!-- Modal scrolling place -->
         <style>
             .modal-open .navbar-expand-lg {
