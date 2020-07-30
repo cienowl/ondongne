@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.GetSellAction;
 import com.ondongne.action.PostSellAction;
 import com.ondongne.dto.ActionForward;
 
@@ -30,8 +31,15 @@ public class SellFrontController extends HttpServlet {
 		if (command.equals("/view.sell")) {
 //			navbar 에서 처음 들어오거나 sellpostform.jsp 에서 글쓰기 취소 버튼을 누르면 sell.jsp로 이동
 //			TODO: DB에서 내용 가져와서 들고 가기
-			forward = new ActionForward();
-			forward.setPath("/sell.jsp");
+//			forward = new ActionForward();
+//			forward.setPath("/sell.jsp");
+			
+			action = new GetSellAction();
+			try {
+				forward = action.execute(request, response);	//action 진행 후 리턴된 forward 대입
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		else if (command.equals("/postform.sell")) {
