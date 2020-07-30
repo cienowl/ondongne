@@ -18,7 +18,7 @@
             <div class="col-xs-6 col-md-3">
                 <h6>Categories</h6>
                 <ul class="footer-links">
-                    <li><a href="#">공지사항</a></li>
+                    <li><a href="notice.ondongne">공지사항</a></li>
                     <li><a href="#">UI Design</a></li>
                     <li><a href="#">PHP</a></li>
                     <li><a href="#">자주묻는질문</a></li>

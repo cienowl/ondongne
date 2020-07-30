@@ -61,34 +61,39 @@ public class DataAccessUsers {
 		sqlsession.close();
 
 	}
-	
-	public void userDelete(String email) {	
 
+	public int deleteUser(String email) {	
+
+		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();
-		sqlsession.delete("userDelete", email);
+		int deleteCount = sqlsession.delete("userDelete", email);
 		sqlsession.commit();
 		sqlsession.close();
 
+		return deleteCount;
+
 	}
-	
+
 	public DataTransferUsers userSelectOne (String checkEmail) {
 
 		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();
 		DataTransferUsers dto = sqlsession.selectOne("checkSignin", checkEmail);
+
 		return dto;
-		
+
 	}
-	
+
 	public int userInsert (DataTransferUsers dtoUser) {
-		
+
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 		int insertCount = sqlSession.insert("insertBasicInfo", dtoUser);
 		sqlSession.commit();
 		sqlSession.close();
-		
+
 		return insertCount;
+
 	}
-	
+
 }

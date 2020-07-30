@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.UserDeleteAction;
 import com.ondongne.action.UserSigninAction;
 import com.ondongne.action.UserSignoutAction;
 import com.ondongne.action.UserSignupBasicAction;
@@ -69,8 +70,13 @@ public class UsersFrontController extends HttpServlet
 			}
 			
 //			TODO: 회원탈퇴
-			else if(command.equals("/")) {
-				
+			else if(command.equals("/delete.users")) {
+				action = new UserDeleteAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}				
 			}
 			
 			if (forward != null) {		
@@ -92,6 +98,5 @@ public class UsersFrontController extends HttpServlet
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			doProcess(request,response);
 		}
-		
-	
+
 }

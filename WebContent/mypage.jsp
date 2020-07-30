@@ -66,7 +66,7 @@
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
-            
+
             <!-- Sidebar -->
             <div class="sidebar-fixed position-fixed">
                 <div class="col-md-12 mb-5 mt-5 text-center">
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="list-group list-group-flush">
-                    <div class="list-group-item active waves-effect">ID</div>
+                    <div class="list-group-item active waves-effect"><%= session.getAttribute("email") %></div>
                     <a href="additional_info.html" class="list-group-item list-group-item-action waves-effect">
                         <i class="fas fa-user mr-3"></i>개인정보 수정
                     </a>
@@ -85,19 +85,62 @@
                         following
                     </a>
                     <a href="#" class="list-group-item list-group-item-action waves-effect">
-                        	내동네(주소)
+                        내동네(주소)
                     </a>
-                    <a href="deleteAccount.jsp" class="list-group-item list-group-item-action waves-effect">
-            				탈퇴하기</a>
+                    <a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#modalConfirmDelete">
+                        탈퇴하기
+                    </a>
                 </div>
             </div>
             <!-- Sidebar -->
         </header>
         <!-- Header End -->
 
+        <!--Modal: 회원탈퇴 확인창-->
+        <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md modal-notify modal-danger" role="document">
+                <!--Content-->
+                <div class="modal-content">
+                    <form action="delete.users" method="POST">
+                        <!--Header-->
+                        <div class="modal-header d-flex justify-content-center">
+                            <p class="heading">ON동네 탈퇴</p>
+                        </div>
+
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <p></p>
+                                    <p class="text-center"><i class="fas fa-times fa-4x animated rotateIn"></i></p>
+                                </div>
+
+                                <div class="col-9">
+                                    <p>ON동네 서비스를 정말로 탈퇴하시겠습니까?</p>
+                                    <p>탈퇴를 위해 계정 비밀번호를 입력해주세요.</p>
+                                    <div class="md-form">
+                                        <i class="fas fa-lock prefix"></i>
+                                        <input type="password" id="inputValidationEx2" name="confirmPassword" class="form-control validate"/>
+                                        <label for="inputValidationEx2" data-error="wrong" data-success="right">비밀번호 입력</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Footer-->
+                        <div class="modal-footer flex-center">
+                            <button class="btn btn-outline-danger" type="submit">탈퇴</button>
+                            <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">취소</a>
+                        </div>
+                    </form>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!--Modal: modalConfirmDelete-->
 
         <!-- Main Start -->
-        <main class="mt-5 mx-lg-5">
+        <main class="mt-5 pt-5 mx-lg-5">
             <div class="container mt-5">
 
                 <!-- Heading -->

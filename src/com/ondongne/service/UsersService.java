@@ -39,7 +39,10 @@ public class UsersService {
 		DataAccessUsers daoUser = DataAccessUsers.getInstance();
 		int insertCount = daoUser.userInsert(dtoUser);
 		
-		if (insertCount > 0) isWriteSuccess = true;
+		if (insertCount > 0) {
+			isWriteSuccess = true;
+			System.out.println("userInsert " + isWriteSuccess);
+		}
 		
 		return isWriteSuccess;
 		
@@ -47,6 +50,28 @@ public class UsersService {
 	
 	public void signupAdditional() {
 		
+	}
+	
+	public boolean deleteUser(DataTransferUsers currentUser) {
+		
+		String email = currentUser.getEmail();
+		boolean deleteSuccess = false;
+		
+		DataAccessUsers daoUser = DataAccessUsers.getInstance();
+		DataTransferUsers dbUser = daoUser.userSelectOne(email);
+		
+		if (currentUser.getPassword().equals(dbUser.getPassword())) {
+			int deleteCount = daoUser.deleteUser(email);
+			
+			if (deleteCount > 0) {
+				deleteSuccess = true;
+				System.out.println("delete success");
+			}
+		} else {
+			System.out.println("wrong password");
+		}
+		
+		return deleteSuccess;
 	}
 	
 	public boolean signout() {

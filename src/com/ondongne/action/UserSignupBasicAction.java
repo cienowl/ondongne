@@ -14,19 +14,16 @@ public class UserSignupBasicAction extends HttpServlet implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+
 		String email = request.getParameter("signupEmail");
 		String password = request.getParameter("signupPassword1");
-		
+
 		DataTransferUsers dtoUser = new DataTransferUsers();
-		
 		dtoUser.setEmail(email);
 		dtoUser.setPassword(password);
 		
 		UsersService usersService = new UsersService();
 		boolean isWriteSuccess = usersService.signupBasic(dtoUser);
-		
-		System.out.println("userInsert " + isWriteSuccess);
 		
 		ActionForward forward = null;
 		
@@ -34,7 +31,7 @@ public class UserSignupBasicAction extends HttpServlet implements Action {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('등록 실패')");	//에러 메세지 표시
+			out.println("alert('가입 실패')");	//에러 메세지 표시
 			out.println("history.back();");
 			out.println("</script>");
 		} else {
