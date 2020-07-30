@@ -32,9 +32,24 @@ public class MainFrontController extends HttpServlet {
 			forward.setPath("/index.jsp");
 		}
 		
-		else if (command.equals("/aboutus.ondongne")) {
+		else if (command.equals("/team.ondongne")) {
 			forward = new ActionForward();
-			forward.setPath("aboutus.jsp");			
+			forward.setPath("team.jsp");			
+		}
+		
+		else if (command.equals("/terms.ondongne")) {
+			forward = new ActionForward();
+			forward.setPath("terms.jsp");			
+		}
+		
+		else if (command.equals("/privacy.ondongne")) {
+			forward = new ActionForward();
+			forward.setPath("privacy.jsp");			
+		}
+		
+		else if (command.equals("/service.ondongne")) {
+			forward = new ActionForward();
+			forward.setPath("project.jsp");			
 		}
 
 		

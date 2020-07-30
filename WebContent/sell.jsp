@@ -111,7 +111,7 @@
                             <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
                                 <!-- Content -->
-                                <div class="text-center white-text mx-5 wow fadeIn">
+                                <div class="text-center white-text mx-5 WOW fadeIn">
                                     <h1 class="mb-4">
                                         <strong>Learn Bootstrap 4 with MDB</strong>
                                     </h1>
@@ -182,8 +182,8 @@
                     }
                 </style>
 
-                <% for (int i = 0; i < sellList.size(); i++) { %>          
-               	<% dataTarget = "sellList" + Integer.toString(i); %>
+                <% for (int i = 0; i < sellList.size(); i++) { %>
+                <% dataTarget = "sellList" + Integer.toString(i); %>
                 <!-- Modal: Card Content -->
                 <div class="modal fade" id="<%= dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -204,11 +204,11 @@
                                         <p class="text-muted"><%= sellList.get(i).getDescription() %></p>
 
                                         <ul class="list-unstyled font-small mt-5">
-                                        	<li>
+                                            <li>
                                                 <p class="text-uppercase mb-2"><strong>작성자</strong></p>
                                                 <p class="text-muted mb-4"><a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= sellList.get(i).getEmail() %></a></p>
                                             </li>
-                                            
+
                                             <li>
                                                 <p class="text-uppercase mb-2"><strong>가격</strong></p>
                                                 <p class="text-muted mb-4"><%= sellList.get(i).getStarting_price() %></p>
@@ -218,16 +218,16 @@
                                                 <p class="text-uppercase mb-2"><strong>지역</strong></p>
                                                 <p class="text-muted mb-4"><%= sellList.get(i).getRegion() %></p>
                                             </li>
-                                            
+
                                             <li>
                                                 <p class="text-uppercase mb-2"><strong>종료날짜</strong></p>
                                                 <p class="text-muted mb-4"><%= sellList.get(i).getEnd_date() %></p>
                                             </li>
-                                            
+
                                             <li>
                                                 <p class="text-uppercase mb-2"><strong>종료시간</strong></p>
                                                 <p class="text-muted mb-4"><%= sellList.get(i).getEnd_time() %></p>
-                                            </li>                                                                                      
+                                            </li>
                                         </ul>
 
                                     </div>
@@ -507,8 +507,12 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
-        <!-- Optional JavaScript -->
-        <script type="text/javascript" src="js/optional/counter.js"></script>
+
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+        </script>
 
         <!-- cards effect -->
         <script>
@@ -525,12 +529,6 @@
                     }, 300);
                 });
             });
-        </script>
-
-        <!-- Initializations -->
-        <script type="text/javascript">
-            // Animations initialization
-            new WOW().init();
         </script>
 
         <!-- login check -->

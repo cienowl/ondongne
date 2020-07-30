@@ -5,7 +5,7 @@
     JavaScript  - 이호준
 -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,6 @@
         <link href="css/mdb.min.css" rel="stylesheet"/>
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet"/>
-        <link href="css/optional/footer.css" rel="stylesheet"/>
 
         <!-- Modal scrolling place -->
         <style>
@@ -63,12 +62,12 @@
         <!-- Header Start -->
         <header>
             <!-- Navbar signin form -->
-            <% if (session.getAttribute("email") != null) {%>
+            <!-- <% if (session.getAttribute("email") != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
-
+            -->
             <!-- Sidebar -->
             <div class="sidebar-fixed position-fixed">
                 <div class="col-md-12 mb-5 mt-5 text-center">

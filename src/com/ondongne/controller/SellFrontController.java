@@ -29,11 +29,7 @@ public class SellFrontController extends HttpServlet {
 		Action action = null;
 	
 		if (command.equals("/view.sell")) {
-//			navbar 에서 처음 들어오거나 sellpostform.jsp 에서 글쓰기 취소 버튼을 누르면 sell.jsp로 이동
-//			TODO: DB에서 내용 가져와서 들고 가기
-//			forward = new ActionForward();
-//			forward.setPath("/sell.jsp");
-			
+//			navbar 에서 처음 들어오거나 sellpostform.jsp 에서 글쓰기 취소 버튼을 누르면 sell.jsp로 이동	
 			action = new GetSellAction();
 			try {
 				forward = action.execute(request, response);	//action 진행 후 리턴된 forward 대입

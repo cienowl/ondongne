@@ -30,11 +30,11 @@
             <div class="col-xs-6 col-md-3">
                 <h6>Quick Links</h6>
                 <ul class="footer-links">
-                    <li><a href="aboutus.ondongne">About Us</a></li>
-                    <li><a href="team.ondongne">Team</a></li>
-                    <li><a href="index.admin">admin</a></li>                    
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="service.ondongne">프로젝트소개</a></li>
+                    <li><a href="team.ondongne">팀 ON동네</a></li>
+                    <li><a href="terms.ondongne">이용약관</a></li>
+                    <li><a href="privacy.ondongne">개인정보취급방침</a></li>
+                    <li><a href="index.admin">관리자페이지</a></li>                    
                 </ul>
             </div>
         </div>
