@@ -201,7 +201,7 @@
 
                                         <h5 class="font-weight-normal mb-3"><%= circleList.get(i).getTitle() %></h5>
 
-                                        <p class="text-muted" style="overflow:scroll; height:100px;  word-break:break-all;"><%= circleList.get(i).getDescription() %></p>
+                                        <p class="text-muted" style="overflow-y:scroll; height:100px;  word-break:break-all;"><%= circleList.get(i).getDescription() %></p>
 
                                         <ul class="list-unstyled font-small mt-3">
                                             <li>
