@@ -197,12 +197,14 @@
                                 <!-- Grid row -->
                                 <div class="row">
                                     <!-- Grid column -->
+                                    
                                     <div class="col-md-6 py-5 pl-5">
-
+										<form action="postjoin.circle" method="POST">
                                         <h5 class="font-weight-normal mb-3"><%= circleList.get(i).getTitle() %></h5>
 
                                         <p class="text-muted" style="overflow-y:scroll; height:100px;  word-break:break-all;"><%= circleList.get(i).getDescription() %></p>
-
+										<input type="hidden" name="postid" value="<%= circleList.get(i).getId()%>"/>
+											
                                         <ul class="list-unstyled font-small mt-3">
                                             <li>
                                                 <p class="text-uppercase mb-2"><strong>작성자</strong></p>
@@ -224,10 +226,11 @@
                                                 <a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= circleList.get(i).getEnd_date() %></a>
                                             </li>
                                         </ul>
-                                        <button type="submit" class="btn btn-outline-primary" style="position:absolute;">참여하기</button>
-		
+                                        <button type="submit" class="btn btn-outline-primary" style="position:absolute;" onclick="checksession();">참여하기</button>
+										</form>
                                     </div>
                                     <!-- Grid column -->
+                                    
 
                                     <!-- Grid column -->
                                     <div class="col-md-6">

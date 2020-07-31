@@ -24,6 +24,7 @@ public class CircleService {
 		return isWriteSuccess;
 	}
 	
+	// 소모임 페이지에 모든 소모임 게시물 출력
 	public List<DataTransferCircle> selectCircleAll(){
 		
 		DataAccessCircle daoCircle = DataAccessCircle.getinstance();
@@ -31,4 +32,6 @@ public class CircleService {
 		
 		return circleList;
 	}
+	
+	
 }

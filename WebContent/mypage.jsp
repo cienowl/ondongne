@@ -1,4 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@page import="java.util.*" %>
+<%@page import="org.apache.ibatis.session.SqlSessionFactory" %>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+
+<%@page import="com.ondongne.dto.DataTransferCircle" %>
+<%@page import="com.ondongne.dto.DataTransferCircleJoin" %>
+
+<%
+	List<DataTransferCircle> joinCircleList = (List<DataTransferCircle>)request.getAttribute("joinCircleList");
+%>
 <!DOCTYPE html>
 <html lang="en" ng-app="StarterApp">
   <head>
@@ -234,6 +245,33 @@
                 </div>
                 <!--Grid column-->
             </div>
+
+            <!--test table-->
+            <table class="table table-hover" style="padding-left:300px;">
+	            <thead>
+	                <tr>
+	                <th scope="col">소모임</th>
+	                <th scope="col">글제목</th>
+	                <th scope="col">작성자</th>
+	                <th scope="col">모임날짜</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <%
+	                	for (int i=0;i<joinCircleList.size();i++){
+	                %>
+	                	<tr>
+	                		<th><%=joinCircleList.get(i).getTitle()%></th>
+	                		<td><%=joinCircleList.get(i).getEmail() %></td>
+	                		<td><%=joinCircleList.get(i).getEvent_date() %></td>
+	                	</tr>
+	                	<%
+	                	}
+	                	%>
+	            </tbody>
+            </table>
+            <!--/. test table-->
+        
         </main>
         <!-- Main End -->
         <footer>

@@ -3,6 +3,7 @@
 package com.ondongne.dto;
 
 public class DataTransferCircle {
+	private int id;
 	private String email;
 	private String title;
 	private String pictures;
@@ -18,6 +19,12 @@ public class DataTransferCircle {
 	private String description;
 	private String tags;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -102,6 +109,8 @@ public class DataTransferCircle {
 	public void setTags(String tags) {
 		this.tags = tags;
 	}
+	
+	
 	
 	
 }

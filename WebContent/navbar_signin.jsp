@@ -107,7 +107,7 @@
                         <input type="password" class="form-control mb-4" id="signinPassword" placeholder="Password" name="signinPassword">
 
                     <div class="d-flex justify-content-around">
-                        <div>
+                        <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="storeEmail" name="storeEmail" value="true">
                             <label class="custom-control-label" for="storeEmail">아이디 저장</label>
                         </div>

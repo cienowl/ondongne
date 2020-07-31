@@ -1,0 +1,52 @@
+package com.ondongne.dao;
+
+import java.io.IOException;
+import java.io.Reader;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.ondongne.dto.DataTransferCircle;
+import com.ondongne.dto.DataTransferCircleJoin;
+
+public class DataAccessCircleJoin {
+	
+	static SqlSessionFactory sqlFactory;
+	private static DataAccessCircleJoin instance;
+	
+	public static DataAccessCircleJoin getinstance() {
+		if(instance==null) {
+			synchronized(DataAccessCircleJoin.class) {
+				instance = new DataAccessCircleJoin();
+			}
+		}
+		return instance;
+	}
+	
+	public static SqlSessionFactory getConnection() {
+		Reader reader;
+		
+		try {
+			reader = Resources.getResourceAsReader("com/ondongne/dbconnect/mybatis-config.xml");
+			sqlFactory = new SqlSessionFactoryBuilder().build(reader);
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		return sqlFactory;
+	}
+	
+	// 소모임 참여버튼을 눌렀을 때 insert
+	public int joinCircleInsert(DataTransferCircleJoin dto) {
+		
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		int insertCount = sqlsession.insert("joinCircleInsert", dto);
+		sqlsession.commit();
+		sqlsession.close();
+		
+		return insertCount;
+	}
+}

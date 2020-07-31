@@ -161,7 +161,20 @@ CREATE TABLE `notice` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `content` text NOT NULL,
-  `date` datetime NOT NULL,
+  `postdate` datetime NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+~~~
+
+helper_circle : 참여한 소모임 테이블
+
+~~~sql
+CREATE TABLE `helper_circle` (
+  `join_email` varchar(50) NOT NULL,
+  `join_postid` int(11) NOT NULL,
+  KEY `join_email_idx` (`join_email`),
+  KEY `join_postid_idx` (`join_postid`),
+  CONSTRAINT `join_email` FOREIGN KEY (`join_email`) REFERENCES `users` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `join_postid` FOREIGN KEY (`join_postid`) REFERENCES `circle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ~~~
