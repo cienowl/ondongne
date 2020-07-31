@@ -15,7 +15,7 @@ import com.ondongne.dto.DataTransferUsers;
 public class DataAccessUsers {
 
 	private static DataAccessUsers instance;
-	
+
 	public static DataAccessUsers getInstance() {
 		if (instance == null) {
 			synchronized (DataAccessUsers.class) {
@@ -26,7 +26,7 @@ public class DataAccessUsers {
 	}
 
 	static SqlSessionFactory sqlFactory;
-	
+
 	public static SqlSessionFactory getConnection() {
 		Reader reader;
 
@@ -39,38 +39,28 @@ public class DataAccessUsers {
 
 		return sqlFactory;
 	}
-	
-	
-	public void userUpdate(DataTransferUsers dto) {
 
-		SqlSession sqlsession = sqlFactory.openSession();
-		dto.getEmail();
-		dto.getPassword();
-		dto.getPhone();
-		dto.getBirthday();
-		dto.getGender();
-		dto.getNickname();
-		dto.getZipcode();
-		dto.getAddress();
-		dto.getAddress_detail();
-		dto.getRegion1();
-		dto.getRegion2();
-		dto.getRegion3();
-		sqlsession.update("userUpdate", dto);
-		sqlsession.commit();
-		sqlsession.close();
+	public int userInsert (DataTransferUsers dtoUser) {
+
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		int insertCount = sqlSession.insert("insertBasicInfo", dtoUser);
+		sqlSession.commit();
+		sqlSession.close();
+
+		return insertCount;
 
 	}
 
-	public int deleteUser(String email) {	
-
+	public int userUpdate(DataTransferUsers dtoUser) {
+		
 		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();
-		int deleteCount = sqlsession.delete("userDelete", email);
+		int updateCount = sqlsession.update("userUpdate", dtoUser);
 		sqlsession.commit();
 		sqlsession.close();
 
-		return deleteCount;
+		return updateCount;
 
 	}
 
@@ -84,15 +74,15 @@ public class DataAccessUsers {
 
 	}
 
-	public int userInsert (DataTransferUsers dtoUser) {
+	public int deleteUser(String email) {	
 
 		sqlFactory = getConnection();
-		SqlSession sqlSession = sqlFactory.openSession();
-		int insertCount = sqlSession.insert("insertBasicInfo", dtoUser);
-		sqlSession.commit();
-		sqlSession.close();
+		SqlSession sqlsession = sqlFactory.openSession();
+		int deleteCount = sqlsession.delete("userDelete", email);
+		sqlsession.commit();
+		sqlsession.close();
 
-		return insertCount;
+		return deleteCount;
 
 	}
 

@@ -22,9 +22,9 @@
     getEmail = sqlSession.selectOne("checkEmail", email);
     
     if (getEmail == null) {
-    	result = "가입된 이메일이 없습니다.";
+        result = "가입된 이메일이 없습니다.";
     } else if (email.equals(getEmail)) {
-    	result = "";    	
+        result = "";    	
     }
     
     out.println(result);

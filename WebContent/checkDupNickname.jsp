@@ -23,7 +23,7 @@
 
 		stmt = conn.createStatement();
 		
-		String command = "SELECT nickname FROM userinfo WHERE nickname='" + inputNickname + "';";
+		String command = "SELECT nickname FROM users WHERE nickname='" + inputNickname + "';";
         ResultSet rs = stmt.executeQuery(command);
 
         if (rs.next()) {

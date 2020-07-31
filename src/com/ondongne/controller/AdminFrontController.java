@@ -60,6 +60,11 @@ public class AdminFrontController extends HttpServlet {
 			forward.setPath("/admin_dashboard.jsp");
 		}
 		
+		else if (command.equals("/notice.admin")) {
+			forward = new ActionForward();
+			forward.setPath("/admin_notice.jsp");
+		}
+		
 		
 		
 		if (forward != null) {		//forward 내 값이 있으면

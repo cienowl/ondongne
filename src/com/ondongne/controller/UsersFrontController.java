@@ -14,6 +14,7 @@ import com.ondongne.action.UserDeleteAction;
 import com.ondongne.action.UserSigninAction;
 import com.ondongne.action.UserSignoutAction;
 import com.ondongne.action.UserSignupBasicAction;
+import com.ondongne.action.UserSignupSubAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.users")
@@ -29,7 +30,39 @@ public class UsersFrontController extends HttpServlet
 			ActionForward forward = null;
 			Action action = null;
 			
-			if (command.equals("/signin.users")) {
+			
+			if (command.equals("/signup.users")) {
+//				최초 회원가입
+				action = new UserSignupBasicAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}				
+			}
+
+			else if (command.equals("/signupsub.users")) {
+//				회원 추가정보 입력 폼으로 이동
+				forward = new ActionForward();
+				forward.setPath("signupsub.jsp");
+		
+			}
+			
+			else if (command.equals("/updatesub.users")) {
+				action = new UserSignupSubAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}		
+			}
+
+//			TODO: 회원정보 수정
+			else if (command.equals("/update.users")) {
+
+			}
+
+			else if (command.equals("/signin.users")) {
 //				로그인
 				action = new UserSigninAction();
 				try {
@@ -38,7 +71,7 @@ public class UsersFrontController extends HttpServlet
 					e.printStackTrace();
 				}
 			}
-			
+
 			else if (command.equals("/signout.users")) {
 //				로그아웃
 				action = new UserSignoutAction();
@@ -48,27 +81,7 @@ public class UsersFrontController extends HttpServlet
 					e.printStackTrace();
 				}
 			}
-			
-			else if(command.equals("/signup.users")) {
-//				최초 회원가입
-				action = new UserSignupBasicAction();
-				try {
-					forward = action.execute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}				
-			}
-			
-//			TODO: 회원가입 추가정보
-			else if(command.equals("/signupadd.users")) {
-				
-			}
-			
-//			TODO: 회원정보 수정
-			else if(command.equals("/update.users")) {
-				
-			}
-			
+
 //			TODO: 회원탈퇴
 			else if(command.equals("/delete.users")) {
 				action = new UserDeleteAction();

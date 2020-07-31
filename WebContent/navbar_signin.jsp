@@ -97,7 +97,11 @@
             <div class="modal-body">
                 <!-- signin form -->
                 <form class="text-center p-5" action="signin.users" method="POST" name="userinfoInsert">
+                        <% if (getCookieValue(cookies,"cookieEmail") != null) { %>
                         <input type="email" class="form-control mb-4" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail" value="<%=getCookieValue(cookies,"cookieEmail") %>"  >
+                        <% } else { %>
+                        <input type="email" class="form-control mb-4" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail" value=""  >
+                        <% } %>
                         <%-- <small id="checkEmail" class="form-text text-danger" style="height: 19px;"></small> --%>
 
                         <input type="password" class="form-control mb-4" id="signinPassword" placeholder="Password" name="signinPassword">

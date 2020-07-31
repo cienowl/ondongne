@@ -52,8 +52,7 @@ public class DataTransferUsers {
 	}
 	public void setSessionEmail(String sessionEmail) {
 		this.sessionEmail = sessionEmail;
-	}
-	
+	}	
 	public String getEmail() {
 		return email;
 	}

@@ -27,13 +27,14 @@
 ### Who do I talk to?
 
 * Repo owner or admin
-    cienowl
+* https://github.com/cienowl/Ondongne
+  Hojoon Lee
 * Other community or team contact
-    Hojoon Lee, Naye Kim, Songhee Han, Jaehun Kim, Yongho Jeong
+  Hojoon Lee, Naye Kim, Songhee Han, Jaehun Kim, Yongho Jeong
 
 ## JAVA
 
-* JDK8.0
+* ORACLE JDK8.0
 
 ## JavaScript
 
@@ -51,40 +52,116 @@
 ## Database
 
 * MySQL 5.7
-* Mybatis
-* 인코딩 세팅
+* Mybatis 3.1
+* Database: ondongne
 
-  ~~~sql
-  alter table userinfo convert to character set utf8;
-  ~~~
+### Tables
 
-  * Database: ondongne
-  * Tables:
-  
-    userinfo: 회원가입 정보
-  
-    ~~~sql
-    create table userinfo(email varchar(50) primary key, password varchar(20) not null, nickname varchar(15), profile_picture varchar(100), birth_year varchar(10), birth_month varchar(10), birth_day varchar(10), phone varchar(20), gender varchar(10), zipcode varchar(10), address varchar(50), address_detail varchar(50), region1 varchar(10), region2 varchar(10), region3 varchar(10), joindate date);
-    ~~~
+users: 회원 테이블
 
-    `mysql> desc userinfo;`
-    | Field           | Type         | Null | Key | Default | Extra |
-    |-----------------|--------------|------|-----|---------|-------|
-    | email           | varchar(50)  | NO   | PRI | NULL    |       |
-    | password        | varchar(20)  | NO   |     | NULL    |       |
-    | nickname        | varchar(15)  | YES  |     | NULL    |       |
-    | profile_picture | varchar(100) | YES  |     | NULL    |       |
-    | birth_year      | varchar(10)  | YES  |     | NULL    |       |
-    | birth_month     | varchar(10)  | YES  |     | NULL    |       |
-    | birth_day       | varchar(10)  | YES  |     | NULL    |       |
-    | phone           | varchar(20)  | YES  |     | NULL    |       |
-    | gender          | varchar(10)  | YES  |     | NULL    |       |
-    | zipcode         | varchar(10)  | YES  |     | NULL    |       |
-    | address         | varchar(50)  | YES  |     | NULL    |       |
-    | address_detail  | varchar(50)  | YES  |     | NULL    |       |
-    | region1         | varchar(10)  | YES  |     | NULL    |       |
-    | region2         | varchar(10)  | YES  |     | NULL    |       |
-    | region3         | varchar(10)  | YES  |     | NULL    |       |
-    | joindate        | date         | YES  |     | NULL    |       |
+~~~sql
+CREATE TABLE `users` (
+  `email` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `nickname` varchar(20) DEFAULT NULL,
+  `profile_picture` varchar(100) DEFAULT NULL,
+  `birthday` varchar(10) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `zipcode` varchar(10) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `address_detail` varchar(50) DEFAULT NULL,
+  `region1` varchar(10) DEFAULT NULL,
+  `region2` varchar(10) DEFAULT NULL,
+  `region3` varchar(10) DEFAULT NULL,
+  `joindate` date DEFAULT NULL,
+  `last_signin_date` date DEFAULT NULL,
+  `business_owner` varchar(10) DEFAULT NULL,
+  `hibernate` varchar(10) DEFAULT NULL,
+  `hibernate_start_date` date DEFAULT NULL,
+  `warning_count` int(11) DEFAULT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+~~~
 
-    membership: 사용자 멤버쉽 등급
+sell: 판매 테이블
+
+~~~sql
+CREATE TABLE `sell` (
+  `email` varchar(50) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `pictures` text NOT NULL,
+  `region` varchar(10) NOT NULL,
+  `post_date` datetime NOT NULL,
+  `end_date` date NOT NULL,
+  `end_time` time DEFAULT NULL,
+  `starting_price` varchar(20) NOT NULL,
+  `is_auction` varchar(10) NOT NULL,
+  `bidding_price` varchar(20) DEFAULT NULL,
+  `sell_method` varchar(10) NOT NULL,
+  `description` text NOT NULL,
+  `tags` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sell_email_idx` (`email`),
+  CONSTRAINT `sell_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+~~~
+
+circle: 소모임 테이블
+
+~~~sql
+CREATE TABLE `circle` (
+  `email` varchar(50) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `pictures` text NOT NULL,
+  `zipcode` varchar(10) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `address_detail` varchar(50) NOT NULL,
+  `region` varchar(10) NOT NULL,
+  `post_date` date NOT NULL,
+  `event_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `start_age` int(11) DEFAULT NULL,
+  `end_age` int(11) DEFAULT NULL,
+  `description` text NOT NULL,
+  `tags` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `circle_email_idx` (`email`),
+  CONSTRAINT `circle_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+~~~
+
+hotplace: 동네장소 테이블
+
+~~~sql
+CREATE TABLE `hotplace` (
+  `email` varchar(50) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `pictures` text NOT NULL,
+  `zipcode` varchar(10) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `address_detail` varchar(50) NOT NULL,
+  `region` varchar(10) NOT NULL,
+  `description` text NOT NULL,
+  `tags` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `hotplace_email_idx` (`email`),
+  CONSTRAINT `hotplace_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+~~~
+
+notice: 공지사항 테이블
+
+~~~sql
+CREATE TABLE `notice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+~~~

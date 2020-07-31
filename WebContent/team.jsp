@@ -83,12 +83,12 @@
                         <!-- Grid column -->
                         <div class="col-lg-6 col-md-12 mb-5 d-md-flex justify-content-between">
                             <div class="avatar mb-md-0 mb-4 mx-4">
-                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg" class="rounded z-depth-1" alt="Sample avatar">
+                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" class="rounded z-depth-1" alt="Sample avatar">
                             </div>
                             <div class="mx-4">
                                 <h4 class="font-weight-bold mb-3">Hojoon Lee</h4>
                                 <h6 class="font-weight-bold grey-text mb-3">PM, Lead Developer</h6>
-                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p>
+                                <p class="grey-text">JAVA, JSP/Servlet, JPA, MyBatis, Spring, HTML5, CSS3, JavaScript, JQuery, MySQL, Python, Flask</p>
                                 <!-- Github -->
                                 <a class="p-2 fa-lg fb-ic" href="https://github.com/cienowl" target="_blank">
                                     <i class="fab fa-github-square"></i>
@@ -113,7 +113,7 @@
                             <div class="mx-4">
                                 <h4 class="font-weight-bold mb-3">Naye Kim</h4>
                                 <h6 class="font-weight-bold grey-text mb-3">Back-end Developer</h6>
-                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p>
+                                <p class="grey-text">JAVA, JSP/Servlet, MyBatis, Spring, HTML5, CSS3, JavaScript, JQuery, MySQL, Python, Flask</p>
                                 <!-- Github -->
                                 <a class="p-2 fa-lg fb-ic" href="https://github.com/nayeeeee" target="_blank">
                                     <i class="fab fa-github-square"></i>
@@ -144,7 +144,7 @@
                             <div class="mx-4">
                                 <h4 class="font-weight-bold mb-3">Songhee Han</h4>
                                 <h6 class="font-weight-bold grey-text mb-3">Back-end Developer</h6>
-                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p>
+                                <p class="grey-text">JAVA, JSP/Servlet, MyBatis, Spring, HTML5, CSS3, JavaScript, JQuery, MySQL</p>
                                 <!-- Github -->
                                 <a class="p-2 fa-lg fb-ic" href="https://github.com/SSoNgHi" target="_blank">
                                     <i class="fab fa-github-square"></i>
@@ -169,7 +169,7 @@
                             <div class="mx-4">
                                 <h4 class="font-weight-bold mb-3">Jaehun Kim</h4>
                                 <h6 class="font-weight-bold grey-text mb-3">IT Service Lead Planner</h6>
-                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p>
+                                <p class="grey-text">Node.js, JavaScript, Python, Service Plan</p>
                                 <!-- Github -->
                                 <a class="p-2 fa-lg fb-ic" href="https://github.com/FULXUS" target="_blank">
                                     <i class="fab fa-github-square"></i>
@@ -200,7 +200,7 @@
                             <div class="mx-4">
                                 <h4 class="font-weight-bold mb-3">Yongho Jeong</h4>
                                 <h6 class="font-weight-bold grey-text mb-3">Quality Assurance</h6>
-                                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p>
+                                <p class="grey-text">HTML5, CSS3, JavaScript, Testing</p>
                                 <!-- Facebook-->
                                 <a class="p-2 fa-lg fb-ic">
                                     <i class="fab fa-facebook-f"> </i>

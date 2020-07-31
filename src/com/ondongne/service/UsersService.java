@@ -48,8 +48,20 @@ public class UsersService {
 		
 	}
 	
-	public void signupAdditional() {
+	public boolean signupSub(DataTransferUsers dtoUser) {
+
+		boolean isUpdateSuccess = false;
+
+		DataAccessUsers daoUser = DataAccessUsers.getInstance();
+		int updateCount = daoUser.userUpdate(dtoUser);
 		
+		if (updateCount > 0) {
+			isUpdateSuccess = true;
+			System.out.println("userUpdate " + isUpdateSuccess);
+		}		
+
+		return isUpdateSuccess;
+
 	}
 	
 	public boolean deleteUser(DataTransferUsers currentUser) {

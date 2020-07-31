@@ -22,9 +22,9 @@
     getEmail = sqlSession.selectOne("checkEmail", email);
         
     if (getEmail != null) {
-    	result = "이미 존재하는 이메일입니다.";
+        result = "이미 존재하는 이메일입니다.";
     } else {
-    	result = "사용 가능한 이메일입니다.";
+        result = "사용 가능한 이메일입니다.";
     }
     
     out.println(result);
