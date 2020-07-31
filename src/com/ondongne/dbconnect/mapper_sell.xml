@@ -23,7 +23,7 @@
 		values(
 			#{email},
 			default,
-		 	#{title},
+			#{title},
 			#{pictures},
 			#{region},
 			now(),

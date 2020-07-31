@@ -9,21 +9,24 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.ondongne.dto.DataTransferSell;
+import com.ondongne.dto.NoticeBean;
 
-public class DataAccessSell {
+public class DataAccessNotice {
+	
+	static SqlSessionFactory sqlFactory;
 
-	private static DataAccessSell instance;
-	public static DataAccessSell getInstance() {
+	private static DataAccessNotice instance;
+
+	public static DataAccessNotice getinstance() {
+
 		if(instance == null) {
-			synchronized (DataAccessSell.class) {
-				instance = new DataAccessSell();
+			synchronized(DataAccessNotice.class) {
+				instance = new DataAccessNotice();
 			}
 		}
 		return instance;
 	}
 
-	static SqlSessionFactory sqlFactory;
 	public static SqlSessionFactory getConnection() {
 		Reader reader;
 
@@ -37,28 +40,27 @@ public class DataAccessSell {
 		return sqlFactory;
 	}
 	
-	public int insertSellPost(DataTransferSell dtoSell) {
-		
-		sqlFactory = getConnection();
-	    SqlSession sqlSession = sqlFactory.openSession();
-				
-		int insertCount = sqlSession.insert("sellPost", dtoSell);	//insert리턴 확인		
-		sqlSession.commit();	//commit()
-		sqlSession.close();
-		
-		return insertCount;	//sql insert 성공하면 true 아니면 false 리턴
-		
-	}
-	
-	public List<DataTransferSell> selectSellAll() {
+	public int insertNotice(NoticeBean noticeBean) {
 		
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 		
-		List<DataTransferSell> sellList = sqlSession.selectList("getSellPostAll");
+		int insertCount = sqlSession.insert("insertNotice", noticeBean);
+		sqlSession.commit();
+		sqlSession.close();
+
+		return insertCount;
 		
-		return sellList;
+	}
+	
+	public List<NoticeBean> selectNoticeAll() {
 		
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		
+		List<NoticeBean> noticeList = sqlSession.selectList("selectNoticeAll");
+		
+		return noticeList;
 	}
 
 }

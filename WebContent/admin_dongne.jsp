@@ -1,11 +1,6 @@
 <!-- 작성자: 이호준 -->
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.ondongne.dto.NoticeBean"%>
-<%@page import="java.util.List"%>
 
-<%
-	List<NoticeBean> noticeList = (List<NoticeBean>) request.getAttribute("noticeList");
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -23,13 +18,6 @@
         <link href="css/mdb.min.css" rel="stylesheet"/>
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet"/>
-
-        <!-- Modal scrolling place -->
-        <style>
-            .modal-open .navbar-expand-lg {
-                padding-right: 16px !important;
-            }
-        </style>
 
         <!-- map style -->
         <style>
@@ -74,7 +62,7 @@
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="dashboard.admin" class="list-group-item list-group-item-action active waves-effect">
+                        <a href="#" class="list-group-item list-group-item-action active waves-effect">
                             <i class="fas fa-chart-pie mr-3"></i>Dashboard
                         </a>
                     </li>
@@ -94,8 +82,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="list-group-item list-group-item-action waves-effect">
-                            <i class="fas fa-money-bill-alt mr-3"></i>Orders
+                        <a href="notice.admin" class="list-group-item list-group-item-action waves-effect">
+                            <i class="fas fa-money-bill-alt mr-3"></i>공지사항 관리
                         </a>
                     </li>
                     </ul>
@@ -136,222 +124,169 @@
 
                 <!-- Heading -->
                 <div class="card mb-4 wow fadeIn">
+
                     <!--Card content-->
                     <div class="card-body d-sm-flex justify-content-between">
-                        <h4 class="mb-2 mb-sm-0 pt-1">
-                            <a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home Page</a>
-                            <span>/</span>
-                            <span>Dashboard</span>
-                        </h4>
 
-                        <form class="d-flex justify-content-center">
-                            <input type="search" placeholder="Type your query" aria-label="Search" class="form-control"/>
-                            <button class="btn btn-primary btn-sm my-0 p" type="submit">
-                            <i class="fas fa-search"></i>
-                            </button>
-                        </form>
+                    <h4 class="mb-2 mb-sm-0 pt-1">
+                        <a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home Page</a>
+                        <span>/</span>
+                        <span>Dashboard</span>
+                    </h4>
+
+                    <form class="d-flex justify-content-center">
+                        <!-- Default input -->
+                        <input type="search" placeholder="Type your query" aria-label="Search" class="form-control">
+                        <button class="btn btn-primary btn-sm my-0 p" type="submit">
+                        <i class="fas fa-search"></i>
+                        </button>
+
+                    </form>
+
                     </div>
+
                 </div>
                 <!-- Heading -->
 
                 <!--Grid row-->
                 <div class="row wow fadeIn">
 
-                    <!-- 메인 차트: 방문객 -->
+                    <!--Grid column-->
                     <div class="col-md-9 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                            <canvas id="myChart"></canvas>
-                            </div>
+
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                        <canvas id="myChart"></canvas>
+
                         </div>
+
+                    </div>
+                    <!--/.Card-->
+
                     </div>
                     <!--Grid column-->
 
                     <!--Grid column-->
                     <div class="col-md-3 mb-4">
 
-                        <!-- 파이차트 -->
-                        <div class="card mb-4">
-                            <div class="card-header text-center">
-                                Pie chart
-                            </div>
-                            <div class="card-body">
-                                <canvas id="pieChart"></canvas>
-                            </div>
+                    <!--Card-->
+                    <div class="card mb-4">
+
+                        <!-- Card header -->
+                        <div class="card-header text-center">
+                        Pie chart
                         </div>
 
-                        <!-- 그룹 링크 -->
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <!-- List group links -->
-                                <div class="list-group list-group-flush">
-                                    <a class="list-group-item list-group-item-action waves-effect">Sales
-                                    <span class="badge badge-success badge-pill pull-right">22%
-                                        <i class="fas fa-arrow-up ml-1"></i>
-                                    </span>
-                                    </a>
-                                    <a class="list-group-item list-group-item-action waves-effect">Traffic
-                                    <span class="badge badge-danger badge-pill pull-right">5%
-                                        <i class="fas fa-arrow-down ml-1"></i>
-                                    </span>
-                                    </a>
-                                    <a class="list-group-item list-group-item-action waves-effect">Orders
-                                    <span class="badge badge-primary badge-pill pull-right">14</span>
-                                    </a>
-                                    <a class="list-group-item list-group-item-action waves-effect">Issues
-                                    <span class="badge badge-primary badge-pill pull-right">123</span>
-                                    </a>
-                                    <a class="list-group-item list-group-item-action waves-effect">Messages
-                                    <span class="badge badge-primary badge-pill pull-right">8</span>
-                                    </a>
-                                </div>
-                                <!-- List group links -->
-                            </div>
+                        <!--Card content-->
+                        <div class="card-body">
+
+                        <canvas id="pieChart"></canvas>
+
                         </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                    <!--Card-->
+                    <div class="card mb-4">
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                        <!-- List group links -->
+                        <div class="list-group list-group-flush">
+                            <a class="list-group-item list-group-item-action waves-effect">Sales
+                            <span class="badge badge-success badge-pill pull-right">22%
+                                <i class="fas fa-arrow-up ml-1"></i>
+                            </span>
+                            </a>
+                            <a class="list-group-item list-group-item-action waves-effect">Traffic
+                            <span class="badge badge-danger badge-pill pull-right">5%
+                                <i class="fas fa-arrow-down ml-1"></i>
+                            </span>
+                            </a>
+                            <a class="list-group-item list-group-item-action waves-effect">Orders
+                            <span class="badge badge-primary badge-pill pull-right">14</span>
+                            </a>
+                            <a class="list-group-item list-group-item-action waves-effect">Issues
+                            <span class="badge badge-primary badge-pill pull-right">123</span>
+                            </a>
+                            <a class="list-group-item list-group-item-action waves-effect">Messages
+                            <span class="badge badge-primary badge-pill pull-right">8</span>
+                            </a>
+                        </div>
+                        <!-- List group links -->
+
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
                     </div>
                     <!--Grid column-->
+
                 </div>
                 <!--Grid row-->
 
-                <!-- 공지사항 관리보드 -->
-                <div class="row wow fadeIn">
-                    <!--Grid column-->
-                    <div class="col-md-12 mb-4">
-                        <div class="card">
-                            <div class="card-header text-center">
-                                공지사항 관리
-                            </div>
-                            <div class="card-body">
-                            <table id="foo-table" class="table table-hover" cellspacing="0" width="100%">
-                                <thead class="thead-dark">
-                                    <tr class="text-center">
-                                        <th class="th">글번호</th>
-                                        <th class="th">날짜</th>
-                                        <th class="th">제목</th>
-                                        <th class="th"></th>
-                                        <th class="th"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <% for (int i = 0; i < noticeList.size(); i++) { %>
-                                	<% int id = noticeList.get(i).getId(); %>
-                                    <tr class="text-center">
-                                        <td><%= id %></td>
-                                        <td><%= noticeList.get(i).getPostdate() %></td>
-                                        <td><%= noticeList.get(i).getTitle() %></td>
-                                        <td>
-                                            <form action="notice/update.admin" method="POST">
-                                                <input type="hidden" name="id" value="<%= id %>"/>
-                                                <button class="btn btn-warning btn-sm my-0" type="submit">수정</button>
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <form action="notice/delete.admin" method="POST">
-                                                <input type="hidden" name="id" value="<%= id %>"/>
-                                                <button class="btn btn-danger btn-sm my-0" type="submit">삭제</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                <% } %>
-                                </tbody>
-                                <%-- <tfoot>
-                                    <tr>
-                                    <th>Position
-                                    </th>
-                                    <th>Office
-                                    </th>
-                                    <th>Age
-                                    </th>
-                                    <th>Start date
-                                    </th>
-                                    <th>Salary
-                                    </th>
-                                    </tr>
-                                </tfoot> --%>
-                                </table>
-                            </div>
-                            <div class="card-footer text-center">
-                                <a href="" class="btn btn-primary my-0" type="button" data-toggle="modal" data-target="#noticePostModal">공지사항 등록</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-                </div>
-
-                <!-- Modal: 공지사항 입력 폼 -->
-                <div class="modal fade" id="noticePostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl modal-dialog-centered">
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <p class="h3">공지사항 작성</p>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-
-                            <div class="modal-body">
-                                <!-- signup form -->
-                                <form class="p-2" action="notice/write.admin" method="POST" name="noticeInsert">
-                                    <div class="form-group">
-                                        <label for="noticeTitle">제목</label>
-                                        <input type="text" class="form-control" id="noticeTitle" name="title" placeholder="제목"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="noticeContent">내용</label>
-                                        <textarea class="form-control" id="noticeContent" rows="15" name="content"></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success my-2">등록</button>
-                                    <button type="reset" class="btn btn-danger my-2" data-dismiss="modal" aria-label="Close"> 취소</button>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- Signup Modal End -->
-
-
                 <!--Grid row-->
                 <div class="row wow fadeIn">
+
                     <!--Grid column-->
                     <div class="col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table table-hover">
-                                    <thead class="blue-grey lighten-4">
-                                    <tr>
-                                            <th>#</th>
-                                            <th>Lorem</th>
-                                            <th>Ipsum</th>
-                                            <th>Dolor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Cell 4</td>
-                                            <td>Cell 5</td>
-                                            <td>Cell 6</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Cell 7</td>
-                                            <td>Cell 8</td>
-                                            <td>Cell 9</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                        <!-- Table  -->
+                        <table class="table table-hover">
+                            <!-- Table head -->
+                            <thead class="blue-grey lighten-4">
+                            <tr>
+                                <th>#</th>
+                                <th>Lorem</th>
+                                <th>Ipsum</th>
+                                <th>Dolor</th>
+                            </tr>
+                            </thead>
+                            <!-- Table head -->
+
+                            <!-- Table body -->
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cell 1</td>
+                                <td>Cell 2</td>
+                                <td>Cell 3</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Cell 4</td>
+                                <td>Cell 5</td>
+                                <td>Cell 6</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Cell 7</td>
+                                <td>Cell 8</td>
+                                <td>Cell 9</td>
+                            </tr>
+                            </tbody>
+                            <!-- Table body -->
+                        </table>
+                        <!-- Table  -->
+
                         </div>
+
+                    </div>
+                    <!--/.Card-->
+
                     </div>
                     <!--Grid column-->
 
@@ -1314,10 +1249,6 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-        <%-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --%>
-        <script type="text/javascript">
-            jQuery.noConflict();
-        </script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->

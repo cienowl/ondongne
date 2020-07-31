@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.AdminNoticeWriteAction;
 import com.ondongne.action.AdminSigninAction;
 import com.ondongne.action.AdminSignoutAction;
+import com.ondongne.action.GetDashboardInfoAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.admin")
@@ -56,13 +58,32 @@ public class AdminFrontController extends HttpServlet {
 
 		else if (command.equals("/dashboard.admin")) {
 //			dashboard로 이동
-			forward = new ActionForward();
-			forward.setPath("/admin_dashboard.jsp");
+			action = new GetDashboardInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
-		else if (command.equals("/notice.admin")) {
-			forward = new ActionForward();
-			forward.setPath("/admin_notice.jsp");
+		else if (command.equals("/notice/write.admin")) {
+//			공지사항 작성
+			action = new AdminNoticeWriteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if (command.equals("/notice/delete.admin")) {
+//		TODO: 공지사항 삭제
+		}
+		
+		else if (command.equals("/notice/update.admin")) {
+//		TODO: 공지사항 수정
+			
 		}
 		
 		

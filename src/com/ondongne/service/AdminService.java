@@ -1,6 +1,10 @@
 package com.ondongne.service;
 
+import java.util.List;
+
+import com.ondongne.dao.DataAccessNotice;
 import com.ondongne.dto.AdminBean;
+import com.ondongne.dto.NoticeBean;
 
 public class AdminService {
 	
@@ -22,6 +26,29 @@ public class AdminService {
 	public boolean signout() {
 				
 		return true;		
+	}
+	
+	public boolean postNotice(NoticeBean noticeBean) {
+		
+		boolean writeSuccess = false;
+		
+		DataAccessNotice daoNotice = DataAccessNotice.getinstance();
+		int insertCount = daoNotice.insertNotice(noticeBean);
+		
+		if (insertCount > 0) writeSuccess = true;
+		
+		return writeSuccess;
+		
+	}
+	
+	public List<NoticeBean> selectNoticeAll() {
+		
+		DataAccessNotice daoNotice = DataAccessNotice.getinstance();
+		
+		List<NoticeBean> noticeList = daoNotice.selectNoticeAll();
+		
+		return noticeList;
+		
 	}
 
 }
