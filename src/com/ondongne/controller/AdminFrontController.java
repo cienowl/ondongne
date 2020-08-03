@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.AdminNoticeDeleteAction;
+import com.ondongne.action.AdminNoticeUpdateAction;
 import com.ondongne.action.AdminNoticeWriteAction;
 import com.ondongne.action.AdminSigninAction;
 import com.ondongne.action.AdminSignoutAction;
@@ -37,6 +39,7 @@ public class AdminFrontController extends HttpServlet {
 		}
 
 		else if (command.equals("/signin.admin")) {
+//			TODO: RSA 암호화 필요
 //			admin 페이지 로그인 action
 			action = new AdminSigninAction();
 			try {
@@ -63,8 +66,7 @@ public class AdminFrontController extends HttpServlet {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			
+			}			
 		}
 		
 		else if (command.equals("/notice/write.admin")) {
@@ -78,12 +80,23 @@ public class AdminFrontController extends HttpServlet {
 		}
 		
 		else if (command.equals("/notice/delete.admin")) {
-//		TODO: 공지사항 삭제
+//			공지사항 삭제
+			action = new AdminNoticeDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 		}
 		
 		else if (command.equals("/notice/update.admin")) {
 //		TODO: 공지사항 수정
-			
+			action = new AdminNoticeUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

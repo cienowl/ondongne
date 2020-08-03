@@ -85,14 +85,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="dongne.admin" class="list-group-item list-group-item-action waves-effect">
+                            <i class="fas fa-map mr-3"></i>동네게시물 관리
+                        </a>
+                    <li class="nav-item">
                         <a href="#" class="list-group-item list-group-item-action waves-effect">
                             <i class="fas fa-table mr-3"></i>Tables
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="dongne.admin" class="list-group-item list-group-item-action waves-effect">
-                            <i class="fas fa-map mr-3"></i>동네게시물 관리
-                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="list-group-item list-group-item-action waves-effect">
@@ -232,7 +232,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <% for (int i = 0; i < noticeList.size(); i++) { %>
+                                <% for (int i = noticeList.size()-1; i >=0; i--) { %>
                                 <% dataTarget = "#noticeList" + Integer.toString(i); %>
                                     <tr class="text-center" style="cursor: pointer;" data-toggle="modal" data-target="<%= dataTarget %>">
                                         <td><%= noticeList.get(i).getId() %></td>
@@ -299,7 +299,7 @@
                 <!-- /Modal: 공지사항 입력 폼 -->
 
                 <!-- Modal: 공지사항 출력 -->
-                <% for (int i = 0; i < noticeList.size(); i++) { %>
+                <% for (int i = noticeList.size()-1; i >=0; i--) { %>
                 <% dataTarget = "noticeList" + Integer.toString(i); %>
                 <div class="modal fade" id="<%= dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -313,7 +313,7 @@
                             </div>
 
                             <div class="modal-body">
-                                <form class="p-2" method="POST" name="noticeInsert">
+                                <form class="" method="POST">
                                     <input type="hidden" class="form-control" id="noticeId" name="id" value="<%= noticeList.get(i).getId() %>"/>
                                     <div class="form-group">
                                         <label for="noticeTitle">제목</label>
@@ -321,12 +321,24 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="noticeContent">내용</label>
-                                        <textarea class="form-control" id="noticeContent" rows="15" name="content"><%= noticeList.get(i).getContent() %></textarea>
+                                        <textarea class="form-control" id="noticeContent" rows="12" name="content"><%= noticeList.get(i).getContent() %></textarea>
                                     </div>
-                                        <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success my-2" onclick="javascript: noticeInsert.action='/notice/update.admin';">수정</button>
-                                        <button type="submit" class="btn btn-danger my-2" onclick="javascript: noticeInsert.action='/notice/delete.admin';">삭제</button>
-                                        <button type="submit" class="btn btn-warning my-2" data-dismiss="modal" aria-label="Close">닫기</button>
+                                    <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="adminId">관리자 계정</label>
+                                                <input type="text" class="form-control" id="adminId" name="adminId" value="" placeholder="수정/삭제시 입력" required/>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="adminPw">관리자 비밀번호</label>
+                                                <input type="password" class="form-control" id="adminPw" name="adminPw" value="" placeholder="수정/삭제시 입력" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success" id="noticeUpdate" value="update" onclick="javascript:form.action='notice/update.admin';">수정</button>
+                                        <button type="submit" class="btn btn-danger" id="noticeDelete" value="delete" onclick="javascript:form.action='notice/delete.admin';">삭제</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">닫기</button>
                                     </div>
                                 </form>
                             </div>
@@ -1362,7 +1374,7 @@
             data: {
                 labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                 datasets: [{
-                label: '# of Votes',
+                label: '방문 횟수',
                 data: [12, 19, 3, 5, 2, 3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

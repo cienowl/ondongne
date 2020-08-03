@@ -12,6 +12,14 @@
 	<select id="selectNoticeAll" resultType="com.ondongne.dto.NoticeBean">
 		select * from notice
 	</select>
+	
+	<delete id="deleteNoticeOne" parameterType="String">
+		delete from notice where id=#{id}
+	</delete>
+	
+	<update id="updateNotice" parameterType="com.ondongne.dto.NoticeBean">
+		update notice set title=#{title}, content=#{content}, postdate=now() where id=#{id}
+	</update>
 
 </mapper>
 

@@ -31,7 +31,7 @@ public class MainFrontController extends HttpServlet {
 		if (command.equals("/index.ondongne")) {
 //			index 페이지로 이동
 			forward = new ActionForward();
-			forward.setPath("/index.jsp");
+			forward.setPath("index.jsp");
 		}
 		
 		else if (command.equals("/team.ondongne")) {
@@ -39,12 +39,12 @@ public class MainFrontController extends HttpServlet {
 			forward.setPath("team.jsp");			
 		}
 		
-		else if (command.equals("policy/terms.ondongne")) {
+		else if (command.equals("/terms.ondongne")) {
 			forward = new ActionForward();
 			forward.setPath("terms.jsp");			
 		}
 		
-		else if (command.equals("policy/privacy.ondongne")) {
+		else if (command.equals("/privacy.ondongne")) {
 			forward = new ActionForward();
 			forward.setPath("privacy.jsp");			
 		}

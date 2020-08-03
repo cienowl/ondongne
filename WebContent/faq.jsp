@@ -5,12 +5,9 @@
     JavaScript  - 이호준, 김나예, 한송희
 -->
 
-<%@page import="com.ondongne.dto.NoticeBean"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	List<NoticeBean> noticeList = (List<NoticeBean>) request.getAttribute("noticeList");
-    String dataTarget = null;
+
 %>
 
 <!DOCTYPE html>

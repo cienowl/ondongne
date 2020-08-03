@@ -11,29 +11,26 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h6>About</h6>
-                <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+                <h6>고객센터</h6>
+                <p class="text-justify">사업자 등록번호 : 120-88-00000 | 대표 : 김동네<br/>
+                06130 서울특별시 강남구 테헤란로5길 24, 2층 (역삼동 635-10)</p>
             </div>
 
             <div class="col-xs-6 col-md-3">
-                <h6>Categories</h6>
+                <h6>서비스</h6>
                 <ul class="footer-links">
                     <li><a href="notice.ondongne">공지사항</a></li>
-                    <li><a href="#">UI Design</a></li>
-                    <li><a href="#">PHP</a></li>
-                    <li><a href="#">자주묻는질문</a></li>
-                    <li><a href="#">Android</a></li>
-                    <li><a href="#">Kotlin</a></li>
+                    <li><a href="faq.ondongne">자주묻는질문</a></li>
+                    <li><a href="terms.ondongne" target="_blank">이용약관</a></li>
+                    <li><a href="privacy.ondongne" target="_blank">개인정보취급방침</a></li>
                 </ul>
             </div>
 
             <div class="col-xs-6 col-md-3">
-                <h6>Quick Links</h6>
+                <h6>프로젝트</h6>
                 <ul class="footer-links">
                     <li><a href="service.ondongne">프로젝트소개</a></li>
-                    <li><a href="team.ondongne">팀 ON동네</a></li>
-                    <li><a href="policy/terms.ondongne" target="_blank">이용약관</a></li>
-                    <li><a href="policy/privacy.ondongne" target="_blank">개인정보취급방침</a></li>
+                    <li><a href="team.ondongne">Team Avengers</a></li>
                     <li><a href="index.admin">관리자페이지</a></li>                    
                 </ul>
             </div>

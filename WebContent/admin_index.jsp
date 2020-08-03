@@ -96,22 +96,17 @@
 
                                         <div class="md-form mx-3">
                                             <i class="fas fa-user prefix grey-text"></i>
-                                            <input type="text" id="adminId" class="form-control" name="adminId">
+                                            <input type="text" id="adminId" class="form-control" name="adminId" required/>
                                             <label for="AdminId">Admin Account</label>
                                         </div>
                                         <div class="md-form mx-3">
                                             <i class="fas fa-key prefix grey-text"></i>
-                                            <input type="password" id="adminPassword" class="form-control" name="adminPassword">
+                                            <input type="password" id="adminPassword" class="form-control" name="adminPassword" required/>
                                             <label for="adminPassword">Password</label>
                                         </div>
 
                                         <div class="text-center pt-1">
                                             <button type="submit" class="btn btn-lg btn-deep-purple">관리자 로그인</button>
-                                            <!-- <hr> -->
-                                            <!-- <fieldset class="form-check"> -->
-                                            <!-- <input type="checkbox" class="form-check-input" id="checkSession" name="maintainSession"> -->
-                                            <!-- <label for="checkSession" class="form-check-label dark-grey-text">ADMIN 세션 유지</label> -->
-                                            <!-- </fieldset> -->
                                         </div>
 
                                     </form>

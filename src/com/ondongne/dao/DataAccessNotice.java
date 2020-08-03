@@ -37,30 +37,56 @@ public class DataAccessNotice {
 
 		return sqlFactory;
 	}
-	
+
 	public int insertNotice(NoticeBean noticeBean) {
-		
+
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
-		
+
 		int insertCount = sqlSession.insert("insertNotice", noticeBean);
 		sqlSession.commit();
 		sqlSession.close();
 
 		return insertCount;
-		
+
 	}
-	
+
 	public List<NoticeBean> selectNoticeAll() {
-		
+
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
-		
+
 		List<NoticeBean> noticeList = sqlSession.selectList("selectNoticeAll");
 		sqlSession.close();
-		
+
 		return noticeList;
-		
+
+	}
+	
+	public int deleteNoticeOne(String id) {
+
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+
+		int deleteCount = sqlSession.delete("deleteNoticeOne", id);		
+		sqlSession.commit();
+		sqlSession.close();
+
+		return deleteCount;
+
+	}
+
+	public int updateNotice(NoticeBean noticeBean) {
+
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+
+		int updateCount = sqlSession.update("updateNotice", noticeBean);
+		sqlSession.commit();
+		sqlSession.close();		
+
+		return updateCount;
+
 	}
 
 }
