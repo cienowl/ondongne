@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.NoticeViewAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.ondongne")
@@ -24,7 +25,7 @@ public class MainFrontController extends HttpServlet {
 		String command = requestURI.substring(contextPath.length());
 		
 		ActionForward forward = null;
-//		Action action = null;
+		Action action = null;
 	
 		if (command.equals("/index.ondongne")) {
 //			index 페이지로 이동
@@ -37,12 +38,12 @@ public class MainFrontController extends HttpServlet {
 			forward.setPath("team.jsp");			
 		}
 		
-		else if (command.equals("/terms.ondongne")) {
+		else if (command.equals("policy/terms.ondongne")) {
 			forward = new ActionForward();
 			forward.setPath("terms.jsp");			
 		}
 		
-		else if (command.equals("/privacy.ondongne")) {
+		else if (command.equals("policy/privacy.ondongne")) {
 			forward = new ActionForward();
 			forward.setPath("privacy.jsp");			
 		}
@@ -58,8 +59,12 @@ public class MainFrontController extends HttpServlet {
 		}
 		
 		else if (command.equals("/notice.ondongne")) {
-			forward = new ActionForward();
-			forward.setPath("notice.jsp");
+			action = new NoticeViewAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		

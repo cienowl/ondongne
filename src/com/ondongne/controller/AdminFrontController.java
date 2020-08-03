@@ -54,8 +54,8 @@ public class AdminFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}		
-
+		}
+		
 		else if (command.equals("/dashboard.admin")) {
 //			dashboard로 이동
 			action = new GetDashboardInfoAction();

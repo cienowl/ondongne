@@ -32,8 +32,8 @@
                 <ul class="footer-links">
                     <li><a href="service.ondongne">프로젝트소개</a></li>
                     <li><a href="team.ondongne">팀 ON동네</a></li>
-                    <li><a href="terms.ondongne" target="_blank">이용약관</a></li>
-                    <li><a href="privacy.ondongne" target="_blank">개인정보취급방침</a></li>
+                    <li><a href="policy/terms.ondongne" target="_blank">이용약관</a></li>
+                    <li><a href="policy/privacy.ondongne" target="_blank">개인정보취급방침</a></li>
                     <li><a href="index.admin">관리자페이지</a></li>                    
                 </ul>
             </div>

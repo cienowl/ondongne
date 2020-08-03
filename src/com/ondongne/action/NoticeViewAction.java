@@ -4,30 +4,26 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.NoticeBean;
 import com.ondongne.service.AdminService;
 
-public class GetDashboardInfoAction implements Action {
+public class NoticeViewAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	
-//		HttpSession session = request.getSession();
-		
-		AdminService adminService = new AdminService();
-		
-//		공지사항 리스트
-		List<NoticeBean> noticeList = adminService.selectNoticeAll();
-		
-		request.setAttribute("noticeList", noticeList);
-		
-		ActionForward forward = new ActionForward();
-		forward.setPath("admin_dashboard.jsp");		
 
+		AdminService adminService = new AdminService();
+		List<NoticeBean> noticeList = adminService.selectNoticeAll();
+
+		request.setAttribute("noticeList", noticeList);
+
+		ActionForward forward = new ActionForward();
+		forward.setPath("notice.jsp");
+		
 		return forward;
-	}
+
+	}	
 
 }

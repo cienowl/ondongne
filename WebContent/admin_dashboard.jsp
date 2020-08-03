@@ -5,6 +5,7 @@
 
 <%
 	List<NoticeBean> noticeList = (List<NoticeBean>) request.getAttribute("noticeList");
+    String dataTarget = null;
 %>
 
 <!DOCTYPE html>
@@ -58,7 +59,7 @@
                 <div class="container">
 
                 <!-- Brand -->
-                <a class="navbar-brand waves-effect" href="admin_dashboard.html" target="">
+                <a class="navbar-brand waves-effect" href="dashboard.admin" target="">
                     <strong class="blue-text">ON동네 ADMIN</strong>
                 </a>
 
@@ -75,12 +76,12 @@
                     <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a href="dashboard.admin" class="list-group-item list-group-item-action active waves-effect">
-                            <i class="fas fa-chart-pie mr-3"></i>Dashboard
+                            <i class="fas fa-chart-pie mr-3"></i>대시보드
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="list-group-item list-group-item-action waves-effect">
-                            <i class="fas fa-user mr-3"></i>Profile
+                            <i class="fas fa-user mr-3"></i>회원관리
                         </a>
                     </li>
                     <li class="nav-item">
@@ -228,29 +229,15 @@
                                         <th class="th">글번호</th>
                                         <th class="th">날짜</th>
                                         <th class="th">제목</th>
-                                        <th class="th"></th>
-                                        <th class="th"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <% for (int i = 0; i < noticeList.size(); i++) { %>
-                                	<% int id = noticeList.get(i).getId(); %>
-                                    <tr class="text-center">
-                                        <td><%= id %></td>
+                                <% dataTarget = "#noticeList" + Integer.toString(i); %>
+                                    <tr class="text-center" style="cursor: pointer;" data-toggle="modal" data-target="<%= dataTarget %>">
+                                        <td><%= noticeList.get(i).getId() %></td>
                                         <td><%= noticeList.get(i).getPostdate() %></td>
                                         <td><%= noticeList.get(i).getTitle() %></td>
-                                        <td>
-                                            <form action="notice/update.admin" method="POST">
-                                                <input type="hidden" name="id" value="<%= id %>"/>
-                                                <button class="btn btn-warning btn-sm my-0" type="submit">수정</button>
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <form action="notice/delete.admin" method="POST">
-                                                <input type="hidden" name="id" value="<%= id %>"/>
-                                                <button class="btn btn-danger btn-sm my-0" type="submit">삭제</button>
-                                            </form>
-                                        </td>
                                     </tr>
                                 <% } %>
                                 </tbody>
@@ -291,7 +278,6 @@
                             </div>
 
                             <div class="modal-body">
-                                <!-- signup form -->
                                 <form class="p-2" action="notice/write.admin" method="POST" name="noticeInsert">
                                     <div class="form-group">
                                         <label for="noticeTitle">제목</label>
@@ -301,17 +287,54 @@
                                         <label for="noticeContent">내용</label>
                                         <textarea class="form-control" id="noticeContent" rows="15" name="content"></textarea>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success my-2">등록</button>
-                                    <button type="reset" class="btn btn-danger my-2" data-dismiss="modal" aria-label="Close"> 취소</button>
-                                </div>
-                            </form>
-
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success my-2">등록</button>
+                                        <button type="reset" class="btn btn-danger my-2" data-dismiss="modal" aria-label="Close"> 취소</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Signup Modal End -->
+                <!-- /Modal: 공지사항 입력 폼 -->
+
+                <!-- Modal: 공지사항 출력 -->
+                <% for (int i = 0; i < noticeList.size(); i++) { %>
+                <% dataTarget = "noticeList" + Integer.toString(i); %>
+                <div class="modal fade" id="<%= dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <p class="h3">공지사항</p>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form class="p-2" method="POST" name="noticeInsert">
+                                    <input type="hidden" class="form-control" id="noticeId" name="id" value="<%= noticeList.get(i).getId() %>"/>
+                                    <div class="form-group">
+                                        <label for="noticeTitle">제목</label>
+                                        <input type="text" class="form-control" id="noticeTitle" name="title" value="<%= noticeList.get(i).getTitle() %>" placeholder="제목"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="noticeContent">내용</label>
+                                        <textarea class="form-control" id="noticeContent" rows="15" name="content"><%= noticeList.get(i).getContent() %></textarea>
+                                    </div>
+                                        <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success my-2" onclick="javascript: noticeInsert.action='/notice/update.admin';">수정</button>
+                                        <button type="submit" class="btn btn-danger my-2" onclick="javascript: noticeInsert.action='/notice/delete.admin';">삭제</button>
+                                        <button type="submit" class="btn btn-warning my-2" data-dismiss="modal" aria-label="Close">닫기</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                <!-- /Modal: 공지사항 출력 -->
 
 
                 <!--Grid row-->

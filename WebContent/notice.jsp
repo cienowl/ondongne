@@ -5,7 +5,13 @@
     JavaScript  - 이호준, 김나예, 한송희
 -->
 
+<%@page import="com.ondongne.dto.NoticeBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	List<NoticeBean> noticeList = (List<NoticeBean>) request.getAttribute("noticeList");
+    String dataTarget = null;
+%>
 
 <!DOCTYPE html>
 <html>
@@ -48,38 +54,60 @@
         <main>
 
             <div class="container my-5 pt-5">
+                <h1 class="font-weight-bold pb-2 mb-4">공지사항</h1>
 
                 <table class="table table-hover fadeIn">
                     <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                        <tr class="text-center">
+                            <th scope="col">글번호</th>
+                            <th scope="col">날짜</th>
+                            <th scope="col">제목</th>
+                            <th scope="col">내용</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                    <% for (int i = noticeList.size()-1; i >= 0; i--) { %>
+                    <% dataTarget = "#noticeList" + Integer.toString(i); %>
+                        <tr class="text-center" style="cursor: pointer;" data-toggle="modal" data-target="<%= dataTarget %>">
+                            <th scope="row"><%= noticeList.get(i).getId() %></th>
+                            <td><%= noticeList.get(i).getPostdate() %></td>
+                            <td><%= noticeList.get(i).getTitle() %></td>
+                            <td><%= noticeList.get(i).getContent() %></td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                    <% } %>
                     </tbody>
                 </table>
 
             </div>
+
+            <!-- Modal: 공지사항 출력 -->
+            <% for (int i = noticeList.size()-1; i >= 0; i--) { %>
+            <% dataTarget = "noticeList" + Integer.toString(i); %>
+            <div class="modal fade" id="<%= dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="font-weight-bold dark-grey-text mb-3 h3"><%= noticeList.get(i).getTitle() %></p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <h6 class="font-weight-bold deep-orange-text float-left">Admin</h6>
+                            <p class="font-weight-bold dark-grey-text float-right"><i class="fas fa-clock-o pr-2"></i><%= noticeList.get(i).getPostdate() %></p>
+                            <div class="clearfix"></div>
+                            <p class="dark-grey-text"><%= noticeList.get(i).getContent() %></p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary my-2" data-dismiss="modal" aria-label="Close">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+            <!-- /Modal: 공지사항 출력 -->
 
         </main>
 

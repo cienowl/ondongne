@@ -55,10 +55,10 @@ public class DataAccessUsers {
 	public int userUpdate(DataTransferUsers dtoUser) {
 		
 		sqlFactory = getConnection();
-		SqlSession sqlsession = sqlFactory.openSession();
-		int updateCount = sqlsession.update("userUpdate", dtoUser);
-		sqlsession.commit();
-		sqlsession.close();
+		SqlSession sqlSession = sqlFactory.openSession();
+		int updateCount = sqlSession.update("userUpdate", dtoUser);
+		sqlSession.commit();
+		sqlSession.close();
 
 		return updateCount;
 
@@ -67,8 +67,9 @@ public class DataAccessUsers {
 	public DataTransferUsers userSelectOne (String checkEmail) {
 
 		sqlFactory = getConnection();
-		SqlSession sqlsession = sqlFactory.openSession();
-		DataTransferUsers dto = sqlsession.selectOne("checkSignin", checkEmail);
+		SqlSession sqlSession = sqlFactory.openSession();
+		DataTransferUsers dto = sqlSession.selectOne("checkSignin", checkEmail);
+		sqlSession.close();
 
 		return dto;
 
@@ -77,10 +78,10 @@ public class DataAccessUsers {
 	public int deleteUser(String email) {	
 
 		sqlFactory = getConnection();
-		SqlSession sqlsession = sqlFactory.openSession();
-		int deleteCount = sqlsession.delete("userDelete", email);
-		sqlsession.commit();
-		sqlsession.close();
+		SqlSession sqlSession = sqlFactory.openSession();
+		int deleteCount = sqlSession.delete("userDelete", email);
+		sqlSession.commit();
+		sqlSession.close();
 
 		return deleteCount;
 

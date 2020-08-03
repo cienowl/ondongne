@@ -12,11 +12,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.ondongne.dto.NoticeBean;
 
 public class DataAccessNotice {
-	
-	static SqlSessionFactory sqlFactory;
 
 	private static DataAccessNotice instance;
-
 	public static DataAccessNotice getinstance() {
 
 		if(instance == null) {
@@ -27,6 +24,7 @@ public class DataAccessNotice {
 		return instance;
 	}
 
+	static SqlSessionFactory sqlFactory;
 	public static SqlSessionFactory getConnection() {
 		Reader reader;
 
@@ -59,8 +57,10 @@ public class DataAccessNotice {
 		SqlSession sqlSession = sqlFactory.openSession();
 		
 		List<NoticeBean> noticeList = sqlSession.selectList("selectNoticeAll");
+		sqlSession.close();
 		
 		return noticeList;
+		
 	}
 
 }

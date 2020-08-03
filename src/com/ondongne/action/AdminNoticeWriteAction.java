@@ -31,7 +31,7 @@ public class AdminNoticeWriteAction implements Action {
 		if (writeSuccess) {
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("dashboard.admin");
+			forward.setPath("../dashboard.admin");
 		} else {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();

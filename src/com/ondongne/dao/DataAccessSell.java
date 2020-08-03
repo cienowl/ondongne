@@ -56,6 +56,7 @@ public class DataAccessSell {
 		SqlSession sqlSession = sqlFactory.openSession();
 		
 		List<DataTransferSell> sellList = sqlSession.selectList("getSellPostAll");
+		sqlSession.close();
 		
 		return sellList;
 		

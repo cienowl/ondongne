@@ -70,12 +70,12 @@
 
             <div class="container my-5 pt-5">
                 <!--Section: Content-->
-                <section class="">
+                <section class="dark-grey-text">
 
                     <!-- Section heading -->
-                    <h3 class="font-weight-bold pb-2 mb-4">서비스소개 페이지</h3>
+                    <h2 class="font-weight-bold pb-2 mb-4">프로젝트 소개 페이지</h2>
                     <!-- Section description -->
-                    <p class="text-muted w-responsive mx-auto mb-5">ON동네를 만들고 있는 팀원들을 만나보세요!</p>
+                    <%-- <p class="text-muted w-responsive mx-auto mb-5">ON동네를 만들고 있는 팀원들을 만나보세요!</p> --%>
 
                     <!-- Grid row-->
                     <div class="row text-center text-md-left">

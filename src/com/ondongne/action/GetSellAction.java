@@ -25,7 +25,7 @@ public class GetSellAction implements Action {
 		
 		ActionForward forward = new ActionForward();	//ActionFoward 객체 생성
 		forward.setRedirect(true);
-   		forward.setPath("/sell.jsp");		//sell.jsp 로 이동
+   		forward.setPath("sell.jsp");		//sell.jsp 로 이동
 		
 		return forward;
 	}
