@@ -1,10 +1,14 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!--
 작성자:
     html        - 김나예
     css         - 김나예
     JavaScript  - 김나예
 -->
+
+
+<!-- TODO: 소모임 참여할때 작성자거나 이미 참여한 소모임은 참여하지 못하도록 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@page import="com.ondongne.dto.DataTransferCircle" %>
 <%@page import="java.util.List" %>
 
@@ -185,12 +189,12 @@
 				<% for(int i=0;i<circleList.size();i++) { %>
 				<% dataTarget = "circleList" + Integer.toString(i); %>
                 <!-- Modal: Card Content -->
-                <div class="modal fade" id="<%=dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="<%=dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-body p-0">
 
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                                     <span aria-hidden="true">&times;</span>
                                 </button>
 
@@ -209,6 +213,16 @@
                                             <li>
                                                 <p class="text-uppercase mb-2"><strong>작성자</strong></p>
                                                 <p class="text-muted mb-4"><a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= circleList.get(i).getEmail() %></a></p>
+                                                <% String writerEmail = circleList.get(i).getEmail(); %>
+                                                <%
+                                                	boolean check;
+                                                	if(writerEmail.equals((String)session.getAttribute("email"))){
+                                                		check=true;
+                                                	}else{
+                                                		check = false;
+                                                	}
+                                                %>
+                                                <input type="hidden" value=<%=check %> id="writer"/>
                                             </li>
 
                                             <li>
@@ -226,7 +240,11 @@
                                                 <a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= circleList.get(i).getEnd_date() %></a>
                                             </li>
                                         </ul>
-                                        <button type="submit" class="btn btn-outline-primary" style="position:absolute;" onclick="checksession();">참여하기</button>
+                                        <% if(check){ %>
+                                        <button type="submit" class="btn btn-outline-primary" style="position:absolute;" onclick="checksession();" id="joinCircle" disabled>참여하기</button>
+										<%} else{ %>
+										<button type="submit" class="btn btn-outline-primary" style="position:absolute;" onclick="checksession();" id="joinCircle" >참여하기</button>
+										<%} %>
 										</form>
                                     </div>
                                     <!-- Grid column -->
@@ -356,10 +374,8 @@
         	   	}	
         	}
         </script>
-        
-    
-      
 
+     
     </body>
 
 </html>
