@@ -44,7 +44,7 @@ public class JoinCircleAction implements Action {
 		else {
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("selectjoinpost.circle");
+			forward.setPath("mypage.ondongne");
 		}
 		
 		return forward;

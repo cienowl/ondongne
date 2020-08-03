@@ -27,8 +27,7 @@ public class GetJoinCircleAction implements Action {
 		
 		
 		ActionForward forward = new ActionForward();
-		forward.setRedirect(true);
-		forward.setPath("mypage.ondongne");
+		forward.setPath("mypage.jsp");
 		
 		return forward;
 	}

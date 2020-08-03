@@ -67,15 +67,15 @@ public class CircleFrontController extends HttpServlet
 				}
 			}
 			
-			// 소모임 참여를 했을 때 select 후 mypage에 출력
-			else if(command.equals("/selectjoinpost.circle")) {
-				action = new GetJoinCircleAction();
-				try {
-					forward = action.execute(request, response);
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
+//			// 소모임 참여를 했을 때 select 후 mypage에 출력
+//			else if(command.equals("/selectjoinpost.circle")) {
+//				action = new GetJoinCircleAction();
+//				try {
+//					forward = action.execute(request, response);
+//				}catch(Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
 			
 			
 			if (forward != null) {		
