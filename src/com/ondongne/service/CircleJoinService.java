@@ -1,10 +1,6 @@
 package com.ondongne.service;
 
-import java.util.List;
-
-import com.ondongne.dao.DataAccessCircle;
 import com.ondongne.dao.DataAccessCircleJoin;
-import com.ondongne.dto.DataTransferCircle;
 import com.ondongne.dto.DataTransferCircleJoin;
 
 public class CircleJoinService {
