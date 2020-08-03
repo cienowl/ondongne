@@ -33,5 +33,13 @@ public class CircleService {
 		return circleList;
 	}
 	
+	// 참여한 소모임만 마이페이지에 출력
+	public List<DataTransferCircle> selectJoinCircle(String loginEmail){
+		
+		DataAccessCircle daoCircle = DataAccessCircle.getinstance();
+		List<DataTransferCircle> joinCircleList = daoCircle.selectJoinCircle(loginEmail);
+		
+		return joinCircleList;
+	}
 	
 }

@@ -10,4 +10,8 @@
 	<select id="getCirclePostAll" resultType="com.ondongne.dto.DataTransferCircle">
 		select * from circle;
 	</select>
+	
+	<select id="getJoinCircle" parameterType="String" resultType="com.ondongne.dto.DataTransferCircle">
+		select title, email, event_date from circle where id=(select join_postid from helper_circle where join_email=#{loginEmail});
+	</select>
 </mapper>

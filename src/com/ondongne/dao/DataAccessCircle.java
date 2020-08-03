@@ -42,6 +42,7 @@ public class DataAccessCircle {
 		return sqlFactory;
 	}
 
+	//소모임 등록
 	public int circleInsert(DataTransferCircle dto) {
 		
 		sqlFactory = getConnection();
@@ -54,6 +55,7 @@ public class DataAccessCircle {
 		return insertCount;
 	}
 	
+	// 전체 소모임 출력
 	public List<DataTransferCircle> selectCircleAll(){
 		
 		sqlFactory = getConnection();
@@ -63,6 +65,17 @@ public class DataAccessCircle {
 		
 		return circleList;
 		
+	}
+	
+	// 참여한 소모임 출력
+	public List<DataTransferCircle> selectJoinCircle(String loginEmail){
+		
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		List<DataTransferCircle> joinCircleList = sqlsession.selectList("getJoinCircle", loginEmail);
+		
+		return joinCircleList;
 	}
 
 }

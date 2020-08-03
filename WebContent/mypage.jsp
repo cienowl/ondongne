@@ -8,8 +8,9 @@
 <%@page import="com.ondongne.dto.DataTransferCircleJoin" %>
 
 <%
-	List<DataTransferCircle> joinCircleList = (List<DataTransferCircle>)request.getAttribute("joinCircleList");
+	List<DataTransferCircle> joinCircleList = (List<DataTransferCircle>)request.getAttribute("circleList");
 %>
+
 <!DOCTYPE html>
 <html lang="en" ng-app="StarterApp">
   <head>
@@ -250,13 +251,13 @@
             <table class="table table-hover" style="padding-left:300px;">
 	            <thead>
 	                <tr>
-	                <th scope="col">소모임</th>
 	                <th scope="col">글제목</th>
 	                <th scope="col">작성자</th>
 	                <th scope="col">모임날짜</th>
 	                </tr>
 	            </thead>
 	            <tbody>
+                
 	                <%
 	                	for (int i=0;i<joinCircleList.size();i++){
 	                %>

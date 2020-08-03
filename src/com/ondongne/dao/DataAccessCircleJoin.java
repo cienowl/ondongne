@@ -2,6 +2,7 @@ package com.ondongne.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -48,5 +49,16 @@ public class DataAccessCircleJoin {
 		sqlsession.close();
 		
 		return insertCount;
+	}
+	
+	// 모든 참여게시물 출력 select
+	public List<DataTransferCircle> selectJoinCircleAll(){
+		
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		List<DataTransferCircle> joinCircleList = sqlsession.selectList("getJoinCircleAll");
+		
+		return joinCircleList;
 	}
 }
