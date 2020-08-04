@@ -60,8 +60,8 @@
                 <% for (int i = noticeList.size()-1; i >= 0; i--) { %>
                 <% dataTarget = "#noticeList" + Integer.toString(i); %>
                     <a href="#" class="list-group-item list-group-item-action" style="cursor: pointer;" data-toggle="modal" data-target="<%= dataTarget %>">
-                        <h5 class="pb-1 pt-3 font-weight-bold"><%= noticeList.get(i).getTitle() %></h5>
-                        <h6 class="pb-1 text-muted"><%= noticeList.get(i).getPostdate() %></h6>
+                        <h4 class="pb-1 pt-3"><%= noticeList.get(i).getTitle() %></h4>
+                        <h6 class="pb-2 text-muted"><%= noticeList.get(i).getPostdate() %></h6>
                     </a>
                 <% } %>
                 </div>

@@ -2,7 +2,7 @@
 작성자: 이호준, 김나예
 -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <% Cookie[] cookies = request.getCookies(); %>
 <%!
@@ -56,16 +56,6 @@
             </ul>
             <!-- Right -->
             <ul class="navbar-nav nav-flex-icons">
-                <%-- <li class="nav-item">
-                    <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                    </a>
-                </li> --%>
                 <li class="nav-item ml-1">
                     <a href="" class="nav-link" type="button" data-toggle="modal" data-target="#signinModal">
                     로그인
@@ -106,44 +96,33 @@
 
                     <input type="password" class="form-control my-3" id="signinPassword" placeholder="Password" name="signinPassword" required/>
 
-                    <div class="d-flex justify-content-around">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="storeEmail" name="storeEmail" value="true">
-                            <label class="custom-control-label" for="storeEmail">아이디 저장</label>
-                        </div>
-                        <div>
-                            <!--TODO:비밀번호 찾기-->
-                            <a href="">Forgot password?</a>
-                        </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="storeEmail" name="storeEmail" value="true">
+                        <label class="custom-control-label" for="storeEmail">아이디 저장</label>
                     </div>
+
                     <button type="submit" class="btn btn-unique btn-block my-4 waves-effect waves-light" id="signinSubmit" onclick="return signinValidate();">
-                    Sign in
+                        <h5 class="m-0">ON동네 시작하기</h5>
                     </button>
-                    <!-- Register -->
-                    <!--TODO:회원가입 모달창으로 이동-->
-                    <p>Not a member?
-                        <a href="" class="nav-link" type="button" data-toggle="modal" data-target="#signupModal">Register</a>
-                    </p>
 
                     <!-- Social login -->
                     <p>or sign in with:</p>
-
                     <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
                 </form>
                 <!-- signin form end -->
             </div>
 
             <div class="modal-footer">
-
-                <%-- <p class="small">
-                    <a href="bs_signup.html" target="_blank">아이디 찾기</a> <a href="bs_signup.html" target="_blank">비밀번호 찾기</a><br/>
-                </p> --%>
-
-                <!-- <button type="button" class="btn btn-secondary" data-sdismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button> -->
+                <div class="small" >
+                    <a href="">비밀번호 찾기</a>
+                    <!-- Register -->
+                    <!--TODO:회원가입 모달창으로 이동-->
+                    <a href="" class="nav-link" type="button" data-toggle="modal" data-target="#signupModal">Register</a>
+                </div>
             </div>
 
         </div>
@@ -165,21 +144,32 @@
 
             <div class="modal-body">
                 <!-- signup form -->
-                <form class="text-center p-2" action="signup.users" method="POST" name="userinfoInsert">
-                    <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="E-mail" onchange="test(signupEmail.value);"/>
+                <form class="text-center p-4" action="signup.users" method="POST" name="userinfoInsert">
+                    <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="E-mail" onchange="test(signupEmail.value);" required/>
                     <small id="checkDupEmail" class="form-text text-success mb-4" style="height: 19px;"></small>
 
-                    <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);"/>
+                    <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                         At least 8 characters and 1 digit
                     </small>
 
-                    <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="Check Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);"/>
+                    <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="Check Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
                     <small id="checkPassword" class="form-text text-danger" style="height: 19px;"></small>
 
-                    <div class="custom-control custom-checkbox small mt-4" >
-                        <input type="checkbox" class="custom-control-input" id="checkAgree" name="checkAgree"/>
-                        <label class="custom-control-label" for="checkAgree"></label>
+                    <button type="submit" class="btn btn-unique my-4 btn-block" onclick="return signupValidate();" >
+                        <h5 class="m-0">ON동네 회원가입</h5>
+                    </button>
+
+                    <p>or sign up with:</p>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
+                </div>
+
+                <div class="modal-footer">
+                    <div class="small" >
                         회원가입 시
                         <a href="privacy.ondongne" target="_blank">
                             개인정보 처리방침
@@ -189,34 +179,8 @@
                         </a>
                         을 확인하였으며, 동의합니다.<br/>
                     </div>
-
-                    <!-- <button type="submit" class="btn btn-primary btn-block">
-                        가입하기
-                    </button> -->
-
                 </div>
 
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info my-4 btn-block" onclick="return signupValidate();" >
-                        Sign up
-                    </button>
-                    <!-- Social register -->
-                    <p>or sign up with:</p>
-
-                    <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-                    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-                    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
-
-                    <hr>
-
-                    <!-- Terms of service -->
-                    <p>By clicking
-                        <em>Sign up</em> you agree to our
-                        <a href="" target="_blank">terms of service</a>
-                    </p>
-
-                </div>
             </form>
 
         </div>

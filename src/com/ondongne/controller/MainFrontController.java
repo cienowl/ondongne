@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
 import com.ondongne.action.GetJoinCircleAction;
+import com.ondongne.action.GetMyPageInfoAction;
 import com.ondongne.action.NoticeViewAction;
 import com.ondongne.dto.ActionForward;
 
@@ -55,9 +56,16 @@ public class MainFrontController extends HttpServlet {
 		}
 		
 		else if (command.equals("/mypage.ondongne")) {
-//			forward = new ActionForward();
-//			forward.setPath("mypage.jsp");
 			action = new GetJoinCircleAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if (command.equals("/mypagetest.ondongne")) {
+//			Mypage 테스트용
+			action = new GetMyPageInfoAction();
 			try {
 				forward = action.execute(request, response);
 			}catch(Exception e) {

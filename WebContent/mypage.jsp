@@ -12,7 +12,7 @@
 %>
 
 <!DOCTYPE html>
-<html lang="en" ng-app="StarterApp">
+<html ng-app="StarterApp">
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -67,11 +67,11 @@
     <!-- Header Start -->
     <header>
         <!-- Navbar signin form -->
-        <% if (session.getAttribute("email") != null) {%>
-            <jsp:include page="navbar_signon.jsp"/>
-        <%} else {%>
+        <%-- <% if (session.getAttribute("email") != null) {%> --%>
+        <jsp:include page="navbar_signon.jsp"/>
+        <%-- <%} else {%>
             <jsp:include page="navbar_signin.jsp"/>
-        <%} %>
+        <%} %> --%>
 
     <!--Side Nav-->
     <div class="sidebar-fixed position-fixed">

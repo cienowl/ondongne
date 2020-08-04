@@ -14,7 +14,7 @@
                 <h6>고객센터</h6>
                 <p class="text-justify">전화: 1544-흥예흥예 (평일 9:00-20:00)
                 <p class="text-justify">
-                (주)발라온동네<br/>
+                (주)비바온동네<br/>
                 사업자 등록번호 : 120-88-00000 | 대표 : 김동네<br/>
                 06130 서울특별시 강남구 테헤란로5길 24, 2층 (역삼동 635-10)</p>
             </div>
@@ -25,7 +25,7 @@
                     <li><a href="notice.ondongne">공지사항</a></li>
                     <li><a href="faq.ondongne">자주묻는질문</a></li>
                     <li><a href="terms.ondongne" target="_blank">이용약관</a></li>
-                    <li><a href="privacy.ondongne" target="_blank">개인정보취급방침</a></li>
+                    <li><a href="privacy.ondongne" target="_blank">개인정보처리방침</a></li>
                 </ul>
             </div>
 

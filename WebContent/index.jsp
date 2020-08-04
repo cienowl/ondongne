@@ -13,7 +13,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-        <title>ON동네 페이지</title>
+        <title>ON동네 - 메인페이지</title>
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
@@ -43,7 +43,7 @@
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 .navbar:not(.top-nav-collapse) {
-                    background: #1C2331!important;
+                    background: #1C2331 !important;
                 }
             }
         </style>
@@ -182,11 +182,11 @@
         <main>
 
             <!--Section: Content-->
-            <div class="container my-5 py-5 wow fadeIn">
-                <section class="pt-5">
+            <div class="container my-5 py-4 wow fadeIn">
+                <section class="py-5">
 
                     <!-- Section heading -->
-                    <h3 class="text-center font-weight-bold mb-5">서비스 소개</h3>
+                    <h1 class="text-center font-weight-bold dark-grey-text mb-5">서비스 소개</h1>
 
                     <!-- Grid row -->
                     <div class="row">
@@ -200,7 +200,7 @@
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
-                                    <a href="#!" class="black-text">우리동네 소모임</a>
+                                    <a href="#!" class="black-text"><h3>우리동네 소모임</h3></a>
                                     <!-- Text -->
                                     <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
                                     <%-- <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button> --%>
@@ -219,7 +219,7 @@
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
-                                    <a href="#!" class="black-text">우리동네 장터</a>
+                                    <a href="#!" class="black-text"><h3>우리동네 장터</h3></a>
                                     <!-- Text -->
                                     <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
                                     <%-- <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button> --%>
@@ -238,7 +238,7 @@
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
-                                    <a href="#!" class="black-text">우리동네 명소</a>
+                                    <a href="#!" class="black-text"><h3>우리동네 명소</h3></a>
                                     <!-- Text -->
                                     <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
                                     <%-- <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button> --%>
@@ -256,49 +256,82 @@
             <!--Section: Content-->
 
             <!-- Section: QnA -->
-            <div class="container my-5 py-5 wow fadeIn">
-                <section class="pb-5">
-                    <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">FAQ</h6>
-                    <!-- Section heading -->
-                    <h3 class="font-weight-bold black-text mb-4 pb-2 text-center">자주 묻는 질문</h3>
-                    <hr class="w-header">
-                    <!-- Section description -->
-                    <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">Got a question? We've got answers. If you have some other questions, see our support center.</p>
+            <div class="" style="background-color: #F2F2F2;">
+                <div class="container my-5 pt-5 wow fadeIn">
+                    <section class="pb-5">
+                        <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">FAQ</h6>
+                        <!-- Section heading -->
+                        <h1 class="font-weight-bold dark-grey-text mb-4 pb-2 text-center">자주 묻는 질문</h1>
+                        <hr class="w-header">
+                        <!-- Section description -->
+                        <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">Got a question? We've got answers. If you have some other questions, see our support center.</p>
 
-                    <div class="row text-center text-md-left">
-                        <div class="col-md-6 mb-4">
-                            <h5 class="font-weight-normal mb-3">What payment services do you support?</h5>
-                            <p class="text-muted">We accept all major credit cards.</p>
-                        </div>
+                        <div class="row text-center text-md-left">
+                            <div class="col-md-6 mb-4">
+                                <h5 class="font-weight-normal mb-3">What payment services do you support?</h5>
+                                <p class="text-muted">We accept all major credit cards.</p>
+                            </div>
 
-                        <div class="col-md-6 mb-4">
-                            <h5 class="font-weight-normal mb-3">Can I update my card details?</h5>
-                            <p class="text-muted">Yes. Go to the billing section of your dashboard and update your payment information.</p>
-                        </div>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="font-weight-normal mb-3">Can I update my card details?</h5>
+                                <p class="text-muted">Yes. Go to the billing section of your dashboard and update your payment information.</p>
+                            </div>
 
-                        <div class="col-md-6 mb-4">
-                            <h5 class="font-weight-normal mb-3">Is this a secure site for purchases?</h5>
-                            <p class="text-muted">Absolutely! We work with top payment companies which guarantees your safety and security. All billing information is stored on our payment processing partner which has the most stringent level of certification available in the payments industry.</p>
-                        </div>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="font-weight-normal mb-3">Is this a secure site for purchases?</h5>
+                                <p class="text-muted">Absolutely! We work with top payment companies which guarantees your safety and security. All billing information is stored on our payment processing partner which has the most stringent level of certification available in the payments industry.</p>
+                            </div>
 
-                        <div class="col-md-6 mb-4">
-                            <h5 class="font-weight-normal mb-3">Can I cancel my subscription?</h5>
-                            <p class="text-muted">You can cancel your subscription anytime in your account. Once the subscription is cancelled, you will not be charged next month. You will continue to have access to your account until your current subscription expires.</p>
-                        </div>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="font-weight-normal mb-3">Can I cancel my subscription?</h5>
+                                <p class="text-muted">You can cancel your subscription anytime in your account. Once the subscription is cancelled, you will not be charged next month. You will continue to have access to your account until your current subscription expires.</p>
+                            </div>
 
-                        <div class="col-md-6 mb-4">
-                            <h5 class="font-weight-normal mb-3">How long are your contracts?</h5>
-                            <p class="text-muted">Currently, we only offer monthly subscription. You can upgrade or cancel your monthly account at any time with no further obligation.</p>
-                        </div>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="font-weight-normal mb-3">How long are your contracts?</h5>
+                                <p class="text-muted">Currently, we only offer monthly subscription. You can upgrade or cancel your monthly account at any time with no further obligation.</p>
+                            </div>
 
-                        <div class="col-md-6 mb-4">
-                            <h5 class="font-weight-normal mb-3">Can I request refund?</h5>
-                            <p class="text-muted">Unfortunately, not. We do not issue full or partial refunds for any reason.</p>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="font-weight-normal mb-3">Can I request refund?</h5>
+                                <p class="text-muted">Unfortunately, not. We do not issue full or partial refunds for any reason.</p>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
             <!-- Section: QnA -->
+
+            <!-- Call to action -->
+            <div class="container my-4 py-5">
+                <section class="text-center px-md-5 mx-md-5 my-4 dark-grey-text">
+                    <h1 class="font-weight-bold mb-4 display-4">나에게 딱 맞는 동네정보 찾기</h1>
+                    <h4 class="text-center mx-auto">회원가입 후, 지금 가장 인기있는 동네 소식을 찾아보세요.</h4>
+
+                    <hr class="w-20 my-5">
+
+                    <%-- <div class="row">
+                        <div class="col-md-3">
+                            <img src="img/gu/dongjak.png" style="width:80px;"class="rounded mx-auto d-block" alt="">
+                        </div>
+                        <div class="col-md-3">.col-sm-3</div>
+                        <div class="col-md-3">.col-sm-3</div>
+                        <div class="col-md-3">.col-sm-3</div>
+                    </div> --%>
+
+                    <% if (session.getAttribute("email") != null) { %>
+                        <a class="btn btn-lg red darken-4" href="mypage.ondongne">
+                            <h4 class="m-2 font-weight-bold">마이페이지로 이동<i class="fas fa-arrow-right"></i></h4>
+                        </a>
+                    <% } else { %>
+                        <a class="btn btn-lg btn-unique" data-toggle="modal" data-target="#signupModal">
+                            <h5 class="m-2 font-weight-bold">지금 시작하기<i class="far fa-user ml-2"></i></h5>
+                        </a>
+                    <% } %>
+
+                </section>
+            </div>
+            <!-- Section: Call to action -->
 
         </main>
 
@@ -357,7 +390,7 @@
                 var inputEmail = document.getElementById("signupEmail");
                 var inputPassword1 = document.getElementById("signupPassword1");
                 var inputPassword2 = document.getElementById("signupPassword2");
-                var checkAgree = document.getElementById("checkAgree");
+                // var checkAgree = document.getElementById("checkAgree");
 
                 // alert(checkAgree.value);
 
@@ -416,11 +449,11 @@
                 }
 
                 //개인정보 처리방침과 이용약관에 동의하지 않았을 경우
-                if (checkAgree.checked == false) {
-                    alert("개인정보 처리방침과 이용약관에 동의해주세요.");
-                    checkAgree.focus();
-                    return false;
-                }
+                // if (checkAgree.checked == false) {
+                //     alert("개인정보 처리방침과 이용약관에 동의해주세요.");
+                //     checkAgree.focus();
+                //     return false;
+                // }
             }
 
             function check(regulationRule, targetObj, errorMessage) {//정규화데이터,아이템 id,메세지

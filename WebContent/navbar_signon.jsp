@@ -2,7 +2,7 @@
 작성자: 이호준, 김나예
 -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!--Navbar -->
 <%-- <nav class="mb-1 navbar navbar-expand-lg navbar-dark red darken-4 fixed-top"> --%>
@@ -41,28 +41,18 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto nav-flex-icons">
-                <!-- <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">
-                    <i class="fab fa-google-plus-g"></i>
-                </a>
-                </li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user"></i> <%= session.getAttribute("email") %>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
                         <a class="dropdown-item" href="mypage.ondongne">마이페이지</a>
+                        <a class="dropdown-item" href="mypagetest.ondongne">마이페이지테스트</a>
                         <a class="dropdown-item" href="signout.users">로그아웃</a>
                     </div>
                 </li>
             </ul>
         </div>
-
 
     </div>
 </nav>
