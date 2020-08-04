@@ -2,8 +2,6 @@ package com.ondongne.action;
 
 import java.io.PrintWriter;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,18 +10,19 @@ import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.DataTransferCircle;
 import com.ondongne.service.CircleService;
 
-public class PostCircleAction extends HttpServlet implements Action{
+public class UpdateCircleAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
 		
-		HttpSession session= request.getSession();
-		ActionForward forward = null;
+		HttpSession session = request.getSession();
+		ActionForward forward = new ActionForward();
 		DataTransferCircle circleBean = null;
 		
 		circleBean = new DataTransferCircle();
 		circleBean.setEmail((String)session.getAttribute("email"));
-		circleBean.setMem_number(request.getParameter("mem_number"));
+		circleBean.setId(Integer.parseInt(request.getParameter("postid")));
 		circleBean.setTitle(request.getParameter("title"));
 		circleBean.setRegion(request.getParameter("region"));
 		circleBean.setZipcode(request.getParameter("zipcode"));
@@ -33,11 +32,11 @@ public class PostCircleAction extends HttpServlet implements Action{
 		circleBean.setEnd_date(request.getParameter("end_date"));
 		circleBean.setGender(request.getParameter("gender"));
 		circleBean.setDescription(request.getParameter("description"));
-
 		
 		CircleService circleService = new CircleService();
-		boolean isWriteSuccess = circleService.registArticle(circleBean);
-		System.out.println(isWriteSuccess);
+		boolean isWriteSuccess = circleService.updateArticle(circleBean);
+		System.out.println("update"+isWriteSuccess);
+		
 		if(!isWriteSuccess){
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -51,8 +50,8 @@ public class PostCircleAction extends HttpServlet implements Action{
 			forward.setRedirect(true);
 			forward.setPath("view.circle");
 		}
-		return forward;
 		
+		return forward;
 	}
-
+	
 }

@@ -14,6 +14,7 @@ import com.ondongne.action.GetCircleAction;
 import com.ondongne.action.GetJoinCircleAction;
 import com.ondongne.action.JoinCircleAction;
 import com.ondongne.action.PostCircleAction;
+import com.ondongne.action.UpdateCircleAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.circle")
@@ -76,6 +77,22 @@ public class CircleFrontController extends HttpServlet
 //					e.printStackTrace();
 //				}
 //			}
+			
+			// 작성자가 소모임 게시글 수정버튼을 눌렀을 때
+			else if(command.equals("/postupdateform.circle")) {
+				forward = new ActionForward();
+				forward.setPath("/circleUpdateForm.jsp");
+			}
+			
+			// 작성자가 소모임 수정할 정보를 모두 입력하고 버튼을 눌렀을 때
+			else if(command.equals("/postupdate.circle")) {
+				action = new UpdateCircleAction();
+				try {
+					forward = action.execute(request, response);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
 			
 			
 			if (forward != null) {		

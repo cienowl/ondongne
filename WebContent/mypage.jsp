@@ -251,6 +251,7 @@
             <table class="table table-hover" style="padding-left:300px;">
 	            <thead>
 	                <tr>
+	                <th scope="col">NO.</th>
 	                <th scope="col">글제목</th>
 	                <th scope="col">작성자</th>
 	                <th scope="col">모임날짜</th>
@@ -262,6 +263,7 @@
 	                	for (int i=0;i<joinCircleList.size();i++){
 	                %>
 	                	<tr>
+	                		<td><%=i+1 %></td>
 	                		<th><%=joinCircleList.get(i).getTitle()%></th>
 	                		<td><%=joinCircleList.get(i).getEmail() %></td>
 	                		<td><%=joinCircleList.get(i).getEvent_date() %></td>

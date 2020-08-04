@@ -20,7 +20,7 @@ public class JoinCircleAction implements Action {
 		ActionForward forward = new ActionForward();
 		DataTransferCircleJoin circleBean = null;
 		
-		System.out.println((String)session.getAttribute("email"));
+//		System.out.println((String)session.getAttribute("email"));
 		
 		circleBean = new DataTransferCircleJoin();
 		circleBean.setJoin_email((String)session.getAttribute("email"));

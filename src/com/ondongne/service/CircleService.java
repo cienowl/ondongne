@@ -42,4 +42,19 @@ public class CircleService {
 		return joinCircleList;
 	}
 	
+	
+	// 작성자가 소모임 수정
+	public boolean updateArticle(DataTransferCircle circleBean) throws Exception{
+		
+		boolean isWriteSuccess = false;
+		
+		DataAccessCircle circleDAO = DataAccessCircle.getinstance();
+		int updateCount = circleDAO.circleUpdate(circleBean);
+		
+		if(updateCount>0) {
+			isWriteSuccess=true;
+		}
+		return isWriteSuccess;
+	}
+	
 }

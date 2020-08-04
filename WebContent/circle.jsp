@@ -201,28 +201,42 @@
                                 <!-- Grid row -->
                                 <div class="row">
                                     <!-- Grid column -->
-                                    
+                                    <% String writerEmail = circleList.get(i).getEmail(); %>
+	                                   <%
+		                                   	boolean check;
+		                                   	if(writerEmail.equals((String)session.getAttribute("email"))){
+		                                   		check=true;
+		                                   	}else{
+		                                   		check = false;
+		                                   	}
+	                                   %>
                                     <div class="col-md-6 py-5 pl-5">
+                                    	<% if(!check){ %>
 										<form action="postjoin.circle" method="POST">
+										<%} else { %>
+										<form action="" method="POST" >
+										<%} %>
+										<input type="hidden" name="postid" value="<%= circleList.get(i).getId()%>"/>
+										<input type="hidden" name="title" value="<%= circleList.get(i).getTitle() %>" />
+										<input type="hidden" name="memnumber" value="<%=circleList.get(i).getMem_number() %>"/>
+										<input type="hidden" name="region" value="<%=circleList.get(i).getRegion() %>" />
+										<input type="hidden" name="gender" value="<%=circleList.get(i).getGender()%>"/>
+										<input type="hidden" name="event_date" value="<%=circleList.get(i).getEvent_date()%>"/>
+										<input type="hidden" name="end_date" value="<%=circleList.get(i).getEnd_date()%>"/>
+										<input type="hidden" name="zipcode" value="<%=circleList.get(i).getZipcode() %>" />
+										<input type="hidden" name="address" value="<%=circleList.get(i).getAddress()%>"/>
+										<input type="hidden" name="address_detail" value="<%=circleList.get(i).getAddress_detail()%>"/>
+										<input type="hidden" name="description" value="<%=circleList.get(i).getDescription()%>"/>
+										
                                         <h5 class="font-weight-normal mb-3"><%= circleList.get(i).getTitle() %></h5>
 
                                         <p class="text-muted" style="overflow-y:scroll; height:100px;  word-break:break-all;"><%= circleList.get(i).getDescription() %></p>
-										<input type="hidden" name="postid" value="<%= circleList.get(i).getId()%>"/>
+										
 											
                                         <ul class="list-unstyled font-small mt-3">
                                             <li>
                                                 <p class="text-uppercase mb-2"><strong>작성자</strong></p>
-                                                <p class="text-muted mb-4"><a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= circleList.get(i).getEmail() %></a></p>
-                                                <% String writerEmail = circleList.get(i).getEmail(); %>
-                                                <%
-                                                	boolean check;
-                                                	if(writerEmail.equals((String)session.getAttribute("email"))){
-                                                		check=true;
-                                                	}else{
-                                                		check = false;
-                                                	}
-                                                %>
-                                                <input type="hidden" value=<%=check %> id="writer"/>
+                                                <p class="text-muted mb-4"><a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= circleList.get(i).getEmail() %></a></p>                                              
                                             </li>
 
                                             <li>
@@ -241,9 +255,10 @@
                                             </li>
                                         </ul>
                                         <% if(check){ %>
-                                        <button type="submit" class="btn btn-outline-primary" style="position:absolute;" onclick="checksession();" id="joinCircle" disabled>참여하기</button>
+                                        <button type="submit" class="btn btn-warning" onclick="javascript:form.action='postupdateform.circle'">수정하기</button>
+										<button type="submit" class="btn btn-danger" onclick="javascript:form.action='postdelete.circle'" > 삭제하기 </button>
 										<%} else{ %>
-										<button type="submit" class="btn btn-outline-primary" style="position:absolute;" onclick="checksession();" id="joinCircle" >참여하기</button>
+										<button type="submit" class="btn btn-primary" style="position:absolute;" onclick="checksession();">참여하기</button>
 										<%} %>
 										</form>
                                     </div>

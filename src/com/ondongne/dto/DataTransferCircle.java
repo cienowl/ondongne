@@ -18,6 +18,7 @@ public class DataTransferCircle {
 	private int end_age;
 	private String description;
 	private String tags;
+	private String mem_number;
 	
 	public int getId() {
 		return id;
@@ -109,6 +110,13 @@ public class DataTransferCircle {
 	public void setTags(String tags) {
 		this.tags = tags;
 	}
+	public String getMem_number() {
+		return mem_number;
+	}
+	public void setMem_number(String mem_number) {
+		this.mem_number = mem_number;
+	}
+	
 	
 	
 	

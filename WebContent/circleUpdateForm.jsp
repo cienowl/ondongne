@@ -13,7 +13,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-        <title>소모임 정보 입력</title>
+        <title>소모임 정보 수정</title>
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
@@ -327,21 +327,35 @@
 			
         </header>
         <!-- Header End -->
-
-
+		<%
+			int postid = (Integer.parseInt(request.getParameter("postid")));
+			String title = request.getParameter("title");
+			String memnumber = request.getParameter("memnumber");
+			String region = request.getParameter("region");
+			String gender = request.getParameter("gender");
+			String event_date = request.getParameter("event_date");
+			String end_date = request.getParameter("end_date");
+			String zipcode = request.getParameter("zipcode");
+			String address = request.getParameter("address");
+			String address_detail = request.getParameter("address_detail");
+			String description = request.getParameter("description");
+			
+		%>
+		
         <!-- Main Start -->
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn">
 
                 <div class="row mb-4">
-                    <h2>소모임 정보를 등록해주세요.</h2>
+                    <h2>수정할 소모임 정보를 입력해주세요.</h2>
                 </div>
 
-                <form action="postinsert.circle" method="POST">
+                <form action="postupdate.circle" method="POST">
+                	<input type="hidden" name="postid" value="<%=postid %>"/>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputTitle" >소모임 제목</label>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title"/>
+                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title" value="<%= title %>"/>
                             <label for="inputPhoto">사진등록</label>
                         </div>
                     </div>
@@ -349,8 +363,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="memnumber">인원수<small>(최대15명)</small></label>
-                            <select id="memnumber" class="form-control" name="mem_number">
-                                <option value="none" selected disabled>선택</option>
+                            <select id="memnumber" class="form-control" name="memnumber">
+                                <option value="<%=memnumber %>" selected><%=memnumber %>명</option>
                                 <option value="15">15명</option>
                                 <option value="14">14명</option>
                                 <option value="13">13명</option>
@@ -371,7 +385,7 @@
                         <div class="form-group col-md-6">
                             <label for="inputRegion">지역구</label>
                             <select id="inputRegion" class="form-control" name="region">
-                                <option selected disabled value="">선택</option>
+                                <option value="<%=region%>" selected><%=region %></option>
                                 <option>강남구</option>
                                 <option>강동구</option>
                                 <option>강북구</option>
@@ -404,27 +418,37 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="gender">성별</label><br/>
-                            <input type="radio" name="gender" value="male"/> 남
-                            <input class="ml-2" type="radio" name="gender" value="female"/> 여
-                            <input class="ml-2" type="radio" name="gender" value="none" checked/> 무관
+                            <% if(gender.equals("male")) { %>
+	                            <input type="radio" name="gender" value="male" checked/> 남
+	                            <input class="ml-2" type="radio" name="gender" value="female"/> 여
+	                            <input class="ml-2" type="radio" name="gender" value="none" /> 무관
+	                        <% } else if (gender.equals("female")) { %>
+	                        	<input type="radio" name="gender" value="male" /> 남
+	                            <input class="ml-2" type="radio" name="gender" value="female" checked/> 여
+	                            <input class="ml-2" type="radio" name="gender" value="none" /> 무관
+	                        <% } else { %>
+	                        	<input type="radio" name="gender" value="male" /> 남
+	                            <input class="ml-2" type="radio" name="gender" value="female" /> 여
+	                            <input class="ml-2" type="radio" name="gender" value="none" checked /> 무관
+	                            <% } %>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="circle_date">모집날짜</label>
-                            <input type="date" class="form-control" name="event_date"/>
+                            <input type="date" class="form-control" name="event_date" value="<%=event_date %>" />
                         </div>
                         <div class="form-group col-md-6">
                             <label for="circle_deadline">모집마감일</label>
-                            <input type="date" class="form-control" name="end_date"/>
+                            <input type="date" class="form-control" name="end_date" value="<%=end_date %>" />
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="sample4_postcode">우편번호</label>
-                            <input type="text" class="form-control" id="sample4_postcode" placeholder="우편번호" name="zipcode" readonly/>
+                            <input type="text" class="form-control" id="sample4_postcode" placeholder="우편번호" name="zipcode" value="<%=zipcode%>"readonly/>
                         </div>
                         <div class="form-group col-md-6" style="padding-top: 32px">
                             <label for="findAddress"></label>
@@ -435,12 +459,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="sample4_roadAddress">도로명주소</label>
-                            <input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" name="address" readonly/>
+                            <input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" name="address" value="<%=address%>"readonly/>
                         </div>
                         <span id="guide" style="color:#999;display:none"></span>
                         <div class="form-group col-md-6">
                             <label for="sample4_detailAddress">상세주소</label>
-                            <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" name="address_detail"/>
+                            <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" name="address_detail" value="<%=address_detail%>"/>
                         </div>
                         <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="display: none;"/>
                         <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="display: none;"/>
@@ -499,7 +523,7 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea3">소모임 관련 설명</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea3" rows="7" name="description"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea3" rows="7" name="description"><%=description%></textarea>
                     </div>
 
                     <div class="form-row">
@@ -516,7 +540,7 @@
 
                     <div class="form-row float-right">
                         <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
-                        <button type="submit" class="btn btn-lg btn-primary">등록</button>
+                        <button type="submit" class="btn btn-lg btn-primary">수정</button>
                         <button type="button" class="btn btn-lg btn-danger" href="view.circle">취소</button>
                     </div>
 

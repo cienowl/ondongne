@@ -77,5 +77,18 @@ public class DataAccessCircle {
 		
 		return joinCircleList;
 	}
+	
+	// 작성자가 소모임 수정
+	public int circleUpdate(DataTransferCircle dto) {
+		
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		int updateCount = sqlsession.update("circleUpdate", dto);
+		sqlsession.commit();
+		sqlsession.close();
+		
+		return updateCount;
+	}
 
 }
