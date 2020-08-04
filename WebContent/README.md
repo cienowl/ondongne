@@ -32,6 +32,9 @@
 * Other community or team contact
   Hojoon Lee, Naye Kim, Songhee Han, Jaehun Kim, Yongho Jeong
 
+## Colors
+https://color.adobe.com/ko/trends/Interaction
+
 ## JAVA
 
 * ORACLE JDK8.0

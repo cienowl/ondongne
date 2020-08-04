@@ -24,7 +24,6 @@ public class GetSellAction implements Action {
 		request.setAttribute("sellList", sellList);	//request 에 sellList 객체 추가		
 		
 		ActionForward forward = new ActionForward();	//ActionFoward 객체 생성
-		forward.setRedirect(true);
    		forward.setPath("sell.jsp");		//sell.jsp 로 이동
 		
 		return forward;

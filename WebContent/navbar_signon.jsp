@@ -1,11 +1,12 @@
 <!--
-작성자: 이호준
+작성자: 이호준, 김나예
 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark blue elegant-color fixed-top">
+<%-- <nav class="mb-1 navbar navbar-expand-lg navbar-dark red darken-4 fixed-top"> --%>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
     <div class="container">
         <a class="navbar-brand" href="index.jsp">ON동네</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"

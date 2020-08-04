@@ -125,23 +125,30 @@
                             <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
                                 <!-- Content -->
-                                <div class="text-center white-text mx-5 wow fadeIn">
-                                    <h1 class="mb-4">
-                                        <strong>Learn Bootstrap 4 with MDB</strong>
-                                    </h1>
+                                <div class="container">
+                                    <div class="white-text col-md-12 wow fadeIn">
+                                        <h1 class="display-4 mb-4">
+                                            <strong>우리동네의 모든것<br/>
+                                            ON동네에서 간편하게</strong>
+                                        </h1>
 
-                                    <p>
-                                        <strong>Best &amp; free guide of responsive web design</strong>
-                                    </p>
+                                        <p>
+                                            <strong>우리동네의 모임 &amp; 중고거래 &amp; HOT한 장소를 한눈에!</strong>
+                                        </p>
 
-                                    <p class="mb-4 d-none d-md-block">
-                                        <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and written versions
-                                        available. Create your own, stunning website.</strong>
-                                    </p>
-
-                                    <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start free tutorial
-                                        <i class="fas fa-graduation-cap ml-2"></i>
-                                    </a>
+                                        <p class="mb-4 d-none d-md-block">
+                                            <strong>지금 바로 가입하고 우리동네 소모임에 참여하거나 내가 찾는 중고제품을 찾아보세요! HIP한 카페나 맛집은 덤인 것이에요!</strong>
+                                        </p>
+                                        <% if (session.getAttribute("email") != null) { %>
+                                            <a class="btn btn-outline-white btn-lg" href="mypage.ondongne">마이페이지로 이동
+                                                <i class="fas fa-arrow-right"></i>
+                                            </a>
+                                        <% } else { %>
+                                            <a class="btn btn-outline-white btn-lg" data-toggle="modal" data-target="#signupModal">ON동네 시작하기
+                                                <i class="far fa-user ml-2"></i>
+                                            </a>
+                                        <% } %>
+                                    </div>
                                 </div>
                                 <!-- Content -->
 
@@ -158,12 +165,12 @@
 
                 <!--Controls-->
                 <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
                 </a>
                 <!--/.Controls-->
 
@@ -175,8 +182,8 @@
         <main>
 
             <!--Section: Content-->
-            <div class="container mt-5 wow fadeIn">
-                <section class="">
+            <div class="container my-5 py-5 wow fadeIn">
+                <section class="pt-5">
 
                     <!-- Section heading -->
                     <h3 class="text-center font-weight-bold mb-5">서비스 소개</h3>
@@ -187,7 +194,7 @@
                         <!-- Grid column -->
                         <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                             <!-- Card -->
-                            <div class="card hoverable">
+                            <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.circle';">
                                 <!-- Card image -->
                                 <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" alt="Card image cap">
                                 <!-- Card content -->
@@ -196,7 +203,7 @@
                                     <a href="#!" class="black-text">우리동네 소모임</a>
                                     <!-- Text -->
                                     <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
-                                    <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button>
+                                    <%-- <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button> --%>
                                 </div>
                             </div>
                             <!-- Card -->
@@ -206,7 +213,7 @@
                         <!-- Grid column -->
                         <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
                             <!-- Card -->
-                            <div class="card hoverable">
+                            <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.sell';">
                                 <!-- Card image -->
                                 <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/project4.jpg" alt="Card image cap">
                                 <!-- Card content -->
@@ -215,7 +222,7 @@
                                     <a href="#!" class="black-text">우리동네 장터</a>
                                     <!-- Text -->
                                     <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
-                                    <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button>
+                                    <%-- <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button> --%>
                                 </div>
                             </div>
                             <!-- Card -->
@@ -225,7 +232,7 @@
                         <!-- Grid column -->
                         <div class="col-lg-4 col-md-6 mb-0">
                             <!-- Card -->
-                            <div class="card hoverable">
+                            <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.hotplace';">
                                 <!-- Card image -->
                                 <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/88.jpg" alt="Card image cap">
                                 <!-- Card content -->
@@ -234,7 +241,7 @@
                                     <a href="#!" class="black-text">우리동네 명소</a>
                                     <!-- Text -->
                                     <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
-                                    <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button>
+                                    <%-- <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button> --%>
                                 </div>
                             </div>
                             <!-- Card -->
@@ -249,8 +256,8 @@
             <!--Section: Content-->
 
             <!-- Section: QnA -->
-            <div class="container my-5 wow fadeIn">
-                <section>
+            <div class="container my-5 py-5 wow fadeIn">
+                <section class="pb-5">
                     <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">FAQ</h6>
                     <!-- Section heading -->
                     <h3 class="font-weight-bold black-text mb-4 pb-2 text-center">자주 묻는 질문</h3>

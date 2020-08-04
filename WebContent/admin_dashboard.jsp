@@ -24,6 +24,8 @@
         <link href="css/mdb.min.css" rel="stylesheet"/>
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet"/>
+        <!-- Datatable -->
+        <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
 
         <!-- Modal scrolling place -->
         <style>
@@ -223,7 +225,7 @@
                                 공지사항 관리
                             </div>
                             <div class="card-body">
-                            <table id="foo-table" class="table table-hover" cellspacing="0" width="100%">
+                            <table id="noticeTable" class="table table-hover" cellspacing="0" width="100%">
                                 <thead class="thead-dark">
                                     <tr class="text-center">
                                         <th class="th">글번호</th>
@@ -1353,6 +1355,10 @@
         <script type="text/javascript">
             jQuery.noConflict();
         </script>
+        <!-- Datatable -->
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <!-- Datatable -->
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
@@ -1363,6 +1369,13 @@
         <script type="text/javascript">
             // Animations initialization
             new WOW().init();
+        </script>
+
+        <!-- Datatable -->
+        <script>
+        $(document).ready( function () {
+            $('#noticeTable').DataTable();
+        } );
         </script>
 
         <!-- Charts -->

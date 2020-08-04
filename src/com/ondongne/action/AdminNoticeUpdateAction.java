@@ -1,5 +1,7 @@
 package com.ondongne.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -30,9 +32,20 @@ public class AdminNoticeUpdateAction implements Action {
 
 			AdminService adminService = new AdminService();
 			boolean updateSuccess = adminService.updateNotice(noticeBean, adminId, adminPw);
-
-			if (updateSuccess) {
-				forward = new ActionForward();
+			
+			forward = new ActionForward();
+			
+			if (updateSuccess) {				
+				forward.setRedirect(true);
+				forward.setPath("../dashboard.admin");
+			} else {
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('공지사항 수정/삭제 실패')");	//에러 메세지 표시
+				out.println("history.back();");
+				out.println("</script>");
+				
 				forward.setRedirect(true);
 				forward.setPath("../dashboard.admin");
 			}
@@ -42,7 +55,7 @@ public class AdminNoticeUpdateAction implements Action {
 			forward.setPath("../index.admin");
 		}
 
-		return null;
+		return forward;
 	}
 
 }

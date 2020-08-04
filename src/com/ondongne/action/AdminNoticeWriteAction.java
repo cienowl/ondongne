@@ -17,17 +17,17 @@ public class AdminNoticeWriteAction implements Action {
 
 //		HttpSession session = request.getSession();
 		ActionForward forward = null;
-		
+
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		
+
 		NoticeBean noticeBean = new NoticeBean();
 		noticeBean.setTitle(title);
 		noticeBean.setContent(content);
-		
+
 		AdminService adminService = new AdminService();
 		boolean writeSuccess = adminService.postNotice(noticeBean);
-		
+
 		if (writeSuccess) {
 			forward = new ActionForward();
 			forward.setRedirect(true);
@@ -40,7 +40,7 @@ public class AdminNoticeWriteAction implements Action {
 			out.println("history.back();");
 			out.println("</script>");
 		}
-		
+
 		return forward;
 	}	
 

@@ -1,5 +1,5 @@
 <!--
-작성자: 이호준
+작성자: 이호준, 김나예
 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -16,13 +16,13 @@
 		}
 		return null;
 	}
-
 %>
 
 <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark blue elegant-color fixed-top">
+<%-- <nav class="mb-1 navbar navbar-expand-lg navbar-light fixed-top"> --%>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.jsp">ON동네</a>
+        <a class="navbar-brand" href="index.ondongne">ON동네</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
         aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -96,15 +96,15 @@
 
             <div class="modal-body">
                 <!-- signin form -->
-                <form class="text-center p-5" action="signin.users" method="POST" name="userinfoInsert">
-                        <% if (getCookieValue(cookies,"cookieEmail") != null) { %>
-                        <input type="email" class="form-control mb-4" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail" value="<%=getCookieValue(cookies,"cookieEmail") %>"  >
-                        <% } else { %>
-                        <input type="email" class="form-control mb-4" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail" value=""  >
-                        <% } %>
-                        <%-- <small id="checkEmail" class="form-text text-danger" style="height: 19px;"></small> --%>
+                <form class="text-center p-4" action="signin.users" method="POST" name="userinfoInsert">
+                    <% if (getCookieValue(cookies,"cookieEmail") != null) { %>
+                        <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail" value="<%=getCookieValue(cookies,"cookieEmail") %>" required/>
+                    <% } else { %>
+                        <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail" value="" required/>
+                    <% } %>
+                    <small id="checkEmail" class="form-text text-danger" style="height: 19px;"></small>
 
-                        <input type="password" class="form-control mb-4" id="signinPassword" placeholder="Password" name="signinPassword">
+                    <input type="password" class="form-control my-3" id="signinPassword" placeholder="Password" name="signinPassword" required/>
 
                     <div class="d-flex justify-content-around">
                         <div class="custom-control custom-checkbox">
@@ -116,7 +116,7 @@
                             <a href="">Forgot password?</a>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-info btn-block my-4 waves-effect waves-light" id="signinSubmit" onclick="return signinValidate();">
+                    <button type="submit" class="btn btn-unique btn-block my-4 waves-effect waves-light" id="signinSubmit" onclick="return signinValidate();">
                     Sign in
                     </button>
                     <!-- Register -->
@@ -165,7 +165,7 @@
 
             <div class="modal-body">
                 <!-- signup form -->
-                <form class="text-center p-5" action="signup.users" method="POST" name="userinfoInsert">
+                <form class="text-center p-2" action="signup.users" method="POST" name="userinfoInsert">
                     <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="E-mail" onchange="test(signupEmail.value);"/>
                     <small id="checkDupEmail" class="form-text text-success mb-4" style="height: 19px;"></small>
 
