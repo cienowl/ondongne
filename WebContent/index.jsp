@@ -320,7 +320,7 @@
                     </div> --%>
 
                     <% if (session.getAttribute("email") != null) { %>
-                        <a class="btn btn-lg red darken-4" href="mypage.ondongne">
+                        <a class="btn btn-lg btn-unique" href="mypage.ondongne">
                             <h4 class="m-2 font-weight-bold">마이페이지로 이동<i class="fas fa-arrow-right"></i></h4>
                         </a>
                     <% } else { %>
