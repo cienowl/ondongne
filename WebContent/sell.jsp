@@ -11,7 +11,7 @@
 <%
 	List<DataTransferSell> sellList = (List<DataTransferSell>) request.getAttribute("sellList");
     String dataTarget = null;
-    String sessionValue = (String) session.getAttribute("email");
+    String sessionEmail = (String) session.getAttribute("email");
 %>
 
 <!DOCTYPE html>
@@ -65,7 +65,7 @@
         <!--Main Navigation-->
         <header>
             <!-- Navbar signin form -->
-            <% if (sessionValue != null) {%>
+            <% if (sessionEmail != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
@@ -97,7 +97,7 @@
                         "carousel-item"
                     };
                     String writeButtonSelector = null;
-                    if (sessionValue == null) {
+                    if (sessionEmail == null) {
                         writeButtonSelector = "<a class=\"btn btn-outline-white btn-lg\" data-toggle=\"modal\" data-target=\"#signinModal\">판매글 쓰기";
                     } else {
                         writeButtonSelector = "<a class=\"btn btn-outline-white btn-lg\" href=\"postform.sell\">판매글 쓰기";

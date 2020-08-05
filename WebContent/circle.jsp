@@ -5,17 +5,16 @@
     JavaScript  - 김나예
 -->
 
-
 <!-- TODO: 소모임 참여할때 작성자거나 이미 참여한 소모임은 참여하지 못하도록 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@page import="com.ondongne.dto.DataTransferCircle" %>
-<%@page import="java.util.List" %>
-
+<%@page import="com.ondongne.dto.DataTransferCircle"%>
+<%@page import="java.util.List"%>
 
 <%
 	List<DataTransferCircle> circleList = (List<DataTransferCircle>) request.getAttribute("circleList");
 	String dataTarget = null;
+    String sessionEmail = (String) session.getAttribute("email");
 %>
 
 <!DOCTYPE html>
@@ -53,15 +52,9 @@
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 .navbar:not(.top-nav-collapse) {
-                    background: #1C2331 !important;
+                    background: #880e4f !important;
                 }
             }
-            /* 다른 색상 네비바
-            @media (min-width: 800px) and (max-width: 850px) {
-                .navbar:not(.top-nav-collapse) {
-                    background: #929FBA !important;
-                }
-            } */
         </style>
         <style>
             .modal-open .navbar-expand-lg {
@@ -69,7 +62,6 @@
             }
         </style>
 
- 
     </head>
 
     <body>
@@ -77,7 +69,7 @@
         <!--Main Navigation-->
         <header>
             <!-- Navbar signin form -->
-            <% if (session.getAttribute("email") != null) {%>
+            <% if (sessionEmail != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
@@ -108,6 +100,12 @@
                         "carousel-item",
                         "carousel-item"
                     };
+                    String writeButtonSelector = null;
+                    if (sessionEmail == null) {
+                        writeButtonSelector = "<a class=\"btn btn-outline-white btn-lg\" data-toggle=\"modal\" data-target=\"#signinModal\">소모임 글쓰기";
+                    } else {
+                        writeButtonSelector = "<a class=\"btn btn-outline-white btn-lg\" href=\"postform.circle\">소모임 글쓰기";
+                    }
                     %>
                     <% for (int i = 0; i < 3; i++) { %>
                         <!-- slide -->
@@ -133,7 +131,7 @@
                                         available. Create your own, stunning website.</strong>
                                     </p>
 
-                                    <a class="btn btn-outline-white btn-lg" onclick="checksession();">소모임 글쓰기
+                                    <%= writeButtonSelector %>
                                         <i class="fas fa-pen ml-2"></i>
                                     </a>
                                 </div>
@@ -190,7 +188,7 @@
                 </style>
 				<% for(int i=0;i<circleList.size();i++) { %>
 				<% dataTarget = "circleList" + Integer.toString(i); %>
-				
+
                 <!-- Modal: Card Content -->
                 <div class="modal fade" id="<%=dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -203,26 +201,25 @@
                                 <!-- Grid row -->
                                 <div class="row">
                                     <!-- Grid column -->
-                                    
+
                                     <!-- 작성자일때 check=true -->
                                     <% String writerEmail = circleList.get(i).getEmail(); %>
-	                                   <%
-		                                   	boolean check;
-		                                   	if(writerEmail.equals((String)session.getAttribute("email"))){
-		                                   		check=true;
-		                                   	}else{
-		                                   		check = false;
-		                                   	}
-	                                   %>
+                                        <%
+                                            boolean check;
+                                            if (writerEmail.equals(sessionEmail)) {
+                                                check=true;
+                                            } else {
+                                                check = false;
+                                            }
+                                        %>
                                     <div class="col-md-6 py-5 pl-5">
-                                    	<% if(!check){ %>
-										<form action="postjoin.circle" method="POST" name="form01">
-										
-										<%} else { %>
-										<form action="" method="POST" name="form01">
-										<%} %>
-									
-										<input type="hidden" name="postid"  id="postid" value="<%= circleList.get(i).getId()%>"/>								
+                                        <% if (!check) { %>
+                                            <form action="postjoin.circle" method="POST" name="form01">
+										<% } else { %>
+                                            <form action="" method="POST" name="form01">
+										<% } %>
+
+										<input type="hidden" name="postid"  id="postid" value="<%= circleList.get(i).getId()%>"/>
 										<input type="hidden" name="title" value="<%= circleList.get(i).getTitle() %>" />
 										<input type="hidden" name="memnumber" value="<%=circleList.get(i).getMem_number() %>"/>
 										<input type="hidden" name="region" value="<%=circleList.get(i).getRegion() %>" />
@@ -233,16 +230,16 @@
 										<input type="hidden" name="address" value="<%=circleList.get(i).getAddress()%>"/>
 										<input type="hidden" name="address_detail" value="<%=circleList.get(i).getAddress_detail()%>"/>
 										<input type="hidden" name="description" value="<%=circleList.get(i).getDescription()%>"/>
-										
+
                                         <h5 class="font-weight-normal mb-3"><%= circleList.get(i).getTitle() %></h5>
 
                                         <p class="text-muted" style="overflow-y:scroll; height:100px;  word-break:break-all;"><%= circleList.get(i).getDescription() %></p>
-										
-											
+
+
                                         <ul class="list-unstyled font-small mt-3">
                                             <li>
                                                 <p class="text-uppercase mb-2"><strong>작성자</strong></p>
-                                                <p class="text-muted mb-4"><a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= circleList.get(i).getEmail() %></a></p>                                              
+                                                <p class="text-muted mb-4"><a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= circleList.get(i).getEmail() %></a></p>
                                             </li>
 
                                             <li>
@@ -260,17 +257,16 @@
                                                 <a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%= circleList.get(i).getEnd_date() %></a>
                                             </li>
                                         </ul>
-                                        <% if(check){ %>
-                                        <button type="submit" class="btn btn-warning" onclick="javascript:form.action='postupdateform.circle'">수정하기</button>
-										<button type="button" class="btn btn-danger" onclick="delete_check(this.form)">삭제하기</button>
-										<%} else{ %>
-										<button type="submit" class="btn btn-primary" style="position:absolute;" onclick="checksession(); duplicateCheck(postid); ">참여하기</button>
-										<%} %>
-		
+                                        <% if (check) { %>
+                                            <button type="submit" class="btn btn-warning" onclick="javascript:form.action='postupdateform.circle'">수정하기</button>
+                                            <button type="button" class="btn btn-danger" onclick="delete_check(this.form)">삭제하기</button>
+										<% } else { %>
+                                            <button type="submit" class="btn btn-primary" style="position:absolute;" onclick="checksession(); duplicateCheck(postid); ">참여하기</button>
+										<% } %>
+
 										</form>
                                     </div>
                                     <!-- Grid column -->
-                                    
 
                                     <!-- Grid column -->
                                     <div class="col-md-6">
@@ -289,12 +285,12 @@
                         </div>
                     </div>
                 </div>
-            
-            
+
+
                 <!-- Modal end -->
 
                 <% } %>
-				
+
                 <!--Tab panels-->
                 <div class="tab-content mb-5">
 
@@ -303,7 +299,7 @@
 
                         <!-- Grid row -->
                         <div class="row">
-						
+
 						<% for (int i=0;i<circleList.size();i++){ %>
 							<% dataTarget = "#circleList" + Integer.toString(i); %>
                             <!-- Grid column 1 -->
@@ -324,7 +320,7 @@
                                 <!-- Card -->
                             </div>
                             <!-- Grid column  -->
-                       	<% } %>
+                        <% } %>
 
                         </div>
                         <!-- Grid row -->
@@ -337,7 +333,7 @@
                 </section>
                 <!-- Section -->
 
-              </div>
+            </div>  
 
 
         </main>
@@ -358,7 +354,7 @@
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <!-- Optional JavaScript -->
-      
+
 
         <!-- cards effect -->
         <script>
@@ -376,57 +372,47 @@
                 });
             });
         </script>
-    
- 		<!-- Initializations -->
+
+        <!-- Initializations -->    
         <script type="text/javascript">
             // Animations initialization
             new WOW().init();
         </script>
-        
+
         <!-- login check -->
         <script>
-        
-        	function checksession(){
-
-        		var checksession = '<%= (String)session.getAttribute("email") %>';
-        		
-        	   	if(checksession=="null"){
-        	   		alert("로그인 모달창");
-			
-        	   	}
-        	   	else{
-        	   		window.location.href='postform.circle';
-        	   	}	
-        	}
+            function checksession(){
+                var checksession = '<%= (String)session.getAttribute("email") %>';
+                if (checksession=="null") {
+                    alert("로그인 모달창");
+                } else {
+                    window.location.href='postform.circle';
+                }
+            }
         </script>
-       
-       
-       
-       <!-- 작성자가 게시글 삭제하기 눌렀을 때 confirm -->
-       <script>
-       		function delete_check(form){
-       			console.log("글번호"+form.postid.value);
-       			var check = confirm("정말로 삭제하시겠습니까?");
-       			
-       			if(check==true){
-       				window.location.href="postdelete.circle?postid="+form.postid.value;
-       			}else if(check==false){
-       				alert("삭제가 취소되었습니다.");
-       			}
-       			
-       		}
-       </script>
-       
-       <!-- 참여버튼을 눌렀을 때 이미 참여한 소모임인지 check -->
-       <script>
-       		function duplicateCheck(postid){
-       			console.log(postid+"");
-       			var signedEmail = <%= (String)session.getAttribute("email") %>;
-       			//location.href=".jsp?postid="+postid;
-       		}
-       </script>
 
-     
+        <!-- 작성자가 게시글 삭제하기 눌렀을 때 confirm -->
+        <script>
+            function delete_check(form){
+                console.log("글번호"+form.postid.value);
+                var check = confirm("정말로 삭제하시겠습니까?");
+                if(check==true){
+                    window.location.href="postdelete.circle?postid="+form.postid.value;
+                }else if(check==false){
+                    alert("삭제가 취소되었습니다.");
+                }
+            }
+        </script>
+
+        <!-- 참여버튼을 눌렀을 때 이미 참여한 소모임인지 check -->
+        <script>
+            function duplicateCheck(postid){
+                console.log(postid+"");
+                var signedEmail = <%= (String)session.getAttribute("email") %>;
+                //location.href=".jsp?postid="+postid;
+            }
+        </script>
+
     </body>
 
 </html>
