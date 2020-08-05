@@ -4,6 +4,12 @@
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<style>
+    .top-nav-collapse {
+        background: #880e4f !important;
+    }
+</style>
+
 <!--Navbar -->
 <%-- <nav class="mb-1 navbar navbar-expand-lg navbar-dark red darken-4 fixed-top"> --%>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">

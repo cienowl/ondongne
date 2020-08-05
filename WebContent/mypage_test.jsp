@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@page import="java.util.*" %>
-<%@page import="org.apache.ibatis.session.SqlSessionFactory" %>
+<%@page import="java.util.*"%>
+<%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 
-<%@page import="com.ondongne.dto.DataTransferCircle" %>
-<%@page import="com.ondongne.dto.DataTransferCircleJoin" %>
+<%@page import="com.ondongne.dto.DataTransferCircle"%>
+<%@page import="com.ondongne.dto.DataTransferCircleJoin"%>
 
 <%
 	List<DataTransferCircle> joinCircleList = (List<DataTransferCircle>)request.getAttribute("circleList");
@@ -32,6 +32,11 @@
         <style>
             .modal-open .navbar-expand-lg {
                 padding-right: 16px !important;
+            }
+        </style>
+        <style>
+            .navbar {
+                background: #880e4f !important;
             }
         </style>
 
@@ -125,7 +130,13 @@
                         <div class="card sticky-top">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+                            <%-- <img class="card-img-top img-fluid rounded-circle hoverable zoom" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap"> --%>
+                            <div class="view overlay zoom">
+                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid" alt="zoom">
+                                <div class="mask flex-center waves-effect waves-light">
+                                    <p class="white-text">사진 변경</p>
+                                </div>
+                            </div>
 
                             <!-- Card content -->
                             <div class="card-body">

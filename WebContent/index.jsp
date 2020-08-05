@@ -5,7 +5,7 @@
     JavaScript  - 이호준, 김나예, 한송희
 -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -43,8 +43,13 @@
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 .navbar:not(.top-nav-collapse) {
-                    background: #1C2331 !important;
+                    background: #880e4f !important;
                 }
+            }
+        </style>
+        <style>
+            .modal-open .navbar-expand-lg {
+                padding-right: 16px !important;
             }
         </style>
 <%--
@@ -71,11 +76,11 @@
         </style>
 --%>
         <!-- Modal scrolling place -->
-        <style>
+        <%-- <style>
             .modal-open .navbar-expand-lg {
                 padding-right: 16px !important;
             }
-        </style>
+        </style> --%>
 
     </head>
 
@@ -343,6 +348,18 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+
+        <%-- <script>
+        $(document).ready(function(){
+            $(function () {
+                $(document).scroll(function () {
+                    var $nav = $(".navbar-fixed-top");
+                    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+                });
+            });
+        });
+        </script> --%>
+
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->

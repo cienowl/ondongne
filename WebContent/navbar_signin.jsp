@@ -18,6 +18,12 @@
 	}
 %>
 
+<style>
+    .top-nav-collapse {
+        background: #880e4f !important;
+    }
+</style>
+
 <!--Navbar -->
 <%-- <nav class="mb-1 navbar navbar-expand-lg navbar-light fixed-top"> --%>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">

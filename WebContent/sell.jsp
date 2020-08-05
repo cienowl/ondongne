@@ -11,6 +11,7 @@
 <%
 	List<DataTransferSell> sellList = (List<DataTransferSell>) request.getAttribute("sellList");
     String dataTarget = null;
+    String sessionValue = (String) session.getAttribute("email");
 %>
 
 <!DOCTYPE html>
@@ -48,15 +49,9 @@
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 .navbar:not(.top-nav-collapse) {
-                    background: #1C2331 !important;
+                    background: #880e4f !important;
                 }
             }
-            /* 다른 색상 네비바
-            @media (min-width: 800px) and (max-width: 850px) {
-                .navbar:not(.top-nav-collapse) {
-                    background: #929FBA !important;
-                }
-            } */
         </style>
         <style>
             .modal-open .navbar-expand-lg {
@@ -70,7 +65,7 @@
         <!--Main Navigation-->
         <header>
             <!-- Navbar signin form -->
-            <% if (session.getAttribute("email") != null) {%>
+            <% if (sessionValue != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
@@ -101,7 +96,14 @@
                         "carousel-item",
                         "carousel-item"
                     };
+                    String writeButtonSelector = null;
+                    if (sessionValue == null) {
+                        writeButtonSelector = "<a class=\"btn btn-outline-white btn-lg\" data-toggle=\"modal\" data-target=\"#signinModal\">판매글 쓰기";
+                    } else {
+                        writeButtonSelector = "<a class=\"btn btn-outline-white btn-lg\" href=\"postform.sell\">판매글 쓰기";
+                    }
                     %>
+
                     <% for (int i = 0; i < 3; i++) { %>
                         <!-- slide -->
                         <div class="<%= carouselClass[i] %>">
@@ -126,7 +128,7 @@
                                         available. Create your own, stunning website.</strong>
                                     </p>
 
-                                    <a class="btn btn-outline-white btn-lg" onclick="checksession();" >판매/경매글 쓰기
+                                    <%= writeButtonSelector %>
                                         <i class="fas fa-pen ml-2"></i>
                                     </a>
                                 </div>
@@ -252,35 +254,7 @@
                 </div>
                 <!-- Modal end -->
                 <% } %>
-<%--
-                <h6 class="font-weight-bold text-center grey-text text-uppercase small mb-4">portfolio</h6>
-                <h3 class="font-weight-bold text-center dark-grey-text pb-2">Product Designs</h3>
-                <hr class="w-header my-4">
-                <p class="lead text-center text-muted pt-2 mb-5">You can find several product design by our professional team in this section.</p>
 
-                <!--First row-->
-                <div class="row">
-
-                    <!--First column: filter button-->
-                    <div class="col-12 my-4">
-                        <!-- Nav tabs -->
-                        <ul class="nav md-pills flex-center flex-wrap mx-0" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active font-weight-bold text-uppercase" data-toggle="tab" href="#panel31" role="tab">전체</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link font-weight-bold text-uppercase" data-toggle="tab" href="#panel32" role="tab">소모임</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link font-weight-bold text-uppercase" data-toggle="tab" href="#panel33" role="tab">판매</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--First column-->
-
-                </div>
-                <!--First row-->
---%>
                 <!-- Tab panels -->
                 <div class="tab-content mb-5">
                     <!--Panel 1-->
@@ -317,175 +291,7 @@
                     <!--Panel 1-->
                 </div>
                 <!-- Tab panels -->
-<%--
-                    <!--Panel 2-->
-                    <div class="tab-pane fade" id="panel32" role="tabpanel">
 
-                        <!-- Grid row -->
-                        <div class="row">
-
-                            <!-- Grid column -->
-                            <div class="col-md-6 col-lg-3">
-                                <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-                                    <!-- Card image -->
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img9.jpg" alt="Card image cap">
-                                    <!-- Card content -->
-                                    <div class="card-body">
-                                        <h5 class="mb-3">글제목1</h5>
-                                        <p class="font-small grey-text mb-2">Anna Smith</p>
-                                        <p class="card-text mb-3">내용내용내용</p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>
-                                    </div>
-                                </a>
-                                <!-- Card -->
-                            </div>
-                            <!-- Grid column -->
-
-                            <!-- Grid column -->
-                            <div class="col-md-6 col-lg-3">
-                                <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-                                    <!-- Card image -->
-                                    <img class="card-img-top" src=" https://mdbootstrap.com/img/Photos/Others/img4.jpg" alt="Card image cap">
-                                    <!-- Card content -->
-                                    <div class="card-body">
-                                        <h5 class="mb-3">글제목1</h5>
-                                        <p class="font-small grey-text mb-2">Anna Smith</p>
-                                        <p class="card-text mb-3">내용내용내용</p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>
-                                    </div>
-                                </a>
-                                <!-- Card -->
-                            </div>
-                            <!-- Grid column -->
-
-                            <!-- Grid column -->
-                            <div class="col-md-6 col-lg-3">
-                                <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-                                    <!-- Card image -->
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" alt="Card image cap">
-                                    <!-- Card content -->
-                                    <div class="card-body">
-                                        <h5 class="mb-3">글제목1</h5>
-                                        <p class="font-small grey-text mb-2">Anna Smith</p>
-                                        <p class="card-text mb-3">내용내용내용</p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>
-                                    </div>
-                                </a>
-                                <!-- Card -->
-                            </div>
-                            <!-- Grid column -->
-
-                            <!-- Grid column -->
-                            <div class="col-md-6 col-lg-3">
-                                <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-                                    <!-- Card image -->
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" alt="Card image cap">
-                                    <!-- Card content -->
-                                    <div class="card-body">
-                                        <h5 class="mb-3">글제목1</h5>
-                                        <p class="font-small grey-text mb-2">Anna Smith</p>
-                                        <p class="card-text mb-3">내용내용내용</p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="fa fa-clock-o"></i>27/08/2019</p>
-                                    </div>
-                                </a>
-                                <!-- Card -->
-                            </div>
-                            <!-- Grid column -->
-
-                        </div>
-                        <!-- Grid row -->
-
-                    </div>
-                    <!--Panel 2-->
-
-                    <!--Panel 3-->
-                    <div class="tab-pane fade" id="panel33" role="tabpanel">
-
-                      <!-- Grid row -->
-                      <div class="row">
-
-                        <!-- Grid column -->
-                        <div class="col-md-12 col-lg-4">
-
-                          <!-- Card -->
-                          <div class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-
-                            <!-- Card image -->
-                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" alt="Card image cap">
-
-                            <!-- Card content -->
-                            <div class="card-body">
-
-                              <h5 class="my-3">Phone Bag</h5>
-                              <p class="card-text text-uppercase mb-3">Bag, Box</p>
-
-                            </div>
-
-                          </div>
-                          <!-- Card -->
-
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-6 col-lg-4">
-
-                          <!-- Card -->
-                          <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-
-                            <!-- Card image -->
-                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img5.jpg" alt="Card image cap">
-
-                            <!-- Card content -->
-                            <div class="card-body">
-
-                              <h5 class="my-3">Notes</h5>
-                              <p class="card-text text-uppercase mb-3">Note</p>
-
-                            </div>
-
-                          </a>
-                          <!-- Card -->
-
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-6 col-lg-4">
-
-                          <!-- Card -->
-                          <a class="card hoverable mb-4" data-toggle="modal" data-target="#basicExampleModal">
-
-                            <!-- Card image -->
-                            <img class="card-img-top" src=" https://mdbootstrap.com/img/Photos/Others/img10.jpg" alt="Card image cap">
-
-                            <!-- Card content -->
-                            <div class="card-body">
-
-                              <h5 class="my-3">T-shirt</h5>
-                              <p class="card-text text-uppercase mb-3">Box</p>
-
-                            </div>
-
-                          </a>
-                          <!-- Card -->
-
-                        </div>
-                        <!-- Grid column -->
-
-                      </div>
-                      <!-- Grid row -->
-
-                    </div>
-                    <!--Panel 3-->
-
-                    </div>
-                    <!--Tab panels-->
---%>
                 </section>
                 <!-- Section -->
 
@@ -501,19 +307,6 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="js/popper.min.js"></script>
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
-
-        <!-- Initializations -->
-        <script type="text/javascript">
-            // Animations initialization
-            new WOW().init();
-        </script>
-
         <!-- cards effect -->
         <script>
             $(function () {
@@ -530,19 +323,17 @@
                 });
             });
         </script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
 
-        <!-- login check -->
-        <script>
-            function checksession(){
-
-                var checksession = '<%= (String)session.getAttribute("email") %>';
-
-         	   	if (checksession=="null") {
-        	   		alert("로그인 모달창");
-        	   	} else {
-        	   	    window.location.href='postform.sell';
-        	   	}
-        	}
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
         </script>
 
     </body>
