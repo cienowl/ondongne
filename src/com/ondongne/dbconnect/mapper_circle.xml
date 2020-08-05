@@ -18,4 +18,8 @@
 	<update id="circleUpdate" parameterType="com.ondongne.dto.DataTransferCircle">
 		update circle set title=#{title}, region=#{region}, zipcode=#{zipcode}, address=#{address}, address_detail=#{address_detail}, event_date=#{event_date}, end_date=#{end_date}, gender=#{gender}, description=#{description} where id=#{id};
 	</update>
+	
+	<delete id="circleDelete" parameterType="com.ondongne.dto.DataTransferCircle">
+		delete from circle where id=#{id} AND email=#{email};
+	</delete>
 </mapper>

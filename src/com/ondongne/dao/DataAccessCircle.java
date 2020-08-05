@@ -78,7 +78,7 @@ public class DataAccessCircle {
 		return joinCircleList;
 	}
 	
-	// 작성자가 소모임 수정
+	// 작성자가 게시글 수정
 	public int circleUpdate(DataTransferCircle dto) {
 		
 		sqlFactory = getConnection();
@@ -89,6 +89,18 @@ public class DataAccessCircle {
 		sqlsession.close();
 		
 		return updateCount;
+	}
+	
+	// 작성자가 게시글 삭제
+	public int circleDelete(DataTransferCircle dto) {
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		int deleteCount = sqlsession.delete("circleDelete", dto);
+		sqlsession.commit();
+		sqlsession.close();
+		
+		return deleteCount;
 	}
 
 }

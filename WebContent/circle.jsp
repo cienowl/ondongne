@@ -68,6 +68,8 @@
                 padding-right: 16px !important;
             }
         </style>
+
+ 
     </head>
 
     <body>
@@ -188,12 +190,12 @@
                 </style>
 				<% for(int i=0;i<circleList.size();i++) { %>
 				<% dataTarget = "circleList" + Integer.toString(i); %>
+				
                 <!-- Modal: Card Content -->
                 <div class="modal fade" id="<%=dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-body p-0">
-
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -201,6 +203,8 @@
                                 <!-- Grid row -->
                                 <div class="row">
                                     <!-- Grid column -->
+                                    
+                                    <!-- 작성자일때 check=true -->
                                     <% String writerEmail = circleList.get(i).getEmail(); %>
 	                                   <%
 		                                   	boolean check;
@@ -212,11 +216,13 @@
 	                                   %>
                                     <div class="col-md-6 py-5 pl-5">
                                     	<% if(!check){ %>
-										<form action="postjoin.circle" method="POST">
+										<form action="postjoin.circle" method="POST" name="form01">
+										
 										<%} else { %>
-										<form action="" method="POST" >
+										<form action="" method="POST" name="form01">
 										<%} %>
-										<input type="hidden" name="postid" value="<%= circleList.get(i).getId()%>"/>
+									
+										<input type="hidden" name="postid"  id="postid" value="<%= circleList.get(i).getId()%>"/>								
 										<input type="hidden" name="title" value="<%= circleList.get(i).getTitle() %>" />
 										<input type="hidden" name="memnumber" value="<%=circleList.get(i).getMem_number() %>"/>
 										<input type="hidden" name="region" value="<%=circleList.get(i).getRegion() %>" />
@@ -256,10 +262,11 @@
                                         </ul>
                                         <% if(check){ %>
                                         <button type="submit" class="btn btn-warning" onclick="javascript:form.action='postupdateform.circle'">수정하기</button>
-										<button type="submit" class="btn btn-danger" onclick="javascript:form.action='postdelete.circle'" > 삭제하기 </button>
+										<button type="button" class="btn btn-danger" onclick="delete_check(this.form)">삭제하기</button>
 										<%} else{ %>
-										<button type="submit" class="btn btn-primary" style="position:absolute;" onclick="checksession();">참여하기</button>
+										<button type="submit" class="btn btn-primary" style="position:absolute;" onclick="checksession(); duplicateCheck(postid); ">참여하기</button>
 										<%} %>
+		
 										</form>
                                     </div>
                                     <!-- Grid column -->
@@ -282,9 +289,12 @@
                         </div>
                     </div>
                 </div>
+            
+            
                 <!-- Modal end -->
-                <% } %>
 
+                <% } %>
+				
                 <!--Tab panels-->
                 <div class="tab-content mb-5">
 
@@ -389,6 +399,32 @@
         	   	}	
         	}
         </script>
+       
+       
+       
+       <!-- 작성자가 게시글 삭제하기 눌렀을 때 confirm -->
+       <script>
+       		function delete_check(form){
+       			console.log("글번호"+form.postid.value);
+       			var check = confirm("정말로 삭제하시겠습니까?");
+       			
+       			if(check==true){
+       				window.location.href="postdelete.circle?postid="+form.postid.value;
+       			}else if(check==false){
+       				alert("삭제가 취소되었습니다.");
+       			}
+       			
+       		}
+       </script>
+       
+       <!-- 참여버튼을 눌렀을 때 이미 참여한 소모임인지 check -->
+       <script>
+       		function duplicateCheck(postid){
+       			console.log(postid+"");
+       			var signedEmail = <%= (String)session.getAttribute("email") %>;
+       			//location.href=".jsp?postid="+postid;
+       		}
+       </script>
 
      
     </body>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.DeleteCircleAction;
 import com.ondongne.action.GetCircleAction;
 import com.ondongne.action.GetJoinCircleAction;
 import com.ondongne.action.JoinCircleAction;
@@ -93,6 +94,18 @@ public class CircleFrontController extends HttpServlet
 					e.printStackTrace();
 				}
 			}
+			
+			// 작성자가 소모임 게시글 삭제버튼을 눌렀을 때
+			else if(command.equals("/postdelete.circle")) {
+				action = new DeleteCircleAction();
+				try {
+					forward = action.execute(request, response);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+			
 			
 			
 			if (forward != null) {		

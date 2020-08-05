@@ -43,7 +43,7 @@ public class CircleService {
 	}
 	
 	
-	// 작성자가 소모임 수정
+	// 작성자가 게시글 수정
 	public boolean updateArticle(DataTransferCircle circleBean) throws Exception{
 		
 		boolean isWriteSuccess = false;
@@ -54,6 +54,20 @@ public class CircleService {
 		if(updateCount>0) {
 			isWriteSuccess=true;
 		}
+		return isWriteSuccess;
+	}
+	
+	// 작성자가 게시글 삭제
+	public boolean deleteArticle(DataTransferCircle circleBean) throws Exception{
+		boolean isWriteSuccess = false;
+		
+		DataAccessCircle circleDAO = DataAccessCircle.getinstance();
+		int deleteCount = circleDAO.circleDelete(circleBean);
+		
+		if(deleteCount>0) {
+			isWriteSuccess=true;
+		}
+		
 		return isWriteSuccess;
 	}
 	
