@@ -5,7 +5,7 @@
     JavaScript  - 김나예
 -->
 
-<!-- TODO: 소모임 참여할때 작성자거나 이미 참여한 소모임은 참여하지 못하도록 -->
+<!-- TODO: 이미 참여한 소모임은 참여하지 못하도록 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@page import="com.ondongne.dto.DataTransferCircle"%>
@@ -63,17 +63,17 @@
         </style>
 
     </head>
-
+	<!-- Navbar signin form -->
+    <% if (sessionEmail != null) {%>
+        <jsp:include page="navbar_signon.jsp"/>
+    <%} else {%>
+        <jsp:include page="navbar_signin.jsp"/>
+	<%} %>
     <body>
 
         <!--Main Navigation-->
         <header>
-            <!-- Navbar signin form -->
-            <% if (sessionEmail != null) {%>
-                <jsp:include page="navbar_signon.jsp"/>
-            <%} else {%>
-                <jsp:include page="navbar_signin.jsp"/>
-			<%} %>
+            
 
             <!--Carousel Wrapper-->
             <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
@@ -186,6 +186,17 @@
                         padding-top: .6rem;
                     }
                 </style>
+                
+         		<!-- 참여버튼 눌렀을 때 로그인 되어있는지 확인 -->
+                <%
+                 String joinButtonSelector = null;
+                 if (sessionEmail == null) {
+                     joinButtonSelector = "<a class=\"btn btn-primary\" data-dismiss=\"modal\" data-toggle=\"modal\" data-target=\"#signinModal\">참여하기</a>";
+                 } else {
+                     joinButtonSelector = "<button type=\"submit\" class=\"btn btn-primary\" style=\"position:absolute;\" onclick=\"checksession();\">참여하기</button>";
+                 }
+                %>
+                                    
 				<% for(int i=0;i<circleList.size();i++) { %>
 				<% dataTarget = "circleList" + Integer.toString(i); %>
 
@@ -211,7 +222,11 @@
                                             } else {
                                                 check = false;
                                             }
-                                        %>
+                                    %>
+                                    
+                                    
+                                    
+                                 
                                     <div class="col-md-6 py-5 pl-5">
                                         <% if (!check) { %>
                                             <form action="postjoin.circle" method="POST" name="form01">
@@ -261,7 +276,8 @@
                                             <button type="submit" class="btn btn-warning" onclick="javascript:form.action='postupdateform.circle'">수정하기</button>
                                             <button type="button" class="btn btn-danger" onclick="delete_check(this.form)">삭제하기</button>
 										<% } else { %>
-                                            <button type="submit" class="btn btn-primary" style="position:absolute;" onclick="checksession(); duplicateCheck(postid); ">참여하기</button>
+                                            <%= joinButtonSelector %>
+                                            <div class="check_font" id="duplicate_check"></div>
 										<% } %>
 
 										</form>
@@ -404,15 +420,35 @@
             }
         </script>
 
-        <!-- 참여버튼을 눌렀을 때 이미 참여한 소모임인지 check -->
-        <script>
-            function duplicateCheck(postid){
-                console.log(postid+"");
-                var signedEmail = <%= (String)session.getAttribute("email") %>;
-                //location.href=".jsp?postid="+postid;
-            }
-        </script>
-
+		<!-- 참여버튼을 눌렀을 때 이미 참여한 소모임인지 check -->
+		<script>
+		$(document).ready(function(){
+			$("#joinButton").click(function(){
+				var join_email = <%=(String)session.getAttribute("email")%>;
+        		var join_postid = form.postid.value;
+        		console.log(join_email+"/"+join_postid);
+        		
+        		$.ajax({
+        			url : 'circleDuplicateCheck.jsp',
+        			data : "join_email="+join_email+"&join_postid="+join_postid,
+        			dataType:"text",
+        			error : function(){
+        				alert("통신실패");
+        			},
+        			success : function(result){
+        				if(result == true){
+        					console.log("참여가능");
+        				}
+        				else(result == false){
+        					console.log("이미 참여한 소모임 게시물");
+        				}
+        			}
+        			
+        		})
+			})
+		})
+			
+		</script>
     </body>
 
 </html>

@@ -251,7 +251,7 @@
             <table class="table table-hover" style="padding-left:300px;">
 	            <thead>
 	                <tr>
-	                <th scope="col">NO.</th>
+	                <th scope="col">참여한 소모임</th>
 	                <th scope="col">글제목</th>
 	                <th scope="col">작성자</th>
 	                <th scope="col">모임날짜</th>

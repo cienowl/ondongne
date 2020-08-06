@@ -20,4 +20,13 @@ public class CircleJoinService {
 		return isWriteSuccess;
 	}
 	
+	// 참여버튼 눌렀을 때 참여한 게시물인지 check (select)
+	public int checkCircle(DataTransferCircleJoin circleBean) {
+		
+		DataAccessCircleJoin circleDao = DataAccessCircleJoin.getinstance();
+		int joinCount = circleDao.joinCircleCheck(circleBean);
+		
+		return joinCount;
+	}
+	
 }

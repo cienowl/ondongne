@@ -6,5 +6,9 @@
 	<insert id="joinCircleInsert" parameterType="com.ondongne.dto.DataTransferCircleJoin">
 		insert into helper_circle values (#{join_email},#{join_postid});
 	</insert>
+	
+	<select id="getJoinCircleAll" resultType="int" parameterType="com.ondongne.dto.DataTransferCircleJoin">
+		select COUNT(*) from helper_circle where join_email=#{join_email} AND join_postid=#{join_postid};
+	</select>
 
 </mapper>

@@ -2,6 +2,7 @@ package com.ondongne.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -61,4 +62,18 @@ public class DataAccessCircleJoin {
 		
 		return joinCircleList;
 	}
+	
+	// 소모임 참여버튼 눌렀을 때 이미 참여한 게시물인지 check
+	public int joinCircleCheck(DataTransferCircleJoin dto) {
+		
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		int joinCount = sqlsession.selectOne("getJoinCircleAll",dto);
+		sqlsession.commit();
+		sqlsession.close();
+		
+		return joinCount;
+	}
+	
 }

@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.JoinCircleAction;
 import com.ondongne.action.DeleteCircleAction;
 import com.ondongne.action.GetCircleAction;
-import com.ondongne.action.GetJoinCircleAction;
-import com.ondongne.action.JoinCircleAction;
 import com.ondongne.action.PostCircleAction;
 import com.ondongne.action.UpdateCircleAction;
 import com.ondongne.dto.ActionForward;
@@ -69,15 +68,16 @@ public class CircleFrontController extends HttpServlet
 				}
 			}
 			
-//			// 소모임 참여를 했을 때 select 후 mypage에 출력
-//			else if(command.equals("/selectjoinpost.circle")) {
-//				action = new GetJoinCircleAction();
-//				try {
-//					forward = action.execute(request, response);
-//				}catch(Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
+			// 소모임 게시글 참여버튼을 눌렀을때 이미 참여한 게시물인지 check
+			else if(command.equals("/duplicateCheck.circle")) {
+				action = new JoinCircleAction();
+				try {
+					forward = action.execute(request, response);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+				
 			
 			// 작성자가 소모임 게시글 수정버튼을 눌렀을 때
 			else if(command.equals("/postupdateform.circle")) {
@@ -104,8 +104,6 @@ public class CircleFrontController extends HttpServlet
 					e.printStackTrace();
 				}
 			}
-			
-			
 			
 			
 			if (forward != null) {		
