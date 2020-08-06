@@ -108,39 +108,31 @@
                         <!-- slide -->
                         <div class="<%= carouselClass[i] %>">
                             <div class="view" style="background-image: url('<%= imgUrl[i] %>'); background-repeat: no-repeat; background-size: cover;">
-
-                            <!-- Mask & flexbox options -->
-                            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-
-                                <!-- Content -->
-                                <div class="text-center white-text mx-5 WOW fadeIn">
-                                    <h1 class="mb-4">
-                                        <strong>Learn Bootstrap 4 with MDB</strong>
-                                    </h1>
-
-                                    <p>
-                                        <strong>Best & free guide of responsive web design</strong>
-                                    </p>
-
-                                    <p class="mb-4 d-none d-md-block">
-                                        <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                                        written versions
-                                        available. Create your own, stunning website.</strong>
-                                    </p>
-
-                                    <%= writeButtonSelector %>
-                                        <i class="fas fa-pen ml-2"></i>
-                                    </a>
+                                <!-- Mask & flexbox options -->
+                                <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+                                    <!-- Content -->
+                                    <div class="text-center white-text mx-5 WOW fadeIn">
+                                        <h1 class="mb-4">
+                                            <strong>Learn Bootstrap 4 with MDB</strong>
+                                        </h1>
+                                        <p>
+                                            <strong>Best & free guide of responsive web design</strong>
+                                        </p>
+                                        <p class="mb-4 d-none d-md-block">
+                                            <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
+                                            written versions
+                                            available. Create your own, stunning website.</strong>
+                                        </p>
+                                        <%= writeButtonSelector %>
+                                            <i class="fas fa-pen ml-2"></i>
+                                        </a>
+                                    </div>
+                                    <!-- Content -->
                                 </div>
-                                <!-- Content -->
-
-                            </div>
-                            <!-- Mask & flexbox options -->
-
+                                <!-- Mask & flexbox options -->
                             </div>
                         </div>
                         <!-- /slide -->
-
                     <% } %>
 
                 </div>
@@ -175,7 +167,7 @@
                         color: #fff;
                         background-color: #616161;
                     }
-                    button.close {
+                    #list.close {
                         position: absolute;
                         right: 0;
                         z-index: 2;
@@ -192,7 +184,7 @@
                         <div class="modal-content">
                             <div class="modal-body p-0">
 
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" id="list" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
 
@@ -213,22 +205,12 @@
 
                                             <li>
                                                 <p class="text-uppercase mb-2"><strong>가격</strong></p>
-                                                <p class="text-muted mb-4"><%= sellList.get(i).getStarting_price() %></p>
+                                                <p class="text-muted mb-4"><%= sellList.get(i).getPrice() %></p>
                                             </li>
 
                                             <li>
                                                 <p class="text-uppercase mb-2"><strong>지역</strong></p>
                                                 <p class="text-muted mb-4"><%= sellList.get(i).getRegion() %></p>
-                                            </li>
-
-                                            <li>
-                                                <p class="text-uppercase mb-2"><strong>종료날짜</strong></p>
-                                                <p class="text-muted mb-4"><%= sellList.get(i).getEnd_date() %></p>
-                                            </li>
-
-                                            <li>
-                                                <p class="text-uppercase mb-2"><strong>종료시간</strong></p>
-                                                <p class="text-muted mb-4"><%= sellList.get(i).getEnd_time() %></p>
                                             </li>
                                         </ul>
 
@@ -276,7 +258,7 @@
                                         <h5 class="mb-3"><%= sellList.get(i).getTitle() %></h5>
                                         <p class="font-small grey-text mb-2"><%= sellList.get(i).getEmail() %></p>
                                         <p class="card-text mb-3" style="100px"><%= sellList.get(i).getDescription() %></p>
-                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="far fa-heart"></i><%= sellList.get(i).getEnd_date() %></p>
+                                        <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="far fa-heart"></i><%= sellList.get(i).getPost_date() %></p>
                                     </div>
                                 </a>
                                 <!-- Card -->

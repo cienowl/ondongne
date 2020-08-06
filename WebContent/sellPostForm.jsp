@@ -5,7 +5,7 @@
     JavaScript  - 이호준
 -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -28,6 +28,11 @@
         <style>
             .modal-open .navbar-expand-lg {
                 padding-right: 16px !important;
+            }
+        </style>
+        <style>
+            .navbar {
+                background: #880e4f !important;
             }
         </style>
 
@@ -133,33 +138,34 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <%-- <div class="form-group col-md-6">
                             <label for="isAuction">판매방법</label>
                             <select id="isAuction" class="form-control" name="isAuction">
                                 <option selected disabled value="">선택</option>
                                 <option value="false">판매</option>
                                 <option value="true">경매</option>
                             </select>
+                        </div> --%>
+                        <div class="form-group col-md-6">
+                            <label for="sellPrice">판매가격</label>
+                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="sellmethod">거래방법</label>
                             <select id="sellMethod" class="form-control" name="sellMethod">
                                 <option selected disabled value="">선택</option>
-                                <option value="direct">직거래</option>
-                                <option value="parcel">택배거래</option>
+                                <option value="false">직거래</option>
+                                <option value="true">택배거래</option>
                             </select>
                         </div>
                     </div>
-
+<%-- 
                     <div class="form-row">
 
-                        <div class="form-group col-md-6">
-                            <label for="sellPrice">판매가격</label>
-                            <input type="text" class="form-control" id="sellPrice" placeholder="판매가/경매시작가" name="sellPrice">
-                        </div>
-                    </div>
+                        
+                    </div> --%>
 
-                    <div class="form-row">
+                    <%-- <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="sell_deadline">판매/경매 마감일</label>
                             <input type="date" class="form-control" id="sell_deadline" name="end_date"/>
@@ -168,7 +174,7 @@
                             <label for="sell_endtime">판매/경매 마감시간</label>
                             <input type="time" class="form-control" id="sell_endtime" name="end_time"/>
                         </div>
-                    </div>
+                    </div> --%>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">

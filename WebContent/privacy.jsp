@@ -44,6 +44,11 @@
                 }
             }
         </style>
+        <style>
+            .navbar {
+                background: #880e4f !important;
+            }
+        </style>
 
         <!-- Modal scrolling place -->
         <style>

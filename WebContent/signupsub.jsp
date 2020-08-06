@@ -237,6 +237,7 @@
                     <button type="submit" class="btn btn-primary" onclick="return validation();">저장</button>
                     <button type="reset" class="btn btn-secondary">취소</button>
                 </form>
+
             </div>
         </main>
 

@@ -78,6 +78,8 @@
 </nav>
 <!--/.Navbar -->
 
+<%-- TODO: circle, sell 에서 로그인 회원가입 모달창의 close 버튼 absolute 속성을 없애야함 circle, sell 페이지에 CSS 따로 먹혀있음 --%>
+
 <!-- Signin Modal -->
 <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -94,13 +96,13 @@
                 <!-- signin form -->
                 <form class="text-center p-4" action="signin.users" method="POST" name="userinfoInsert">
                     <% if (getCookieValue(cookies,"cookieEmail") != null) { %>
-                        <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail" value="<%=getCookieValue(cookies,"cookieEmail") %>" required/>
+                        <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="이메일" value="<%=getCookieValue(cookies,"cookieEmail") %>" required/>
                     <% } else { %>
-                        <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="E-mail" value="" required/>
+                        <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="이메일" value="" required/>
                     <% } %>
                     <small id="checkEmail" class="form-text text-danger" style="height: 19px;"></small>
 
-                    <input type="password" class="form-control my-3" id="signinPassword" placeholder="Password" name="signinPassword" required/>
+                    <input type="password" class="form-control my-3" id="signinPassword" placeholder="비밀번호" name="signinPassword" required/>
 
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="storeEmail" name="storeEmail" value="true">
@@ -112,11 +114,11 @@
                     </button>
 
                     <!-- Social login -->
-                    <p>or sign in with:</p>
+                    <%-- <p>or sign in with:</p>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a> --%>
 
                 </form>
                 <!-- signin form end -->
@@ -127,7 +129,7 @@
                     <a href="">비밀번호 찾기</a>
                     <!-- Register -->
                     <!--TODO:회원가입 모달창으로 이동-->
-                    <a href="" class="nav-link" type="button" data-toggle="modal" data-target="#signupModal">Register</a>
+                    <a href="" class="nav-link" type="button" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">회원가입</a>
                 </div>
             </div>
 
@@ -151,26 +153,26 @@
             <div class="modal-body">
                 <!-- signup form -->
                 <form class="text-center p-4" action="signup.users" method="POST" name="userinfoInsert">
-                    <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="E-mail" onchange="test(signupEmail.value);" required/>
+                    <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="이메일" onchange="test(signupEmail.value);" required/>
                     <small id="checkDupEmail" class="form-text text-success mb-4" style="height: 19px;"></small>
 
-                    <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
-                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                        At least 8 characters and 1 digit
+                    <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="비밀번호" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
+                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4" style="height: 19px;">
+                        <%-- At least 8 characters and 1 digit --%>
                     </small>
 
-                    <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="Check Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
+                    <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="비밀번호 확인" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
                     <small id="checkPassword" class="form-text text-danger" style="height: 19px;"></small>
 
                     <button type="submit" class="btn btn-unique my-4 btn-block" onclick="return signupValidate();" >
                         <h5 class="m-0">ON동네 회원가입</h5>
                     </button>
 
-                    <p>or sign up with:</p>
+                    <%-- <p>or sign up with:</p>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a> --%>
 
                 </div>
 

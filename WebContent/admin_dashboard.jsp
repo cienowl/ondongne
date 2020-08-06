@@ -76,51 +76,31 @@
 
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="dashboard.admin" class="list-group-item list-group-item-action active waves-effect">
-                            <i class="fas fa-chart-pie mr-3"></i>대시보드
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="list-group-item list-group-item-action waves-effect">
-                            <i class="fas fa-user mr-3"></i>회원관리
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="dongne.admin" class="list-group-item list-group-item-action waves-effect">
-                            <i class="fas fa-map mr-3"></i>동네게시물 관리
-                        </a>
-                    <li class="nav-item">
-                        <a href="#" class="list-group-item list-group-item-action waves-effect">
-                            <i class="fas fa-table mr-3"></i>Tables
-                        </a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="list-group-item list-group-item-action waves-effect">
-                            <i class="fas fa-money-bill-alt mr-3"></i>Orders
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="dashboard.admin" class="list-group-item list-group-item-action active waves-effect">
+                                <i class="fas fa-chart-pie mr-3"></i>대시보드
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="list-group-item list-group-item-action waves-effect">
+                                <i class="fas fa-user mr-3"></i>회원관리
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="dongne.admin" class="list-group-item list-group-item-action waves-effect">
+                                <i class="fas fa-map mr-3"></i>동네게시물 관리
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right -->
                     <ul class="navbar-nav nav-flex-icons">
-                        <!-- <li class="nav-item">
-                            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                            </a>
-                        </li> -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle border border-light rounded waves-effect" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user mr-2"></i> <%= (String) session.getAttribute("adminId") %>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                                <%-- <a class="dropdown-item" href="info.admin">관리자정보</a> --%>
+                                <%-- <a class="dropdown-item" href="info.admin">관리자관리</a> --%>
                                 <a class="dropdown-item" href="signout.admin">로그아웃</a>
                             </div>
                         </li>

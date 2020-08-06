@@ -7,6 +7,8 @@
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<% String sessionEmail = (String) session.getAttribute("email"); %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,11 +36,17 @@
                     /*height: 100vh;*/
                     height: 100%;
                 }
+                .navbar {
+                    background: #880e4f !important;
+                }
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 html, body, header, .carousel {
                     /*height: 100vh;*/
                     height: 100%;
+                }
+                .navbar {
+                    background: #880e4f !important;
                 }
             }
             @media (min-width: 800px) and (max-width: 850px) {
@@ -52,29 +60,11 @@
                 padding-right: 16px !important;
             }
         </style>
-<%--
         <style>
-            html, body, header, .carousel {
-                height: 100%;
-            }
-            @media (max-width: 740px) {
-                html, body, header, .carousel {
-                height: 100vh;
-                }
-            }
-            .top-nav-collapse {
-                background-color: #78909c !important;
-            }
-            .navbar:not(.top-nav-collapse) {
-                background: transparent !important;
-            }
-            @media (max-width: 991px) {
-                .navbar:not(.top-nav-collapse) {
-                    background: #78909c !important;
-                }
+            .faq-background-color {
+                background: #F2F2F2;
             }
         </style>
---%>
         <!-- Modal scrolling place -->
         <%-- <style>
             .modal-open .navbar-expand-lg {
@@ -89,7 +79,7 @@
 
         <header>
             <!-- Navbar signin form -->
-            <% if (session.getAttribute("email") != null) {%>
+            <% if (sessionEmail != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
@@ -108,7 +98,6 @@
 
                 <!--Slides-->
                 <div class="carousel-inner" role="listbox">
-
                     <%
                     String[] imgUrl = {
                         "img/rawkkim-U9XFsU3SPT8-unsplash.jpg",
@@ -125,41 +114,35 @@
                         <!-- slide -->
                         <div class="<%= carouselClass[i] %>">
                             <div class="view" style="background-image: url('<%= imgUrl[i] %>'); background-repeat: no-repeat; background-size: cover;">
-
-                            <!-- Mask & flexbox options -->
-                            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-
-                                <!-- Content -->
-                                <div class="container">
-                                    <div class="white-text col-md-12 wow fadeIn">
-                                        <h1 class="display-4 mb-4">
-                                            <strong>우리동네의 모든것<br/>
-                                            ON동네에서 간편하게</strong>
-                                        </h1>
-
-                                        <p>
-                                            <strong>우리동네의 모임 &amp; 중고거래 &amp; HOT한 장소를 한눈에!</strong>
-                                        </p>
-
-                                        <p class="mb-4 d-none d-md-block">
-                                            <strong>지금 바로 가입하고 우리동네 소모임에 참여하거나 내가 찾는 중고제품을 찾아보세요! HIP한 카페나 맛집은 덤인 것이에요!</strong>
-                                        </p>
-                                        <% if (session.getAttribute("email") != null) { %>
-                                            <a class="btn btn-outline-white btn-lg" href="mypage.ondongne">마이페이지로 이동
-                                                <i class="fas fa-arrow-right"></i>
-                                            </a>
-                                        <% } else { %>
-                                            <a class="btn btn-outline-white btn-lg" data-toggle="modal" data-target="#signupModal">ON동네 시작하기
-                                                <i class="far fa-user ml-2"></i>
-                                            </a>
-                                        <% } %>
+                                <!-- Mask & flexbox options -->
+                                <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+                                    <!-- Content -->
+                                    <div class="container">
+                                        <div class="white-text col-md-12 wow fadeIn">
+                                            <h1 class="display-4 mb-4">
+                                                <strong>우리동네의 모든것<br/>
+                                                ON동네에서 간편하게</strong>
+                                            </h1>
+                                            <p>
+                                                <strong>우리동네의 모임 &amp; 중고거래 &amp; HOT한 장소를 한눈에!</strong>
+                                            </p>
+                                            <p class="mb-4 d-none d-md-block">
+                                                <strong>지금 바로 가입하고 우리동네 소모임에 참여하거나 내가 찾는 중고제품을 찾아보세요! HIP한 카페나 맛집은 덤인 것이에요!</strong>
+                                            </p>
+                                            <% if (session.getAttribute("email") != null) { %>
+                                                <a class="btn btn-outline-white btn-lg" href="mypage.ondongne">마이페이지로 이동
+                                                    <i class="fas fa-arrow-right"></i>
+                                                </a>
+                                            <% } else { %>
+                                                <a class="btn btn-outline-white btn-lg" data-toggle="modal" data-target="#signupModal">ON동네 시작하기
+                                                    <i class="far fa-user ml-2"></i>
+                                                </a>
+                                            <% } %>
+                                        </div>
                                     </div>
+                                    <!-- Content -->
                                 </div>
-                                <!-- Content -->
-
-                            </div>
-                            <!-- Mask & flexbox options -->
-
+                                <!-- Mask & flexbox options -->
                             </div>
                         </div>
                         <!-- /slide -->
@@ -205,7 +188,7 @@
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
-                                    <a href="#!" class="black-text"><h3>우리동네 소모임</h3></a>
+                                    <a href="#!" class="dark-grey-text"><h3>우리동네 소모임</h3></a>
                                     <!-- Text -->
                                     <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
                                     <%-- <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button> --%>
@@ -224,7 +207,7 @@
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
-                                    <a href="#!" class="black-text"><h3>우리동네 장터</h3></a>
+                                    <a href="#!" class="dark-grey-text"><h3>우리동네 장터</h3></a>
                                     <!-- Text -->
                                     <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
                                     <%-- <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button> --%>
@@ -243,7 +226,7 @@
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
-                                    <a href="#!" class="black-text"><h3>우리동네 명소</h3></a>
+                                    <a href="#!" class="dark-grey-text"><h3>우리동네 명소</h3></a>
                                     <!-- Text -->
                                     <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
                                     <%-- <button type="button" class="btn btn-flat text-primary p-0 mx-0">Read more<i class="fa fa-angle-right ml-2"></i></button> --%>
@@ -261,7 +244,7 @@
             <!--Section: Content-->
 
             <!-- Section: QnA -->
-            <div class="" style="background-color: #F2F2F2;">
+            <div class="faq-background-color">
                 <div class="container my-5 pt-5 wow fadeIn">
                     <section class="pb-5">
                         <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">FAQ</h6>
@@ -308,29 +291,20 @@
             <!-- Section: QnA -->
 
             <!-- Call to action -->
-            <div class="container my-4 py-5">
-                <section class="text-center px-md-5 mx-md-5 my-4 dark-grey-text">
+            <div class="container my-5 py-5">
+                <section class="text-center px-md-5 mx-md-5 my-5 dark-grey-text">
                     <h1 class="font-weight-bold mb-4 display-4">나에게 딱 맞는 동네정보 찾기</h1>
                     <h4 class="text-center mx-auto">회원가입 후, 지금 가장 인기있는 동네 소식을 찾아보세요.</h4>
 
                     <hr class="w-20 my-5">
 
-                    <%-- <div class="row">
-                        <div class="col-md-3">
-                            <img src="img/gu/dongjak.png" style="width:80px;"class="rounded mx-auto d-block" alt="">
-                        </div>
-                        <div class="col-md-3">.col-sm-3</div>
-                        <div class="col-md-3">.col-sm-3</div>
-                        <div class="col-md-3">.col-sm-3</div>
-                    </div> --%>
-
-                    <% if (session.getAttribute("email") != null) { %>
+                    <% if (sessionEmail != null) { %>
                         <a class="btn btn-lg btn-unique" href="mypage.ondongne">
-                            <h4 class="m-2 font-weight-bold">마이페이지로 이동<i class="fas fa-arrow-right"></i></h4>
+                            <h4 class="m-2 font-weight-bold">마이페이지로 이동 <i class="fas fa-arrow-right"></i></h4>
                         </a>
                     <% } else { %>
                         <a class="btn btn-lg btn-unique" data-toggle="modal" data-target="#signupModal">
-                            <h5 class="m-2 font-weight-bold">지금 시작하기<i class="far fa-user ml-2"></i></h5>
+                            <h5 class="m-2 font-weight-bold">지금 시작하기 <i class="far fa-user ml-2"></i></h5>
                         </a>
                     <% } %>
 
@@ -348,18 +322,6 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-
-        <%-- <script>
-        $(document).ready(function(){
-            $(function () {
-                $(document).scroll(function () {
-                    var $nav = $(".navbar-fixed-top");
-                    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-                });
-            });
-        });
-        </script> --%>
-
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->

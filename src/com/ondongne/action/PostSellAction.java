@@ -14,29 +14,26 @@ public class PostSellAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+
 		HttpSession session = request.getSession();
 		ActionForward forward = null;
 		DataTransferSell dtoSell = new DataTransferSell();
-		
+
 		dtoSell.setEmail((String)session.getAttribute("email"));
 		dtoSell.setTitle(request.getParameter("title"));
-		dtoSell.setIs_auction(request.getParameter("isAuction"));
-		dtoSell.setSell_method(request.getParameter("sellMethod"));
-		dtoSell.setStarting_price(request.getParameter("sellPrice"));	//시작가 또는 판매가
-		dtoSell.setEnd_date(request.getParameter("end_date"));
-		dtoSell.setEnd_time(request.getParameter("end_time"));
+		dtoSell.setIs_parcel(Boolean.parseBoolean(request.getParameter("sellMethod")));
+		dtoSell.setPrice(request.getParameter("sellPrice"));	//시작가 또는 판매가
 		dtoSell.setRegion(request.getParameter("region"));
 		dtoSell.setDescription(request.getParameter("description"));
 //		dtoSell.setPictures(request.getParameter("pictures")); TODO: 파일 경로 가져오기 구현
 		dtoSell.setPictures("picture_filename");
 //		dtoSell.setTags(request.getParameter("tags"));	TODO: tags 내용 가져오기
 		dtoSell.setTags("tags");
-		
+		dtoSell.setIs_active(true);
+
 		SellService sellService = new SellService();
 		boolean isWriteSuccess = sellService.postSell(dtoSell);	//dtoSell 들고 글등록해주는 서비스로 이동
-				
-		System.out.println("sellPost " + isWriteSuccess);	//sql 처리 성공여부 프린트 (true or false)
+
 		
 		if (!isWriteSuccess) {		//sql 문 실패시
 			response.setContentType("text/html;charset=UTF-8");

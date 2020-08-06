@@ -3,24 +3,21 @@
 package com.ondongne.dto;
 
 //	ondongne.sell
-//	+----------------+--------------+------+-----+---------+----------------+
-//	| Field          | Type         | Null | Key | Default | Extra          |
-//	+----------------+--------------+------+-----+---------+----------------+
-//	| email          | varchar(50)  | NO   | MUL | NULL    |                |
-//	| id             | int(11)      | NO   | PRI | NULL    | auto_increment |
-//	| title          | varchar(50)  | NO   |     | NULL    |                |
-//	| pictures       | text         | NO   |     | NULL    |                |
-//	| region         | varchar(10)  | NO   |     | NULL    |                |
-//	| post_date      | datetime     | NO   |     | NULL    |                |
-//	| end_date       | date         | NO   |     | NULL    |                |
-//	| end_time       | time         | YES  |     | NULL    |                |
-//	| starting_price | varchar(20)  | NO   |     | NULL    |                |
-//	| is_auction     | varchar(10)  | NO   |     | NULL    |                |
-//	| bidding_price  | varchar(20)  | YES  |     | NULL    |                |
-//	| sell_method    | varchar(10)  | NO   |     | NULL    |                |
-//	| description    | text         | NO   |     | NULL    |                |
-//	| tags           | varchar(100) | NO   |     | NULL    |                |
-//	+----------------+--------------+------+-----+---------+----------------+
+//	+-------------+--------------+------+-----+---------+----------------+
+//	| Field       | Type         | Null | Key | Default | Extra          |
+//	+-------------+--------------+------+-----+---------+----------------+
+//	| email       | varchar(50)  | NO   | MUL | NULL    |                |
+//	| id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+//	| title       | varchar(50)  | NO   |     | NULL    |                |
+//	| pictures    | text         | NO   |     | NULL    |                |
+//	| region      | varchar(10)  | NO   |     | NULL    |                |
+//	| post_date   | datetime     | NO   |     | NULL    |                |
+//	| price       | varchar(20)  | NO   |     | NULL    |                |
+//	| sell_method | varchar(10)  | NO   |     | NULL    |                |
+//	| description | text         | NO   |     | NULL    |                |
+//	| tags        | varchar(100) | NO   |     | NULL    |                |
+//	| is_active   | tinyint(1)   | NO   |     | NULL    |                |
+//	+-------------+--------------+------+-----+---------+----------------+
 
 public class DataTransferSell{
 
@@ -29,15 +26,12 @@ public class DataTransferSell{
 	private String pictures;
 	private String region;
 	private String post_date;
-	private String end_date;
-	private String end_time;
-	private String starting_price;
-	private String is_auction;
-	private String bidding_price;
-	private String sell_method;
+	private String price;
+	private boolean is_parcel;
 	private String description;
 	private String tags;
-	
+	private boolean is_active;
+
 	public String getEmail() {
 		return email;
 	}
@@ -68,41 +62,17 @@ public class DataTransferSell{
 	public void setPost_date(String post_date) {
 		this.post_date = post_date;
 	}
-	public String getEnd_date() {
-		return end_date;
+	public String getPrice() {
+		return price;
 	}
-	public void setEnd_date(String end_date) {
-		this.end_date = end_date;
+	public void setPrice(String price) {
+		this.price = price;
 	}
-	public String getEnd_time() {
-		return end_time;
+	public boolean isIs_parcel() {
+		return is_parcel;
 	}
-	public void setEnd_time(String end_time) {
-		this.end_time = end_time;
-	}
-	public String getStarting_price() {
-		return starting_price;
-	}
-	public void setStarting_price(String starting_price) {
-		this.starting_price = starting_price;
-	}
-	public String getIs_auction() {
-		return is_auction;
-	}
-	public void setIs_auction(String is_auction) {
-		this.is_auction = is_auction;
-	}
-	public String getBidding_price() {
-		return bidding_price;
-	}
-	public void setBidding_price(String bidding_price) {
-		this.bidding_price = bidding_price;
-	}
-	public String getSell_method() {
-		return sell_method;
-	}
-	public void setSell_method(String sell_method) {
-		this.sell_method = sell_method;
+	public void setIs_parcel(boolean is_parcel) {
+		this.is_parcel = is_parcel;
 	}
 	public String getDescription() {
 		return description;
@@ -116,5 +86,11 @@ public class DataTransferSell{
 	public void setTags(String tags) {
 		this.tags = tags;
 	}
-	
+	public boolean isIs_active() {
+		return is_active;
+	}
+	public void setIs_active(boolean is_active) {
+		this.is_active = is_active;
+	}
+
 }

@@ -9,36 +9,32 @@
 			email,
 			id,
 			title,
-			pictures,
+			price,
 			region,
-			post_date,
-			end_date,
-			end_time,
-			starting_price,
-			is_auction,
-			sell_method,
 			description,
-			tags
+			is_parcel,
+			is_active,
+			pictures,
+			tags,
+			post_date
 		)
 		values(
 			#{email},
 			default,
 			#{title},
-			#{pictures},
+			#{price},
 			#{region},
-			now(),
-			#{end_date},
-			#{end_time},
-			#{starting_price},
-			#{is_auction},
-			#{sell_method},
 			#{description},
-			#{tags}
+			#{is_parcel},
+			#{is_active},
+			#{pictures},
+			#{tags},
+			now()
 		)
 	</insert>
 	
 	<select id="getSellPostAll" resultType="com.ondongne.dto.DataTransferSell">
-		select * from sell	
+		select * from sell
 	</select>
 
 </mapper>

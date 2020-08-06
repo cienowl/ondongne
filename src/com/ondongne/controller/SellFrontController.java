@@ -43,7 +43,7 @@ public class SellFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/sellPostForm.jsp");
 		}		
-		
+
 		else if (command.equals("/submit.sell")) {
 //			sellpostform.jsp 에서 submit 하면 action으로 가서 DB 저장
 			action = new PostSellAction();

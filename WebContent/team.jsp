@@ -29,19 +29,24 @@
                 height: 60vh;
             }
             @media (max-width: 740px) {
-                html, body {
-                    height: 100vh;
+                .navbar {
+                    background: #880e4f !important;
                 }
             }
             @media (min-width: 800px) and (max-width: 850px) {
-                html, body {
-                    height: 100vh;
+                .navbar {
+                    background: #880e4f !important;
                 }
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 .navbar:not(.top-nav-collapse) {
-                    background: #1C2331!important;
+                    background: #880e4f!important;
                 }
+            }
+        </style>
+        <style>
+            .navbar {
+                background: #880e4f !important;
             }
         </style>
 

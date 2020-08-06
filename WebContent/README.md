@@ -1,15 +1,16 @@
-# ON동네 
+# ON동네
 
 온동네 웹사이트 팀 포트폴리오
 
-### What is this repository for?
+### What is this repository for
 
 이 웹사이트는 팀 포트폴리오를 위해 제작되었습니다.
+
 * Quick summary
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up?
+### How do I get set up
 
 * Summary of set up
 * Configuration
@@ -94,21 +95,18 @@ CREATE TABLE `sell` (
   `email` varchar(50) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
-  `pictures` text NOT NULL,
+  `price` varchar(20) NOT NULL,
   `region` varchar(10) NOT NULL,
-  `post_date` datetime NOT NULL,
-  `end_date` date NOT NULL,
-  `end_time` time DEFAULT NULL,
-  `starting_price` varchar(20) NOT NULL,
-  `is_auction` varchar(10) NOT NULL,
-  `bidding_price` varchar(20) DEFAULT NULL,
-  `sell_method` varchar(10) NOT NULL,
   `description` text NOT NULL,
+  `is_parcel` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `pictures` text NOT NULL,
   `tags` varchar(100) NOT NULL,
+  `post_date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `sell_email_idx` (`email`),
   CONSTRAINT `sell_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8
 ~~~
 
 circle: 소모임 테이블
