@@ -65,12 +65,6 @@
                 background: #F2F2F2;
             }
         </style>
-        <!-- Modal scrolling place -->
-        <%-- <style>
-            .modal-open .navbar-expand-lg {
-                padding-right: 16px !important;
-            }
-        </style> --%>
 
     </head>
 

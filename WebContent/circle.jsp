@@ -61,19 +61,38 @@
                 padding-right: 16px !important;
             }
         </style>
-
+        <style>
+            .input-grey .input-group-lg>.input-group-prepend>.input-group-text {
+                border-radius: .125rem;
+            }
+            .input-grey .form-control {
+                border-radius: .125rem;
+            }
+            .input-grey .form-control.form-control-lg {
+                font-size: 1rem;
+            }
+            .form-control:focus {
+                background-color: rgba(255,255,255,.3);
+            }
+            .input-grey input::placeholder {
+                color: #fff;
+            }
+            .input-grey .input-group-lg>.form-control:not(textarea) {
+                height: calc(1.5em + 1rem + 6px);
+            }
+        </style>
     </head>
-	<!-- Navbar signin form -->
-    <% if (sessionEmail != null) {%>
-        <jsp:include page="navbar_signon.jsp"/>
-    <%} else {%>
-        <jsp:include page="navbar_signin.jsp"/>
-	<%} %>
+
     <body>
 
         <!--Main Navigation-->
         <header>
-            
+            <!-- Navbar signin form -->
+            <% if (sessionEmail != null) {%>
+                <jsp:include page="navbar_signon.jsp"/>
+            <%} else {%>
+                <jsp:include page="navbar_signin.jsp"/>
+            <%} %>
 
             <!--Carousel Wrapper-->
             <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
@@ -130,6 +149,21 @@
                                         written versions
                                         available. Create your own, stunning website.</strong>
                                     </p>
+                                    <form class="input-grey mb-5" action="" method="post">
+                                            <div class="form-row">
+                                                <div class="col-md-4 ml-auto">
+                                                    <div class="input-group input-group-lg z-depth-1">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text rgba-white-light border-0"><i class="fas fa-search white-text"></i></span>
+                                                        </div>
+                                                        <input type="text" name="search" class="form-control form-control rgba-white-light white-text border-0 z-depth-0" placeholder="검색어 입력">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 mr-auto">
+                                                    <button class="btn btn-block btn-lg btn-outline-white">검색</button>
+                                                </div>
+                                            </div>
+                                        </form>
 
                                     <%= writeButtonSelector %>
                                         <i class="fas fa-pen ml-2"></i>
@@ -186,17 +220,17 @@
                         padding-top: .6rem;
                     }
                 </style>
-                
-         		<!-- 참여버튼 눌렀을 때 로그인 되어있는지 확인 -->
+
+                <!-- 참여버튼 눌렀을 때 로그인 되어있는지 확인 -->
                 <%
-                 String joinButtonSelector = null;
-                 if (sessionEmail == null) {
-                     joinButtonSelector = "<a class=\"btn btn-primary\" data-dismiss=\"modal\" data-toggle=\"modal\" data-target=\"#signinModal\">참여하기</a>";
-                 } else {
-                     joinButtonSelector = "<button type=\"submit\" class=\"btn btn-primary\" style=\"position:absolute;\" onclick=\"checksession();\">참여하기</button>";
-                 }
+                    String joinButtonSelector = null;
+                    if (sessionEmail == null) {
+                        joinButtonSelector = "<a class=\"btn btn-primary\" data-dismiss=\"modal\" data-toggle=\"modal\" data-target=\"#signinModal\">참여하기</a>";
+                    } else {
+                        joinButtonSelector = "<button type=\"submit\" class=\"btn btn-primary\" style=\"position:absolute;\" onclick=\"checksession();\">참여하기</button>";
+                    }
                 %>
-                                    
+
 				<% for(int i=0;i<circleList.size();i++) { %>
 				<% dataTarget = "circleList" + Integer.toString(i); %>
 
@@ -214,19 +248,16 @@
                                     <!-- Grid column -->
 
                                     <!-- 작성자일때 check=true -->
-                                    <% String writerEmail = circleList.get(i).getEmail(); %>
-                                        <%
-                                            boolean check;
-                                            if (writerEmail.equals(sessionEmail)) {
-                                                check=true;
-                                            } else {
-                                                check = false;
-                                            }
+                                    <%
+                                        String writerEmail = circleList.get(i).getEmail();
+                                        boolean check;
+                                        if (writerEmail.equals(sessionEmail)) {
+                                            check=true;
+                                        } else {
+                                            check = false;
+                                        }
                                     %>
-                                    
-                                    
-                                    
-                                 
+
                                     <div class="col-md-6 py-5 pl-5">
                                         <% if (!check) { %>
                                             <form action="postjoin.circle" method="POST" name="form01">
@@ -349,7 +380,7 @@
                 </section>
                 <!-- Section -->
 
-            </div>  
+            </div>
 
 
         </main>
@@ -389,7 +420,7 @@
             });
         </script>
 
-        <!-- Initializations -->    
+        <!-- Initializations -->
         <script type="text/javascript">
             // Animations initialization
             new WOW().init();
@@ -424,30 +455,30 @@
 		<script>
 		$(document).ready(function(){
 			$("#joinButton").click(function(){
-				var join_email = <%=(String)session.getAttribute("email")%>;
-        		var join_postid = form.postid.value;
-        		console.log(join_email+"/"+join_postid);
-        		
-        		$.ajax({
-        			url : 'circleDuplicateCheck.jsp',
-        			data : "join_email="+join_email+"&join_postid="+join_postid,
-        			dataType:"text",
-        			error : function(){
-        				alert("통신실패");
-        			},
-        			success : function(result){
-        				if(result == true){
-        					console.log("참여가능");
-        				}
-        				else(result == false){
-        					console.log("이미 참여한 소모임 게시물");
-        				}
-        			}
-        			
-        		})
-			})
-		})
-			
+                var join_email = <%=(String)session.getAttribute("email")%>;
+                var join_postid = form.postid.value;
+                console.log(join_email+"/"+join_postid);
+
+                $.ajax({
+                    url : 'circleDuplicateCheck.jsp',
+                    data : "join_email="+join_email+"&join_postid="+join_postid,
+                    dataType:"text",
+                    error : function(){
+                        alert("통신실패");
+                    },
+                    success : function(result){
+                        if(result == true){
+                            console.log("참여가능");
+                        }
+                        else(result == false){
+                            console.log("이미 참여한 소모임 게시물");
+                        }
+                    }
+
+                })
+            })
+        })
+
 		</script>
     </body>
 

@@ -78,8 +78,6 @@
 </nav>
 <!--/.Navbar -->
 
-<%-- TODO: circle, sell 에서 로그인 회원가입 모달창의 close 버튼 absolute 속성을 없애야함 circle, sell 페이지에 CSS 따로 먹혀있음 --%>
-
 <!-- Signin Modal -->
 <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

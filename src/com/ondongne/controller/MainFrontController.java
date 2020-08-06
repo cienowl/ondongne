@@ -85,16 +85,6 @@ public class MainFrontController extends HttpServlet {
 			}
 		}
 
-		else if (command.equals("/mypagetest.ondongne")) {
-//			Mypage 테스트용
-			action = new GetMyPageInfoAction();
-			try {
-				forward = action.execute(request, response);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-
 		
 		if (forward != null) {		//forward 내 값이 있으면
 			if (forward.isRedirect()) {		//forward의 isRedirect() 값이 true 면

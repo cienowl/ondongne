@@ -53,7 +53,6 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
                         <a class="dropdown-item" href="mypage.ondongne">마이페이지</a>
-                        <a class="dropdown-item" href="mypagetest.ondongne">마이페이지테스트</a>
                         <a class="dropdown-item" href="signout.users">로그아웃</a>
                     </div>
                 </li>

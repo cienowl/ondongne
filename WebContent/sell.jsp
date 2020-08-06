@@ -58,6 +58,31 @@
                 padding-right: 16px !important;
             }
         </style>
+        <style>
+            .input-grey .input-group-lg>.input-group-prepend>.input-group-text {
+                border-radius: .125rem;
+            }
+
+            .input-grey .form-control {
+                border-radius: .125rem;
+            }
+
+            .input-grey .form-control.form-control-lg {
+                font-size: 1rem;
+            }
+            
+            .form-control:focus {
+                background-color: rgba(255,255,255,.3);
+            }
+
+            .input-grey input::placeholder {
+                color: #fff;
+            }
+
+            .input-grey .input-group-lg>.form-control:not(textarea) {
+                height: calc(1.5em + 1rem + 6px);
+            }
+        </style>
     </head>
 
     <body>
@@ -113,7 +138,7 @@
                                     <!-- Content -->
                                     <div class="text-center white-text mx-5 WOW fadeIn">
                                         <h1 class="mb-4">
-                                            <strong>Learn Bootstrap 4 with MDB</strong>
+                                            <strong>우리동네 판매장터</strong>
                                         </h1>
                                         <p>
                                             <strong>Best & free guide of responsive web design</strong>
@@ -123,6 +148,22 @@
                                             written versions
                                             available. Create your own, stunning website.</strong>
                                         </p>
+                                        <form class="input-grey mb-5" action="" method="post">
+                                            <div class="form-row">
+                                                <div class="col-md-4 ml-auto">
+                                                    <div class="input-group input-group-lg z-depth-1">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text rgba-white-light border-0"><i class="fas fa-search white-text"></i></span>
+                                                        </div>
+                                                        <input type="text" name="search" class="form-control form-control rgba-white-light white-text border-0 z-depth-0" placeholder="검색어 입력">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 mr-auto">
+                                                    <button class="btn btn-block btn-lg btn-outline-white">검색</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
                                         <%= writeButtonSelector %>
                                             <i class="fas fa-pen ml-2"></i>
                                         </a>
