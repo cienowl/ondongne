@@ -5,7 +5,6 @@
     JavaScript  - 김나예
 -->
 
-<!-- TODO: 이미 참여한 소모임은 참여하지 못하도록 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@page import="com.ondongne.dto.DataTransferCircle"%>
@@ -211,8 +210,8 @@
                     .md-pills .nav-link.active {
                         color: #fff;
                         background-color: #616161;
-                    }
-                    button.close {
+                    }                    
+                    #list.close {
                         position: absolute;
                         right: 0;
                         z-index: 2;
@@ -239,7 +238,7 @@
                     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-body p-0">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                                <button type="button" id="list" class="close" data-dismiss="modal" aria-label="Close" >
                                     <span aria-hidden="true">&times;</span>
                                 </button>
 
