@@ -23,26 +23,18 @@
         <link href="css/mdb.min.css" rel="stylesheet"/>
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet"/>
-
-        <!-- Modal scrolling place -->
-        <%-- <style>
-            .modal-open .navbar-expand-lg {
-                padding-right: 16px !important;
+        <style>
+            .navbar {
+                background: #880e4f !important;
             }
-        </style> --%>
+        </style>
     </head>
 
 
     <body>
 
         <header>
-            <%-- TODO: 항상 로그인시 작동할 페이지니 아래 if문 필요없음 --%>
-            <!-- Navbar signin form -->
-            <% if (session.getAttribute("email") != null) {%>
-                <jsp:include page="navbar_signon.jsp"/>
-            <%} else {%>
-                <jsp:include page="navbar_signin.jsp"/>
-			<%} %>
+            <jsp:include page="navbar_signon.jsp"/>
         </header>
 
 

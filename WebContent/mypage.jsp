@@ -98,10 +98,10 @@
 
         <!--Main layout-->
         <main class="pt-5 mx-lg-5">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-lg-3 mt-5">
+                    <div class="col-lg-2 mt-5">
                         <!-- Card -->
                         <div class="card sticky-top">
 
@@ -129,9 +129,9 @@
                                     <%-- <a href="#!" class="list-group-item list-group-item-action active">
                                         Cras justo odio
                                     </a> --%>
-                                    <a href="mypagetest.ondongne" class="list-group-item list-group-item-action">대시보드</a>
-                                    <%-- <a href="signupsub.users" class="list-group-item list-group-item-action">개인정보수정</a> --%>
-                                    <a href="" class="list-group-item list-group-item-action" onclick="acyncMovePage('testform2.html');">개인정보수정</a>
+                                    <a href="mypage.ondongne" class="list-group-item list-group-item-action">대시보드</a>
+                                    <a href="signupsub.users" class="list-group-item list-group-item-action">개인정보수정</a>
+                                    <a href="" class="list-group-item list-group-item-action" onclick="acyncMovePage('testform2.html');">Ajax Test</a>
                                     <a href="" class="list-group-item list-group-item-action">팔로잉</a>
                                     <a href="" class="list-group-item list-group-item-action">팔로워</a>
                                     <a href="" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#modalConfirmDelete">탈퇴하기</a>

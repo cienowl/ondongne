@@ -21,6 +21,7 @@ package com.ondongne.dto;
 
 public class DataTransferSell{
 
+	private int id;
 	private String email;
 	private String title;
 	private String pictures;
@@ -32,6 +33,9 @@ public class DataTransferSell{
 	private String tags;
 	private boolean is_active;
 
+	public int getId() {
+		return id;
+	}
 	public String getEmail() {
 		return email;
 	}

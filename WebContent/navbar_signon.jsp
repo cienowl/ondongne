@@ -13,7 +13,7 @@
 <!--Navbar -->
 <%-- <nav class="mb-1 navbar navbar-expand-lg navbar-dark red darken-4 fixed-top"> --%>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="index.jsp">ON동네</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
         aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
