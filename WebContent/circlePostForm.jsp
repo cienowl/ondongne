@@ -413,11 +413,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="circle_date">모집날짜</label>
-                            <input type="date" class="form-control" name="event_date"/>
+                            <input type="date" class="form-control" name="event_date" id="event_date"/>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="circle_deadline">모집마감일</label>
-                            <input type="date" class="form-control" name="end_date"/>
+                            <input type="date" class="form-control" name="end_date" id="end_date"/>
                         </div>
                     </div>
 
@@ -721,11 +721,16 @@
             })( window.jQuery, window, document );
         </script>
         
+        <!-- 소모임페이지 눌렀을 때 맨위로 커서 올라가게 -->
         <script>
 			$(document).ready(function(){
 				$("#inputTitle").focus();
-			})
+			});
 		</script>
+		
+		
+		
+		
 
     </body>
 </html>

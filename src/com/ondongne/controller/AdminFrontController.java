@@ -113,9 +113,6 @@ public class AdminFrontController extends HttpServlet {
 		
 	}
 	
-	
-	
-	
 	//action method 가 get 인 경우 doProcess 실행
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request,response);

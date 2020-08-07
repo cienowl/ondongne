@@ -176,7 +176,7 @@ CREATE TABLE `helper_circle` (
   `join_postid` int(11) NOT NULL,
   KEY `join_email_idx` (`join_email`),
   KEY `join_postid_idx` (`join_postid`),
-  CONSTRAINT `join_email` FOREIGN KEY (`join_email`) REFERENCES `users` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `join_email` FOREIGN KEY (`join_email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `join_postid` FOREIGN KEY (`join_postid`) REFERENCES `circle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ~~~
