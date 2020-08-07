@@ -4,12 +4,14 @@
     css         - 이호준
     JavaScript  - 이호준
 -->
+<%@page import="java.text.DecimalFormat"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.ondongne.dto.DataTransferSell"%>
 <%@page import="java.util.List"%>
 
 <%
 	List<DataTransferSell> sellList = (List<DataTransferSell>) request.getAttribute("sellList");
+	DecimalFormat priceFormat = new DecimalFormat("###,###");
     String dataTarget = null;
     String sessionEmail = (String) session.getAttribute("email");
 %>
@@ -213,21 +215,27 @@
                 </style>
 
                 <%
-                	String isActive = null;
-                	String isParcel = null;
+                    String price = null;
+                    String email = null;
+                    String isActive = null;
+                    String isParcel = null;
+                    String pictureCarouselId = null;
                     for (int i = 0; i < sellList.size(); i++) {
                         dataTarget = "sellList" + Integer.toString(i);
-                        
+                        pictureCarouselId = "carousel-list-"+Integer.toString(i);
+                        email = sellList.get(i).getEmail();
+                        price = priceFormat.format(Integer.parseInt(sellList.get(i).getPrice()));
+
                         if (sellList.get(i).isIs_active()) {
-                        	isActive = "판매중";
+                            isActive = "판매중";
                         } else {
-                        	isActive = "판매완료";
+                            isActive = "판매완료";
                         }
 
                         if (sellList.get(i).isIs_parcel()) {
-                        	isParcel = "택배거래";
+                            isParcel = "택배거래";
                         } else {
-                        	isParcel = "직거래";
+                            isParcel = "직거래";
                         }
                 %>
                 <!-- Modal: Card Content -->
@@ -239,12 +247,12 @@
                                 <!-- Grid column -->
                                     <div class="row">
                                         <!--Carousel Wrapper-->
-                                        <div id="carousel-list-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                                        <div id="<%= pictureCarouselId %>" class="carousel slide carousel-fade" data-ride="carousel">
                                             <!--Indicators-->
                                             <ol class="carousel-indicators">
-                                                <li data-target="#carousel-list-1z" data-slide-to="0" class="active"></li>
-                                                <li data-target="#carousel-list-1z" data-slide-to="1"></li>
-                                                <li data-target="#carousel-list-1z" data-slide-to="2"></li>
+                                                <li data-target="#<%= pictureCarouselId %>" data-slide-to="0" class="active"></li>
+                                                <li data-target="#<%= pictureCarouselId %>" data-slide-to="1"></li>
+                                                <li data-target="#<%= pictureCarouselId %>" data-slide-to="2"></li>
                                             </ol>
                                             <!--/.Indicators-->
 
@@ -270,11 +278,11 @@
                                             <!--/.Slides-->
 
                                             <!--Controls-->
-                                            <a class="carousel-control-prev" href="#carousel-list-1z" role="button" data-slide="prev">
+                                            <a class="carousel-control-prev" href="#<%= pictureCarouselId %>" role="button" data-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
-                                            <a class="carousel-control-next" href="#carousel-list-1z" role="button" data-slide="next">
+                                            <a class="carousel-control-next" href="#<%= pictureCarouselId %>" role="button" data-slide="next">
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span class="sr-only">Next</span>
                                             </a>
@@ -287,41 +295,53 @@
 
                             <div class="modal-body">
                                 <div class="col align-self-center">
-                                    <h5 class="font-weight-normal mb-3"><%= sellList.get(i).getTitle() %></h5>
-                                    <small class="text-info"><%= isActive %></small>
-                                    <ul class="list-unstyled font-small mt-5 mb-0">
-                                    	<li>
-                                            <p class="text-uppercase mb-2"><strong>글번호</strong></p>
-                                            <p class="text-muted mb-4"><%= sellList.get(i).getId() %></p>
-                                        </li>
-                                        <li>
-                                            <p class="text-uppercase mb-2"><strong>작성자</strong></p>
+                                    <small class="text-info">#<%= sellList.get(i).getId() %></small>
+                                    <h5 class="font-weight-normal"><%= isActive %> <%= sellList.get(i).getTitle() %></h5>
+                                    <div class="row">
+                                        <div class="col-sm-8">
                                             <p class="text-muted mb-4"><%= sellList.get(i).getEmail() %></p>
-                                        </li>
-                                        <li>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p class="text-muted mb-4"><%= sellList.get(i).getPost_date() %></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <p class="text-uppercase mb-2"><strong>가격</strong></p>
+                                            <p class="text-muted mb-4">₩<%= price %>원</p>
+                                        </div>
+                                        <div class="col-sm-4">
                                             <p class="text-uppercase mb-2"><strong>지역</strong></p>
                                             <p class="text-muted mb-4"><%= sellList.get(i).getRegion() %></p>
-                                        </li>
-                                        <li>
+                                        </div>
+                                        <div class="col-sm-4">
                                             <p class="text-uppercase mb-2"><strong>거래방법</strong></p>
                                             <p class="text-muted mb-4"><%= isParcel %></p>
-                                        </li>
-                                        <li>
-                                            <p class="text-uppercase mb-2"><strong>가격</strong></p>
-                                            <p class="text-muted mb-4"><%= sellList.get(i).getPrice() %></p>
-                                        </li>
-                                        <li>
-                                            <p class="text-uppercase mb-2"><strong>작성일</strong></p>
-                                            <p class="text-muted mb-4"><%= sellList.get(i).getPost_date() %></p>
-                                        </li>
-                                    </ul>
-                                    <p class="text-muted"><%= sellList.get(i).getDescription() %></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="text-uppercase mb-2"><strong>설명</strong></p>
+                                            <p class="text-muted"><%= sellList.get(i).getDescription() %></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="modal-footer justify-content-center">
-                                <a type="button" class="btn btn-info">스크랩<i class="far fa-gem ml-1 white-text"></i></a>
-                                <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">닫기</a>
+                            <div class="modal-footer">
+                                <form method="POST" name="form">
+                                    <input type="hidden" name="postid" value="<%= sellList.get(i).getId() %>"/>
+                                    <% if (sessionEmail != null) { %>
+                                        <% if (sessionEmail.equals(email)) { %>
+                                            <a type="submit" class="btn btn-warning" onclick="javascript:form.action='update.sell';">수정</a>
+                                            <a type="submit" class="btn btn-danger" onclick="javascript:form.action='delete.sell';">삭제</a>
+                                        <% } else { %>
+                                            <button type="submit" class="btn btn-unique" onclick="javascript:form.action='scrap.sell';">스크랩</button>
+                                        <% } %>
+                                    <% } %>
+                                </form>
+                                <a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>
                             </div>
 
                         </div>
@@ -339,11 +359,11 @@
                         <div class="row">
 
                         <% for (int i = 0; i < sellList.size(); i++) { %>
-                            <% dataTarget = "#sellList" + Integer.toString(i); %>
+                            <% dataTarget = "sellList" + Integer.toString(i); %>
                             <!-- Grid column -->
                             <div class="col-md-6 col-lg-3">
                                 <!-- Card -->
-                                <a class="card hoverable mb-4" data-toggle="modal" data-target="<%= dataTarget %>">
+                                <a class="card hoverable mb-4" data-toggle="modal" data-target="#<%= dataTarget %>">
                                     <!-- Card image -->
                                     <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" alt="Card image cap">
                                     <!-- Card content -->

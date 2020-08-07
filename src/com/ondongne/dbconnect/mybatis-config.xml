@@ -22,6 +22,7 @@
 	<mapper resource="com/ondongne/dbconnect/mapper_users.xml"/>
 	<mapper resource="com/ondongne/dbconnect/mapper_hotplace.xml"/>
 	<mapper resource="com/ondongne/dbconnect/mapper_joincircle.xml"/>
+	<mapper resource="com/ondongne/dbconnect/mapper_joinsell.xml"/>
 	<mapper resource="com/ondongne/dbconnect/mapper_notice.xml"/>
 </mappers>
 

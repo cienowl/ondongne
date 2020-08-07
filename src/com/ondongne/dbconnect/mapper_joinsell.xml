@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="joinsell">
+	<insert id="joinSellInsert" parameterType="com.ondongne.dto.DataTransferSellJoin">
+		insert into helper_sell values (#{join_email},#{join_postid});
+	</insert>
+	
+	<select id="getJoinSell" resultType="int" parameterType="com.ondongne.dto.DataTransferSellJoin">
+		select COUNT(*) from helper_sell where join_email=#{join_email} AND join_postid=#{join_postid};
+	</select>
+
+</mapper>

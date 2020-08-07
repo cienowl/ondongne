@@ -35,6 +35,11 @@
 
 ## Colors
 https://color.adobe.com/ko/trends/Interaction
+8C0327
+F2D852
+F2D4C2
+F2F2F2
+404040
 
 ## JAVA
 
@@ -176,7 +181,18 @@ CREATE TABLE `helper_circle` (
   `join_postid` int(11) NOT NULL,
   KEY `join_email_idx` (`join_email`),
   KEY `join_postid_idx` (`join_postid`),
-  CONSTRAINT `join_email` FOREIGN KEY (`join_email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `join_postid` FOREIGN KEY (`join_postid`) REFERENCES `circle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `helper_circle_email` FOREIGN KEY (`join_email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `helper_circle_postid` FOREIGN KEY (`join_postid`) REFERENCES `circle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ~~~
+
+helper_sell : 스크랩한 판매글
+
+~~~sql
+CREATE TABLE `helper_sell` (
+  `join_email` varchar(50) NOT NULL,
+  `join_postid` int(11) NOT NULL,
+  KEY `join_email_idx` (`join_email`),
+  KEY `join_postid_idx` (`join_postid`),
+  CONSTRAINT `helper_sell_email` FOREIGN KEY (`join_email`) REFERENCES `users` (`email`) ON DELETE NO ACTION ON UPDATE NO CASCADE,
+  CONSTRAINT `helper_sell_postid` FOREIGN KEY (`join_postid`) REFERENCES `sell` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

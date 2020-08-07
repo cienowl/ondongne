@@ -25,7 +25,6 @@
 </style>
 
 <!--Navbar -->
-<%-- <nav class="mb-1 navbar navbar-expand-lg navbar-light fixed-top"> --%>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.ondongne">ON동네</a>
@@ -33,7 +32,7 @@
         aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+        <div class="collapse navbar-collapse" id="navbar-signin">
             <ul class="navbar-nav mr-auto">
                 <!-- <li class="nav-item active">
                 <a class="nav-link" href="#">Home
@@ -50,10 +49,10 @@
                     <a class="nav-link" href="view.hotplace">동네명소</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" id="navbar-signin-menu" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">게시판
                     </a>
-                    <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+                    <div class="dropdown-menu dropdown-default" aria-labelledby="navbar-signin-menu">
                         <a class="dropdown-item" href="#">자유게시판</a>
                         <a class="dropdown-item" href="#">동네게시판</a>
                         <a class="dropdown-item" href="#">질문게시판</a>

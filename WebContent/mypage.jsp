@@ -9,6 +9,7 @@
 
 <%
 	List<DataTransferCircle> joinCircleList = (List<DataTransferCircle>)request.getAttribute("circleList");
+    //TODO: 스크랩 게시물 list 가져오기
 %>
 
 <!DOCTYPE html>
@@ -217,64 +218,72 @@
 
                                 <!--Grid column-->
                                 <div class="col-lg-6 col-md-6 mb-4">
-
-                                <!--Card-->
-                                <div class="card">
-
-                                    <!-- Card header -->
-                                    <div class="card-header">참여한 소모임</div>
-
-                                    <!--Card content-->
-                                    <div class="card-body">
-                                        <table class="table table-hover" style="padding-left:300px;">
-                                            <thead>
-                                                <tr>
-                                                <th scope="col">참여한 소모임</th>
-                                                <th scope="col">글제목</th>
-                                                <th scope="col">작성자</th>
-                                                <th scope="col">모임날짜</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <% for (int i = 0; i < joinCircleList.size(); i++) { %>
+                                    <!--Card-->
+                                    <div class="card">
+                                        <!-- Card header -->
+                                        <div class="card-header">참여한 소모임</div>
+                                        <!--Card content-->
+                                        <div class="card-body">
+                                            <table class="table table-hover">
+                                                <thead>
                                                     <tr>
-                                                        <td><%=i+1 %></td>
-                                                        <th><%=joinCircleList.get(i).getTitle()%></th>
-                                                        <td><%=joinCircleList.get(i).getEmail() %></td>
-                                                        <td><%=joinCircleList.get(i).getEvent_date() %></td>
+                                                    <th scope="col">참여한 소모임</th>
+                                                    <th scope="col">글제목</th>
+                                                    <th scope="col">작성자</th>
+                                                    <th scope="col">모임날짜</th>
                                                     </tr>
-                                                <% } %>
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                    <% for (int i = 0; i < joinCircleList.size(); i++) { %>
+                                                        <tr>
+                                                            <td><%=i+1 %></td>
+                                                            <th><%=joinCircleList.get(i).getTitle()%></th>
+                                                            <td><%=joinCircleList.get(i).getEmail() %></td>
+                                                            <td><%=joinCircleList.get(i).getEvent_date() %></td>
+                                                        </tr>
+                                                    <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-
-                                </div>
-                                <!--/.Card-->
-
+                                    <!--/.Card-->
                                 </div>
                                 <!--Grid column-->
 
                                 <!--Grid column-->
                                 <div class="col-lg-6 col-md-6 mb-4">
-
-                                <!--Card-->
-                                <div class="card">
-
-                                    <!-- Card header -->
-                                    <div class="card-header">판매글 스크랩</div>
-
-                                    <!--Card content-->
-                                    <div class="card-body">
-
-                                    <canvas id="horizontalBar"></canvas>
-
+                                    <!--Card-->
+                                    <div class="card">
+                                        <!-- Card header -->
+                                        <div class="card-header">판매글 스크랩</div>
+                                        <!--Card content-->
+                                        <div class="card-body">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                    <th scope="col">글번호</th>
+                                                    <th scope="col">글제목</th>
+                                                    <th scope="col">작성자</th>
+                                                    <th scope="col">가격</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for (int i = 0; i < joinCircleList.size(); i++) { %>
+                                                        <tr>
+                                                            <td><%=i+1 %></td>
+                                                            <th><%=joinCircleList.get(i).getTitle()%></th>
+                                                            <td><%=joinCircleList.get(i).getEmail() %></td>
+                                                            <td><%=joinCircleList.get(i).getEvent_date() %></td>
+                                                        </tr>
+                                                    <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-
-                                </div>
-                                <!--/.Card-->
-
+                                    <!--/.Card-->
                                 </div>
                                 <!--Grid column-->
+
                             </div>
                             <!--Grid row-->
                         </div>

@@ -15,11 +15,9 @@ import com.ondongne.dto.DataTransferCircleJoin;
 
 public class DataAccessCircleJoin {
 	
-	static SqlSessionFactory sqlFactory;
 	private static DataAccessCircleJoin instance;
-	
-	public static DataAccessCircleJoin getinstance() {
-		if(instance==null) {
+	public static DataAccessCircleJoin getInstance() {
+		if (instance == null) {
 			synchronized(DataAccessCircleJoin.class) {
 				instance = new DataAccessCircleJoin();
 			}
@@ -27,13 +25,14 @@ public class DataAccessCircleJoin {
 		return instance;
 	}
 	
+	static SqlSessionFactory sqlFactory;
 	public static SqlSessionFactory getConnection() {
 		Reader reader;
 		
 		try {
 			reader = Resources.getResourceAsReader("com/ondongne/dbconnect/mybatis-config.xml");
 			sqlFactory = new SqlSessionFactoryBuilder().build(reader);
-		}catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return sqlFactory;

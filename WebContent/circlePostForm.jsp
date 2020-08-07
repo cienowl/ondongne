@@ -30,6 +30,11 @@
                 padding-right: 16px !important;
             }
         </style>
+        <style>
+            .navbar {
+                background: #880e4f !important;
+            }
+        </style>
 
         <!-- tags css -->
         <style>
@@ -324,7 +329,7 @@
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
-			
+
         </header>
         <!-- Header End -->
 
@@ -720,17 +725,17 @@
                 });
             })( window.jQuery, window, document );
         </script>
-        
+
         <!-- 소모임페이지 눌렀을 때 맨위로 커서 올라가게 -->
         <script>
 			$(document).ready(function(){
 				$("#inputTitle").focus();
 			});
 		</script>
-		
-		
-		
-		
+
+
+
+
 
     </body>
 </html>

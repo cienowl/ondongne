@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
 import com.ondongne.action.GetSellAction;
+import com.ondongne.action.ScrapSellAction;
 import com.ondongne.action.PostSellAction;
 import com.ondongne.dto.ActionForward;
 
@@ -48,12 +49,33 @@ public class SellFrontController extends HttpServlet {
 //			sellpostform.jsp 에서 submit 하면 action으로 가서 DB 저장
 			action = new PostSellAction();
 			try {
-				forward = action.execute(request, response);	//action 진행 후 리턴된 forward 대입
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		
+		else if (command.equals("/scrap.sell")) {
+//			스크랩 버튼 누를때
+			action = new ScrapSellAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+//		TODO: 게시물 수정
+//		else if (command.equals("/delete.sell")) {
+////			판매글 수정 버튼
+//			forward = new ActionForward();
+//			forward.setPath("/sellUpdateForm.jsp");
+//		}
+		
+//		TODO: 게시물 삭제
+//		else if (command.equals("/update.sell")) {
+//			
+//		}
 		
 //		TODO: 게시물 미리보기 누르면 현재 데이터로 모달창 띄우기
 		
