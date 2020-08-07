@@ -129,10 +129,11 @@ CREATE TABLE `circle` (
   `end_age` int(11) DEFAULT NULL,
   `description` text NOT NULL,
   `tags` varchar(100) NOT NULL,
+  `mem_number` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `circle_email_idx` (`email`),
+  KEY `email_idx` (`email`),
   CONSTRAINT `circle_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8
 ~~~
 
 hotplace: 동네장소 테이블
