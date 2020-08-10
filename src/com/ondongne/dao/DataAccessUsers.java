@@ -15,7 +15,6 @@ import com.ondongne.dto.DataTransferUsers;
 public class DataAccessUsers {
 
 	private static DataAccessUsers instance;
-
 	public static DataAccessUsers getInstance() {
 		if (instance == null) {
 			synchronized (DataAccessUsers.class) {
@@ -26,7 +25,6 @@ public class DataAccessUsers {
 	}
 
 	static SqlSessionFactory sqlFactory;
-
 	public static SqlSessionFactory getConnection() {
 		Reader reader;
 
@@ -53,7 +51,7 @@ public class DataAccessUsers {
 	}
 
 	public int userUpdate(DataTransferUsers dtoUser) {
-		
+
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 		int updateCount = sqlSession.update("userUpdate", dtoUser);
@@ -84,6 +82,18 @@ public class DataAccessUsers {
 		sqlSession.close();
 
 		return deleteCount;
+
+	}
+
+	public int setAvater(DataTransferUsers dtoUser) {
+
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		int updateCount = sqlSession.update("setAvatar", dtoUser);
+		sqlSession.commit();
+		sqlSession.close();
+
+		return updateCount;
 
 	}
 

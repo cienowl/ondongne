@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.UserAvatarSetAction;
 import com.ondongne.action.UserDeleteAction;
 import com.ondongne.action.UserSigninAction;
 import com.ondongne.action.UserSignoutAction;
@@ -83,14 +84,26 @@ public class UsersFrontController extends HttpServlet
 				}
 			}
 
-//			TODO: 회원탈퇴
-			else if(command.equals("/delete.users")) {
+			else if (command.equals("/delete.users")) {
+//				회원탈퇴
 				action = new UserDeleteAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}				
+			}
+			
+			else if (command.equals("/setAvatar.users") ) {
+//				Avatar 사진 수정
+				System.out.println("start");
+				action = new UserAvatarSetAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 			}
 			
 			if (forward != null) {		

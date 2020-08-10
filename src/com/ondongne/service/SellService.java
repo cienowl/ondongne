@@ -30,6 +30,15 @@ public class SellService {
 		
 	}
 	
+	public List<DataTransferSell> selectJoinSell(String sessionEmail) {
+//		TODO: 구현 필요
+		List<DataTransferSell> sellList = null;
+		
+		
+		return sellList;
+		
+	}
+	
 	public void selectSellOne() {
 //		TODO: 한개 내용만 가져오기
 	}

@@ -25,4 +25,8 @@
 		delete from users where email=#{email};
 	</delete>
 	
+	<update id="setAvatar" parameterType="com.ondongne.dto.DataTransferUsers">
+		update users set profile_picture=#{profile_picture} where email=#{email}
+	</update>
+	
 </mapper>

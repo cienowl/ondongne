@@ -9,7 +9,8 @@
 
 <%
 	List<DataTransferCircle> joinCircleList = (List<DataTransferCircle>)request.getAttribute("circleList");
-    //TODO: 스크랩 게시물 list 가져오기
+    //TODO: Sell 스크랩 게시물 list 가져오기
+    //TODO: 프로필 사진 가져오기
 %>
 
 <!DOCTYPE html>
@@ -56,7 +57,7 @@
 
         <!--Modal: 회원탈퇴 확인창-->
         <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-md modal-notify modal-danger" role="document">
+            <div class="modal-dialog modal-md modal-notify modal-danger" role="document">
                 <!--Content-->
                 <div class="modal-content">
                     <form action="delete.users" method="POST">
@@ -102,17 +103,20 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-lg-2 mt-5">
+                    <div class="col-xl-2 my-5">
                         <!-- Card -->
                         <div class="card sticky-top">
 
                             <!-- Card image -->
                             <%-- <img class="card-img-top img-fluid rounded-circle hoverable zoom" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap"> --%>
-                            <div class="view overlay zoom">
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid rounded" alt="zoom">
+                            <div class="view overlay zoom p-2" onClick="uploadAvatar()" style="background:#f2d4c2;">
+                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid z-depth-1-half img-thumbnail mx-auto d-block rounded-circle my-3" id="avatarImage" style="width:150px; height:150px" alt="zoom"/>
                                 <div class="mask flex-center waves-effect waves-light">
                                     <p class="white-text">사진 변경</p>
                                 </div>
+                                <form action="setAvatar.users" method="POST" id="submitAvatarForm" enctype="multipart/form-data">
+                                    <input type="file" accept="images/*" name="avatarFileName" id="avatarInput"/>
+                                </form>
                             </div>
 
                             <!-- Card content -->
@@ -133,8 +137,7 @@
                                     <a href="mypage.ondongne" class="list-group-item list-group-item-action">대시보드</a>
                                     <a href="signupsub.users" class="list-group-item list-group-item-action">개인정보수정</a>
                                     <a href="" class="list-group-item list-group-item-action" onclick="acyncMovePage('testform2.html');">Ajax Test</a>
-                                    <a href="" class="list-group-item list-group-item-action">팔로잉</a>
-                                    <a href="" class="list-group-item list-group-item-action">팔로워</a>
+                                    <a href="" class="list-group-item list-group-item-action">팔로잉/팔로워</a>
                                     <a href="" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#modalConfirmDelete">탈퇴하기</a>
                                 </div>
 
@@ -306,7 +309,11 @@
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#avatarInput').on('change', handleImgFileSelect);
+            });
+        </script>
 
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
@@ -340,5 +347,36 @@
                 });
             }
         </script>
+
+        <script>
+            function uploadAvatar() {
+                document.getElementById('avatarInput').click();
+            }
+
+            function handleImgFileSelect(e) {
+                var sel_file;
+                var files = e.target.files;
+                var filesArr = Array.prototype.slice.call(files);
+
+                filesArr.forEach(function(f) {
+                    if (!f.type.match('image.*')) {
+                        alert("확장자는 이미지 확장자만 가능합니다.");
+                        return;
+                    }
+
+                    sel_file = f;
+
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#avatarImage').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(f);
+                });
+
+                // TODO: DB에 파일 저장
+                document.getElementById('submitAvatarForm').submit();
+            }
+        </script>
+
     </body>
 </html>

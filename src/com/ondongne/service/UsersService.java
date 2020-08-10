@@ -91,4 +91,19 @@ public class UsersService {
 		return true;
 	}
 	
+	public boolean setAvatar(DataTransferUsers dtoUser) {
+		
+		boolean isUpdateSuccess = false;
+		
+		DataAccessUsers daoUser = DataAccessUsers.getInstance();
+		int updateCount = daoUser.setAvater(dtoUser);
+		
+		if (updateCount > 0) {
+			isUpdateSuccess = true;
+			System.out.println("setAvater" + isUpdateSuccess);
+		}
+		
+		return isUpdateSuccess;
+	}
+	
 }

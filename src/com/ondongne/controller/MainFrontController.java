@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ondongne.action.Action;
 import com.ondongne.action.GetJoinCircleAction;
 import com.ondongne.action.GetMyPageInfoAction;
+import com.ondongne.action.LoadMypageAction;
 import com.ondongne.action.NoticeViewAction;
 import com.ondongne.dto.ActionForward;
 
@@ -77,7 +78,7 @@ public class MainFrontController extends HttpServlet {
 
 		else if (command.equals("/mypage.ondongne")) {
 //			마이페이지로 이동
-			action = new GetJoinCircleAction();
+			action = new LoadMypageAction();
 			try {
 				forward = action.execute(request, response);
 			}catch(Exception e) {
