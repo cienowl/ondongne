@@ -46,7 +46,7 @@
     <body>
 
         <!-- Full Page Intro -->
-        <div class="view full-page-intro" style="background-image: url('img/admin_index_backgroundimg.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view full-page-intro" style="background-image: url('img/admin/admin_index_backgroundimg.jpg'); background-repeat: no-repeat; background-size: cover;">
 
             <!-- Mask & flexbox options-->
             <div class="mask rgba-black-light d-flex justify-content-center align-items-center">

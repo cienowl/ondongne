@@ -39,6 +39,9 @@
                 .navbar {
                     background: #880e4f !important;
                 }
+                /* .index-intro {
+                    height:250px;
+                } */
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 html, body, header, .carousel {
@@ -48,6 +51,9 @@
                 .navbar {
                     background: #880e4f !important;
                 }
+                /* .index-intro {
+                    height:500px;
+                } */
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 .navbar:not(.top-nav-collapse) {
@@ -94,9 +100,9 @@
                 <div class="carousel-inner" role="listbox">
                     <%
                     String[] imgUrl = {
-                        "img/rawkkim-U9XFsU3SPT8-unsplash.jpg",
-                        "img/rawkkim-VtQ1137OMlw-unsplash.jpg",
-                        "img/rawkkim-xDZY5AXp_TY-unsplash.jpg"
+                        "img/index/rawkkim-U9XFsU3SPT8-unsplash.jpg",
+                        "img/index/rawkkim-VtQ1137OMlw-unsplash.jpg",
+                        "img/index/rawkkim-xDZY5AXp_TY-unsplash.jpg"
                     };
                     String[] carouselClass = {
                         "carousel-item active",
@@ -178,7 +184,7 @@
                             <!-- Card -->
                             <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.circle';">
                                 <!-- Card image -->
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" alt="Card image cap">
+                                <img class="card-img-top index-intro" src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" alt="Card image cap">
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
@@ -193,11 +199,11 @@
                         <!-- Grid column -->
 
                         <!-- Grid column -->
-                        <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
+                        <div class="col-lg-4 col-md-12 mb-md-0 mb-4">
                             <!-- Card -->
                             <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.sell';">
                                 <!-- Card image -->
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/project4.jpg" alt="Card image cap">
+                                <img class="card-img-top index-intro" src="img/index/fleemarket.png" alt="Card image cap">
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
@@ -212,11 +218,11 @@
                         <!-- Grid column -->
 
                         <!-- Grid column -->
-                        <div class="col-lg-4 col-md-6 mb-0">
+                        <div class="col-lg-4 col-md-12 mb-0">
                             <!-- Card -->
                             <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.hotplace';">
                                 <!-- Card image -->
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/88.jpg" alt="Card image cap">
+                                <img class="card-img-top index-intro" src="img/index/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg" alt="Card image cap">
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->

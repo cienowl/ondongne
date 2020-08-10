@@ -36,30 +36,43 @@ public class DataAccessSell {
 
 		return sqlFactory;
 	}
-	
+
 	public int insertSellPost(DataTransferSell dtoSell) {
-		
+
 		sqlFactory = getConnection();
 	    SqlSession sqlSession = sqlFactory.openSession();
-				
+
 		int insertCount = sqlSession.insert("sellPost", dtoSell);	//insert리턴 확인		
 		sqlSession.commit();	//commit()
 		sqlSession.close();
-		
+
 		return insertCount;	//sql insert 성공하면 true 아니면 false 리턴
-		
+
 	}
-	
+
 	public List<DataTransferSell> selectSellAll() {
-		
+
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
-		
+
 		List<DataTransferSell> sellList = sqlSession.selectList("getSellPostAll");
 		sqlSession.close();
-		
+
 		return sellList;
-		
+
+	}
+
+	public int deleteSellPost(DataTransferSell dtoSell) {
+
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+
+		int deleteCount = sqlSession.delete("deleteSellPost", dtoSell);
+		sqlSession.commit();
+		sqlSession.close();
+
+		return deleteCount;
+
 	}
 
 }

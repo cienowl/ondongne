@@ -36,6 +36,10 @@
 	<select id="getSellPostAll" resultType="com.ondongne.dto.DataTransferSell">
 		select * from sell
 	</select>
+	
+	<delete id="deleteSellPost" parameterType="com.ondongne.dto.DataTransferSell">
+		delete * from sell where id=#{id}
+	</delete>
 
 </mapper>
 

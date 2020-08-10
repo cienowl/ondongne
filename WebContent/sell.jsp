@@ -60,6 +60,14 @@
                 padding-right: 16px !important;
             }
         </style>
+        <!-- 판매페이지 카드 제목길이 -->
+        <style>
+        #cardTitle, #cardEmail{
+            overflow:hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        </style>
         <style>
             .input-grey .input-group-lg>.input-group-prepend>.input-group-text {
                 border-radius: .125rem;
@@ -334,8 +342,9 @@
                                     <input type="hidden" name="postid" value="<%= sellList.get(i).getId() %>"/>
                                     <% if (sessionEmail != null) { %>
                                         <% if (sessionEmail.equals(email)) { %>
-                                            <a type="submit" class="btn btn-warning" onclick="javascript:form.action='update.sell';">수정</a>
-                                            <a type="submit" class="btn btn-danger" onclick="javascript:form.action='delete.sell';">삭제</a>
+                                            <a type="submit" class="btn btn-warning" onclick="javascript:form.action='update.sell';">수정</a>                                            
+                                            <%-- <a type="submit" class="btn btn-danger" onclick="javascript:form.action='delete.sell';">삭제</a> --%>
+                                            <a type="submit" class="btn btn-danger" onclick="delete_check(this.form)">삭제</a>
                                         <% } else { %>
                                             <button type="submit" class="btn btn-unique" onclick="javascript:form.action='scrap.sell';">스크랩</button>
                                         <% } %>
@@ -368,9 +377,9 @@
                                     <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" alt="Card image cap">
                                     <!-- Card content -->
                                     <div class="card-body">
-                                        <h5 class="mb-3"><%= sellList.get(i).getTitle() %></h5>
-                                        <p class="font-small grey-text mb-2"><%= sellList.get(i).getEmail() %></p>
-                                        <p class="card-text mb-3" style="100px"><%= sellList.get(i).getDescription() %></p>
+                                        <h5 class="mb-3" id="cardTitle"><%= sellList.get(i).getTitle() %></h5>
+                                        <p class="font-small grey-text mb-2" id="cardEmail"><%= sellList.get(i).getEmail() %></p>
+                                        <p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;"><%= sellList.get(i).getDescription() %></p>
                                         <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="far fa-heart"></i><%= sellList.get(i).getPost_date() %></p>
                                     </div>
                                 </a>
@@ -413,6 +422,20 @@
         <script type="text/javascript">
             // Animations initialization
             new WOW().init();
+        </script>
+
+        <!-- 작성자가 게시글 삭제하기 눌렀을 때 confirm -->
+        <script>
+            function delete_check(form) {
+                console.log("글번호" + form.postid.value);
+                var check = confirm("정말로 삭제하시겠습니까?");
+                if (check == true) {
+                    window.location.href = "delete.sell?postid="
+                            + form.postid.value;
+                } else if (check == false) {
+                    alert("삭제가 취소되었습니다.");
+                }
+            }
         </script>
 
     </body>

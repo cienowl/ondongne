@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.DeleteSellAction;
 import com.ondongne.action.GetSellAction;
 import com.ondongne.action.ScrapSellAction;
 import com.ondongne.action.PostSellAction;
@@ -65,17 +66,22 @@ public class SellFrontController extends HttpServlet {
 			}
 		}
 		
-//		TODO: 게시물 수정
-//		else if (command.equals("/delete.sell")) {
+////		TODO: 게시물 수정
+//		else if (command.equals("/update.sell")) {
 ////			판매글 수정 버튼
 //			forward = new ActionForward();
 //			forward.setPath("/sellUpdateForm.jsp");
 //		}
 		
-//		TODO: 게시물 삭제
-//		else if (command.equals("/update.sell")) {
-//			
-//		}
+		else if (command.equals("/delete.sell")) {
+//			게시물 삭제
+			action = new DeleteSellAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 //		TODO: 게시물 미리보기 누르면 현재 데이터로 모달창 띄우기
 		
