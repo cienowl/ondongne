@@ -414,19 +414,23 @@ html, body, header, .top-carousel {
 									<strong>지역</strong>
 								</p>
 								<p class="text-muted mb-4"><%=circleList.get(i).getRegion()%></p>
-								<p class="text-uppercase mb-2">
-									<strong>상세주소</strong>
-								</p>
-								<p class="text-muted mb-0">
-									(<%=circleList.get(i).getZipcode()%>)<%=circleList.get(i).getAddress()%></p>
-								<p class="text-muted mb-4">
-									<small><%=circleList.get(i).getAddress_detail()%></small>
-								</p>
+								
+								<p class="text-uppercase mb-2"><strong>상세주소</strong></p>
+								<p class="text-muted mb-0">(<%=circleList.get(i).getZipcode()%>)</p>
+								<div class="row">
+									<div class="col-sm-6">
+										<p class="text-muted mb-4"><%=circleList.get(i).getAddress()%></p>
+									</div>
+									<div class="col-sm-6">
+										<p class="text-muted mb-4"><%=circleList.get(i).getAddress_detail()%></p>
+									</div>
+								</div>
+								
 								<p class="text-uppercase mb-2">
 									<strong>설명</strong>
 								</p>
 								<p class="text-muted"
-									style="overflow-y: scroll; height: 100px; word-break: break-all;"><%=circleList.get(i).getDescription()%></p>
+									style="height: 100px; word-break: break-all;"><%=circleList.get(i).getDescription()%></p>
 							</div>
 						</div>
 						<div class="modal-footer">
