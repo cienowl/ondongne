@@ -32,6 +32,7 @@ public class JoinCircleAction implements Action{
 //			CircleJoinService circleJoinService = new CircleJoinService();
 			boolean isWriteSuccess = circleService.joinCircle(circleBean);
 			System.out.println("소모임등록"+isWriteSuccess);
+			
 			// 소모임 참여 실패
 			if (!isWriteSuccess) {
 				response.setContentType("text/html;charset=UTF-8");
@@ -40,12 +41,14 @@ public class JoinCircleAction implements Action{
 				out.println("alert('등록실패')");
 				out.println("history.back();");
 				out.println("</script>");
-			} else {
-				//소모임 참여에 성공하면 mypage에 전체 출력
+			} 
+			//소모임 참여에 성공하면 mypage에 전체 출력
+			else {
 				forward = new ActionForward();
 				forward.setRedirect(true);
 				forward.setPath("mypage.ondongne");
 			}
+			
 		//이미 참여한 소모임
 		} else {
 			

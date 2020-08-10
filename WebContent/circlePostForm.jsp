@@ -347,7 +347,6 @@
                         <div class="form-group col-md-6">
                             <label for="inputTitle" >소모임 제목</label>
                             <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title"/>
-                            <label for="inputPhoto">사진등록</label>
                         </div>
                     </div>
 
@@ -731,6 +730,13 @@
 			$(document).ready(function(){
 				$("#inputTitle").focus();
 			});
+		</script>
+		
+		<script>
+			$(function(){
+				
+			})
+			
 		</script>
 
 

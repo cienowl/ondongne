@@ -5,10 +5,15 @@
     JavaScript  - 김나예
 -->
 
+<%@page import="com.ondongne.dao.DataAccessCircleJoin"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
 
 <%@page import="com.ondongne.dto.DataTransferCircle"%>
+<%@page import="com.ondongne.dto.DataTransferCircleJoin" %>
 <%@page import="java.util.List"%>
 
 <%
@@ -89,6 +94,16 @@ html, body, header, .top-carousel {
 
 .input-grey .input-group-lg>.form-control:not(textarea) {
 	height: calc(1.5em + 1rem + 6px);
+}
+</style>
+
+<!-- 소모임페이지 카드 제목길이 -->
+<style>
+#circleTitle, #circleEmail{
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	
 }
 </style>
 </head>
@@ -225,39 +240,56 @@ html, body, header, .top-carousel {
 	<main>
 	<div class="container my-5">
 
-		<!-- Section -->
-		<section>
+	<!-- Section -->
+	<section>
 
-			<style>
-.md-pills .nav-link.active {
-	color: #fff;
-	background-color: #616161;
-}
+	<style>
+	.md-pills .nav-link.active {
+		color: #fff;
+		background-color: #616161;
+	}
+	
+	#list.close {
+		position: absolute;
+		right: 0;
+		z-index: 2;
+		padding-right: 1rem;
+		padding-top: .6rem;
+	}
+	</style>
 
-#list.close {
-	position: absolute;
-	right: 0;
-	z-index: 2;
-	padding-right: 1rem;
-	padding-top: .6rem;
-}
-</style>
-
-			<!-- 참여버튼 눌렀을 때 로그인 되어있는지 확인 -->
-			<%
-				String joinButtonSelector = null;
-				if (sessionEmail == null) {
-					joinButtonSelector = "<a class=\"btn btn-primary\" data-dismiss=\"modal\" data-toggle=\"modal\" data-target=\"#signinModal\">참여하기</a>";
-				} else {
-					joinButtonSelector = "<button type=\"submit\" class=\"btn btn-primary\"  onclick=\"checksession();\">참여하기</button>";
-				}
-			%>
+			
 
 			<%
 				for (int i = 0; i < circleList.size(); i++) {
 			%>
 			<%
 				dataTarget = "circleList" + Integer.toString(i);
+			%>
+			
+			<%
+				SqlSessionFactory factory = DataAccessCircleJoin.getConnection();
+				SqlSession sqlSession = factory.openSession();
+				
+				int joinCount = sqlSession.selectOne("getJoinCount",circleList.get(i).getId());
+				sqlSession.close();
+			%>
+			
+			
+			<!-- 참여버튼 눌렀을 때 로그인 되어있는지 확인 -->
+			<%
+				String joinButtonSelector = null;
+				if (sessionEmail == null) {
+					joinButtonSelector = "<a class=\"btn btn-primary\" data-dismiss=\"modal\" data-toggle=\"modal\" data-target=\"#signinModal\">참여하기</a>";
+				} else {
+					if(circleList.get(i).getMem_number().equals(Integer.toString(joinCount))){
+						joinButtonSelector = "<button type=\"submit\" class=\"btn btn-primary\"  onclick=\"checksession();\" disabled>참여하기</button>";
+					}
+					else{
+						joinButtonSelector = "<button type=\"submit\" class=\"btn btn-primary\"  onclick=\"checksession();\">참여하기</button>";
+					}
+					
+				}
 			%>
 
 			<!-- Modal: Card Content -->
@@ -339,101 +371,85 @@ html, body, header, .top-carousel {
 
 						<div class="modal-body">
 							<div class="col align-self-center">
-
-								<%
-									if (!check) {
-								%>
-								<form action="postjoin.circle" method="POST" name="form01">
-									<%
-										} else {
-									%>
-									<form action="" method="POST" name="form01">
-										<%
-											}
-										%>
-										<input type="hidden" name="postid" id="postid"
-											value="<%=circleList.get(i).getId()%>" /> <input
-											type="hidden" name="title"
-											value="<%=circleList.get(i).getTitle()%>" /> <input
-											type="hidden" name="memnumber"
-											value="<%=circleList.get(i).getMem_number()%>" /> <input
-											type="hidden" name="region"
-											value="<%=circleList.get(i).getRegion()%>" /> <input
-											type="hidden" name="gender"
-											value="<%=circleList.get(i).getGender()%>" /> <input
-											type="hidden" name="event_date"
-											value="<%=circleList.get(i).getEvent_date()%>" /> <input
-											type="hidden" name="end_date"
-											value="<%=circleList.get(i).getEnd_date()%>" /> <input
-											type="hidden" name="zipcode"
-											value="<%=circleList.get(i).getZipcode()%>" /> <input
-											type="hidden" name="address"
-											value="<%=circleList.get(i).getAddress()%>" /> <input
-											type="hidden" name="address_detail"
-											value="<%=circleList.get(i).getAddress_detail()%>" /> <input
-											type="hidden" name="description"
-											value="<%=circleList.get(i).getDescription()%>" />
-
-										<h5 class="font-weight-bold mb-3"><%=circleList.get(i).getTitle()%></h5>
-										<p class="text-muted mb-4 text-right font-small">
-											작성자 : <a
-												href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%=circleList.get(i).getEmail()%></a>
-										</p>
-										<div class="row">
-											<div class="col-sm-6">
-												<p class="text-uppercase mb-2">
-													<strong>소모임날짜</strong>
-												</p>
-												<p class="text-muted mb-4"><%=circleList.get(i).getEvent_date()%></p>
-											</div>
-											<div class="col-sm-6">
-												<p class="text-uppercase mb-2">
-													<strong>마감날짜</strong>
-												</p>
-												<p class="text-muted mb-4 text-danger"><%=circleList.get(i).getEnd_date()%></a>
-											</div>
-										</div>
+								
+								<%if (!check) {%>
+								<form action="postjoin.circle" method="POST" >
+								<%} else {%>
+								<form action="" method="POST">
+								<%}%>
+									<input type="hidden" name="postid" id="postid" value="<%=circleList.get(i).getId()%>" /> 
+									<input type="hidden" name="title" value="<%=circleList.get(i).getTitle()%>" /> 
+									<input type="hidden" name="memnumber" value="<%=circleList.get(i).getMem_number()%>" /> 
+									<input type="hidden" name="region" value="<%=circleList.get(i).getRegion()%>" /> 
+									<input type="hidden" name="gender" value="<%=circleList.get(i).getGender()%>" /> 
+									<input type="hidden" name="event_date" value="<%=circleList.get(i).getEvent_date()%>" /> 
+									<input type="hidden" name="end_date" value="<%=circleList.get(i).getEnd_date()%>" /> 
+									<input type="hidden" name="zipcode" value="<%=circleList.get(i).getZipcode()%>" /> 
+									<input type="hidden" name="address" value="<%=circleList.get(i).getAddress()%>" /> 
+									<input type="hidden" name="address_detail" value="<%=circleList.get(i).getAddress_detail()%>" /> 
+									<input type="hidden" name="description" value="<%=circleList.get(i).getDescription()%>" />
+								<h5 class="font-weight-bold mb-3"><%=circleList.get(i).getTitle()%></h5>
+								<p class="text-muted mb-4 text-right font-small">
+									작성자 : <a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%=circleList.get(i).getEmail()%></a>
+								</p>
+								<div class="row">
+									<div class="col-sm-6">
 										<p class="text-uppercase mb-2">
-											<strong>지역</strong>
+											<strong>소모임날짜</strong>
 										</p>
-										<p class="text-muted mb-4"><%=circleList.get(i).getRegion()%></p>
+										<p class="text-muted mb-4"><%=circleList.get(i).getEvent_date()%></p>
+									</div>
+									<div class="col-sm-6">
 										<p class="text-uppercase mb-2">
-											<strong>상세주소</strong>
+											<strong>마감날짜</strong>
 										</p>
-										<p class="text-muted mb-2">
-											(<%=circleList.get(i).getZipcode()%>)<%=circleList.get(i).getAddress()%></p>
-										<p class="text-muted mb-4">
-											<small><%=circleList.get(i).getAddress_detail()%></small>
-										</p>
-										<p class="text-uppercase mb-2">
-											<strong>설명</strong>
-										</p>
-										<p class="text-muted"
-											style="overflow-y: scroll; height: 100px; word-break: break-all;"><%=circleList.get(i).getDescription()%></p>
+										<p class="text-muted mb-4 text-danger"><%=circleList.get(i).getEnd_date()%></a>
+									</div>
+								</div>
+								<p class="text-uppercase mb-2">
+									<strong>참여인원</strong>
+								</p>
+								<p class="text-muted mb-4"><a class="text-danger"><%=joinCount %></a> / <%=circleList.get(i).getMem_number()%>&nbsp명</p>
+								<p class="text-uppercase mb-2">
+									<strong>지역</strong>
+								</p>
+								<p class="text-muted mb-4"><%=circleList.get(i).getRegion()%></p>
+								<p class="text-uppercase mb-2">
+									<strong>상세주소</strong>
+								</p>
+								<p class="text-muted mb-0">
+									(<%=circleList.get(i).getZipcode()%>)<%=circleList.get(i).getAddress()%></p>
+								<p class="text-muted mb-4">
+									<small><%=circleList.get(i).getAddress_detail()%></small>
+								</p>
+								<p class="text-uppercase mb-2">
+									<strong>설명</strong>
+								</p>
+								<p class="text-muted"
+									style="overflow-y: scroll; height: 100px; word-break: break-all;"><%=circleList.get(i).getDescription()%></p>
 							</div>
-							<div class="modal-footer">
-								<%
-									if (check) {
-								%>
-								<button type="submit" class="btn btn-warning"
-									onclick="javascript:form.action='postupdateform.circle'">수정하기</button>
-								<button type="button" class="btn btn-danger"
-									onclick="delete_check(this.form)">삭제하기</button>
-								<%
-									} else {
-								%>
-								<%=joinButtonSelector%>
-								<%
-									}
-								%>
-								</form>
-							</div>
+						</div>
+						<div class="modal-footer">
+							<%
+								if (check) {
+							%>
+							<button type="submit" class="btn btn-warning"
+								onclick="javascript:form.action='postupdateform.circle'">수정하기</button>
+							<button type="button" class="btn btn-danger"
+								onclick="delete_check(this.form)">삭제하기</button>
+							<%
+								} else {
+							%>
+							<%=joinButtonSelector%>
+							<%
+								}
+							%>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- Modal end -->
-
 			<%
 				}
 			%>
@@ -463,8 +479,8 @@ html, body, header, .top-carousel {
 								src="https://mdbootstrap.com/img/Photos/Others/img3.jpg"
 								alt="Card image cap"> <!-- Card content -->
 								<div class="card-body">
-									<h5 class="mb-3"><%=circleList.get(i).getTitle()%></h5>
-									<p class="font-small grey-text mb-2"><%=circleList.get(i).getEmail()%></p>
+									<h5 class="mb-3" id="circleTitle"><%=circleList.get(i).getTitle()%></h5>
+									<p class="font-small grey-text mb-2" id="circleEmail"><%=circleList.get(i).getEmail()%></p>
 									<p class="card-text mb-3"
 										style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;"><%=circleList.get(i).getDescription()%></p>
 									<p class="font-small font-weight-bold dark-grey-text mb-0"><%=circleList.get(i).getEvent_date()%>&nbsp<small>(마감:<%=circleList.get(i).getEnd_date()%>
@@ -541,8 +557,7 @@ html, body, header, .top-carousel {
 	<!-- login check -->
 	<script>
             function checksession(){
-                var checksession = '<%=(String) session.getAttribute("email")%>
-		';
+                var checksession = '<%=(String) session.getAttribute("email")%>';
 			if (checksession == "null") {
 				alert("로그인 모달창");
 			} else {
@@ -565,49 +580,7 @@ html, body, header, .top-carousel {
 		}
 	</script>
 
-	<!-- 참여버튼을 눌렀을 때 이미 참여한 소모임인지 check -->
-	<script>
-		$(document)
-				.ready(
-						function() {
-							$("#joinButton")
-									.click(
-											function() {
-												var join_email =
-	<%=(String) session.getAttribute("email")%>
-		;
-												var join_postid = form.postid.value;
-												console.log(join_email + "/"
-														+ join_postid);
 
-												$
-														.ajax({
-															url : 'circleDuplicateCheck.jsp',
-															data : "join_email="
-																	+ join_email
-																	+ "&join_postid="
-																	+ join_postid,
-															dataType : "text",
-															error : function() {
-																alert("통신실패");
-															},
-															success : function(
-																	result) {
-																if (result == true) {
-																	console
-																			.log("참여가능");
-																} else
-																	(result == false)
-																{
-																	console
-																			.log("이미 참여한 소모임 게시물");
-																}
-															}
-
-														})
-											})
-						})
-	</script>
 </body>
 
 </html>

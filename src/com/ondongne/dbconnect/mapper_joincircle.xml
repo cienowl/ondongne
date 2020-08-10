@@ -10,5 +10,9 @@
 	<select id="getJoinCircleAll" resultType="int" parameterType="com.ondongne.dto.DataTransferCircleJoin">
 		select COUNT(*) from helper_circle where join_email=#{join_email} AND join_postid=#{join_postid};
 	</select>
+	
+	<select id="getJoinCount" resultType="int" parameterType="int">
+		select COUNT(*) from helper_circle where join_postid=#{join_postid};
+	</select>
 
 </mapper>
