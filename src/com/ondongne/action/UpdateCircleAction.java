@@ -32,6 +32,7 @@ public class UpdateCircleAction implements Action{
 		circleBean.setEnd_date(request.getParameter("end_date"));
 		circleBean.setGender(request.getParameter("gender"));
 		circleBean.setDescription(request.getParameter("description"));
+		circleBean.setMem_number(request.getParameter("mem_number"));
 		
 		CircleService circleService = new CircleService();
 		boolean isWriteSuccess = circleService.updateArticle(circleBean);

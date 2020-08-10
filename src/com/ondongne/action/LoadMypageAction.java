@@ -25,6 +25,7 @@ public class LoadMypageAction implements Action {
 		if (sessionEmail != null) {
 //			Avatar 사진 불러오기
 			
+			
 //			Circle 참여 불러오기
 			CircleService circleService = new CircleService();
 			List<DataTransferCircle> circleList = circleService.selectJoinCircle(sessionEmail);

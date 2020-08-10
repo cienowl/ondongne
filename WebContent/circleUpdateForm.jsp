@@ -330,7 +330,7 @@
 		<%
 			int postid = (Integer.parseInt(request.getParameter("postid")));
 			String title = request.getParameter("title");
-			String memnumber = request.getParameter("memnumber");
+			String mem_number = request.getParameter("memnumber");
 			String region = request.getParameter("region");
 			String gender = request.getParameter("gender");
 			String event_date = request.getParameter("event_date");
@@ -362,9 +362,9 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="memnumber">인원수<small>(최대15명)</small></label>
-                            <select id="memnumber" class="form-control" name="memnumber">
-                                <option value="<%=memnumber %>" selected><%=memnumber %>명</option>
+                            <label for="mem_number">인원수<small>(최대15명)</small></label>
+                            <select id="mem_number" class="form-control" name="mem_number">
+                                <option value="<%=mem_number %>" selected><%=mem_number %>명</option>
                                 <option value="15">15명</option>
                                 <option value="14">14명</option>
                                 <option value="13">13명</option>
