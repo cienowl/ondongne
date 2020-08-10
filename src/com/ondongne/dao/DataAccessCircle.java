@@ -102,5 +102,18 @@ public class DataAccessCircle {
 		
 		return deleteCount;
 	}
+	
+	// 작성자가 게시한 소모임만 출력
+	public List<DataTransferCircle> selectPostCircle(String loginEmail){
+		
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		List<DataTransferCircle> postCircleList = sqlsession.selectList("getPostCircle",loginEmail);
+		
+		return postCircleList;
+				
+		
+	}
 
 }

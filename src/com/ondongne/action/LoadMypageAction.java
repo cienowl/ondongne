@@ -35,6 +35,12 @@ public class LoadMypageAction implements Action {
 			List<DataTransferSell> sellList = sellService.selectJoinSell(sessionEmail);
 			request.setAttribute("sellList", sellList);
 			
+//			게시한 Circle Post 불러오기
+			 CircleService circlePostService = new CircleService();
+			 List<DataTransferCircle> circlePostList = circlePostService.selectPostCircle(sessionEmail);
+			 request.setAttribute("postList", circlePostList);
+			
+			
 			
 			
 			forward.setPath("mypage.jsp");

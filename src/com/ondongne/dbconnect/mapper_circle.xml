@@ -22,4 +22,9 @@
 	<delete id="circleDelete" parameterType="com.ondongne.dto.DataTransferCircle">
 		delete from circle where id=#{id} AND email=#{email};
 	</delete>
+	
+	<select id="getPostCircle" parameterType="String" resultType="com.ondongne.dto.DataTransferCircle">
+		select id,title, mem_number, event_date, end_date from circle where email=#{loginEmail};
+	</select>
+	
 </mapper>

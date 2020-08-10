@@ -6,11 +6,17 @@
 
 <%@page import="com.ondongne.dto.DataTransferCircle"%>
 <%@page import="com.ondongne.dto.DataTransferCircleJoin"%>
+<%@page import="com.ondongne.dao.DataAccessCircleJoin"%>
 
 <%
 	List<DataTransferCircle> joinCircleList = (List<DataTransferCircle>)request.getAttribute("circleList");
     //TODO: Sell 스크랩 게시물 list 가져오기
     //TODO: 프로필 사진 가져오기
+%>
+
+<%
+    List<DataTransferCircle> postCircleList = (List<DataTransferCircle>)request.getAttribute("postList");
+    
 %>
 
 <!DOCTYPE html>
@@ -115,7 +121,7 @@
                                     <p class="white-text">사진 변경</p>
                                 </div>
                                 <form action="setAvatar.users" method="POST" id="submitAvatarForm" enctype="multipart/form-data">
-                                    <input type="file" accept="images/*" name="avatarFileName" id="avatarInput"/>
+                                    <input type="file" accept="images/*" name="avatarFileName" id="avatarInput" style="display:none"/>
                                 </form>
                             </div>
 
@@ -186,9 +192,35 @@
 
                                     <!--Card content-->
                                     <div class="card-body">
-
-                                    <canvas id="lineChart"></canvas>
-
+                                    	<table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">게시글</th>
+                                                <th scope="col">글제목</th>
+                                                <th scope="col">참여인원</th>
+                                                <th scope="col">모임날짜</th>
+                                                <th scope="col">마감날짜</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <% for (int i = 0; i < postCircleList.size(); i++) { %>
+                                               <%
+													SqlSessionFactory factory = DataAccessCircleJoin.getConnection();
+													SqlSession sqlSession = factory.openSession();
+													
+													int joinCount = sqlSession.selectOne("getJoinCount",postCircleList.get(i).getId());
+													sqlSession.close();
+												%>
+                                                   <tr>
+                                                       <td><%=i+1 %></td>
+                                                       <th><%=postCircleList.get(i).getTitle()%></th>
+                                                       <td><a class="text-danger"><%=joinCount%></a>/<%=postCircleList.get(i).getMem_number() %></td>
+                                                       <td><%=postCircleList.get(i).getEvent_date() %></td>
+                                                       <td class="text-danger"><%=postCircleList.get(i).getEnd_date() %></td>
+                                                   </tr>
+                                               <% } %>
+                                           </tbody>
+                                        </table>
                                     </div>
 
                                 </div>

@@ -97,7 +97,7 @@ html, body, header, .top-carousel {
 }
 </style>
 
-<!-- 소모임페이지 카드 제목길이 -->
+<!-- 소모임페이지 카드 제목길이, 이메일 길이 -->
 <style>
 #circleTitle, #circleEmail{
 	overflow:hidden;

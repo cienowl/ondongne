@@ -71,4 +71,13 @@ public class CircleService {
 		return isWriteSuccess;
 	}
 	
+	// 작성자가 게시한 소모임만 출력
+	public List<DataTransferCircle> selectPostCircle(String loginEmail) {
+		
+		DataAccessCircle daoCircle = DataAccessCircle.getinstance();
+		List<DataTransferCircle> postCircleList = daoCircle.selectPostCircle(loginEmail);
+		
+		return postCircleList;
+	}
+	
 }
