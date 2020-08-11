@@ -75,4 +75,16 @@ public class DataAccessCircleJoin {
 		return joinCount;
 	}
 	
+	// 참여자가 소모임 참여 취소버튼을 눌렀을 때
+	public int cancelJoinCircle(DataTransferCircleJoin dto) {
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		int cancelCount = sqlsession.delete("cancelJoinCircle",dto);
+		sqlsession.commit();
+		sqlsession.close();
+		
+		return cancelCount;
+	}
+	
 }

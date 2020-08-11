@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ondongne.dto.ActionForward;
-import com.ondongne.dto.DataTransferCircle;
-import com.ondongne.service.CircleService;
+import com.ondongne.dto.DataTransferCircleJoin;
+import com.ondongne.service.CircleJoinService;
 
-public class DeleteCircleAction implements Action{
+public class CancelJoinCircleAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -19,19 +19,19 @@ public class DeleteCircleAction implements Action{
 		HttpSession session = request.getSession();
 		ActionForward forward = new ActionForward();
 		
-		DataTransferCircle circleDto= new DataTransferCircle();
-		circleDto.setEmail((String)session.getAttribute("email"));
-		circleDto.setId(Integer.parseInt(((String)request.getParameter("postid"))));
+		DataTransferCircleJoin circleBean = new DataTransferCircleJoin();
+		circleBean.setJoin_email((String)session.getAttribute("email"));
+		circleBean.setJoin_postid(Integer.parseInt(((String)request.getParameter("postid"))));
 		
-		CircleService circleService = new CircleService();
-		boolean deleteSuccess = circleService.deleteArticle(circleDto);
-		System.out.println("delete"+deleteSuccess);
+		CircleJoinService circleService = new CircleJoinService();
+		boolean cancelSuccess = circleService.cancelJoinCircle(circleBean);
+		System.out.println("cancel join circle "+cancelSuccess);
 		
-		if(!deleteSuccess){
+		if(!cancelSuccess){
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('삭제실패')");
+			out.println("alert('취소실패')");
 			out.println("history.back();");
 			out.println("</script>");
 		}
@@ -43,5 +43,6 @@ public class DeleteCircleAction implements Action{
 		
 		return forward;
 	}
+
 	
 }

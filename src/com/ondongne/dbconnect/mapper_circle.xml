@@ -12,7 +12,7 @@
 	</select>
 	
 	<select id="getJoinCircle" parameterType="String" resultType="com.ondongne.dto.DataTransferCircle">
-		select title, email, event_date from circle where id IN(select join_postid from helper_circle where join_email=#{loginEmail});
+		select id, title, email, event_date from circle where id IN(select join_postid from helper_circle where join_email=#{loginEmail});
 	</select>
 	
 	<update id="circleUpdate" parameterType="com.ondongne.dto.DataTransferCircle">
@@ -24,7 +24,7 @@
 	</delete>
 	
 	<select id="getPostCircle" parameterType="String" resultType="com.ondongne.dto.DataTransferCircle">
-		select id,title, mem_number, event_date, end_date from circle where email=#{loginEmail};
+		select * from circle where email=#{loginEmail};
 	</select>
 	
 </mapper>

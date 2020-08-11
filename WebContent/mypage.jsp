@@ -195,11 +195,12 @@
                                     	<table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                <th scope="col">게시글</th>
                                                 <th scope="col">글제목</th>
                                                 <th scope="col">참여인원</th>
                                                 <th scope="col">모임날짜</th>
                                                 <th scope="col">마감날짜</th>
+                                                <th scope="col">수정</th>
+                                                <th scope="col">삭제</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -211,13 +212,32 @@
 													int joinCount = sqlSession.selectOne("getJoinCount",postCircleList.get(i).getId());
 													sqlSession.close();
 												%>
+												<form action="" method="POST">
+													<input type="hidden" name="postid" id="postid" value="<%=postCircleList.get(i).getId()%>" /> 
+													<input type="hidden" name="title" value="<%=postCircleList.get(i).getTitle()%>" /> 
+													<input type="hidden" name="memnumber" value="<%=postCircleList.get(i).getMem_number()%>" /> 
+													<input type="hidden" name="region" value="<%=postCircleList.get(i).getRegion()%>" /> 
+													<input type="hidden" name="gender" value="<%=postCircleList.get(i).getGender()%>" /> 
+													<input type="hidden" name="event_date" value="<%=postCircleList.get(i).getEvent_date()%>" /> 
+													<input type="hidden" name="end_date" value="<%=postCircleList.get(i).getEnd_date()%>" /> 
+													<input type="hidden" name="zipcode" value="<%=postCircleList.get(i).getZipcode()%>" /> 
+													<input type="hidden" name="address" value="<%=postCircleList.get(i).getAddress()%>" /> 
+													<input type="hidden" name="address_detail" value="<%=postCircleList.get(i).getAddress_detail()%>" /> 
+													<input type="hidden" name="description" value="<%=postCircleList.get(i).getDescription()%>" />
+												
                                                    <tr>
-                                                       <td><%=i+1 %></td>
                                                        <th><%=postCircleList.get(i).getTitle()%></th>
                                                        <td><a class="text-danger"><%=joinCount%></a>/<%=postCircleList.get(i).getMem_number() %></td>
                                                        <td><%=postCircleList.get(i).getEvent_date() %></td>
                                                        <td class="text-danger"><%=postCircleList.get(i).getEnd_date() %></td>
+                                                       <td style="text-align:center;">
+                                                       		<button type="submit" onclick="javascript:form.action='postupdateform.circle'"><i class="fas fa-pencil-alt"></i></button>
+													   </td>
+                                                       <td style="text-align:center;">
+                                                       		<button type="button" onclick="delete_check(this.form)"><i class="fas fa-trash"></i></button>
+													   </td>
                                                    </tr>
+                                               </form>
                                                <% } %>
                                            </tbody>
                                         </table>
@@ -262,20 +282,26 @@
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
-                                                    <th scope="col">참여한 소모임</th>
                                                     <th scope="col">글제목</th>
                                                     <th scope="col">작성자</th>
                                                     <th scope="col">모임날짜</th>
+                                                    <th scope="col">참여취소</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <% for (int i = 0; i < joinCircleList.size(); i++) { %>
-                                                        <tr>
-                                                            <td><%=i+1 %></td>
-                                                            <th><%=joinCircleList.get(i).getTitle()%></th>
-                                                            <td><%=joinCircleList.get(i).getEmail() %></td>
-                                                            <td><%=joinCircleList.get(i).getEvent_date() %></td>
+                                                    	<form>
+                                                    		<input type="hidden" name="joinId"  id="joinId" value="<%=joinCircleList.get(i).getId() %>" />
+                                                   			<input type="hidden" name="joinTitle" id="joinTitle" value="<%=joinCircleList.get(i).getTitle()%>"/>
+	                                                        <tr>
+	                                                            <th><%=joinCircleList.get(i).getTitle()%></th>
+	                                                            <td><%=joinCircleList.get(i).getEmail() %></td>
+	                                                            <td><%=joinCircleList.get(i).getEvent_date() %></td>
+		                                                        <td style="text-align:center;">
+		                                                        	<button type="button" onclick="joinCancel(this.form)"><i class="fas fa-times"></i></button>
+															   </td>
                                                         </tr>
+                                                   	</form>
                                                     <% } %>
                                                 </tbody>
                                             </table>
@@ -409,6 +435,43 @@
                 document.getElementById('submitAvatarForm').submit();
             }
         </script>
-
+        
+        <%-- <!--  게시한 소모임 수정 check --> 
+        <script>
+        	function edit_check(form){
+        		var check = confirm("( 글 제목 : "+form.postTitle.value+" ) 을(를) 수정하시겠습니까?");
+        		if(check==true){
+        			window.location.href = ""+form.postTitle.value;
+        		}else if(check==false){
+        			alert("게시글 수정이 취소되었습니다.");
+        		}
+        	}
+        </script> --%>
+        
+        <!--  게시한 소모임 삭제 check --> 
+		<script>
+			function delete_check(form){
+				console.log("afdafadf");
+				var check = confirm("( 글 제목 : "+form.title.value+" ) 을(를) 정말로 삭제하시겠습니까?");
+				if(check==true){
+					window.location.href = "postdelete.circle?postid="+form.postid.value;
+				}else if (check==false){
+					alert("삭제가 취소되었습니다.");
+				}
+			}
+		</script>
+		
+		<!-- 참여한 소모임 참여취소 check -->
+		<script>
+			function joinCancel(form){
+				var check = confirm("( 글 제목 : "+form.joinTitle.value+" ) 참여를 정말로 취소하시겠습니까?");
+				if(check==true){
+					window.location.href = "joincancel.circle?postid="+form.joinId.value;
+				}else if(check==false){
+					alert("취소되었습니다.")
+				}
+			}
+		</script>
+		
     </body>
 </html>

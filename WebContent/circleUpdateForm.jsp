@@ -539,9 +539,8 @@
                     </div>
 
                     <div class="form-row float-right">
-                        <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
                         <button type="submit" class="btn btn-lg btn-primary">수정</button>
-                        <button type="button" class="btn btn-lg btn-danger" href="view.circle">취소</button>
+                        <button type="button" class="btn btn-lg btn-danger" onclick="location.href='mypage.ondongne'">취소</button>
                     </div>
 
                     <div class="clearfix mb-4"></div>

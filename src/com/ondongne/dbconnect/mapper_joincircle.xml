@@ -14,5 +14,9 @@
 	<select id="getJoinCount" resultType="int" parameterType="int">
 		select COUNT(*) from helper_circle where join_postid=#{join_postid};
 	</select>
+	
+	<delete id="cancelJoinCircle" parameterType="com.ondongne.dto.DataTransferCircleJoin">
+		delete from helper_circle where join_postid=#{join_postid} AND join_email=#{join_email};
+	</delete>
 
 </mapper>

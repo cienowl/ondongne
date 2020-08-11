@@ -28,5 +28,19 @@ public class CircleJoinService {
 
 		return joinCount;
 	}
+	
+	// 참여자가 참여 취소했을때
+	public boolean cancelJoinCircle(DataTransferCircleJoin circleBean) throws Exception{
+		boolean isWriteSuccess = false;
+		
+		DataAccessCircleJoin circleDao = DataAccessCircleJoin.getInstance();
+		int cancelCount = circleDao.cancelJoinCircle(circleBean);
+		
+		if(cancelCount>0) {
+			isWriteSuccess = true;
+		}
+		
+		return isWriteSuccess;
+	}
 
 }
