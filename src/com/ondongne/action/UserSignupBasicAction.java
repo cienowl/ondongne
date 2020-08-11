@@ -15,12 +15,11 @@ public class UserSignupBasicAction extends HttpServlet implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		String email = request.getParameter("signupEmail");
-		String password = request.getParameter("signupPassword1");
-
 		DataTransferUsers dtoUser = new DataTransferUsers();
-		dtoUser.setEmail(email);
-		dtoUser.setPassword(password);
+		dtoUser.setEmail((String) request.getParameter("signupEmail"));
+		dtoUser.setPassword(request.getParameter("signupPassword1"));
+		dtoUser.setName(request.getParameter("signupName"));
+		dtoUser.setPhone(request.getParameter("signupPhone"));
 		
 		UsersService usersService = new UsersService();
 		boolean isWriteSuccess = usersService.signupBasic(dtoUser);

@@ -1,22 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@page import="java.util.*"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 
+<%@page import="com.ondongne.dto.DataTransferSell"%>
 <%@page import="com.ondongne.dto.DataTransferCircle"%>
 <%@page import="com.ondongne.dto.DataTransferCircleJoin"%>
 <%@page import="com.ondongne.dao.DataAccessCircleJoin"%>
 
 <%
+    //Circle 참여한 게시물
 	List<DataTransferCircle> joinCircleList = (List<DataTransferCircle>)request.getAttribute("circleList");
-    //TODO: Sell 스크랩 게시물 list 가져오기
-    //TODO: 프로필 사진 가져오기
-%>
-
-<%
+    //Circle 등록한 게시물
     List<DataTransferCircle> postCircleList = (List<DataTransferCircle>)request.getAttribute("postList");
 
+    //Sell 스크랩 게시물
+    List<DataTransferSell> joinSellList = (List<DataTransferSell>)request.getAttribute("sellList");
+    //TODO: 프로필 사진은 session 에서
 %>
 
 <!DOCTYPE html>
@@ -41,13 +42,9 @@
             .modal-open .navbar-expand-lg {
                 padding-right: 16px !important;
             }
-        </style>
-        <style>
             .navbar {
                 background: #880e4f !important;
             }
-        </style>
-        <style>
             .sticky-top {
                 top: 6em;
             }
@@ -76,7 +73,6 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-3">
-                                    <p></p>
                                     <p class="text-center"><i class="fas fa-times fa-4x animated rotateIn"></i></p>
                                 </div>
 
@@ -85,8 +81,8 @@
                                     <p>탈퇴를 위해 계정 비밀번호를 입력해주세요.</p>
                                     <div class="md-form">
                                         <i class="fas fa-lock prefix"></i>
-                                        <input type="password" id="inputValidationEx2" name="confirmPassword" class="form-control validate"/>
-                                        <label for="inputValidationEx2" data-error="wrong" data-success="right">비밀번호 입력</label>
+                                        <input type="password" id="deleteAccountChecker" name="confirmPassword" class="form-control validate"/>
+                                        <label for="deleteAccountChecker" data-error="wrong" data-success="right">비밀번호 입력</label>
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +208,7 @@
 													int joinCount = sqlSession.selectOne("getJoinCount",postCircleList.get(i).getId());
 													sqlSession.close();
 												%>
-												<form action="" method="POST">
+												<form method="POST">
 													<input type="hidden" name="postid" id="postid" value="<%=postCircleList.get(i).getId()%>" />
 													<input type="hidden" name="title" value="<%=postCircleList.get(i).getTitle()%>" />
 													<input type="hidden" name="memnumber" value="<%=postCircleList.get(i).getMem_number()%>" />
@@ -231,10 +227,10 @@
                                                         <td><%=postCircleList.get(i).getEvent_date() %></td>
                                                         <td class="text-danger"><%=postCircleList.get(i).getEnd_date() %></td>
                                                         <td style="text-align:center;">
-                                                            <button type="submit" onclick="javascript:form.action='postupdateform.circle'"><i class="fas fa-pencil-alt"></i></button>
+                                                            <button type="submit" class="btn btn-warning" onclick="javascript:form.action='postupdateform.circle'"><i class="fas fa-pencil-alt"></i></button>
                                                         </td>
                                                         <td style="text-align:center;">
-                                                            <button type="button" onclick="delete_check(this.form)"><i class="fas fa-trash"></i></button>
+                                                            <button type="button" class="btn btn-danger" onclick="delete_check(this.form)"><i class="fas fa-trash"></i></button>
                                                         </td>
                                                     </tr>
                                                 </form>
@@ -298,10 +294,10 @@
                                                                 <td><%=joinCircleList.get(i).getEmail() %></td>
                                                                 <td><%=joinCircleList.get(i).getEvent_date() %></td>
                                                                 <td style="text-align:center;">
-                                                                    <button type="button" onclick="joinCancel(this.form)"><i class="fas fa-times"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                    </form>
+                                                                    <button type="button" class="btn btn-info" onclick="joinCancel(this.form)"><i class="fas fa-times"></i></button>
+                                                                </td>
+                                                            </tr>
+                                                        </form>
                                                     <% } %>
                                                 </tbody>
                                             </table>
@@ -322,20 +318,26 @@
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
-                                                    <th scope="col">글번호</th>
                                                     <th scope="col">글제목</th>
                                                     <th scope="col">작성자</th>
                                                     <th scope="col">가격</th>
+                                                    <th scope="col">스크랩취소</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <% for (int i = 0; i < joinCircleList.size(); i++) { %>
-                                                        <tr>
-                                                            <td><%=i+1 %></td>
-                                                            <th><%=joinCircleList.get(i).getTitle()%></th>
-                                                            <td><%=joinCircleList.get(i).getEmail() %></td>
-                                                            <td><%=joinCircleList.get(i).getEvent_date() %></td>
-                                                        </tr>
+                                                    <% for (int i = 0; i < joinSellList.size(); i++) { %>
+                                                        <form>
+                                                            <input type="hidden" name="scrapId"  id="scrapId" value="<%=joinSellList.get(i).getId() %>" />
+                                                            <input type="hidden" name="scrapTitle" id="scrapTitle" value="<%=joinSellList.get(i).getTitle()%>"/>
+                                                            <tr>
+                                                                <td><%=joinSellList.get(i).getTitle()%></td>
+                                                                <th><%=joinSellList.get(i).getEmail()%></th>
+                                                                <td><%=joinSellList.get(i).getPrice()%></td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-info" onclick="scrapCancel(this.form)"><i class="fas fa-times"></i></button>
+                                                                </td>
+                                                            </tr>
+                                                        </form>
                                                     <% } %>
                                                 </tbody>
                                             </table>
@@ -431,7 +433,6 @@
                     reader.readAsDataURL(f);
                 });
 
-                // TODO: DB에 파일 저장
                 document.getElementById('submitAvatarForm').submit();
             }
         </script>
@@ -448,26 +449,34 @@
             }
         </script> --%>
 
-        <!--  게시한 소모임 삭제 check -->
+
 		<script>
-			function delete_check(form){
-				console.log("afdafadf");
-				var check = confirm("( 글 제목 : "+form.title.value+" ) 을(를) 정말로 삭제하시겠습니까?");
-				if(check==true){
-					window.location.href = "postdelete.circle?postid="+form.postid.value;
-				}else if (check==false){
+            //게시한 소모임 삭제 check
+			function delete_check(form) {
+				var check = confirm("( 글 제목 : " + form.title.value + " ) 을(를) 정말로 삭제하시겠습니까?");
+				if (check == true) {
+					window.location.href = "postdelete.circle?postid=" + form.postid.value;
+				} else if (check == false) {
 					alert("삭제가 취소되었습니다.");
 				}
 			}
-		</script>
 
-		<!-- 참여한 소모임 참여취소 check -->
-		<script>
-			function joinCancel(form){
-				var check = confirm("( 글 제목 : "+form.joinTitle.value+" ) 참여를 정말로 취소하시겠습니까?");
-				if(check==true){
-					window.location.href = "joincancel.circle?postid="+form.joinId.value;
-				}else if(check==false){
+		    //참여한 소모임 참여취소 check
+			function joinCancel(form) {
+				var check = confirm("( 글 제목 : " + form.joinTitle.value + " ) 참여를 정말로 취소하시겠습니까?");
+				if (check == true) {
+					window.location.href = "joincancel.circle?postid=" + form.joinId.value;
+				} else if (check == false) {
+					alert("취소되었습니다.")
+				}
+			}
+
+		    //판매글 스크랩 취소 check
+			function scrapCancel(form) {
+				var check = confirm("( 글 제목 : " + form.scrapTitle.value + " ) 스크랩을 정말로 취소하시겠습니까?");
+				if (check == true) {
+					window.location.href = "cancelScrap.sell?postid=" + form.scrapId.value;
+				} else if (check == false) {
 					alert("취소되었습니다.")
 				}
 			}

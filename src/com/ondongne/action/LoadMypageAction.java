@@ -22,24 +22,26 @@ public class LoadMypageAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		
-		if (sessionEmail != null) {
-//			Avatar 사진 불러오기
-			
-			
-//			Circle 참여 불러오기
+		if (sessionEmail != null) {		
+
+
+//			게시한 Circle Post 불러오기
 			CircleService circleService = new CircleService();
+			List<DataTransferCircle> circlePostList = circleService.selectPostCircle(sessionEmail);
+			request.setAttribute("postList", circlePostList);
+
+//			Circle 참여 불러오기
+//			CircleService circleService = new CircleService();
 			List<DataTransferCircle> circleList = circleService.selectJoinCircle(sessionEmail);
 			request.setAttribute("circleList", circleList);
+			
+//			TODO: Sell Post 불러오기
 			
 //			Sell 스크랩 불러오기
 			SellService sellService = new SellService();
 			List<DataTransferSell> sellList = sellService.selectJoinSell(sessionEmail);
 			request.setAttribute("sellList", sellList);
 			
-//			게시한 Circle Post 불러오기
-			CircleService circlePostService = new CircleService();
-			List<DataTransferCircle> circlePostList = circlePostService.selectPostCircle(sessionEmail);
-			request.setAttribute("postList", circlePostList);
 			
 			
 			

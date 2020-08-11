@@ -15,10 +15,7 @@ import com.ondongne.dto.DataTransferCircle;
 
 public class DataAccessCircle {
 
-	static SqlSessionFactory sqlFactory;
-
 	private static DataAccessCircle instance;
-
 	public static DataAccessCircle getinstance() {
 
 		if(instance == null) {
@@ -29,6 +26,7 @@ public class DataAccessCircle {
 		return instance;
 	}
 
+	static SqlSessionFactory sqlFactory;
 	public static SqlSessionFactory getConnection() {
 		Reader reader;
 

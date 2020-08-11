@@ -72,10 +72,10 @@ users: 회원 테이블
 CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `name` varchar(20) DEFAULT NULL,
+  `name` varchar(20) NOT NULL,
   `profile_picture` varchar(100) DEFAULT NULL,
   `birthday` varchar(10) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
+  `phone` varchar(20) NOT NULL,
   `gender` varchar(10) DEFAULT NULL,
   `zipcode` varchar(10) DEFAULT NULL,
   `address` varchar(50) DEFAULT NULL,
@@ -89,8 +89,9 @@ CREATE TABLE `users` (
   `hibernate` varchar(10) DEFAULT NULL,
   `hibernate_start_date` date DEFAULT NULL,
   `warning_count` int(11) DEFAULT NULL,
-  PRIMARY KEY (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+  PRIMARY KEY (`email`),
+  UNIQUE KEY `phone_UNIQUE` (`phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ~~~
 
 sell: 판매 테이블
@@ -111,7 +112,7 @@ CREATE TABLE `sell` (
   PRIMARY KEY (`id`),
   KEY `sell_email_idx` (`email`),
   CONSTRAINT `sell_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 ~~~
 
 circle: 소모임 테이블
@@ -138,7 +139,7 @@ CREATE TABLE `circle` (
   PRIMARY KEY (`id`),
   KEY `email_idx` (`email`),
   CONSTRAINT `circle_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 ~~~
 
 hotplace: 동네장소 테이블
@@ -158,7 +159,7 @@ CREATE TABLE `hotplace` (
   PRIMARY KEY (`id`),
   KEY `hotplace_email_idx` (`email`),
   CONSTRAINT `hotplace_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ~~~
 
 notice: 공지사항 테이블
@@ -170,7 +171,7 @@ CREATE TABLE `notice` (
   `content` text NOT NULL,
   `postdate` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ~~~
 
 helper_circle : 참여한 소모임 테이블
@@ -179,11 +180,11 @@ helper_circle : 참여한 소모임 테이블
 CREATE TABLE `helper_circle` (
   `join_email` varchar(50) NOT NULL,
   `join_postid` int(11) NOT NULL,
-  KEY `join_email_idx` (`join_email`),
-  KEY `join_postid_idx` (`join_postid`),
+  KEY `join_email_circle_idx` (`join_email`),
+  KEY `join_postid_circle_idx` (`join_postid`),
   CONSTRAINT `helper_circle_email` FOREIGN KEY (`join_email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `helper_circle_postid` FOREIGN KEY (`join_postid`) REFERENCES `circle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ~~~
 
 helper_sell : 스크랩한 판매글
@@ -192,7 +193,9 @@ helper_sell : 스크랩한 판매글
 CREATE TABLE `helper_sell` (
   `join_email` varchar(50) NOT NULL,
   `join_postid` int(11) NOT NULL,
-  KEY `join_email_idx` (`join_email`),
-  KEY `join_postid_idx` (`join_postid`),
+  KEY `join_email_sell_idx` (`join_email`),
+  KEY `join_postid_sell_idx` (`join_postid`),
   CONSTRAINT `helper_sell_email` FOREIGN KEY (`join_email`) REFERENCES `users` (`email`) ON DELETE NO ACTION ON UPDATE NO CASCADE,
   CONSTRAINT `helper_sell_postid` FOREIGN KEY (`join_postid`) REFERENCES `sell` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+~~~

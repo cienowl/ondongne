@@ -65,8 +65,6 @@
             .modal-open .navbar-expand-lg {
                 padding-right: 16px !important;
             }
-        </style>
-        <style>
             .faq-background-color {
                 background: #F2F2F2;
             }
@@ -445,10 +443,10 @@
                     document.getElementById("checkPassword").innerText = "";
                 } else {
                     if (initialPassword == finalPassword) {
-                        document.getElementById("checkPassword").setAttribute("class", "form-text text-success");
+                        document.getElementById("checkPassword").setAttribute("class", "form-text text-success mb-3");
                         document.getElementById("checkPassword").innerText = "비밀번호가 일치 합니다.";
                     } else {
-                        document.getElementById("checkPassword").setAttribute("class", "form-text text-danger");
+                        document.getElementById("checkPassword").setAttribute("class", "form-text text-danger mb-3");
                         document.getElementById("checkPassword").innerText = "비밀번호가 일치하지 않습니다.";
                     }
                 }

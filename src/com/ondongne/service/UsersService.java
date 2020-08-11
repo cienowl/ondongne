@@ -39,11 +39,8 @@ public class UsersService {
 		DataAccessUsers daoUser = DataAccessUsers.getInstance();
 		int insertCount = daoUser.userInsert(dtoUser);
 		
-		if (insertCount > 0) {
-			isWriteSuccess = true;
-			System.out.println("userInsert " + isWriteSuccess);
-		}
-		
+		if (insertCount > 0) isWriteSuccess = true;
+				
 		return isWriteSuccess;
 		
 	}

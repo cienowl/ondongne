@@ -47,7 +47,6 @@
     <body>
 
         <header>
-            <!-- Navbar signin form -->
             <% if (session.getAttribute("email") != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
