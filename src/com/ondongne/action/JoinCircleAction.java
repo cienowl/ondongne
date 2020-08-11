@@ -17,9 +17,8 @@ public class JoinCircleAction implements Action{
 
 		HttpSession session = request.getSession();
 		ActionForward forward = new ActionForward();
-		DataTransferCircleJoin circleBean = null;
-
-		circleBean = new DataTransferCircleJoin();
+		
+		DataTransferCircleJoin circleBean = new DataTransferCircleJoin();
 		circleBean.setJoin_postid(Integer.parseInt(request.getParameter("postid")));
 		circleBean.setJoin_email((String)session.getAttribute("email"));
 
@@ -27,11 +26,8 @@ public class JoinCircleAction implements Action{
 		int joinCount = circleService.checkCircle(circleBean);
 
 		// 참여가능한 소모임
-		if (joinCount == 0) {
-	
-//			CircleJoinService circleJoinService = new CircleJoinService();
+		if (joinCount == 0) {	
 			boolean isWriteSuccess = circleService.joinCircle(circleBean);
-			System.out.println("소모임등록"+isWriteSuccess);
 			
 			// 소모임 참여 실패
 			if (!isWriteSuccess) {
