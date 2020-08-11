@@ -1,11 +1,11 @@
 package com.ondongne.action;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ondongne.action.Action;
 import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.DataTransferCircle;
 import com.ondongne.dto.DataTransferSell;
@@ -37,9 +37,9 @@ public class LoadMypageAction implements Action {
 			request.setAttribute("sellList", sellList);
 			
 //			게시한 Circle Post 불러오기
-			 CircleService circlePostService = new CircleService();
-			 List<DataTransferCircle> circlePostList = circlePostService.selectPostCircle(sessionEmail);
-			 request.setAttribute("postList", circlePostList);
+			CircleService circlePostService = new CircleService();
+			List<DataTransferCircle> circlePostList = circlePostService.selectPostCircle(sessionEmail);
+			request.setAttribute("postList", circlePostList);
 			
 			
 			

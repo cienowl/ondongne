@@ -1,12 +1,8 @@
-<!--
-작성자:
-    html        - 이호준
-    css         - 이호준
-    JavaScript  - 이호준
--->
-<%@page import="java.text.DecimalFormat"%>
+<!-- 작성자: 이호준 -->
+
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.ondongne.dto.DataTransferSell"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.List"%>
 
 <%
@@ -23,7 +19,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>ON동네 - 우리동네 판매/경매</title>
+        <title>ON동네 - 우리동네 중고장터</title>
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -340,11 +336,17 @@
                             <div class="modal-footer">
                                 <form method="POST" name="form">
                                     <input type="hidden" name="postid" value="<%= sellList.get(i).getId() %>"/>
+                                    <input type="hidden" name="title" value="<%= sellList.get(i).getTitle() %>"/>
+                                    <input type="hidden" name="price" value="<%= sellList.get(i).getPrice() %>"/>
+                                    <input type="hidden" name="sellMethod" value="<%= sellList.get(i).isIs_parcel() %>"/>
+                                    <input type="hidden" name="region" value="<%= sellList.get(i).getRegion() %>"/>
+                                    <input type="hidden" name="description" value="<%= sellList.get(i).getDescription() %>"/>
+                                    <input type="hidden" name="pictures" value="<%= sellList.get(i).getPictures() %>"/>
+                                    <input type="hidden" name="tags" value="<%= sellList.get(i).getTags() %>"/>
                                     <% if (sessionEmail != null) { %>
                                         <% if (sessionEmail.equals(email)) { %>
-                                            <a type="submit" class="btn btn-warning" onclick="javascript:form.action='update.sell';">수정</a>                                            
-                                            <%-- <a type="submit" class="btn btn-danger" onclick="javascript:form.action='delete.sell';">삭제</a> --%>
-                                            <a type="submit" class="btn btn-danger" onclick="delete_check(this.form)">삭제</a>
+                                            <button type="submit" class="btn btn-warning" onclick="javascript:form.action='updateForm.sell';">수정</button>
+                                            <button type="button" class="btn btn-danger" onclick="delete_check(this.form)">삭제</button>
                                         <% } else { %>
                                             <button type="submit" class="btn btn-unique" onclick="javascript:form.action='scrap.sell';">스크랩</button>
                                         <% } %>

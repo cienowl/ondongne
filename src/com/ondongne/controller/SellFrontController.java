@@ -13,6 +13,7 @@ import com.ondongne.action.Action;
 import com.ondongne.action.DeleteSellAction;
 import com.ondongne.action.GetSellAction;
 import com.ondongne.action.ScrapSellAction;
+import com.ondongne.action.UpdateSellAction;
 import com.ondongne.action.PostSellAction;
 import com.ondongne.dto.ActionForward;
 
@@ -66,12 +67,21 @@ public class SellFrontController extends HttpServlet {
 			}
 		}
 		
-////		TODO: 게시물 수정
-//		else if (command.equals("/update.sell")) {
-////			판매글 수정 버튼
-//			forward = new ActionForward();
-//			forward.setPath("/sellUpdateForm.jsp");
-//		}
+		else if (command.equals("/updateForm.sell")) {
+//			판매글 수정 폼으로 이동
+			forward = new ActionForward();
+			forward.setPath("sellUpdateForm.jsp");
+		}
+		
+		else if (command.equals("/update.sell")) {
+//			판매글 수정 적용
+			action = new UpdateSellAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		else if (command.equals("/delete.sell")) {
 //			게시물 삭제

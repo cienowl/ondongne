@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.DataTransferSellJoin;
 import com.ondongne.service.SellJoinService;
-import com.ondongne.service.SellService;
 
 public class ScrapSellAction implements Action {
 

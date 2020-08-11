@@ -16,9 +16,8 @@ public class PostSellAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		HttpSession session = request.getSession();
-		ActionForward forward = null;
+		
 		DataTransferSell dtoSell = new DataTransferSell();
-
 		dtoSell.setEmail((String)session.getAttribute("email"));
 		dtoSell.setTitle(request.getParameter("title"));
 		dtoSell.setIs_parcel(Boolean.parseBoolean(request.getParameter("sellMethod")));
@@ -34,6 +33,7 @@ public class PostSellAction implements Action {
 		SellService sellService = new SellService();
 		boolean isWriteSuccess = sellService.postSell(dtoSell);	//dtoSell 들고 글등록해주는 서비스로 이동
 
+		ActionForward forward = null;
 		
 		if (!isWriteSuccess) {		//sql 문 실패시
 			response.setContentType("text/html;charset=UTF-8");

@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ondongne.action.Action;
 import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.DataTransferCircle;
 import com.ondongne.service.CircleService;

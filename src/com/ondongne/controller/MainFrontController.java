@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
-import com.ondongne.action.GetJoinCircleAction;
-import com.ondongne.action.GetMyPageInfoAction;
 import com.ondongne.action.LoadMypageAction;
 import com.ondongne.action.NoticeViewAction;
 import com.ondongne.dto.ActionForward;

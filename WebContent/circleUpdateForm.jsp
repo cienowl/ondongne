@@ -1,11 +1,6 @@
-<!--
-작성자:
-    html        - 김나예
-    css         - 김나예
-    JavaScript  - 김나예
--->
+<!-- 작성자: 김나예 -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +8,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-        <title>소모임 정보 수정</title>
+        <title>ON동네 - 소모임 정보 수정</title>
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
@@ -28,6 +23,9 @@
         <style>
             .modal-open .navbar-expand-lg {
                 padding-right: 16px !important;
+            }
+            .navbar {
+                background: #880e4f !important;
             }
         </style>
 
@@ -324,7 +322,7 @@
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
-			
+
         </header>
         <!-- Header End -->
 		<%
@@ -339,19 +337,17 @@
 			String address = request.getParameter("address");
 			String address_detail = request.getParameter("address_detail");
 			String description = request.getParameter("description");
-			
+
 		%>
-		
+
         <!-- Main Start -->
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn">
 
-                <div class="row mb-4">
-                    <h2>수정할 소모임 정보를 입력해주세요.</h2>
-                </div>
+                <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">소모임글 정보 수정</h2>
 
                 <form action="postupdate.circle" method="POST">
-                	<input type="hidden" name="postid" value="<%=postid %>"/>
+                    <input type="hidden" name="postid" value="<%=postid %>"/>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputTitle" >소모임 제목</label>
@@ -419,18 +415,18 @@
                         <div class="form-group col-md-12">
                             <label for="gender">성별</label><br/>
                             <% if(gender.equals("male")) { %>
-	                            <input type="radio" name="gender" value="male" checked/> 남
-	                            <input class="ml-2" type="radio" name="gender" value="female"/> 여
-	                            <input class="ml-2" type="radio" name="gender" value="none" /> 무관
-	                        <% } else if (gender.equals("female")) { %>
-	                        	<input type="radio" name="gender" value="male" /> 남
-	                            <input class="ml-2" type="radio" name="gender" value="female" checked/> 여
-	                            <input class="ml-2" type="radio" name="gender" value="none" /> 무관
-	                        <% } else { %>
-	                        	<input type="radio" name="gender" value="male" /> 남
-	                            <input class="ml-2" type="radio" name="gender" value="female" /> 여
-	                            <input class="ml-2" type="radio" name="gender" value="none" checked /> 무관
-	                            <% } %>
+                                <input type="radio" name="gender" value="male" checked/> 남
+                                <input class="ml-2" type="radio" name="gender" value="female"/> 여
+                                <input class="ml-2" type="radio" name="gender" value="none" /> 무관
+                            <% } else if (gender.equals("female")) { %>
+                                <input type="radio" name="gender" value="male" /> 남
+                                <input class="ml-2" type="radio" name="gender" value="female" checked/> 여
+                                <input class="ml-2" type="radio" name="gender" value="none" /> 무관
+                            <% } else { %>
+                                <input type="radio" name="gender" value="male" /> 남
+                                <input class="ml-2" type="radio" name="gender" value="female" /> 여
+                                <input class="ml-2" type="radio" name="gender" value="none" checked /> 무관
+                                <% } %>
                         </div>
                     </div>
 
@@ -743,7 +739,7 @@
                 });
             })( window.jQuery, window, document );
         </script>
-        
+
         <script>
 			$(document).ready(function(){
 				$("#inputTitle").focus();

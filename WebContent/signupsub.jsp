@@ -41,7 +41,7 @@
         <main>
             <div class="container my-5 pt-5">
 
-                <h3 class="font-weight-bold pb-2 mb-4">추가정보 입력</h3>
+                <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">추가정보 입력</h2>
 
                 <form action="updatesub.users" method="POST">
 

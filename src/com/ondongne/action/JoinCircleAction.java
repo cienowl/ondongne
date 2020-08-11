@@ -1,11 +1,11 @@
 package com.ondongne.action;
+
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ondongne.action.Action;
 import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.DataTransferCircleJoin;
 import com.ondongne.service.CircleJoinService;

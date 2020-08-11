@@ -47,10 +47,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbar-signon-usermenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <%-- <i class="fas fa-user"></i> --%>
-                        <img alt="@cienowl" width="20" height="20" src="https://avatars3.githubusercontent.com/u/43317591?s=60&amp;v=4" class="mx-2">
+                        <img alt="@cienowl" width="25" height="25" src="https://avatars3.githubusercontent.com/u/43317591?s=60&amp;v=4" class="mr-2 rounded-circle">
                         <%= session.getAttribute("email") %>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbar-signon-usermenu">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-signon-usermenu">
                         <a class="dropdown-item" href="mypage.ondongne">마이페이지</a>
                         <a class="dropdown-item" href="signout.users">로그아웃</a>
                     </div>

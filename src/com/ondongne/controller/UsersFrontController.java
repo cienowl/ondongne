@@ -96,7 +96,6 @@ public class UsersFrontController extends HttpServlet
 			
 			else if (command.equals("/setAvatar.users") ) {
 //				Avatar 사진 수정
-				System.out.println("start");
 				action = new UserAvatarSetAction();
 				try {
 					forward = action.execute(request, response);
@@ -104,6 +103,18 @@ public class UsersFrontController extends HttpServlet
 					e.printStackTrace();
 				}
 				
+			}
+			
+			else if (command.equals("/lostid.users")) {
+//				아이디 찾기
+				forward = new ActionForward();
+				forward.setPath("lostid.jsp");
+			}
+			
+			else if (command.equals("/lostpw.users")) {
+//				비밀번호 찾기
+				forward = new ActionForward();
+				forward.setPath("lostpw.jsp");				
 			}
 			
 			if (forward != null) {		

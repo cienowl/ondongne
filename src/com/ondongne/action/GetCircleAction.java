@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.DataTransferCircle;
-import com.ondongne.service.CircleJoinService;
 import com.ondongne.service.CircleService;
 
 public class GetCircleAction implements Action {

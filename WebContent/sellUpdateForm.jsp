@@ -8,7 +8,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-        <title>ON동네 - 판매물품 정보 등록 페이지</title>
+        <title>ON동네 - 판매물품 정보 수정 페이지</title>
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
@@ -19,13 +19,10 @@
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet"/>
 
-        <!-- Modal scrolling place -->
         <style>
             .modal-open .navbar-expand-lg {
                 padding-right: 16px !important;
             }
-        </style>
-        <style>
             .navbar {
                 background: #880e4f !important;
             }
@@ -102,11 +99,26 @@
 
     </head>
 
+    <%
+        String postid = request.getParameter("postid");
+        String title = request.getParameter("title");
+        String price = request.getParameter("price");
+        boolean isParcel = Boolean.parseBoolean(request.getParameter("sellMethod"));
+        String sellMethod = null;
+        String region = request.getParameter("region");
+        String description = request.getParameter("description");
+
+        if (isParcel)
+            sellMethod = "택배거래";
+        else
+            sellMethod = "직거래";
+
+    %>
+
     <body>
 
         <!-- Header Start -->
         <header>
-            <!-- Navbar signin form -->
             <% if (session.getAttribute("email") != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
@@ -121,26 +133,27 @@
             <div class="container wow fadeIn mb-5">
 
                 <div class="row mb-4">
-                    <h2 class="font-weight-bold dark-grey-text">판매물품 정보 등록</h2>
+                    <h2 class="font-weight-bold dark-grey-text">판매글 정보 수정</h2>
                 </div>
 
-                <form action="submit.sell" method="POST">
+                <form action="update.sell" method="POST">
+                    <input type="hidden" name="postid" value="<%= postid %>"/>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputTitle">판매글 제목</label>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title"/>
+                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title" value="<%= title %>"/>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="sellPrice">판매가격</label>
-                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice">
+                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice" value="<%= price %>">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="sellmethod">거래방법</label>
                             <select id="sellMethod" class="form-control" name="sellMethod">
-                                <option selected disabled value="">선택</option>
+                                <option selected disabled value="<%= isParcel %>"><%= sellMethod %></option>
                                 <option value="false">직거래</option>
                                 <option value="true">택배거래</option>
                             </select>
@@ -151,7 +164,7 @@
                         <div class="form-group col-md-6">
                             <label for="inputRegion">판매지역</label>
                             <select id="inputRegion" class="form-control" name="region">
-                                <option selected disabled value="">선택</option>
+                                <option selected disabled value="<%= region %>"><%= region %></option>
                                 <option>강남구</option>
                                 <option>강동구</option>
                                 <option>강북구</option>
@@ -184,7 +197,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="description">판매 설명글</label>
-                            <textarea class="form-control" id="description" rows="12" name="description"></textarea>
+                            <textarea class="form-control" id="description" rows="12" name="description"><%= description %></textarea>
                         </div>
                     </div>
 
@@ -209,7 +222,7 @@
                     <div class="form-row float-right">
                         <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
                         <button type="submit" class="btn btn-lg btn-primary">등록</button>
-                        <button type="button" class="btn btn-lg btn-danger" href="view.sell">취소</button>
+                        <button type="button" class="btn btn-lg btn-danger" onclick="javascript:location.href='view.sell'">취소</button>
                     </div>
 
                     <div class="clearfix pb-5"></div>

@@ -83,7 +83,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <p class="h4 text-center" id="exampleModalLabel" style="margin-bottom: 0;">ON동네 로그인</p>
+                <p class="h4 dark-grey-text" id="exampleModalLabel" style="margin-bottom: 0;">ON동네 로그인</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -91,22 +91,30 @@
 
             <div class="modal-body">
                 <!-- signin form -->
-                <form class="text-center p-4" action="signin.users" method="POST" name="userinfoInsert">
+                <form class="p-4" action="signin.users" method="POST" name="userinfoInsert">
                     <% if (getCookieValue(cookies,"cookieEmail") != null) { %>
                         <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="이메일" value="<%=getCookieValue(cookies,"cookieEmail") %>" required/>
                     <% } else { %>
                         <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="이메일" value="" required/>
                     <% } %>
-                    <small id="checkEmail" class="form-text text-danger" style="height: 19px;"></small>
+                    <small id="checkEmail" class="form-text text-danger pl-2" style="height: 19px;"></small>
 
                     <input type="password" class="form-control my-3" id="signinPassword" placeholder="비밀번호" name="signinPassword" required/>
 
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="storeEmail" name="storeEmail" value="true">
-                        <label class="custom-control-label" for="storeEmail">아이디 저장</label>
+                    <div class="form-row pt-2">
+                        <div class="col-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="storeEmail" name="storeEmail" value="true">
+                                <label class="custom-control-label" for="storeEmail">아이디 저장</label>
+                            </div>
+                        </div>
+                        <div class="col text-right">
+                            <a href="lostid.users">아이디 찾기</a> |
+                            <a href="lostpw.users">비밀번호 찾기</a>
+                        </div>
                     </div>
 
-                    <button type="submit" class="btn btn-unique btn-block my-4 waves-effect waves-light" id="signinSubmit" onclick="return signinValidate();">
+                    <button type="submit" class="btn btn-unique btn-block mt-5 waves-effect waves-light" id="signinSubmit" onclick="return signinValidate();">
                         <h5 class="m-0">ON동네 시작하기</h5>
                     </button>
 
@@ -122,11 +130,8 @@
             </div>
 
             <div class="modal-footer">
-                <div class="small" >
-                    <a href="">비밀번호 찾기</a>
-                    <!-- Register -->
-                    <!--TODO:회원가입 모달창으로 이동-->
-                    <a href="" class="nav-link" type="button" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">회원가입</a>
+                <div class="small">
+                    아직 ON동네 회원이 아니신가요? <a href="" class="" type="button" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">회원가입</a>
                 </div>
             </div>
 
@@ -141,7 +146,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <p class="h4 text-center" id="exampleModalLabel" style="margin-bottom: 0;" >ON동네 회원가입</p>
+                <p class="h4 dark-grey-text" id="exampleModalLabel" style="margin-bottom: 0;" >ON동네 회원가입</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -151,17 +156,17 @@
                 <!-- signup form -->
                 <form class="text-center p-4" action="signup.users" method="POST" name="userinfoInsert">
                     <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="이메일" onchange="test(signupEmail.value);" required/>
-                    <small id="checkDupEmail" class="form-text text-success mb-4" style="height: 19px;"></small>
+                    <small id="checkDupEmail" class="form-text text-success mb-3" style="height: 19px;"></small>
 
                     <input type="password" class="form-control" id="signupPassword1" name="signupPassword1" placeholder="비밀번호" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
-                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4" style="height: 19px;">
+                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-3" style="height: 19px;">
                         <%-- At least 8 characters and 1 digit --%>
                     </small>
 
                     <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="비밀번호 확인" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
                     <small id="checkPassword" class="form-text text-danger" style="height: 19px;"></small>
 
-                    <button type="submit" class="btn btn-unique my-4 btn-block" onclick="return signupValidate();" >
+                    <button type="submit" class="btn btn-unique mt-4 btn-block" onclick="return signupValidate();" >
                         <h5 class="m-0">ON동네 회원가입</h5>
                     </button>
 

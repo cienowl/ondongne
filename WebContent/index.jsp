@@ -245,7 +245,7 @@
 
             <!-- Section: QnA -->
             <div class="faq-background-color">
-                <div class="container my-5 pt-5 wow fadeIn">
+                <div class="container my-5 pt-5 fadeIn">
                     <section class="pb-5">
                         <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">FAQ</h6>
                         <!-- Section heading -->
@@ -292,7 +292,7 @@
 
             <!-- Call to action -->
             <div class="container my-5 py-5">
-                <section class="text-center px-md-5 mx-md-5 my-5 dark-grey-text">
+                <section class="text-center px-md-5 mx-md-5 my-5 dark-grey-text fadeIn">
                     <h1 class="font-weight-bold mb-4 display-4">나에게 딱 맞는 동네정보 찾기</h1>
                     <h4 class="text-center mx-auto">회원가입 후, 지금 가장 인기있는 동네 소식을 찾아보세요.</h4>
 
@@ -328,11 +328,6 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
-        <!-- Initializations -->
-        <script type="text/javascript">
-            // Animations initialization
-            new WOW().init();
-        </script>
 
         <!-- Optional JavaScript -->
         <script>
@@ -513,6 +508,13 @@
 
             });
         </script>
+
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+        </script>
+
 
     </body>
 </html>

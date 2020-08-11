@@ -19,6 +19,30 @@ public class SellService {
 		return isWriteSuccess;
 		
 	}
+	
+	public boolean updateSell(DataTransferSell dtoSell) {
+		boolean isUpdateSuccess = false;
+		
+		DataAccessSell daoSell = DataAccessSell.getInstance();
+		int updateCount = daoSell.updateSellPost(dtoSell);
+		
+		if (updateCount > 0) isUpdateSuccess = true;
+		
+		return isUpdateSuccess;
+	}
+	
+	
+	public boolean deleteSell(DataTransferSell dtoSell) {
+		
+		boolean isDeleteSuccess = false;
+		
+		DataAccessSell daoSell = DataAccessSell.getInstance();
+		int deleteCount = daoSell.deleteSellPost(dtoSell);
+		
+		if (deleteCount > 0) isDeleteSuccess = true;
+		
+		return isDeleteSuccess;
+	}
 
 	public List<DataTransferSell> selectSellAll() {
 		
@@ -39,21 +63,11 @@ public class SellService {
 		
 	}
 	
-	public void selectSellOne() {
+	public DataTransferSell selectSellOne() {
 //		TODO: 한개 내용만 가져오기
-	}
-	
-	public boolean deleteSell(DataTransferSell dtoSell) {
+		DataTransferSell dtoSell = null;
 		
-		boolean isDeleteSuccess = false;
-		
-		DataAccessSell daoSell = DataAccessSell.getInstance();
-		int deleteCount = daoSell.deleteSellPost(dtoSell);
-		
-		if (deleteCount > 0) isDeleteSuccess = true;
-		
-		return isDeleteSuccess;
-	}
-	
+		return dtoSell;
+	}	
 
 }

@@ -1,19 +1,15 @@
-<!--
-작성자:
-    html        - 김나예
-    css         - 김나예
-    JavaScript  - 김나예
--->
+<!-- 작성자: 김나예 -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-        <title>소모임 정보 입력</title>
+        <title>ON동네 - 소모임 정보 등록</title>
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
@@ -29,8 +25,6 @@
             .modal-open .navbar-expand-lg {
                 padding-right: 16px !important;
             }
-        </style>
-        <style>
             .navbar {
                 background: #880e4f !important;
             }
@@ -323,13 +317,11 @@
 
         <!-- Header Start -->
         <header>
-            <!-- Navbar signin form -->
             <% if (session.getAttribute("email") != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
-
         </header>
         <!-- Header End -->
 
@@ -338,9 +330,7 @@
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn">
 
-                <div class="row mb-4">
-                    <h2>소모임 정보를 등록해주세요.</h2>
-                </div>
+                <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">소모임 정보를 등록해주세요.</h2>
 
                 <form action="postinsert.circle" method="POST">
                     <div class="form-row">
@@ -738,10 +728,6 @@
 			})
 			
 		</script>
-
-
-
-
 
     </body>
 </html>

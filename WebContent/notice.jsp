@@ -59,7 +59,7 @@
         <main>
 
             <div class="container my-5 pt-5">
-                <h1 class="font-weight-bold dark-grey-text pl-5 pr-5 pb-2 mb-4">공지사항</h1>
+                <h2 class="font-weight-bold dark-grey-text pl-5 pr-5 pb-2 mb-4">공지사항</h2>
                 <div class="list-group list-group-flush pr-5 pl-5">
                     <% for (int i = noticeList.size()-1; i >= 0; i--) { %>
                     <% dataTarget = "#noticeList" + Integer.toString(i); %>

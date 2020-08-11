@@ -4,7 +4,7 @@
 
 <mapper namespace="sell">
 
-	<insert id="sellPost" parameterType="com.ondongne.dto.DataTransferSell">
+	<insert id="insertSellPost" parameterType="com.ondongne.dto.DataTransferSell">
 		insert into sell(
 			email,
 			id,
@@ -33,13 +33,17 @@
 		)
 	</insert>
 	
-	<select id="getSellPostAll" resultType="com.ondongne.dto.DataTransferSell">
+	<select id="selectSellPostAll" resultType="com.ondongne.dto.DataTransferSell">
 		select * from sell
 	</select>
 	
 	<delete id="deleteSellPost" parameterType="com.ondongne.dto.DataTransferSell">
-		delete * from sell where id=#{id}
+		delete from sell where id=#{id}
 	</delete>
+	
+	<update id="updateSellPost" parameterType="com.ondongne.dto.DataTransferSell">
+		update sell set email=#{email}, title=#{title},	price=#{price}, region=#{region}, description=#{description}, is_parcel=#{is_parcel}, is_active=#{is_active}, pictures=#{pictures}, tags=#{tags}, post_date=now() where id=#{id}
+	</update>
 
 </mapper>
 

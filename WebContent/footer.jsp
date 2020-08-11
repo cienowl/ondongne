@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <h6>고객센터</h6>
-                <p class="text-justify">전화: 1544-흥예흥예 (평일 9:00-20:00)
+                <p class="text-justify">전화: 1544-XXXX (평일 9:00-20:00)
                 <p class="text-justify">
                 (주)비바온동네<br/>
                 사업자 등록번호 : 120-88-00000 | 대표 : 김동네<br/>
