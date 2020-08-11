@@ -23,7 +23,7 @@ public class UserSignupSubAction implements Action {
 		String phone = request.getParameter("inputPhone");
 		String birthday = request.getParameter("inputBirthday");
 		String gender = request.getParameter("inputGender");
-		String nickname = request.getParameter("inputNickname");
+		String name = request.getParameter("inputName");
 		String zipcode = request.getParameter("zipcode");
 		String address = request.getParameter("roadAddress");
 		String address_detail = request.getParameter("detailAddress");
@@ -38,7 +38,7 @@ public class UserSignupSubAction implements Action {
 		dtoUser.setPhone(phone);
 		dtoUser.setBirthday(birthday);
 		dtoUser.setGender(gender);
-		dtoUser.setNickname(nickname);
+		dtoUser.setName(name);
 		dtoUser.setZipcode(zipcode);
 		dtoUser.setAddress(address);
 		dtoUser.setAddress_detail(address_detail);

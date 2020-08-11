@@ -18,7 +18,7 @@
 	</select>
 
 	<update id="userUpdate" parameterType="com.ondongne.dto.DataTransferUsers">
-		update users set email=#{email}, password=#{password}, phone=#{phone}, birthday=#{birthday}, gender=#{gender}, nickname=#{nickname}, zipcode=#{zipcode}, address=#{address}, address_detail=#{address_detail}, region1=#{region1}, region2=#{region2}, region3=#{region3} where email=#{sessionEmail};
+		update users set email=#{email}, password=#{password}, phone=#{phone}, birthday=#{birthday}, gender=#{gender}, name=#{name}, zipcode=#{zipcode}, address=#{address}, address_detail=#{address_detail}, region1=#{region1}, region2=#{region2}, region3=#{region3} where email=#{sessionEmail};
 	</update>
 
 	<delete id="userDelete" parameterType="String">
@@ -28,5 +28,9 @@
 	<update id="setAvatar" parameterType="com.ondongne.dto.DataTransferUsers">
 		update users set profile_picture=#{profile_picture} where email=#{email}
 	</update>
+	
+	<select id="findEmail" parameterType="com.ondongne.dto.DataTransferUsers" resultType="String">
+		select email from users WHERE name=#{name} AND phone=#{phone};
+	</select>
 	
 </mapper>

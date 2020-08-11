@@ -97,9 +97,9 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputNickname">닉네임</label>
-                            <input type="text" class="form-control" id="inputNickname" name="inputNickname"/>
-                            <small id="nicknameHelp" class="form-text text-danger">닉네임 중복 확인</small>
+                            <label for="inputName">이름</label>
+                            <input type="text" class="form-control" id="inputName" name="inputName"/>
+                            <%-- <small id="nicknameHelp" class="form-text text-danger">닉네임 중복 확인</small> --%>
                         </div>
                     </div>
 
@@ -342,7 +342,7 @@
 				var inputPhone = document.getElementById("inputPhone");
 				var inputBirthday = document.getElementById("inputBirthday");
 				var inputGender = document.getElementById("inputGender");
-				var inputNickname = document.getElementById("inputNickname");
+				var inputName = document.getElementById("inputName");
 //				var sample4_postcode = document.getElementById("sample4_postcode");
 //				var sample4_roadAddress = document.getElementById("sample4_roadAddress");
 //				var sample4_detailAddress = document.getElementById("sample4_detailAddress");
@@ -422,9 +422,9 @@
 				}
 
 				//닉네임을 입력하지 않았을 경우
-				if (inputNickname.value == ""){
-					alert("닉네임을 입력하세요.");
-					inputNickname.focus();
+				if (inputName.value == ""){
+					alert("이름을 입력하세요.");
+					inputName.focus();
 					return false;
 				}
 
@@ -476,24 +476,24 @@
                     });
                 });
 
-                //회원정보 수정시 가입된 닉네임이 있는지 확인
-                $("#inputNickname").blur(function(){
-                    var nickname = $("#inputNickname").val();
+                // //회원정보 수정시 가입된 닉네임이 있는지 확인
+                // $("#inputNickname").blur(function(){
+                //     var nickname = $("#inputNickname").val();
 
-                    $.ajax({
-                        url:'checkDupNickname.jsp',
-                        data:{"inputNickname":nickname},
-                        type:"GET",
-                        success:function(request){
-                            $("#nicknameHelp").empty();
-                            $("#nicknameHelp").append(request);
-                        },
-                        error:function(request,status,error){
-                            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                        }
+                //     $.ajax({
+                //         url:'checkDupNickname.jsp',
+                //         data:{"inputNickname":nickname},
+                //         type:"GET",
+                //         success:function(request){
+                //             $("#nicknameHelp").empty();
+                //             $("#nicknameHelp").append(request);
+                //         },
+                //         error:function(request,status,error){
+                //             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                //         }
 
-                    });
-                });
+                //     });
+                // });
             });
         </script>
 

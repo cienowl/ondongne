@@ -96,5 +96,14 @@ public class DataAccessUsers {
 		return updateCount;
 
 	}
+	
+	public String findEmail(DataTransferUsers dtoUser) {
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		String email = sqlsession.selectOne("findEmail",dtoUser);
+		
+		return email;
+	}
 
 }

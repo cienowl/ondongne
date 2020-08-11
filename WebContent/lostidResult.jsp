@@ -45,15 +45,18 @@
 
 
         <main>
-
+			
             <div class="container my-5 pt-5">
                 <h2 class="font-weight-bold dark-grey-text px-5 mb-3">아이디 찾기 결과</h2>
 
                 <hr class=""/>
 
                 <div class="col-lg-6 mx-auto my-5 pb-3 wow fadeIn">
-                    결과 출력
+                    <% String email = (String)request.getAttribute("findEmail"); %>
+                    <%=email %>
                 </div>
+                <button class="btn btn-primary my-5" type="button">로그인</button>
+                <button class="btn btn-warning my-5" type="button">비밀번호 찾기</button>
 
             </div>
 

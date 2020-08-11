@@ -106,4 +106,14 @@ public class UsersService {
 		return isUpdateSuccess;
 	}
 	
+	// 이메일 찾기
+	public String findEmail(DataTransferUsers dtoUser) {
+		boolean findSuccess = false;
+		
+		DataAccessUsers userDao = DataAccessUsers.getInstance();
+		String email = userDao.findEmail(dtoUser);
+		
+		return email;
+	}
+	
 }

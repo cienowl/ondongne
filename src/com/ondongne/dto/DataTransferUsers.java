@@ -29,7 +29,7 @@ public class DataTransferUsers {
 	private String sessionEmail;
 	private String email;
 	private String password;
-	private String nickname;
+	private String name;
 	private String profile_picture;
 	private String birthday;
 	private String phone;
@@ -65,11 +65,11 @@ public class DataTransferUsers {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getName() {
+		return name;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getProfile_picture() {
 		return profile_picture;

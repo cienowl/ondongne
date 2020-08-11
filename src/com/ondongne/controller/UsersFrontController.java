@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ondongne.action.Action;
 import com.ondongne.action.UserAvatarSetAction;
 import com.ondongne.action.UserDeleteAction;
+import com.ondongne.action.UserLostEmail;
 import com.ondongne.action.UserSigninAction;
 import com.ondongne.action.UserSignoutAction;
 import com.ondongne.action.UserSignupBasicAction;
@@ -115,6 +116,16 @@ public class UsersFrontController extends HttpServlet
 //				비밀번호 찾기
 				forward = new ActionForward();
 				forward.setPath("lostpw.jsp");				
+			}
+			
+			else if(command.equals("/lostidcheck.users")) {
+//				이름과 핸드폰번호 입력 후 이메일 찾기
+				action = new UserLostEmail();
+				try {
+					forward = action.execute(request, response);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
 			}
 			
 			if (forward != null) {		
