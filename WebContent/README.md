@@ -72,7 +72,7 @@ users: 회원 테이블
 CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `nickname` varchar(20) DEFAULT NULL,
+  `name` varchar(20) DEFAULT NULL,
   `profile_picture` varchar(100) DEFAULT NULL,
   `birthday` varchar(10) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
