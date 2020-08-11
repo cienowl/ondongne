@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.CancelJoinSellAction;
 import com.ondongne.action.DeleteSellAction;
 import com.ondongne.action.GetSellAction;
 import com.ondongne.action.ScrapSellAction;
@@ -19,11 +20,11 @@ import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.sell")
 public class SellFrontController extends HttpServlet {
-	
+
 	public void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		
+
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
@@ -93,6 +94,16 @@ public class SellFrontController extends HttpServlet {
 			}
 		}
 		
+		else if (command.equals("/cancelScrap.sell")) {
+//			판매글 스크랩 취소
+			action = new CancelJoinSellAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 //		TODO: 게시물 미리보기 누르면 현재 데이터로 모달창 띄우기
 		
 		
@@ -107,9 +118,6 @@ public class SellFrontController extends HttpServlet {
 		}
 		
 	}
-	
-	
-	
 	
 	//action method 가 get 인 경우 doProcess 실행
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

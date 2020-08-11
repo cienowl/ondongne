@@ -39,7 +39,7 @@ public class DataAccessSellJoin {
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 
-		int insertCount = sqlSession.insert("joinSellInsert", dtoSellJoin);
+		int insertCount = sqlSession.insert("insertJoinSell", dtoSellJoin);
 		sqlSession.commit();
 		sqlSession.close();
 
@@ -50,11 +50,22 @@ public class DataAccessSellJoin {
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 
-		int joinCount = sqlSession.selectOne("getJoinSell", dtoSellJoin);
+		int joinCount = sqlSession.selectOne("getJoinSellAll", dtoSellJoin);
 		sqlSession.commit();
 		sqlSession.close();
 
 		return joinCount;
+	}
+	
+	public int deleteSellJoin(DataTransferSellJoin dtoSellJoin) {
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		
+		int cancelCount = sqlSession.delete("deleteJoinSell", dtoSellJoin);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return cancelCount;
 	}
 
 }

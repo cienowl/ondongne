@@ -87,5 +87,16 @@ public class DataAccessSell {
 		return deleteCount;
 
 	}
+	
+	public List<DataTransferSell> selectJoinSell(String loginEmail) {
+
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+
+		List<DataTransferSell> joinSellList = sqlSession.selectList("getJoinSell", loginEmail);
+
+		return joinSellList;
+
+	}
 
 }

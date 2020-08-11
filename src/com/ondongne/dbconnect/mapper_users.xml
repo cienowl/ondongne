@@ -5,8 +5,8 @@
 <mapper namespace="users">
 
 	<insert id="insertBasicInfo" parameterType="com.ondongne.dto.DataTransferUsers">
-		insert into users(email, password, joindate)
-		values(#{email}, #{password}, now())
+		insert into users(email, password, joindate, name, phone)
+		values(#{email}, #{password}, now(), #{name}, #{phone})
 	</insert>
 
 	<select id="checkEmail" resultType="String">

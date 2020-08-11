@@ -18,6 +18,19 @@ public class SellJoinService {
 
 		return isWriteSuccess;
 	}
+	
+	public boolean cancelScrap(DataTransferSellJoin scrapBean) {
+		
+		boolean isDeleteSuccess = false;
+		
+		DataAccessSellJoin daoJoinSell = DataAccessSellJoin.getInstance();
+		int deleteCount = daoJoinSell.deleteSellJoin(scrapBean);
+		
+		if (deleteCount > 0) isDeleteSuccess = true;
+		
+		return isDeleteSuccess;
+		
+	}
 
 	public int checkScrap(DataTransferSellJoin scrapBean) {
 

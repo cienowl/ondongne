@@ -39,7 +39,6 @@ public class DataAccessCircleJoin {
 	
 	// 소모임 참여버튼을 눌렀을 때 insert
 	public int joinCircleInsert(DataTransferCircleJoin dto) {
-		
 		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();
 		
@@ -52,7 +51,6 @@ public class DataAccessCircleJoin {
 	
 	// 모든 참여게시물 출력 select
 	public List<DataTransferCircle> selectJoinCircleAll(){
-		
 		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();
 		
@@ -63,7 +61,6 @@ public class DataAccessCircleJoin {
 	
 	// 소모임 참여버튼 눌렀을 때 이미 참여한 게시물인지 check
 	public int joinCircleCheck(DataTransferCircleJoin dto) {
-		
 		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();
 		

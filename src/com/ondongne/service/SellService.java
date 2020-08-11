@@ -46,28 +46,20 @@ public class SellService {
 
 	public List<DataTransferSell> selectSellAll() {
 		
-		DataAccessSell daoSell = DataAccessSell.getInstance();
-		
+		DataAccessSell daoSell = DataAccessSell.getInstance();		
 		List<DataTransferSell> sellList = daoSell.selectSellAll();		
 		
 		return sellList;
 		
 	}
 	
-	public List<DataTransferSell> selectJoinSell(String sessionEmail) {
-//		TODO: 구현 필요
-		List<DataTransferSell> sellList = null;
+	public List<DataTransferSell> selectJoinSell(String loginEmail) {
+
+		DataAccessSell daoSell = DataAccessSell.getInstance();
+		List<DataTransferSell> joinSellList = daoSell.selectJoinSell(loginEmail);
 		
-		
-		return sellList;
-		
+		return joinSellList;
+
 	}
-	
-	public DataTransferSell selectSellOne() {
-//		TODO: 한개 내용만 가져오기
-		DataTransferSell dtoSell = null;
-		
-		return dtoSell;
-	}	
 
 }

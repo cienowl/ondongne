@@ -3,12 +3,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="joinsell">
-	<insert id="joinSellInsert" parameterType="com.ondongne.dto.DataTransferSellJoin">
+	<insert id="insertJoinSell" parameterType="com.ondongne.dto.DataTransferSellJoin">
 		insert into helper_sell values (#{join_email},#{join_postid});
 	</insert>
 	
-	<select id="getJoinSell" resultType="int" parameterType="com.ondongne.dto.DataTransferSellJoin">
-		select COUNT(*) from helper_sell where join_email=#{join_email} AND join_postid=#{join_postid};
+	<select id="getJoinSellAll" resultType="int" parameterType="com.ondongne.dto.DataTransferSellJoin">
+		select count(*) from helper_sell where join_email=#{join_email} and join_postid=#{join_postid};
 	</select>
+	
+	<delete id="deleteJoinSell" parameterType="com.ondongne.dto.DataTransferSellJoin">
+		delete from helper_sell where join_postid=#{join_postid} and join_email=#{join_email}
+	</delete>
 
 </mapper>

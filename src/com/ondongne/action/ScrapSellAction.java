@@ -26,10 +26,9 @@ public class ScrapSellAction implements Action {
 		int joinCount = sellJoinService.checkScrap(scrapBean);
 		
 		if (joinCount == 0) {
-			
-//			SellJoinService sellJoinService = new SellJoinService();
 			boolean isWriteSuccess = sellJoinService.insertScrap(scrapBean);
-					
+			
+//			스크랩 실패
 			if (!isWriteSuccess) {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();
@@ -50,7 +49,6 @@ public class ScrapSellAction implements Action {
 			out.println("history.back();");
 			out.println("</script>");
 		}
-
 		return forward;
 	}
 
