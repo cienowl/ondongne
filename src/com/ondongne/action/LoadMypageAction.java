@@ -20,7 +20,7 @@ public class LoadMypageAction implements Action {
 		HttpSession session = request.getSession();
 		String sessionEmail = (String) session.getAttribute("email");
 		
-		ActionForward forward = new ActionForward();;
+		ActionForward forward = new ActionForward();
 		
 		if (sessionEmail != null) {
 //			Avatar 사진 불러오기
