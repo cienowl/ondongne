@@ -34,11 +34,9 @@ public class UserLostEmail implements Action{
 			out.println("history.back();");
 			out.println("</script>");
 		}else {
-			request.setAttribute("findEmail", email);
-			System.out.println(request.getAttribute("findEmail"));
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("lostidResult.jsp");
+			forward.setPath("lostidResult.jsp?findEmail="+email);
 		}
 		return forward;
 	}

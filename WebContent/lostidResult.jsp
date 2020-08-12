@@ -52,11 +52,16 @@
                 <hr class=""/>
 
                 <div class="col-lg-6 mx-auto my-5 pb-3 wow fadeIn">
-                    <% String email = (String)request.getAttribute("findEmail"); %>
-                    <%=email %>
+                	<div class="text-center z-depth-1-half p-5">
+                		<div>
+		                    <% String email = (String)request.getParameter("findEmail"); %>
+		                    <h4 class="font-weight-bold"><%=email %></h4>
+	                    </div>
+	                    <a data-toggle="modal" data-target="#signinModal" class="btn btn-primary mt-5 btn-block" type="button">로그인</a>
+                		<button class="btn btn-warning mt-2 btn-block" type="button">비밀번호 찾기</button>
+                    </div>
                 </div>
-                <button class="btn btn-primary my-5" type="button">로그인</button>
-                <button class="btn btn-warning my-5" type="button">비밀번호 찾기</button>
+                
 
             </div>
 
