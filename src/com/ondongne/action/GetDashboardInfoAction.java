@@ -27,9 +27,8 @@ public class GetDashboardInfoAction implements Action {
 			List<NoticeBean> noticeList = adminService.selectNoticeAll();			
 			request.setAttribute("noticeList", noticeList);
 			
-//			Hotplace 리스트 불러오기
-			HotplaceService hotplaceService = new HotplaceService();
-			List<HotplaceBean> hotplaceList = hotplaceService.selectHotplaceAll();
+//			Hotplace 리스트 불러오기			
+			List<HotplaceBean> hotplaceList = adminService.selectHotplaceAll();
 			request.setAttribute("hotplaceList", hotplaceList);
 			
 			forward = new ActionForward();

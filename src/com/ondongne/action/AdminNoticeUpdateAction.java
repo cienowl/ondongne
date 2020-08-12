@@ -16,7 +16,7 @@ public class AdminNoticeUpdateAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		HttpSession session = request.getSession();
-		ActionForward forward = null;
+		ActionForward forward = new ActionForward();
 
 		if (session.getAttribute("adminId") != null) {
 			int noticeId = Integer.parseInt(request.getParameter("id"));
@@ -33,8 +33,6 @@ public class AdminNoticeUpdateAction implements Action {
 			AdminService adminService = new AdminService();
 			boolean updateSuccess = adminService.updateNotice(noticeBean, adminId, adminPw);
 			
-			forward = new ActionForward();
-			
 			if (updateSuccess) {				
 				forward.setRedirect(true);
 				forward.setPath("../dashboard.admin");
@@ -50,7 +48,6 @@ public class AdminNoticeUpdateAction implements Action {
 				forward.setPath("../dashboard.admin");
 			}
 		} else {
-			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath("../index.admin");
 		}

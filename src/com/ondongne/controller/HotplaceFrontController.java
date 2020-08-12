@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
 import com.ondongne.action.GetHotplaceAction;
-import com.ondongne.action.InsertHotplaceAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.hotplace")
@@ -26,18 +25,9 @@ public class HotplaceFrontController extends javax.servlet.http.HttpServlet {
 		
 		ActionForward forward = null;
 		Action action = null;
-		
-		if (command.equals("/hotplacePostForm.hotplace")) {
-//			Hotplace 장소 등록
-			action = new InsertHotplaceAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		else if (command.equals("/view.hotplace")) {
+
+		if (command.equals("/view.hotplace")) {
+//			핫플레이스 출력 페이지
 			action = new GetHotplaceAction();
 			try {
 				forward = action.execute(request, response);
@@ -45,6 +35,7 @@ public class HotplaceFrontController extends javax.servlet.http.HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
 
 //		else if (command.equals("/hotplaceListForm.hotplace")) {
 //			//System.out.println("success");

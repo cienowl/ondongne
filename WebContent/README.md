@@ -146,7 +146,7 @@ hotplace: 동네장소 테이블
 
 ~~~sql
 CREATE TABLE `hotplace` (
-  `email` varchar(50) NOT NULL,
+  `admin_id` varchar(50) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `pictures` text NOT NULL,
@@ -156,10 +156,8 @@ CREATE TABLE `hotplace` (
   `region` varchar(10) NOT NULL,
   `description` text,
   `tags` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `hotplace_email_idx` (`email`),
-  CONSTRAINT `hotplace_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 ~~~
 
 notice: 공지사항 테이블

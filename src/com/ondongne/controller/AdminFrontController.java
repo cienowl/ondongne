@@ -16,6 +16,8 @@ import com.ondongne.action.AdminNoticeWriteAction;
 import com.ondongne.action.AdminSigninAction;
 import com.ondongne.action.AdminSignoutAction;
 import com.ondongne.action.GetDashboardInfoAction;
+import com.ondongne.action.InsertHotplaceAction;
+import com.ondongne.action.UpdateHotplaceAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.admin")
@@ -90,7 +92,7 @@ public class AdminFrontController extends HttpServlet {
 		}
 		
 		else if (command.equals("/notice/update.admin")) {
-//		TODO: 공지사항 수정
+//		공지사항 수정
 			action = new AdminNoticeUpdateAction();
 			try {
 				forward = action.execute(request, response);
@@ -98,6 +100,31 @@ public class AdminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
+		if (command.equals("/hotplace/write.admin")) {
+//			Hotplace 장소 등록
+			action = new InsertHotplaceAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if (command.equals("/hotplace/delete.admin")) {
+			
+		}
+		
+		else if (command.equals("/hotplace/update.admin")) {
+//			hotplace 장소 수정
+			action = new UpdateHotplaceAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		
 		
 		

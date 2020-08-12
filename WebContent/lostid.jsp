@@ -29,16 +29,13 @@
         </style>
     </head>
 
-
     <body>
 
         <header>
             <jsp:include page="navbar_signin.jsp"/>
         </header>
 
-
         <main>
-
             <div class="container my-5 pt-5">
                 <h2 class="font-weight-bold dark-grey-text px-5 mb-3">아이디 찾기</h2>
 
@@ -59,7 +56,6 @@
                     </form>
                 </div>
             </div>
-
         </main>
 
 

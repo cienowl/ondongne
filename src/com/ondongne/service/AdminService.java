@@ -2,8 +2,10 @@ package com.ondongne.service;
 
 import java.util.List;
 
+import com.ondongne.dao.DataAccessHotplace;
 import com.ondongne.dao.DataAccessNotice;
 import com.ondongne.dto.AdminBean;
+import com.ondongne.dto.HotplaceBean;
 import com.ondongne.dto.NoticeBean;
 
 public class AdminService {
@@ -77,6 +79,37 @@ public class AdminService {
 	    }		
 
 		return deleteSuccess;
+	}
+	
+	public boolean insertHotplace(HotplaceBean dtoHotplaceBean) {
+		
+		boolean isWriteSuccess = false;
+		
+		DataAccessHotplace daoHotplace = DataAccessHotplace.getInstance();
+		int insertCount = daoHotplace.insertPlace(dtoHotplaceBean);
+
+		if (insertCount > 0) isWriteSuccess = true;
+		
+		return isWriteSuccess;
+		
+	}
+	
+	public List<HotplaceBean> selectHotplaceAll() {
+		
+		DataAccessHotplace daoHotplace = DataAccessHotplace.getInstance();
+		List<HotplaceBean> hotplaceList = daoHotplace.selectPlaceListAll();
+		
+		return hotplaceList;
+		
+	}
+
+	public boolean updatePlace(HotplaceBean hotplaceBean, String adminId, String adminPw) {
+		// TODO 업데이트 만들기: admin 서비스로 이동
+		
+		boolean updateSuccess = false;
+		
+		
+		return false;
 	}
 
 }
