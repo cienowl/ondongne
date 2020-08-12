@@ -128,12 +128,12 @@
                                                 <strong>지금 바로 가입하고 우리동네 소모임에 참여하거나 내가 찾는 중고제품을 찾아보세요! HIP한 카페나 맛집은 덤인 것이에요!</strong>
                                             </p>
                                             <% if (session.getAttribute("email") != null) { %>
-                                                <a class="btn btn-outline-white btn-lg" href="mypage.ondongne">마이페이지로 이동
-                                                    <i class="fas fa-arrow-right"></i>
+                                                <a class="btn btn-outline-white btn-lg" href="mypage.ondongne">
+                                                    <h5 class="m-0 p-0">마이페이지로 이동 <i class="fas fa-arrow-right"></i></h5>
                                                 </a>
                                             <% } else { %>
-                                                <a class="btn btn-outline-white btn-lg" data-toggle="modal" data-target="#signupModal">ON동네 시작하기
-                                                    <i class="far fa-user ml-2"></i>
+                                                <a class="btn btn-outline-white btn-lg" data-toggle="modal" data-target="#signupModal">
+                                                    <h5 class="m-0 p-0">ON동네 시작하기 <i class="far fa-user ml-2"></i></h5>
                                                 </a>
                                             <% } %>
                                         </div>

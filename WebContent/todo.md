@@ -3,8 +3,7 @@
 할일 리스트
 
 - 긴급리스트
-  
-  - helper_circle & helper_sell 충돌 해결 
+  - helper_circle & helper_sell 충돌 해결
 
 1. index 페이지
    1. 중간 서비스 내용 수정
@@ -16,7 +15,7 @@
 2. admin 페이지
    1. ~~admin landing~~
    2. ~~admin dashboard~~
-   3. hotplace 정보 입력 연결
+   3. hotplace 정보 사이트 연결
    4. 유저 관리 페이지 만들기
 3. faq 자주 묻는 질문 페이지 만들기
    1. 내용 작성
@@ -27,7 +26,7 @@
 5. mypage 페이지
    1. ~~Circle 참여 리스트 보여주기~~
    2. ~~Circle 작성 게시물 보여주기~~
-   3. Sell 참여 리스트 보여주기
+   3. ~~Sell 스크랩 리스트 보여주기~~
    4. Sell 작성 게시물 보여주기
    5. 구글 달력 추가
    6. ~~Circle 참여 리스트 보여주기~~

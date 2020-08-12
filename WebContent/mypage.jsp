@@ -191,12 +191,12 @@
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                <th scope="col">글제목</th>
-                                                <th scope="col">참여인원</th>
-                                                <th scope="col">모임날짜</th>
-                                                <th scope="col">마감날짜</th>
-                                                <th scope="col">수정</th>
-                                                <th scope="col">삭제</th>
+                                                    <th scope="col" class="text-center">글제목</th>
+                                                    <th scope="col" class="text-center">참여인원</th>
+                                                    <th scope="col" class="text-center">모임날짜</th>
+                                                    <th scope="col" class="text-center">마감날짜</th>
+                                                    <th scope="col" class="text-center">수정</th>
+                                                    <th scope="col" class="text-center">삭제</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -222,15 +222,15 @@
 													<input type="hidden" name="description" value="<%=postCircleList.get(i).getDescription()%>" />
 
                                                     <tr>
-                                                        <th><%=postCircleList.get(i).getTitle()%></th>
-                                                        <td><a class="text-danger"><%=joinCount%></a>/<%=postCircleList.get(i).getMem_number() %></td>
-                                                        <td><%=postCircleList.get(i).getEvent_date() %></td>
-                                                        <td class="text-danger"><%=postCircleList.get(i).getEnd_date() %></td>
-                                                        <td style="text-align:center;">
-                                                            <button type="submit" class="btn btn-warning" onclick="javascript:form.action='postupdateform.circle'"><i class="fas fa-pencil-alt"></i></button>
+                                                        <th class="text-center"><%=postCircleList.get(i).getTitle()%></th>
+                                                        <td class="text-center"><a class="text-danger"><%=joinCount%></a>/<%=postCircleList.get(i).getMem_number() %></td>
+                                                        <td class="text-center"><%=postCircleList.get(i).getEvent_date() %></td>
+                                                        <td class="text-center text-danger"><%=postCircleList.get(i).getEnd_date() %></td>
+                                                        <td class="text-center">
+                                                            <button type="submit" class="btn btn-sm btn-warning" onclick="javascript:form.action='postupdateform.circle'"><i class="fas fa-pencil-alt"></i></button>
                                                         </td>
-                                                        <td style="text-align:center;">
-                                                            <button type="button" class="btn btn-danger" onclick="delete_check(this.form)"><i class="fas fa-trash"></i></button>
+                                                        <td class="text-center">
+                                                            <button type="button" class="btn btn-sm btn-danger" onclick="delete_check(this.form)"><i class="fas fa-trash"></i></button>
                                                         </td>
                                                     </tr>
                                                 </form>
@@ -278,10 +278,10 @@
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
-                                                    <th scope="col">글제목</th>
-                                                    <th scope="col">작성자</th>
-                                                    <th scope="col">모임날짜</th>
-                                                    <th scope="col">참여취소</th>
+                                                    <th scope="col" class="text-center">글제목</th>
+                                                    <th scope="col" class="text-center">작성자</th>
+                                                    <th scope="col" class="text-center">모임날짜</th>
+                                                    <th scope="col" class="text-center">참여취소</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -290,10 +290,10 @@
                                                             <input type="hidden" name="joinId"  id="joinId" value="<%=joinCircleList.get(i).getId() %>" />
                                                             <input type="hidden" name="joinTitle" id="joinTitle" value="<%=joinCircleList.get(i).getTitle()%>"/>
                                                             <tr>
-                                                                <th><%=joinCircleList.get(i).getTitle()%></th>
-                                                                <td><%=joinCircleList.get(i).getEmail() %></td>
-                                                                <td><%=joinCircleList.get(i).getEvent_date() %></td>
-                                                                <td style="text-align:center;">
+                                                                <th class="text-center"><%=joinCircleList.get(i).getTitle()%></th>
+                                                                <td class="text-center"><%=joinCircleList.get(i).getEmail() %></td>
+                                                                <td class="text-center"><%=joinCircleList.get(i).getEvent_date() %></td>
+                                                                <td class="text-center">
                                                                     <button type="button" class="btn btn-info" onclick="joinCancel(this.form)"><i class="fas fa-times"></i></button>
                                                                 </td>
                                                             </tr>
@@ -318,10 +318,10 @@
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
-                                                    <th scope="col">글제목</th>
-                                                    <th scope="col">작성자</th>
-                                                    <th scope="col">가격</th>
-                                                    <th scope="col">스크랩취소</th>
+                                                        <th scope="col" class="text-center">글제목</th>
+                                                        <th scope="col" class="text-center">작성자</th>
+                                                        <th scope="col" class="text-center">가격</th>
+                                                        <th scope="col" class="text-center">스크랩취소</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -330,11 +330,11 @@
                                                             <input type="hidden" name="scrapId"  id="scrapId" value="<%=joinSellList.get(i).getId() %>" />
                                                             <input type="hidden" name="scrapTitle" id="scrapTitle" value="<%=joinSellList.get(i).getTitle()%>"/>
                                                             <tr>
-                                                                <td><%=joinSellList.get(i).getTitle()%></td>
-                                                                <th><%=joinSellList.get(i).getEmail()%></th>
-                                                                <td><%=joinSellList.get(i).getPrice()%></td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-info" onclick="scrapCancel(this.form)"><i class="fas fa-times"></i></button>
+                                                                <td class="text-center"><%=joinSellList.get(i).getTitle()%></td>
+                                                                <th class="text-center"><%=joinSellList.get(i).getEmail()%></th>
+                                                                <td class="text-center"><%=joinSellList.get(i).getPrice()%></td>
+                                                                <td class="text-center">
+                                                                    <button type="button" class="btn btn-info btn-sm" onclick="scrapCancel(this.form)"><i class="fas fa-times"></i></button>
                                                                 </td>
                                                             </tr>
                                                         </form>
