@@ -3,7 +3,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="hotplace">
-	<insert id="hotplace" parameterType="com.ondongne.dto.DataTransferCircle">
-		
+
+	<insert id="insertPlace" parameterType="com.ondongne.dto.HotplaceBean">
+		insert into hotplace(admin_id, id, title, pictures, zipcode, address, address_detail, region, description, tags)
+		values( #{admin_id}, default, #{title},	#{pictures}, #{zipcode}, #{address}, #{address_detail},	#{region}, #{description}, #{tags})
+		</insert>
+
+	<select id="selectList" resultType="com.ondongne.dto.HotplaceBean">
+		select * from hotplace order by id desc;
+	</select>
+
+	<select id="selectContent" resultType="com.ondongne.dto.HotplaceBean">
+		select * from hotplace where id = #{id};
+	</select>
+
+	<update id="updateContent" parameterType="com.ondongne.dto.HotplaceBean">
+		update
+		hotplace set email ='pichu1029@hanmail.net', title = #{title},
+		pictures = 'a', region = #{region}, zipcode = #{zipcode}, address =
+		#{address}, address_detail = #{address_detail}, region = #{region},
+		description = #{description}, tags = 'tag' where id = #{id}
+	</update>
+
+	<delete id="deleteContent"
+		parameterType="com.ondongne.dto.HotplaceBean">
+		delete from hotplace where id = #{id};
+	</delete>
+
+	<insert id="simpleSignUp"
+		parameterType="com.ondongne.dto.DataTransferUsers">
+		insert into users(email, password) values (#{email},
+		#{password});
 	</insert>
+
+	<select id="listCard"
+		resultType="com.ondongne.dto.HotplaceBean">
+		select * from hotplace;
+	</select>
+	
+	<select id="relatedPlace"
+		resultType="com.ondongne.dto.HotplaceBean" parameterType="String">
+		select * from hotplace where region like CONCAT('%',#{value},'%');
+	</select>
 </mapper>

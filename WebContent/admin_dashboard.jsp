@@ -1,10 +1,13 @@
-<!-- 작성자: 이호준 -->
+<!-- 작성자: 이호준, 김나예, 한송희-->
+
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.ondongne.dto.HotplaceBean"%>
 <%@page import="com.ondongne.dto.NoticeBean"%>
 <%@page import="java.util.List"%>
 
 <%
 	List<NoticeBean> noticeList = (List<NoticeBean>) request.getAttribute("noticeList");
+	List<HotplaceBean> hotplaceList = (List<HotplaceBean>) request.getAttribute("hotplaceList");
     String dataTarget = null;
 %>
 
@@ -196,9 +199,168 @@
                 </div>
                 <!--Grid row-->
 
+                <!-- Hotplace 관리보드 -->
+                <div class="row wow fadeIn">
+                    <div class="col-md-12 mb-4">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                핫플레이스 관리
+                            </div>
+                            <div class="card-body">
+                            <table id="noticeTable" class="table table-hover" cellspacing="0" width="100%">
+                                <thead class="thead-dark">
+                                    <tr class="text-center">
+                                        <th class="th">지역</th>
+                                        <th class="th">가게이름</th>
+                                        <th class="th">주소</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% for (int i = 0; i < hotplaceList.size(); i++) { %>
+                                <% dataTarget = "#hotplaceList" + Integer.toString(i); %>
+                                    <tr class="text-center" style="cursor: pointer;" data-toggle="modal" data-target="<%= dataTarget %>">
+                                        <td><%= hotplaceList.get(i).getRegion() %></td>
+                                        <td><%= hotplaceList.get(i).getTitle() %></td>
+                                        <td><%= hotplaceList.get(i).getAddress() %></td>
+                                    </tr>
+                                <% } %>
+                                </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="" class="btn btn-primary my-0" type="button" data-toggle="modal" data-target="#hotplacePostModal">Hotplace 등록</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal: Hotplace 입력 폼 -->
+                <div class="modal fade" id="hotplacePostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <p class="h3">Hotplace 등록</p>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                    <form action="hotplacePostForm.hotplace"  method="POST" enctype="multipart/form-data">
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-8">
+                                                <label for="placeName">장소 이름</label>
+                                                <input type="text" class="form-control" id="placeName" placeholder="장소 이름을 입력하세요." name="title"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="placeRegion">지역구</label>
+                                                <select id="placeRegion" class="form-control" name="region">
+                                                    <option selected disabled value="">선택</option>
+                                                    <option>강남구</option>
+                                                    <option>강동구</option>
+                                                    <option>강북구</option>
+                                                    <option>강서구</option>
+                                                    <option>관악구</option>
+                                                    <option>광진구</option>
+                                                    <option>구로구</option>
+                                                    <option>금천구</option>
+                                                    <option>노원구</option>
+                                                    <option>도봉구</option>
+                                                    <option>동대문구</option>
+                                                    <option>동작구</option>
+                                                    <option>마포구</option>
+                                                    <option>서대문구</option>
+                                                    <option>서초구</option>
+                                                    <option>성동구</option>
+                                                    <option>성북구</option>
+                                                    <option>송파구</option>
+                                                    <option>양천구</option>
+                                                    <option>영등포구</option>
+                                                    <option>용산구</option>
+                                                    <option>은평구</option>
+                                                    <option>종로구</option>
+                                                    <option>중구</option>
+                                                    <option>중랑구</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="sample4_postcode">우편번호</label>
+                                                <input type="text" class="form-control" id="sample4_postcode" placeholder="우편번호" name="zipcode" readonly/>
+                                            </div>
+                                            <div class="form-group col-md-6" style="padding-top: 32px">
+                                                <label for="findAddress"></label>
+                                                <input type="button" class="btn btn-primary" id="findAddress" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="sample4_roadAddress">도로명주소</label>
+                                                <input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" name="address" readonly/>
+                                            </div>
+                                            <span id="guide" style="color: #999; display: none"></span>
+                                            <div class="form-group col-md-6">
+                                                <label for="sample4_detailAddress">상세주소</label>
+                                                <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" name="address_detail"/>
+                                            </div>
+                                            <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="display: none;"/>
+                                            <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="display: none;"/>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <!-- <div class="form-group col-md-8"> -->
+                                            <div class="example-wrapper form-group col-md-12">
+                                                <div class="tags well">
+                                                    <label for="tagg">태그<small>(최대5개)</small></label><br/>
+                                                    <div data-tags-input-name="taggone" id="tag" name="tags">preexisting-tag, another-tag</div>
+                                                    <!-- <p class="help-block">Press Enter, Comma or Spacebar to create a new tag, Backspace or Delete to remove the last one.</p> -->
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="placeDescription">장소 관련 설명</label>
+                                            <textarea class="form-control" id="placeDescription" rows="7" name="description"></textarea>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-info">게시물미리보기</button>
+                                            <button type="submit" class="btn btn-primary">등록</button>
+                                            <button type="button" class="btn btn-danger">취소</button>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+                                    </form>
+                                <%-- <form class="p-2" action="notice/write.admin" method="POST" name="noticeInsert">
+                                    <div class="form-group">
+                                        <label for="noticeTitle">제목</label>
+                                        <input type="text" class="form-control" id="noticeTitle" name="title" placeholder="제목"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="noticeContent">내용</label>
+                                        <textarea class="form-control" id="noticeContent" rows="15" name="content"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success my-2">등록</button>
+                                        <button type="reset" class="btn btn-danger my-2" data-dismiss="modal" aria-label="Close"> 취소</button>
+                                    </div>
+                                </form> --%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Modal: 공지사항 입력 폼 -->
+
                 <!-- 공지사항 관리보드 -->
                 <div class="row wow fadeIn">
-                    <!--Grid column-->
                     <div class="col-md-12 mb-4">
                         <div class="card">
                             <div class="card-header text-center">
@@ -223,20 +385,6 @@
                                     </tr>
                                 <% } %>
                                 </tbody>
-                                <%-- <tfoot>
-                                    <tr>
-                                    <th>Position
-                                    </th>
-                                    <th>Office
-                                    </th>
-                                    <th>Age
-                                    </th>
-                                    <th>Start date
-                                    </th>
-                                    <th>Salary
-                                    </th>
-                                    </tr>
-                                </tfoot> --%>
                                 </table>
                             </div>
                             <div class="card-footer text-center">
@@ -244,7 +392,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--Grid column-->
                 </div>
 
                 <!-- Modal: 공지사항 입력 폼 -->
@@ -1350,6 +1497,66 @@
         <script type="text/javascript">
             // Animations initialization
             new WOW().init();
+        </script>
+
+        <!-- kakao 우편번호 서비스 http://postcode.map.daum.net/guide -->
+        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script>
+            //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+            function sample4_execDaumPostcode() {
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                        // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                        var roadAddr = data.roadAddress; // 도로명 주소 변수
+                        var extraRoadAddr = ''; // 참고 항목 변수
+
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                            extraRoadAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if(data.buildingName !== '' && data.apartment === 'Y'){
+                            extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if(extraRoadAddr !== ''){
+                            extraRoadAddr = ' (' + extraRoadAddr + ')';
+                        }
+
+                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                        document.getElementById('sample4_postcode').value = data.zonecode;
+                        document.getElementById("sample4_roadAddress").value = roadAddr;
+                        document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+
+                        // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                        if(roadAddr !== ''){
+                            document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                        } else {
+                            document.getElementById("sample4_extraAddress").value = '';
+                        }
+
+                        var guideTextBox = document.getElementById("guide");
+                        // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                        if(data.autoRoadAddress) {
+                            var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                            guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                            guideTextBox.style.display = 'block';
+
+                        } else if(data.autoJibunAddress) {
+                            var expJibunAddr = data.autoJibunAddress;
+                            guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                            guideTextBox.style.display = 'block';
+                        } else {
+                            guideTextBox.innerHTML = '';
+                            guideTextBox.style.display = 'none';
+                        }
+                    }
+                }).open();
+            }
         </script>
 
         <!-- Datatable -->

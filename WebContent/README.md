@@ -154,8 +154,8 @@ CREATE TABLE `hotplace` (
   `address` varchar(50) NOT NULL,
   `address_detail` varchar(50) NOT NULL,
   `region` varchar(10) NOT NULL,
-  `description` text NOT NULL,
-  `tags` varchar(100) NOT NULL,
+  `description` text,
+  `tags` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `hotplace_email_idx` (`email`),
   CONSTRAINT `hotplace_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -195,7 +195,7 @@ CREATE TABLE `helper_sell` (
   `join_postid` int(11) NOT NULL,
   KEY `join_email_sell_idx` (`join_email`),
   KEY `join_postid_sell_idx` (`join_postid`),
-  CONSTRAINT `helper_sell_email` FOREIGN KEY (`join_email`) REFERENCES `users` (`email`) ON DELETE NO ACTION ON UPDATE NO CASCADE,
+  CONSTRAINT `helper_sell_email` FOREIGN KEY (`join_email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `helper_sell_postid` FOREIGN KEY (`join_postid`) REFERENCES `sell` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ~~~
