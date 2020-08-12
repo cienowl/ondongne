@@ -110,8 +110,18 @@ public class DataAccessCircle {
 		List<DataTransferCircle> postCircleList = sqlsession.selectList("getPostCircle",loginEmail);
 		
 		return postCircleList;
-				
 		
+	}
+	
+	// 검색 버튼을 눌렀을 때
+	public List<DataTransferCircle> searchCircle(String keyword){
+		
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		List<DataTransferCircle> searchCircleList = sqlsession.selectList("getSearchCircle", keyword);
+		
+		return searchCircleList;
 	}
 
 }

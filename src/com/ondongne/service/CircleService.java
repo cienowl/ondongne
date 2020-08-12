@@ -80,4 +80,13 @@ public class CircleService {
 		return postCircleList;
 	}
 	
+	// 검색 버튼을 눌렀을 때
+	public List<DataTransferCircle> searchCircle(String keyword){
+		
+		DataAccessCircle daoCircle = DataAccessCircle.getinstance();
+		List<DataTransferCircle> searchCircleList = daoCircle.searchCircle(keyword);
+		
+		return searchCircleList;
+	}
+	
 }

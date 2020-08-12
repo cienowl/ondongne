@@ -294,7 +294,7 @@
                                                                 <td class="text-center"><%=joinCircleList.get(i).getEmail() %></td>
                                                                 <td class="text-center"><%=joinCircleList.get(i).getEvent_date() %></td>
                                                                 <td class="text-center">
-                                                                    <button type="button" class="btn btn-info" onclick="joinCancel(this.form)"><i class="fas fa-times"></i></button>
+                                                                    <button type="button" class="btn btn-info btn-sm" onclick="joinCancel(this.form)"><i class="fas fa-times"></i></button>
                                                                 </td>
                                                             </tr>
                                                         </form>

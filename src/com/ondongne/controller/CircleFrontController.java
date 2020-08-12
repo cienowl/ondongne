@@ -15,6 +15,7 @@ import com.ondongne.action.JoinCircleAction;
 import com.ondongne.action.DeleteCircleAction;
 import com.ondongne.action.GetCircleAction;
 import com.ondongne.action.PostCircleAction;
+import com.ondongne.action.SearchCircleAction;
 import com.ondongne.action.UpdateCircleAction;
 import com.ondongne.dto.ActionForward;
 
@@ -78,7 +79,6 @@ public class CircleFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-			
 		
 		// 작성자가 소모임 게시글 수정버튼을 눌렀을 때
 		else if(command.equals("/postupdateform.circle")) {
@@ -109,6 +109,16 @@ public class CircleFrontController extends HttpServlet {
 		// 참여자가 소모임 참여 취소버튼을 눌렀을 때
 		else if(command.equals("/joincancel.circle")) {
 			action = new CancelJoinCircleAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 검색 버튼을 눌렀을 때
+		else if(command.equals("/searchcircle.circle")) {
+			action = new SearchCircleAction();
 			try {
 				forward = action.execute(request, response);
 			}catch(Exception e) {

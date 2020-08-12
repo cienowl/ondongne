@@ -14,6 +14,7 @@
 	String sessionEmail = (String) session.getAttribute("email");
 %>
 
+
 <!DOCTYPE html>
 <html>
 
@@ -170,7 +171,7 @@
 											Bootstrap 4. Loved by over 500 000 users. Video and written
 											versions available. Create your own, stunning website.</strong>
 									</p>
-									<form class="input-grey mb-5" action="" method="post">
+									<form class="input-grey mb-5" action="searchcircle.circle" method="post">
 										<div class="form-row">
 											<div class="col-md-4 ml-auto">
 												<div class="input-group input-group-lg z-depth-1">
@@ -184,7 +185,7 @@
 												</div>
 											</div>
 											<div class="col-md-2 mr-auto">
-												<button class="btn btn-block btn-lg btn-outline-white">검색</button>
+												<button type="submit" class="btn btn-block btn-lg btn-outline-white">검색</button>
 											</div>
 										</div>
 									</form>

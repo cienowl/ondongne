@@ -27,4 +27,8 @@
 		select * from circle where email=#{loginEmail};
 	</select>
 	
+	<select id="getSearchCircle" parameterType="String" resultType="com.ondongne.dto.DataTransferCircle">
+		select * from circle WHERE title LIKE CONCAT('%',#{value},'%') OR description LIKE CONCAT('%',#{value},'%') OR region LIKE CONCAT('%',#{value},'%') OR email LIKE CONCAT('%',#{value},'%') OR address LIKE CONCAT('%',#{value},'%');
+	</select>
+	
 </mapper>
