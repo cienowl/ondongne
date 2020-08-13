@@ -12,6 +12,8 @@ public class HotplaceBean {
 	private String region;
 	private String description;
 	private String tags;
+	private String postdate;
+	private String lastupdate;
 
 	public String getAdmin_id() {
 		return admin_id;
@@ -72,6 +74,18 @@ public class HotplaceBean {
 	}
 	public void setTags(String tags) {
 		this.tags = tags;
+	}
+	public String getPostdate() {
+		return postdate;
+	}
+	public void setPostdate(String postdate) {
+		this.postdate = postdate;
+	}
+	public String getLastupdate() {
+		return lastupdate;
+	}
+	public void setLastupdate(String lastupdate) {
+		this.lastupdate = lastupdate;
 	}
 
 }

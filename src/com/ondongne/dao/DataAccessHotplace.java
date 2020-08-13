@@ -41,21 +41,53 @@ public class DataAccessHotplace {
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 		
-		int insertCount = sqlSession.insert("insertPlace", dtoHotplaceBean);
+		int insertCount = sqlSession.insert("insertHotplace", dtoHotplaceBean);
 		sqlSession.commit();
 		sqlSession.close();
 		
 		return insertCount;
 	}
 	
-	public List<HotplaceBean> selectPlaceListAll() {
+	public List<HotplaceBean> listCardHotplace() {
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 		
-		List<HotplaceBean> hotplaceList = sqlSession.selectList("selectList");
+		List<HotplaceBean> hotplaceList = sqlSession.selectList("listCard");
 		sqlSession.close();
 		
 		return hotplaceList;
+	}
+	
+	public List<HotplaceBean> selectHotplaceListAllDesc() {
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		
+		List<HotplaceBean> hotplaceList = sqlSession.selectList("selectHotplaceListDesc");
+		sqlSession.close();
+		
+		return hotplaceList;
+	}
+
+	public int updateHotplace(HotplaceBean hotplaceBean) {
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		
+		int updateCount = sqlSession.update("updateHotplace", hotplaceBean);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return updateCount;
+	}
+
+	public int deleteHotplaceOne(String id) {		
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		
+		int deleteCount = sqlSession.delete("deleteHotplace", id);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return deleteCount;
 	}
 	
 }

@@ -154,10 +154,12 @@ CREATE TABLE `hotplace` (
   `address` varchar(50) NOT NULL,
   `address_detail` varchar(50) NOT NULL,
   `region` varchar(10) NOT NULL,
+  `postdate` datetime NOT NULL,
+  `lastupdate` datetime DEFAULT NULL,
   `description` text,
   `tags` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 ~~~
 
 notice: 공지사항 테이블

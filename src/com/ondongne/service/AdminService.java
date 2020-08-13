@@ -97,19 +97,38 @@ public class AdminService {
 	public List<HotplaceBean> selectHotplaceAll() {
 		
 		DataAccessHotplace daoHotplace = DataAccessHotplace.getInstance();
-		List<HotplaceBean> hotplaceList = daoHotplace.selectPlaceListAll();
+		List<HotplaceBean> hotplaceList = daoHotplace.selectHotplaceListAllDesc();
 		
 		return hotplaceList;
 		
 	}
 
-	public boolean updatePlace(HotplaceBean hotplaceBean, String adminId, String adminPw) {
-		// TODO 업데이트 만들기: admin 서비스로 이동
-		
+	public boolean updateHotplace(HotplaceBean hotplaceBean, String adminId, String adminPw) {
+				
 		boolean updateSuccess = false;
 		
+		if (adminId.equals(ADMIN_ID) && adminPw.equals(ADMIN_PASSWORD)) {
+			DataAccessHotplace daoHotplace = DataAccessHotplace.getInstance();
+			int updateCount = daoHotplace.updateHotplace(hotplaceBean);
+
+			if (updateCount > 0) updateSuccess = true;
+	    }		
 		
-		return false;
+		return updateSuccess;
+	}
+
+	public boolean deleteHotplaceOne(String hotplaceId, String adminId, String adminPw) {
+		
+		boolean deleteSuccess = false;
+
+		if (adminId.equals(ADMIN_ID) && adminPw.equals(ADMIN_PASSWORD)) {
+			DataAccessHotplace daoHotpalce = DataAccessHotplace.getInstance();
+			int deleteCount = daoHotpalce.deleteHotplaceOne(hotplaceId);
+
+			if (deleteCount > 0) deleteSuccess = true;
+	    }		
+
+		return deleteSuccess;
 	}
 
 }

@@ -44,8 +44,8 @@ public class AdminNoticeUpdateAction implements Action {
 				out.println("history.back();");
 				out.println("</script>");
 				
-				forward.setRedirect(true);
-				forward.setPath("../dashboard.admin");
+//				forward.setRedirect(true);
+//				forward.setPath("../dashboard.admin");
 			}
 		} else {
 			forward.setRedirect(true);

@@ -10,19 +10,16 @@ import javax.servlet.http.HttpSession;
 import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.HotplaceBean;
 import com.ondongne.service.AdminService;
-import com.ondongne.service.HotplaceService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class UpdateHotplaceAction implements Action {
+public class AdminHotplaceUpdateAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 //		HttpSession session = request.getSession();
 		
-		String adminId = request.getParameter("adminId");
-		String adminPw = request.getParameter("adminPw");
 		String realFolder = "";
 		String saveFolder = "/img/hotplace/storepics";
 		int fileSize = 5 * 1024 * 1024;
@@ -31,8 +28,11 @@ public class UpdateHotplaceAction implements Action {
 		realFolder = context.getRealPath(saveFolder);
 		
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		String adminId = multi.getParameter("adminId");
+		String adminPw = multi.getParameter("adminPw");
+		
 		HotplaceBean hotplaceBean = new HotplaceBean();
-		hotplaceBean.setId(Integer.parseInt(multi.getParameter("id")));
+		hotplaceBean.setId(Integer.parseInt(multi.getParameter("postid")));
 		hotplaceBean.setAdmin_id("admin");
 		hotplaceBean.setTitle(multi.getParameter("title"));
 //		placeBean.setPicture(multi.getOriginalFileName((String)multi.getFileNames().nextElement()));
@@ -46,7 +46,7 @@ public class UpdateHotplaceAction implements Action {
 		hotplaceBean.setTags("tags");
 		
 		AdminService adminService = new AdminService();
-		boolean isUpdateSuccess = adminService.updatePlace(hotplaceBean, adminId, adminPw);
+		boolean isUpdateSuccess = adminService.updateHotplace(hotplaceBean, adminId, adminPw);
 		
 		ActionForward forward = null;
 		

@@ -37,16 +37,27 @@ public class HotplaceFrontController extends javax.servlet.http.HttpServlet {
 		}
 		
 
-//		else if (command.equals("/hotplaceListForm.hotplace")) {
-//			//System.out.println("success");
-//			action = new ContentListAction();
+//		else if (command.equals("scrap.hotplace")) {
+////			TODO 핫플레이스 스크랩
+//			action = new 
 //			try {
 //				forward = action.execute(request, response);
-//
 //			} catch (Exception e) {
 //				e.printStackTrace();
 //			}
 //		}
+		
+//		else if (command.equals("unscrap.hotplace")) {
+////			TODO 핫플레이스 스크랩 취소
+//			action = new 
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+		
+		
 //	
 //		else if (command.equals("/hotplaceDetailForm.hotplace")) {
 //			//System.out.println("get");

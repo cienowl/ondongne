@@ -9,6 +9,7 @@
 	List<NoticeBean> noticeList = (List<NoticeBean>) request.getAttribute("noticeList");
 	List<HotplaceBean> hotplaceList = (List<HotplaceBean>) request.getAttribute("hotplaceList");
     String dataTarget = null;
+    String region = null;
 %>
 
 <!DOCTYPE html>
@@ -345,8 +346,10 @@
                 <!-- /Modal: Hotplace 입력 폼 -->
 
                 <!-- Modal: Hotplace 출력 폼 -->
-                <% for (int i = 0; i < hotplaceList.size(); i++) { %>
-                <% dataTarget = "hotplaceList" + Integer.toString(i); %>
+                <%
+                for (int i = 0; i < hotplaceList.size(); i++) {
+                    dataTarget = "hotplaceList" + Integer.toString(i);
+                %>
                 <div class="modal fade" id="<%= dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
@@ -359,8 +362,8 @@
                             </div>
 
                             <div class="modal-body">
-                                <form class="" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" class="form-control" id="noticeId" name="id" value="<%= hotplaceList.get(i).getId() %>"/>
+                                <form class="" method="POST" enctype="multipart/form-data" name="hotplaceUpdateForm<%=i%>">
+                                    <input type="hidden" class="form-control" id="hotplacePostId" name="postid" value="<%= hotplaceList.get(i).getId() %>"/>
                                     <div class="form-row">
                                         <div class="form-group col-md-8">
                                             <label for="placeName">장소 이름</label>
@@ -447,11 +450,11 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="adminId">관리자 계정</label>
-                                                <input type="text" class="form-control" id="adminIdHotplace" name="adminId" value="" placeholder="수정/삭제시 입력" required/>
+                                                <input type="text" class="form-control" id="inputAdminIdHotplace" name="adminId" placeholder="수정/삭제시 입력" required/>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="adminPw">관리자 비밀번호</label>
-                                                <input type="password" class="form-control" id="adminPwHotplace" name="adminPw" value="" placeholder="수정/삭제시 입력" required/>
+                                                <input type="password" class="form-control" id="inputAdminPwHotplace" name="adminPw" placeholder="수정/삭제시 입력" required/>
                                             </div>
                                         </div>
                                     </div>
@@ -554,7 +557,7 @@
                             </div>
 
                             <div class="modal-body">
-                                <form class="" method="POST">
+                                <form class="" method="POST" name="noticeUpdateForm<%=i%>">
                                     <input type="hidden" class="form-control" id="noticeId" name="id" value="<%= noticeList.get(i).getId() %>"/>
                                     <div class="form-group">
                                         <label for="noticeTitle">제목</label>
@@ -577,8 +580,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success" id="noticeUpdate" value="update" onclick="javascript:form.action='notice/update.admin';">수정</button>
-                                        <button type="submit" class="btn btn-danger" id="noticeDelete" value="delete" onclick="javascript:form.action='notice/delete.admin';">삭제</button>
+                                        <button type="submit" class="btn btn-success" id="noticeUpdate" value="update" onclick="javascript:document.form.action='notice/update.admin';">수정</button>
+                                        <button type="submit" class="btn btn-danger" id="noticeDelete" value="delete" onclick="javascript:document.form.action='notice/delete.admin';">삭제</button>
                                         <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">닫기</button>
                                     </div>
                                 </form>

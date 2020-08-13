@@ -10,14 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.AdminHotplaceDeleteAction;
 import com.ondongne.action.AdminNoticeDeleteAction;
 import com.ondongne.action.AdminNoticeUpdateAction;
 import com.ondongne.action.AdminNoticeWriteAction;
 import com.ondongne.action.AdminSigninAction;
 import com.ondongne.action.AdminSignoutAction;
 import com.ondongne.action.GetDashboardInfoAction;
-import com.ondongne.action.InsertHotplaceAction;
-import com.ondongne.action.UpdateHotplaceAction;
+import com.ondongne.action.AdminHotplaceInsertAction;
+import com.ondongne.action.AdminHotplaceUpdateAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.admin")
@@ -101,9 +102,9 @@ public class AdminFrontController extends HttpServlet {
 			}
 		}
 
-		if (command.equals("/hotplace/write.admin")) {
+		else if (command.equals("/hotplace/write.admin")) {
 //			Hotplace 장소 등록
-			action = new InsertHotplaceAction();
+			action = new AdminHotplaceInsertAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -112,12 +113,18 @@ public class AdminFrontController extends HttpServlet {
 		}
 		
 		else if (command.equals("/hotplace/delete.admin")) {
-			
+//			hotplace 장소 삭제
+			action = new AdminHotplaceDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 		}
 		
 		else if (command.equals("/hotplace/update.admin")) {
 //			hotplace 장소 수정
-			action = new UpdateHotplaceAction();
+			action = new AdminHotplaceUpdateAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

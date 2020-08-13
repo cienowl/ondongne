@@ -14,7 +14,7 @@ import com.ondongne.service.HotplaceService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class InsertHotplaceAction implements Action {
+public class AdminHotplaceInsertAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
