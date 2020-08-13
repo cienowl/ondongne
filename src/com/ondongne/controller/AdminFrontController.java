@@ -17,6 +17,7 @@ import com.ondongne.action.AdminNoticeWriteAction;
 import com.ondongne.action.AdminSigninAction;
 import com.ondongne.action.AdminSignoutAction;
 import com.ondongne.action.GetDashboardInfoAction;
+import com.ondongne.action.GetDongneInfoAction;
 import com.ondongne.action.AdminHotplaceInsertAction;
 import com.ondongne.action.AdminHotplaceUpdateAction;
 import com.ondongne.dto.ActionForward;
@@ -70,6 +71,15 @@ public class AdminFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
+		}
+		
+		else if (command.equals("/dongneposts.admin")) {
+			action = new GetDongneInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
 		}
 		
 		else if (command.equals("/notice/write.admin")) {

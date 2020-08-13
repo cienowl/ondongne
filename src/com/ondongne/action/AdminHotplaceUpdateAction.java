@@ -60,7 +60,7 @@ public class AdminHotplaceUpdateAction implements Action {
 		} else {
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("../dashboard.admin");
+			forward.setPath("../dongneposts.admin");
 		}
 		
 		return forward;

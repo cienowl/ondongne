@@ -24,82 +24,10 @@
             .modal-open .navbar-expand-lg {
                 padding-right: 16px !important;
             }
-        </style>
-        <style>
             .navbar {
                 background: #880e4f !important;
             }
         </style>
-
-        <!-- tags css -->
-        <style>
-            /* More info: https://github.com/sniperwolf/taggingJS */
-
-            /* Example CSS */
-            /*body{font-family: 'PT Sans', "helvetica neue", sans-serif}*/
-            .glyphicon-lg{font-size:3em}
-            .blockquote-box{border-right:5px solid #E6E6E6;margin-bottom:25px}
-            .blockquote-box .square{width:100px;min-height:50px;margin-right:22px;text-align:center!important;background-color:#E6E6E6;padding:20px 0}
-            .blockquote-box.blockquote-success{border-color:#4CAE4C}
-            .blockquote-box.blockquote-success .square{background-color:#5CB85C;color:#FFF}
-            .blockquote-box.blockquote-info{border-color:#46B8DA}
-            .blockquote-box.blockquote-info .square{background-color:#5BC0DE;color:#FFF}
-            .blockquote-box.blockquote-warning{border-color:#EEA236}
-            .blockquote-box.blockquote-warning .square{background-color:#F0AD4E;color:#FFF}
-
-            /* Tagging Basic Style */
-            .tagging {
-                border: 1px solid #CCCCCC;
-                cursor: text;
-                font-size: 1em;
-                height: auto;
-                padding: 10px 10px 15px;
-            }
-            .tag {
-                background: none repeat scroll 0 0 #EE7407;
-                border-radius: 2px;
-                color: white;
-                cursor: default;
-                display: inline-block;
-                position: relative;
-                white-space: nowrap;
-                padding: 4px 20px 4px 0;
-                margin: 5px 10px 0 0;
-            }
-            .tag span {
-                background: none repeat scroll 0 0 #D66806;
-                border-radius: 2px 0 0 2px;
-                margin-right: 5px;
-                padding: 5px 10px 5px;
-            }
-            .tag .tag-i {
-                color: white;
-                cursor: pointer;
-                font-size: 1.3em;
-                height: 0;
-                line-height: 0.1em;
-                position: absolute;
-                right: 5px;
-                top: 0.7em;
-                text-align: center;
-                width: 10px;
-            }
-            .tag .tag-i:hover {
-                color: black;
-                text-decoration: underline;
-            }
-            .type-zone {
-                border: 0 none;
-                height: auto;
-                width: auto;
-                min-width: 20px;
-                display: inline-block;
-            }
-            .type-zone:focus {
-                outline: none;
-            }
-        </style>
-
     </head>
 
     <body>
@@ -193,16 +121,6 @@
                         <div class="form-group col-md-12">
                             <label for="pictures">사진</label>
                             <!-- <textarea class="form-control" id="description" rows="7" class="description" style="width: 100%;"></textarea> -->
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="example-wrapper form-group col-md-12">
-                            <div class="tags well">
-                                <label for="tag">태그<small>(최대5개)</small></label><br/>
-                                <div data-tags-input-name="taggone" id="tag" name="tags">preexisting-tag, another-tag</div>
-                                <!-- <p class="help-block">Press Enter, Comma or Spacebar to create a new tag, Backspace or Delete to remove the last one.</p> -->
-                            </div>
                         </div>
                     </div>
 

@@ -4,12 +4,12 @@
 
 <mapper namespace="hotplace">
 
-	<insert id="insertHotplace" parameterType="com.ondongne.dto.HotplaceBean">
+	<insert id="insertHotplace" parameterType="com.ondongne.dto.HotplaceBean" timeout="5">
 		insert into hotplace(admin_id, id, title, pictures, zipcode, address, address_detail, region, description, tags, postdate)
 		values(#{admin_id}, default, #{title},	#{pictures}, #{zipcode}, #{address}, #{address_detail},	#{region}, #{description}, #{tags}, now())
 	</insert>
 
-	<update id="updateHotplace" parameterType="com.ondongne.dto.HotplaceBean">
+	<update id="updateHotplace" parameterType="com.ondongne.dto.HotplaceBean" timeout="5">
 		update hotplace set
 			admin_id=#{admin_id},
 			title=#{title},
