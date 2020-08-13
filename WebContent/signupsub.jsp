@@ -6,6 +6,11 @@
 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.ondongne.dao.DataAccessUsers"%>
+<%@page import="com.ondongne.dto.DataTransferUsers" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -37,69 +42,71 @@
             <jsp:include page="navbar_signon.jsp"/>
         </header>
 
+		<%
+			String email = (String)session.getAttribute("email");
+			SqlSessionFactory factory = DataAccessUsers.getConnection();
+			SqlSession sqlSession = factory.openSession();
+			
+			DataTransferUsers userBean = sqlSession.selectOne("userInfo",email);
+			sqlSession.close();
+		%>
+		<%
+			String phone = userBean.getPhone();
+			String birthday = userBean.getBirthday();
+			String gender = userBean.getGender();
+			String name = userBean.getName();
+			String zipcode = userBean.getZipcode();
+			String address = userBean.getAddress();
+			String address_detail = userBean.getAddress_detail();
+			String region1 = userBean.getRegion1();
+			String region2 = userBean.getRegion2();
+			String region3 = userBean.getRegion3();
+		%>
+		
 
         <main>
             <div class="container my-5 pt-5">
 
                 <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">추가정보 입력</h2>
-
+		<% if(birthday==null||gender==null||zipcode==null||address==null||address_detail==null||region1==null||region2==null||region3==null){ %>
+				<!-- null 있을 때 form (처음 수정하는 경우) -->
                 <form action="updatesub.users" method="POST">
 
-                    <!-- <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputName">이름</label>
-                            <input type="text" class="form-control" id="inputName" name="inputName">
-                        </div>
-                    </div> -->
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail">이메일</label>
-                            <input type="text" class="form-control" id="inputEmail" placeholder="" name="inputEmail"/>
-                            <small id="emailHelp" class="form-text text-danger">[주의] 이메일 변경시 로그인 이메일이 변경됩니다!</small>
+                            <input type="text" class="form-control" id="inputEmail" placeholder="" name="inputEmail" value="<%=email%>" readonly/>
+                            <!-- <small id="emailHelp" class="form-text text-danger">[주의] 이메일 변경시 로그인 이메일이 변경됩니다!</small> -->
                         </div>
                     </div>
-
+                    
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputPassword1">비밀번호</label>
-                            <input type="password" class="form-control" id="inputPassword1" placeholder="" name="inputPassword1"/>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword2">비밀번호확인</label>
-                            <input type="password" class="form-control" id="inputPassword2" placeholder="" name="inputPassword2"/>
+                            <label for="inputName">이름</label>
+                            <input type="text" class="form-control" id="inputName" name="inputName" value="<%=name %>"/>
+                            <%-- <small id="nicknameHelp" class="form-text text-danger">닉네임 중복 확인</small> --%>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputPhone">전화번호</label>
-                            <input type="number" class="form-control" id="inputPhone" maxlength="11" oninput="numberMaxLength(this);" placeholder="- 없이 입력" name="inputPhone"/>
+                            <input type="number" class="form-control" id="inputPhone" maxlength="11" oninput="numberMaxLength(this);" name="inputPhone" value="<%=phone%>"/>
+                            
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputBirthday">생년월일</label>
-                            <input type="number" class="form-control" id="inputBirthday" placeholder="YYYYMMDD" name="inputBirthday" minlength="8" maxlength="8" numberonly="true" oninput="numberMaxLength(this);"  onchange="numberMinLength(this);"/>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputGender">성별</label>
-                            <select id="inputGender" class="form-control" name="inputGender">
-                                <option selected disabled value="">선택</option>
-                                <option value="male">남</option>
-                                <option value="female">여</option>
-                            </select>
+                            <input type="number" class="form-control" id="inputBirthday" name="inputBirthday" minlength="8" maxlength="8" placeholder="YYYYMMDD" numberonly="true" oninput="numberMaxLength(this);"  onchange="numberMinLength(this);" />
                         </div>
                     </div>
-
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputName">이름</label>
-                            <input type="text" class="form-control" id="inputName" name="inputName"/>
-                            <%-- <small id="nicknameHelp" class="form-text text-danger">닉네임 중복 확인</small> --%>
+                            <label for="inputGender">성별</label></br>
+                           	<input class="m-2" type="radio" name="inputGender" value="male" />남
+                           	<input class="m-2" type="radio" name="inputGender" value="female"/>여
                         </div>
                     </div>
 
@@ -122,7 +129,7 @@
                         <span id="guide" style="color:#999;display:none"></span>
                         <div class="form-group col-md-6">
                             <label for="sample4_detailAddress">상세주소</label>
-                            <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" name="detailAddress"/>
+                            <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" name="detailAddress" />
                         </div>
                         <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="display: none;"/>
                         <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="display: none;"/>
@@ -164,7 +171,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputRegion2">지역구2</label>
                             <select id="inputRegion2" class="form-control" name="inputRegion2">
-                                <option selected disabled value="">선택</option>
+                               	<option selected disabled value="">선택</option>
                                 <option>강남구</option>
                                 <option>강동구</option>
                                 <option>강북구</option>
@@ -225,11 +232,211 @@
                             </select>
                         </div>
                     </div>
+                    
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword1">비밀번호</label>
+                            <input type="password" class="form-control" id="inputPassword1" placeholder="" name="inputPassword1"/>
+                        </div>
+                        
+                         <div class="form-group col-md-6">
+                            <label for="inputPassword2">비밀번호확인</label>
+                            <input type="password" class="form-control" id="inputPassword2" placeholder="" name="inputPassword2"/>
+                        </div>
+                        
+                    </div>
 
                     <button type="submit" class="btn btn-primary" onclick="return validation();">저장</button>
                     <button type="reset" class="btn btn-secondary">취소</button>
                 </form>
+                <%} else{ %>
 
+				<!-- null 없을 때 form -->
+                <form action="updatesub.users" method="POST">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail">이메일</label>
+                            <input type="text" class="form-control" id="inputEmail" placeholder="" name="inputEmail" value="<%=email%>" readonly/>
+                            <!-- <small id="emailHelp" class="form-text text-danger">[주의] 이메일 변경시 로그인 이메일이 변경됩니다!</small> -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputName">이름</label>
+                            <input type="text" class="form-control" id="inputName" name="inputName" value="<%=name %>"/>
+                            <%-- <small id="nicknameHelp" class="form-text text-danger">닉네임 중복 확인</small> --%>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputPhone">전화번호</label>
+                            <input type="number" class="form-control" id="inputPhone" maxlength="11" oninput="numberMaxLength(this);" placeholder="- 없이 입력" name="inputPhone" value="<%=phone%>"/>
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputBirthday">생년월일</label>
+                            <input type="number" class="form-control" id="inputBirthday" name="inputBirthday" minlength="8" maxlength="8" numberonly="true" oninput="numberMaxLength(this);"  onchange="numberMinLength(this);" value="<%=birthday%>"/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputGender">성별</label></br>
+                            <% if(gender.equals("male")){ %>
+                            	<input class="m-2" type="radio" name="inputGender" value="male" checked/>남
+                            	<input class="m-2" type="radio" name="inputGender" value="female"/>여
+                            <%} else if(gender.equals("female")){ %>
+                           		<input class="m-2" type="radio" name="inputGender" value="male" />남
+                            	<input class="m-2" type="radio" name="inputGender" value="female" checked/>여
+                            	<%} %>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="sample4_postcode">우편번호</label>
+                            <input type="text" class="form-control" id="sample4_postcode" placeholder="우편번호" name="zipcode" value="<%=zipcode %>" readonly/>
+                        </div>
+                        <div class="form-group col-md-6" style="padding-top: 32px">
+                            <label for="findAddress"></label>
+                            <input type="button" class="btn btn-primary" id="findAddress" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"/>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="sample4_roadAddress">도로명주소</label>
+                            <input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" name="roadAddress" value="<%=address%>" readonly/>
+                        </div>
+                        <span id="guide" style="color:#999;display:none"></span>
+                        <div class="form-group col-md-6">
+                            <label for="sample4_detailAddress">상세주소</label>
+                            <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" name="detailAddress" value="<%=address_detail%>"/>
+                        </div>
+                        <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="display: none;"/>
+                        <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="display: none;"/>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputRegion1">지역구1</label>
+                            <select id="inputRegion1" class="form-control" name="inputRegion1">
+                                <option selected value="<%=region1%>"><%=region1%></option>
+                                <option>강남구</option>
+                                <option>강동구</option>
+                                <option>강북구</option>
+                                <option>강서구</option>
+                                <option>관악구</option>
+                                <option>광진구</option>
+                                <option>구로구</option>
+                                <option>금천구</option>
+                                <option>노원구</option>
+                                <option>도봉구</option>
+                                <option>동대문구</option>
+                                <option>동작구</option>
+                                <option>마포구</option>
+                                <option>서대문구</option>
+                                <option>서초구</option>
+                                <option>성동구</option>
+                                <option>성북구</option>
+                                <option>송파구</option>
+                                <option>양천구</option>
+                                <option>영등포구</option>
+                                <option>용산구</option>
+                                <option>은평구</option>
+                                <option>종로구</option>
+                                <option>중구</option>
+                                <option>중랑구</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="inputRegion2">지역구2</label>
+                            <select id="inputRegion2" class="form-control" name="inputRegion2">
+                                <option selected value="<%=region2%>"><%=region2%></option>
+                                <option>강남구</option>
+                                <option>강동구</option>
+                                <option>강북구</option>
+                                <option>강서구</option>
+                                <option>관악구</option>
+                                <option>광진구</option>
+                                <option>구로구</option>
+                                <option>금천구</option>
+                                <option>노원구</option>
+                                <option>도봉구</option>
+                                <option>동대문구</option>
+                                <option>동작구</option>
+                                <option>마포구</option>
+                                <option>서대문구</option>
+                                <option>서초구</option>
+                                <option>성동구</option>
+                                <option>성북구</option>
+                                <option>송파구</option>
+                                <option>양천구</option>
+                                <option>영등포구</option>
+                                <option>용산구</option>
+                                <option>은평구</option>
+                                <option>종로구</option>
+                                <option>중구</option>
+                                <option>중랑구</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="inputRegion3">지역구3</label>
+                            <select id="inputRegion3" class="form-control" name="inputRegion3">
+                                <option selected value="<%=region3%>"><%=region3%></option>
+                                <option>강남구</option>
+                                <option>강동구</option>
+                                <option>강북구</option>
+                                <option>강서구</option>
+                                <option>관악구</option>
+                                <option>광진구</option>
+                                <option>구로구</option>
+                                <option>금천구</option>
+                                <option>노원구</option>
+                                <option>도봉구</option>
+                                <option>동대문구</option>
+                                <option>동작구</option>
+                                <option>마포구</option>
+                                <option>서대문구</option>
+                                <option>서초구</option>
+                                <option>성동구</option>
+                                <option>성북구</option>
+                                <option>송파구</option>
+                                <option>양천구</option>
+                                <option>영등포구</option>
+                                <option>용산구</option>
+                                <option>은평구</option>
+                                <option>종로구</option>
+                                <option>중구</option>
+                                <option>중랑구</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword1">비밀번호</label>
+                            <input type="password" class="form-control" id="inputPassword1" placeholder="" name="inputPassword1"/>
+                        </div>
+                        
+                         <div class="form-group col-md-6">
+                            <label for="inputPassword2">비밀번호확인</label>
+                            <input type="password" class="form-control" id="inputPassword2" placeholder="" name="inputPassword2"/>
+                        </div>
+                        
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" onclick="return validation();">저장</button>
+                    <button type="reset" class="btn btn-secondary">취소</button>
+                </form>
+                <%} %>
             </div>
         </main>
 

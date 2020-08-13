@@ -33,4 +33,8 @@
 		select email from users WHERE name=#{name} AND phone=#{phone};
 	</select>
 	
+	<select id="userInfo" resultType="com.ondongne.dto.DataTransferUsers" parameterType="String">
+		select * from users WHERE email=#{email};
+	</select>
+
 </mapper>
