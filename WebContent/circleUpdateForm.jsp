@@ -448,7 +448,7 @@
                         </div>
                         <div class="form-group col-md-6" style="padding-top: 32px">
                             <label for="findAddress"></label>
-                            <input type="button" class="btn btn-primary" id="findAddress" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"/>
+                            <input type="button" class="btn btn-primary mt-0" id="findAddress" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"/>
                         </div>
                     </div>
 
@@ -466,72 +466,9 @@
                         <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="display: none;"/>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="age">연령대</label><br/>
-
-                            <!--TODO : 연령대 MultiRange https://codepen.io/team/wearelighthouse/pen/Rzywmg-->
-                            <div class="col-md-12 c-filter">
-
-                                <div class="row c-filter__input col-md-12">
-                                    <div class="c-filter__slider-values col-md-2">
-                                        <div class="c-labelled-input mt-4">
-                                            <label for="input-min" class="c-labelled-input__label">From:</label>
-                                            <input type="text" id="input-min" class="c-labelled-input__input" onChange="inputChange(this)"/>
-                                            <span>대</span>
-                                        </div>
-                                    </div>
-                                    <div class="c-multi-slider col-md-6" data-multi-range>
-                                        <input type="range" id="range-min" min="10" max="90" step="10" value="0"
-                                                class="c-multi-slider__range c-multi-slider__range--background"
-                                                onInput="sliderInput(this)"
-                                                onChange="sliderChange(this)"/>
-                                        <output for="range-min">10</output>
-                                        <input type="range" id="range-max" min="10" max="90" step="10" value="90"
-                                                class="c-multi-slider__range"
-                                                onInput="sliderInput(this)"
-                                                onChange="sliderChange(this)"/>
-                                        <output for="range-max">90</output>
-                                    </div>
-                                    <div class="c-filter__slider-values col-md-2">
-                                        <div class="c-labelled-input mt-4">
-                                            <label for="input-max" class="c-labelled-input__label">To:</label>
-                                            <input type="text" id="input-max" class="c-labelled-input__input" onChange="inputChange(this)"/>
-                                            <span>대</span>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="row c-filter__actions">
-                                    <button type="button" class="c-button c-button--text" onclick="resetSliders(0, 90)">
-                                        Clear value
-                                    </button>
-                                    <button type="button" class="c-button c-button--block">
-                                        Apply value
-                                    </button>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <label for="exampleFormControlTextarea3">소모임 관련 설명</label>
                         <textarea class="form-control" id="exampleFormControlTextarea3" rows="7" name="description"><%=description%></textarea>
-                    </div>
-
-                    <div class="form-row">
-                        <!-- <div class="form-group col-md-8"> -->
-                        <!-- The example Code -->
-                        <div class="example-wrapper form-group col-md-12">
-                            <div class="tags well">
-                                <label for="tagg">태그<small>(최대5개)</small></label><br/>
-                                <div data-tags-input-name="taggone" id="tag">preexisting-tag, another-tag</div>
-                                <!-- <p class="help-block">Press Enter, Comma or Spacebar to create a new tag, Backspace or Delete to remove the last one.</p> -->
-                            </div>
-                        </div>
                     </div>
 
                     <div class="form-row float-right">
