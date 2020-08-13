@@ -159,7 +159,7 @@
 								<!-- Content -->
 								<div class="text-center white-text mx-5 wow fadeIn">
 									<h1 class="mb-4">
-										<strong>우리동네 소모임과 동호회</strong>
+										<strong>우리동네 소모임</strong>
 									</h1>
 
 									<p>

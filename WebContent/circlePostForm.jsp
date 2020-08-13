@@ -64,7 +64,7 @@
                         <div class="form-group col-md-6">
                             <label for="memnumber">인원수<small>(최대15명)</small></label>
                             <select id="memnumber" class="form-control" name="mem_number">
-                                <option value="none" selected disabled>선택</option>
+                                <option value="" selected disabled>선택</option>
                                 <option value="15">15명</option>
                                 <option value="14">14명</option>
                                 <option value="13">13명</option>
@@ -128,10 +128,12 @@
                         <div class="form-group col-md-6">
                             <label for="circle_date">모집날짜</label>
                             <input type="date" class="form-control" name="event_date" id="event_date"/>
+                            <small id="eventdateHelp" class="form-text text-danger"></small>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="circle_deadline">모집마감일</label>
                             <input type="date" class="form-control" name="end_date" id="end_date"/>
+                            <small id="enddateHelp" class="form-text text-danger"></small>
                         </div>
                     </div>
 
@@ -166,8 +168,7 @@
                     </div>
                     
                     <div class="form-row float-right">
-                        <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
-                        <button type="submit" class="btn btn-lg btn-primary">등록</button>
+                        <button type="submit" class="btn btn-lg btn-primary" onclick="return validation();">등록</button>
                         <button type="button" class="btn btn-lg btn-danger" href="view.circle">취소</button>
                     </div>
 
@@ -259,119 +260,7 @@
                 }).open();
             }
         </script>
-
-        <!-- multi-range slider js -->
-        <script>
-            var multiRange = document.querySelector('[data-multi-range]'),
-            rangeMin = multiRange.querySelector('input:nth-of-type(1)'),
-            rangeMax = multiRange.querySelector('input:nth-of-type(2)'),
-            inputMin = document.getElementById('input-min'),
-            inputMax = document.getElementById('input-max'),
-            max = rangeMin.max,
-            min = rangeMin.min,
-            diff = max - min;
-
-            rangeMin.nextElementSibling.style.setProperty('--width', window.getComputedStyle(rangeMin).width);
-            rangeMax.nextElementSibling.style.setProperty('--width', window.getComputedStyle(rangeMax).width);
-
-            function toSpacedInt(value) {
-                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-            }
-
-            function sliderChange(range) {
-                inputMin.value = toSpacedInt(rangeMin.value);
-                inputMax.value = toSpacedInt(rangeMax.value);
-            }
-
-            function sliderInput(range) {
-                var ranngeMinValuePc = (100 / diff) * (rangeMin.value - min), // To %
-                ranngeMaxValuePc = (100 / diff) * (rangeMax.value - min),
-                gradient = `linear-gradient(
-                    to right,
-                    var(--range-bg-color) ${ranngeMinValuePc}%,
-                    var(--range-fg-color) ${ranngeMinValuePc}% ${ranngeMaxValuePc}%,
-                    var(--range-bg-color) ${ranngeMaxValuePc}%
-                )`;
-
-                rangeMin.style.setProperty('--range-track-gradient', gradient);
-                rangeMax.style.setProperty('--range-track-gradient', gradient);
-                rangeMin.nextElementSibling.style.setProperty('--pc', ranngeMinValuePc / 100);
-                rangeMax.nextElementSibling.style.setProperty('--pc', ranngeMaxValuePc / 100);
-                rangeMin.nextElementSibling.value = toSpacedInt(rangeMin.value);
-                rangeMax.nextElementSibling.value = toSpacedInt(rangeMax.value);
-
-                if (range === rangeMin) {
-                    if (parseInt(rangeMin.value) > parseInt(rangeMax.value)) {
-                        rangeMax.value = range.value;
-                    }
-                }
-
-                if (range === rangeMax) {
-                    if (parseInt(rangeMax.value) < parseInt(rangeMin.value)) {
-                        rangeMin.value = range.value;
-                    }
-                }
-            }
-
-            function inputChange(input) {
-            if (input === inputMin) {
-                rangeMin.value = parseInt(inputMin.value.replace(/\s+/g, ''));
-                sliderInput(rangeMin);
-                return;
-            }
-
-            if (input === inputMax) {
-                rangeMax.value = parseInt(inputMax.value.replace(/\s+/g, ''));
-                sliderInput(rangeMax);
-                return;
-            }
-            }
-
-            multiRange.addEventListener('mousemove', mouseMove);
-
-            sliderInput(rangeMin);
-            sliderInput(rangeMax);
-            sliderChange();
-
-            function mouseMove(e) {
-                var clickPoint = e.offsetX  / rangeMin.offsetWidth,
-                    clickPointVal = parseInt((diff * clickPoint)) + parseInt(min),
-                    da = Math.abs(rangeMin.value - clickPointVal),
-                    db = Math.abs(rangeMax.value - clickPointVal);
-
-                if (da < db) {
-                    rangeMin.classList.remove('c-multi-slider__range--background');
-                    rangeMax.classList.add('c-multi-slider__range--background');
-                } else if (da > db) {
-                    rangeMax.classList.remove('c-multi-slider__range--background');
-                    rangeMin.classList.add('c-multi-slider__range--background');
-                }
-            }
-
-            function resetSliders(low, high) {
-                rangeMin.value = low;
-                rangeMax.value = high;
-                sliderInput(rangeMin);
-                sliderInput(rangeMax);
-                sliderChange();
-            }
-
-        </script>
-
-        <!-- tag js url: https://codepen.io/sniperwolf/pen/geFxq-->
-        <script src="https://cdn.rawgit.com/sniperwolf/taggingJS/master/tagging.min.js"></script>
-        <script>
-            // More info: https://github.com/sniperwolf/taggingJS
-            // jQuery on Ready example
-            (function( $, window, document, undefined ) {
-                $( document ).ready(function() {
-                    var t = $( "#tag" ).tagging();
-                    t[0].addClass( "form-control" );
-                    // console.log( t[0] );
-                });
-            })( window.jQuery, window, document );
-        </script>
-
+        
         <!-- 소모임페이지 눌렀을 때 맨위로 커서 올라가게 -->
         <script>
 			$(document).ready(function(){
@@ -379,11 +268,114 @@
 			});
 		</script>
 		
+		<!-- 이벤트 날짜 설정시에 오늘날짜 이후로 선택가능하도록 -->
 		<script>
-			$(function(){
+			$(document).ready(function(){
+				$("#event_date").blur(function(){
+					var select_date = $("#event_date").val();
+					var today = getToday();
+					//alert("선택날짜 : "+select_date+" / 오늘날짜 : "+today);
+					
+					if(select_date<today){
+						//alert("asdfadf");
+						$("#eventdateHelp").html("<p>오늘 날짜 이후로 설정해주세요.</p>");
+						$("#event_date").val('');
+					}else{
+						$("#eventdateHelp").html('');
+					}
+					
+				});
 				
-			})
-			
+			});
+			function getToday(){
+				var date = new Date();
+				return date.getFullYear()+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+("0"+date.getDate()).slice(-2);
+			}
+		</script>
+		
+		<!-- 마감날짜 선택시 모임날짜보다 이전까지만 받도록 -->
+		<script>
+			$(document).ready(function(){
+				$("#end_date").blur(function(){
+					var select_date = $("#end_date").val();
+					var event_date = $("#event_date").val();
+					var today = getToday();
+					
+					if(event_date<select_date){
+						$("#enddateHelp").html("<p>마감일은 소모임날짜 이전에만 등록가능합니다.</p>");
+						$("#end_date").val('');
+					}else{
+						$("#enddateHelp").html('');
+					}
+					
+				});
+				
+			});
+			function getToday(){
+				var date = new Date();
+				return date.getFullYear()+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+("0"+date.getDate()).slice(-2);
+			}
+		</script>
+		
+		<!-- 입력값 유효성 검사 -->
+		<script>
+			function validation(){
+				var inputTitle = document.getElementById("inputTitle");
+				var mem_number = document.getElementById("memnumber");
+				var inputRegion = document.getElementById("inputRegion");
+				var event_date = document.getElementById("event_date");
+				var end_date = document.getElementById("end_date");
+				var sample4_postcode = document.getElementById("sample4_postcode");
+				var sample4_roadAddress = document.getElementById("sample4_roadAddress");
+				var sample4_detailAddress = document.getElementById("sample4_detailAddress");
+				var exampleFormControlTextarea3 = document.getElementById("exampleFormControlTextarea3");
+				//alert(inputTitle.value+"/"+mem_number.value+"/"+event_date.value+"/"+end_date.value+"/"+sample4_postcode.value+"/"+sample4_roadAddress.value+"/"+sample4_detailAddress.value+"/"+exampleFormControlTextarea3.value);
+				if(inputTitle.value==""){
+					alert("소모임 제목을 입력하세요.");
+					inputTitle.focus();
+					return false;	
+				}
+				if(memnumber.value==""){
+					alert("인원수를 선택해주세요.");
+					memnumber.focus();
+					return false;	
+				}
+				if(inputRegion.value==""){
+					alert("지역구를 선택해주세요.");
+					inputRegion.focus();
+					return false;	
+				}
+				if(event_date.value==""){
+					alert("소모임 날짜를 확인해주세요.");
+					event_date.focus();
+					return false;	
+				}
+				if(end_date.value==""){
+					alert("모집마감 날짜를 확인해주세요.");
+					end_date.focus();
+					return false;	
+				}
+				if(sample4_postcode.value==""){
+					alert("주소를 확인해주세요.");
+					sample4_postcode.focus();
+					return false;	
+				}
+				if(sample4_roadAddress.value==""){
+					alert("주소를 확인해주세요.");
+					sample4_roadAddress.focus();
+					return false;	
+				}
+				if(sample4_detailAddress.value==""){
+					alert("주소를 확인해주세요.");
+					sample4_detailAddress.focus();
+					return false;	
+				}
+				if(exampleFormControlTextarea3.value==""){
+					alert("소모임 설명을 작성해주세요.");
+					exampleFormControlTextarea3.focus();
+					return false;	
+				}
+			}
 		</script>
 
     </body>
