@@ -41,6 +41,10 @@
 		select id, email, title, price from sell where id in(select join_postid from helper_sell where join_email=#{loginEmail})
 	</select>
 	
+	<select id="selectSellByEmail" resultType="com.ondongne.dto.DataTransferSell" parameterType="String">
+		select * from sell where email=#{email}
+	</select>	
+	
 	<delete id="deleteSellPost" parameterType="com.ondongne.dto.DataTransferSell">
 		delete from sell where id=#{id}
 	</delete>

@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@page import="java.util.*"%>
@@ -10,6 +11,7 @@
 <%@page import="com.ondongne.dao.DataAccessCircleJoin"%>
 
 <%
+	DecimalFormat priceFormat = new DecimalFormat("###,###");
     //Circle 참여한 게시물
 	List<DataTransferCircle> joinCircleList = (List<DataTransferCircle>)request.getAttribute("circleList");
     //Circle 등록한 게시물
@@ -17,7 +19,11 @@
 
     //Sell 스크랩 게시물
     List<DataTransferSell> joinSellList = (List<DataTransferSell>)request.getAttribute("sellList");
+    //Sell 등록한 게시물
+    List<DataTransferSell> mySellList = (List<DataTransferSell>)request.getAttribute("mySellList");
+    
     //TODO: 프로필 사진은 session 에서
+    
 %>
 
 <!DOCTYPE html>
@@ -61,21 +67,16 @@
         <!--Modal: 회원탈퇴 확인창-->
         <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-md modal-notify modal-danger" role="document">
-                <!--Content-->
                 <div class="modal-content">
                     <form action="delete.users" method="POST">
-                        <!--Header-->
                         <div class="modal-header d-flex justify-content-center">
                             <p class="heading">ON동네 탈퇴</p>
                         </div>
-
-                        <!--Body-->
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-3">
                                     <p class="text-center"><i class="fas fa-times fa-4x animated rotateIn"></i></p>
                                 </div>
-
                                 <div class="col-9">
                                     <p>ON동네 서비스를 정말로 탈퇴하시겠습니까?</p>
                                     <p>탈퇴를 위해 계정 비밀번호를 입력해주세요.</p>
@@ -87,18 +88,15 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!--Footer-->
                         <div class="modal-footer flex-center">
                             <button class="btn btn-outline-danger" type="submit">탈퇴</button>
                             <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">취소</a>
                         </div>
                     </form>
                 </div>
-                <!--/.Content-->
             </div>
         </div>
-        <!--Modal: modalConfirmDelete-->
+        <!--Modal: 회원탈퇴 확인창-->
 
         <!--Main layout-->
         <main class="pt-5 mx-lg-5">
@@ -106,11 +104,7 @@
                 <div class="row">
 
                     <div class="col-xl-2 my-5">
-                        <!-- Card -->
                         <div class="card sticky-top">
-
-                            <!-- Card image -->
-                            <%-- <img class="card-img-top img-fluid rounded-circle hoverable zoom" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap"> --%>
                             <div class="view overlay zoom p-2" onClick="uploadAvatar()" style="background:#f2d4c2;">
                                 <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid z-depth-1-half img-thumbnail mx-auto d-block rounded-circle my-3" id="avatarImage" style="width:150px; height:150px" alt="zoom"/>
                                 <div class="mask flex-center waves-effect waves-light">
@@ -120,16 +114,12 @@
                                     <input type="file" accept="images/*" name="avatarFileName" id="avatarInput" style="display:none"/>
                                 </form>
                             </div>
-
-                            <!-- Card content -->
                             <div class="card-body">
-
                                 <!-- Title -->
                                 <h5 class="card-title"><%= session.getAttribute("email") %></h5>
                                 <!-- Text -->
                                 <%-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
                                 content.</p> --%>
-
                                 <!-- Nav list -->
                                 <%-- <a href="#" class="btn btn-primary">Button</a> --%>
                                 <div class="list-group">
@@ -139,30 +129,23 @@
                                     <a href="mypage.ondongne" class="list-group-item list-group-item-action">대시보드</a>
                                     <a href="signupsub.users" class="list-group-item list-group-item-action">개인정보수정</a>
                                     <a href="" class="list-group-item list-group-item-action" onclick="acyncMovePage('testform2.html');">Ajax Test</a>
-                                    <a href="" class="list-group-item list-group-item-action">팔로잉/팔로워</a>
+                                    <%-- <a href="" class="list-group-item list-group-item-action">팔로잉/팔로워</a> --%>
                                     <a href="" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#modalConfirmDelete">탈퇴하기</a>
                                 </div>
-
                             </div>
-
                         </div>
-                        <!-- Card -->
                     </div>
 
                     <div class="col mt-5">
-
-                        <div class="row">
-                            <!-- Heading -->
-                            <div class="card col mb-4 wow fadeIn">
-                                <!--Card content-->
+                        <%-- <div class="row wow fadeIn">
+                            <div class="card col-lg-12 mb-4 wow fadeIn">
                                 <div class="card-body d-sm-flex justify-content-between">
                                     <h4 class="mb-2 mb-sm-0 pt-1">
-                                        <a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home Page</a>
+                                        <a href="mypage.ondongne">Mypage</a>
                                         <span>/</span>
                                         <span>Dashboard</span>
                                     </h4>
                                     <form class="d-flex justify-content-center">
-                                        <!-- Default input -->
                                         <input type="search" placeholder="Type your query" aria-label="Search" class="form-control">
                                         <button class="btn btn-primary btn-sm my-0 p" type="submit">
                                         <i class="fas fa-search"></i>
@@ -170,67 +153,81 @@
                                     </form>
                                 </div>
                             </div>
-                            <!-- Heading -->
-                        </div>
+                        </div> --%>
 
-                        <div class="row" id="bodyContents">
-                            <!--Grid row-->
-                            <div class="row wow fadeIn">
+                        <!--Grid row-->
+                        <div class="row wow fadeIn">
 
-                                <!--Grid column-->
-                                <div class="col-lg-6 col-md-6 mb-4">
-
-                                <!--Card-->
+                            <!-- Hotplace 스크랩 -->
+                            <div class="col-lg-6 col-md-6 mb-4">
                                 <div class="card">
+                                    <div class="card-header">핫플레이스 스크랩</div>
+                                    <div class="card-body">
+                                        <%-- TODO: 핫플레이스 스크랩 구현 --%>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Hotplace 스크랩 -->
 
-                                    <!-- Card header -->
+                            <!-- 구글 달력 -->
+                            <div class="col-lg-6 col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-header">구글 달력</div>
+                                    <div class="card-body">
+                                        <%-- TODO: 구글 달력 구현 --%>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /구글 달력 -->
+
+                            <!-- 내가 작성한 소모임 글 -->
+                            <div class="col-lg-6 col-md-6 mb-4">
+                                <div class="card">
                                     <div class="card-header">내가 작성한 소모임글</div>
-
-                                    <!--Card content-->
                                     <div class="card-body">
                                         <table class="table table-hover">
                                             <thead>
-                                                <tr>
-                                                    <th scope="col" class="text-center">글제목</th>
-                                                    <th scope="col" class="text-center">참여인원</th>
-                                                    <th scope="col" class="text-center">모임날짜</th>
-                                                    <th scope="col" class="text-center">마감날짜</th>
-                                                    <th scope="col" class="text-center">수정</th>
-                                                    <th scope="col" class="text-center">삭제</th>
+                                                <tr class="text-center">
+                                                    <th scope="col">글제목</th>
+                                                    <th scope="col">참여인원</th>
+                                                    <th scope="col">모임날짜</th>
+                                                    <th scope="col">마감날짜</th>
+                                                    <th scope="col">수정</th>
+                                                    <th scope="col">삭제</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <% for (int i = 0; i < postCircleList.size(); i++) { %>
                                                 <%
-													SqlSessionFactory factory = DataAccessCircleJoin.getConnection();
-													SqlSession sqlSession = factory.openSession();
+                                                    SqlSessionFactory factory = DataAccessCircleJoin.getConnection();
+                                                    SqlSession sqlSession = factory.openSession();
 
-													int joinCount = sqlSession.selectOne("getJoinCount",postCircleList.get(i).getId());
-													sqlSession.close();
-												%>
-												<form method="POST">
-													<input type="hidden" name="postid" id="postid" value="<%=postCircleList.get(i).getId()%>" />
-													<input type="hidden" name="title" value="<%=postCircleList.get(i).getTitle()%>" />
-													<input type="hidden" name="memnumber" value="<%=postCircleList.get(i).getMem_number()%>" />
-													<input type="hidden" name="region" value="<%=postCircleList.get(i).getRegion()%>" />
-													<input type="hidden" name="gender" value="<%=postCircleList.get(i).getGender()%>" />
-													<input type="hidden" name="event_date" value="<%=postCircleList.get(i).getEvent_date()%>" />
-													<input type="hidden" name="end_date" value="<%=postCircleList.get(i).getEnd_date()%>" />
-													<input type="hidden" name="zipcode" value="<%=postCircleList.get(i).getZipcode()%>" />
-													<input type="hidden" name="address" value="<%=postCircleList.get(i).getAddress()%>" />
-													<input type="hidden" name="address_detail" value="<%=postCircleList.get(i).getAddress_detail()%>" />
-													<input type="hidden" name="description" value="<%=postCircleList.get(i).getDescription()%>" />
+                                                    int joinCount = sqlSession.selectOne("getJoinCount",postCircleList.get(i).getId());
+                                                    sqlSession.close();
+                                                %>
+                                                <form method="POST">
+                                                    <input type="hidden" name="postid" id="postid" value="<%=postCircleList.get(i).getId()%>" />
+                                                    <input type="hidden" name="title" value="<%=postCircleList.get(i).getTitle()%>" />
+                                                    <input type="hidden" name="memnumber" value="<%=postCircleList.get(i).getMem_number()%>" />
+                                                    <input type="hidden" name="region" value="<%=postCircleList.get(i).getRegion()%>" />
+                                                    <input type="hidden" name="gender" value="<%=postCircleList.get(i).getGender()%>" />
+                                                    <input type="hidden" name="event_date" value="<%=postCircleList.get(i).getEvent_date()%>" />
+                                                    <input type="hidden" name="end_date" value="<%=postCircleList.get(i).getEnd_date()%>" />
+                                                    <input type="hidden" name="zipcode" value="<%=postCircleList.get(i).getZipcode()%>" />
+                                                    <input type="hidden" name="address" value="<%=postCircleList.get(i).getAddress()%>" />
+                                                    <input type="hidden" name="address_detail" value="<%=postCircleList.get(i).getAddress_detail()%>" />
+                                                    <input type="hidden" name="description" value="<%=postCircleList.get(i).getDescription()%>" />
 
-                                                    <tr>
-                                                        <th class="text-center"><%=postCircleList.get(i).getTitle()%></th>
-                                                        <td class="text-center"><a class="text-danger"><%=joinCount%></a>/<%=postCircleList.get(i).getMem_number() %></td>
-                                                        <td class="text-center"><%=postCircleList.get(i).getEvent_date() %></td>
-                                                        <td class="text-center text-danger"><%=postCircleList.get(i).getEnd_date() %></td>
-                                                        <td class="text-center">
-                                                            <button type="submit" class="btn btn-sm btn-warning" onclick="javascript:form.action='postupdateform.circle'"><i class="fas fa-pencil-alt"></i></button>
+                                                    <tr class="tex-=center">
+                                                        <th><%=postCircleList.get(i).getTitle()%></th>
+                                                        <td><a class="text-danger"><%=joinCount%></a>/<%=postCircleList.get(i).getMem_number() %></td>
+                                                        <td><%=postCircleList.get(i).getEvent_date() %></td>
+                                                        <td class="text-danger"><%=postCircleList.get(i).getEnd_date() %></td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-sm btn-warning m-0" onclick="javascript:form.action='postupdateform.circle'"><i class="fas fa-pencil-alt"></i></button>
                                                         </td>
-                                                        <td class="text-center">
-                                                            <button type="button" class="btn btn-sm btn-danger" onclick="delete_check(this.form)"><i class="fas fa-trash"></i></button>
+                                                        <td>
+                                                            <button type="button" class="btn btn-sm btn-danger m-0" onclick="delete_check_circle(this.form)"><i class="fas fa-trash"></i></button>
                                                         </td>
                                                     </tr>
                                                 </form>
@@ -238,118 +235,153 @@
                                             </tbody>
                                         </table>
                                     </div>
-
                                 </div>
-                                <!--/.Card-->
-
-                                </div>
-                                <!--Grid column-->
-
-                                <!--Grid column-->
-                                <div class="col-lg-6 col-md-6 mb-4">
-
-                                <!--Card-->
-                                <div class="card">
-
-                                    <!-- Card header -->
-                                    <div class="card-header">내가 작성한 판매글</div>
-
-                                    <!--Card content-->
-                                    <div class="card-body">
-
-                                    <canvas id="radarChart"></canvas>
-
-                                    </div>
-
-                                </div>
-                                <!--/.Card-->
-
-                                </div>
-                                <!--Grid column-->
-
-                                <!--Grid column-->
-                                <div class="col-lg-6 col-md-6 mb-4">
-                                    <!--Card-->
-                                    <div class="card">
-                                        <!-- Card header -->
-                                        <div class="card-header">참여한 소모임</div>
-                                        <!--Card content-->
-                                        <div class="card-body">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                    <th scope="col" class="text-center">글제목</th>
-                                                    <th scope="col" class="text-center">작성자</th>
-                                                    <th scope="col" class="text-center">모임날짜</th>
-                                                    <th scope="col" class="text-center">참여취소</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <% for (int i = 0; i < joinCircleList.size(); i++) { %>
-                                                        <form>
-                                                            <input type="hidden" name="joinId"  id="joinId" value="<%=joinCircleList.get(i).getId() %>" />
-                                                            <input type="hidden" name="joinTitle" id="joinTitle" value="<%=joinCircleList.get(i).getTitle()%>"/>
-                                                            <tr>
-                                                                <th class="text-center"><%=joinCircleList.get(i).getTitle()%></th>
-                                                                <td class="text-center"><%=joinCircleList.get(i).getEmail() %></td>
-                                                                <td class="text-center"><%=joinCircleList.get(i).getEvent_date() %></td>
-                                                                <td class="text-center">
-                                                                    <button type="button" class="btn btn-info btn-sm" onclick="joinCancel(this.form)"><i class="fas fa-times"></i></button>
-                                                                </td>
-                                                            </tr>
-                                                        </form>
-                                                    <% } %>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!--/.Card-->
-                                </div>
-                                <!--Grid column-->
-
-                                <!--Grid column-->
-                                <div class="col-lg-6 col-md-6 mb-4">
-                                    <!--Card-->
-                                    <div class="card">
-                                        <!-- Card header -->
-                                        <div class="card-header">판매글 스크랩</div>
-                                        <!--Card content-->
-                                        <div class="card-body">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col" class="text-center">글제목</th>
-                                                        <th scope="col" class="text-center">작성자</th>
-                                                        <th scope="col" class="text-center">가격</th>
-                                                        <th scope="col" class="text-center">스크랩취소</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <% for (int i = 0; i < joinSellList.size(); i++) { %>
-                                                        <form>
-                                                            <input type="hidden" name="scrapId"  id="scrapId" value="<%=joinSellList.get(i).getId() %>" />
-                                                            <input type="hidden" name="scrapTitle" id="scrapTitle" value="<%=joinSellList.get(i).getTitle()%>"/>
-                                                            <tr>
-                                                                <td class="text-center"><%=joinSellList.get(i).getTitle()%></td>
-                                                                <th class="text-center"><%=joinSellList.get(i).getEmail()%></th>
-                                                                <td class="text-center"><%=joinSellList.get(i).getPrice()%></td>
-                                                                <td class="text-center">
-                                                                    <button type="button" class="btn btn-info btn-sm" onclick="scrapCancel(this.form)"><i class="fas fa-times"></i></button>
-                                                                </td>
-                                                            </tr>
-                                                        </form>
-                                                    <% } %>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!--/.Card-->
-                                </div>
-                                <!--Grid column-->
-
                             </div>
-                            <!--Grid row-->
+                            <!-- /내가 작성한 소모임글 -->
+
+                            <!-- 내가 작성한 판매글 -->
+                            <div class="col-lg-6 col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-header">내가 작성한 판매글</div>
+                                    <div class="card-body">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th scope="col">글제목</th>
+                                                    <th scope="col">가격</th>
+                                                    <th scope="col">거래방법</th>
+                                                    <th scope="col">판매여부</th>
+                                                    <th scope="col">수정</th>
+                                                    <th scope="col">삭제</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%                                                 
+                                                String price = null;
+                                                String email = null;
+                                                String isActive = null;
+                                                String isParcel = null;
+                                                
+                                                for (int i = 0; i < mySellList.size(); i++) {
+                                                    price = priceFormat.format(Integer.parseInt(mySellList.get(i).getPrice()));
+
+                                                    if (mySellList.get(i).isIs_active()) {
+                                                        isActive = "판매중";
+                                                    } else {
+                                                        isActive = "판매완료";
+                                                    }
+
+                                                    if (mySellList.get(i).isIs_parcel()) {
+                                                        isParcel = "택배거래";
+                                                    } else {
+                                                        isParcel = "직거래";
+                                                    }
+                                                %>  
+                                                <form method="POST">
+                                                    <input type="hidden" name="postid" id="postid" value="<%=mySellList.get(i).getId()%>" />
+                                                    <input type="hidden" name="title" value="<%= mySellList.get(i).getTitle() %>"/>
+                                                    <input type="hidden" name="price" value="<%= mySellList.get(i).getPrice() %>"/>
+                                                    <input type="hidden" name="sellMethod" value="<%= mySellList.get(i).isIs_parcel() %>"/>
+                                                    <input type="hidden" name="region" value="<%= mySellList.get(i).getRegion() %>"/>
+                                                    <input type="hidden" name="description" value="<%= mySellList.get(i).getDescription() %>"/>
+                                                    <input type="hidden" name="pictures" value="<%= mySellList.get(i).getPictures() %>"/>             
+                                                    <tr class="text-center">
+                                                        <th><%=mySellList.get(i).getTitle()%></th>
+                                                        <td>₩<%=price%>원</td>
+                                                        <td><%=isParcel%></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-sm btn-info m-0" onclick="javascript:form.action='inactivate.sell'"><%=isActive%></button>                                                            
+                                                        </td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-sm btn-warning m-0" onclick="javascript:form.action='updateForm.sell'"><i class="fas fa-pencil-alt"></i></button>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-sm btn-danger m-0" onclick="delete_check_sell(this.form)"><i class="fas fa-trash"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                </form>
+                                                <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /내가 작성한 판매글 -->
+
+                            <!-- 참여한 소모임 -->
+                            <div class="col-lg-6 col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-header">참여한 소모임</div>
+                                    <div class="card-body">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th scope="col">글제목</th>
+                                                    <th scope="col">작성자</th>
+                                                    <th scope="col">모임날짜</th>
+                                                    <th scope="col">참여취소</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% for (int i = 0; i < joinCircleList.size(); i++) { %>
+                                                <form>
+                                                    <input type="hidden" name="joinId"  id="joinId" value="<%=joinCircleList.get(i).getId() %>" />
+                                                    <input type="hidden" name="joinTitle" id="joinTitle" value="<%=joinCircleList.get(i).getTitle()%>"/>
+                                                    <tr class="text-center">
+                                                        <th><%=joinCircleList.get(i).getTitle()%></th>
+                                                        <td><%=joinCircleList.get(i).getEmail() %></td>
+                                                        <td><%=joinCircleList.get(i).getEvent_date() %></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-sm m-0" onclick="joinCancel(this.form)"><i class="fas fa-times"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                </form>
+                                                <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /참여한 소모임 -->
+
+                            <!-- 판매글 스크랩 -->
+                            <div class="col-lg-6 col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-header">판매글 스크랩</div>
+                                    <div class="card-body">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th scope="col">글제목</th>
+                                                    <th scope="col">작성자</th>
+                                                    <th scope="col">가격</th>
+                                                    <th scope="col">스크랩취소</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% for (int i = 0; i < joinSellList.size(); i++) { %>
+                                                <form>
+                                                    <input type="hidden" name="scrapId"  id="scrapId" value="<%=joinSellList.get(i).getId() %>" />
+                                                    <input type="hidden" name="scrapTitle" id="scrapTitle" value="<%=joinSellList.get(i).getTitle()%>"/>
+                                                    <tr class="text-center">
+                                                        <td><%=joinSellList.get(i).getTitle()%></td>
+                                                        <th><%=joinSellList.get(i).getEmail()%></th>
+                                                        <td><%=joinSellList.get(i).getPrice()%></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-sm m-0" onclick="scrapCancel(this.form)"><i class="fas fa-times"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                </form>
+                                                <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /판매글 스크랩 -->
+
                         </div>
+                        <!--Grid row-->
 
                     </div>
 
@@ -452,7 +484,7 @@
 
 		<script>
             //게시한 소모임 삭제 check
-			function delete_check(form) {
+			function delete_check_circle(form) {
 				var check = confirm("( 글 제목 : " + form.title.value + " ) 을(를) 정말로 삭제하시겠습니까?");
 				if (check == true) {
 					window.location.href = "postdelete.circle?postid=" + form.postid.value;
@@ -476,6 +508,16 @@
 				var check = confirm("( 글 제목 : " + form.scrapTitle.value + " ) 스크랩을 정말로 취소하시겠습니까?");
 				if (check == true) {
 					window.location.href = "cancelScrap.sell?postid=" + form.scrapId.value;
+				} else if (check == false) {
+					alert("취소되었습니다.")
+				}
+			}
+
+            //판매글 삭제 취소 check
+			function delete_check_sell(form) {
+				var check = confirm("( 글 제목 : " + form.title.value + " ) 스크랩을 정말로 취소하시겠습니까?");
+				if (check == true) {
+					window.location.href = "delete.sell?postid=" + form.scrapId.value;
 				} else if (check == false) {
 					alert("취소되었습니다.")
 				}

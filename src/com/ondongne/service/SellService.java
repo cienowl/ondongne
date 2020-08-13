@@ -8,7 +8,6 @@ import com.ondongne.dto.DataTransferSell;
 public class SellService {
 	
 	public boolean postSell(DataTransferSell dtoSell) {
-
 		boolean isWriteSuccess = false;
 		
 		DataAccessSell daoSell = DataAccessSell.getInstance();
@@ -17,7 +16,6 @@ public class SellService {
 		if (insertCount > 0) isWriteSuccess = true;	//sql 문이 정상적으로 실행되었으면
 		
 		return isWriteSuccess;
-		
 	}
 	
 	public boolean updateSell(DataTransferSell dtoSell) {
@@ -33,7 +31,6 @@ public class SellService {
 	
 	
 	public boolean deleteSell(DataTransferSell dtoSell) {
-		
 		boolean isDeleteSuccess = false;
 		
 		DataAccessSell daoSell = DataAccessSell.getInstance();
@@ -45,21 +42,24 @@ public class SellService {
 	}
 
 	public List<DataTransferSell> selectSellAll() {
-		
 		DataAccessSell daoSell = DataAccessSell.getInstance();		
 		List<DataTransferSell> sellList = daoSell.selectSellAll();		
 		
 		return sellList;
-		
 	}
 	
-	public List<DataTransferSell> selectJoinSell(String loginEmail) {
-
+	public List<DataTransferSell> selectJoinSell(String sessionEmail) {
 		DataAccessSell daoSell = DataAccessSell.getInstance();
-		List<DataTransferSell> joinSellList = daoSell.selectJoinSell(loginEmail);
+		List<DataTransferSell> joinSellList = daoSell.selectJoinSell(sessionEmail);
 		
 		return joinSellList;
+	}
 
+	public List<DataTransferSell> selectMySell(String sessionEmail) {
+		DataAccessSell daoSell = DataAccessSell.getInstance();
+		List<DataTransferSell> sellPostList = daoSell.selectMySellList(sessionEmail); 
+		
+		return sellPostList;
 	}
 
 }

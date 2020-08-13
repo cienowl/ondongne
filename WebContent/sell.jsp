@@ -342,7 +342,6 @@
                                     <input type="hidden" name="region" value="<%= sellList.get(i).getRegion() %>"/>
                                     <input type="hidden" name="description" value="<%= sellList.get(i).getDescription() %>"/>
                                     <input type="hidden" name="pictures" value="<%= sellList.get(i).getPictures() %>"/>
-                                    <input type="hidden" name="tags" value="<%= sellList.get(i).getTags() %>"/>
                                     <% if (sessionEmail != null) { %>
                                         <% if (sessionEmail.equals(email)) { %>
                                             <button type="submit" class="btn btn-warning" onclick="javascript:form.action='updateForm.sell';">수정</button>

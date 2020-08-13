@@ -189,11 +189,5 @@
             })( window.jQuery, window, document );
         </script>
 
-        <script>
-			$(document).ready(function(){
-				$("#inputTitle").focus();
-			});
-		</script>
-
     </body>
 </html>

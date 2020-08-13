@@ -38,7 +38,6 @@ public class DataAccessSell {
 	}
 
 	public int insertSellPost(DataTransferSell dtoSell) {
-
 		sqlFactory = getConnection();
 	    SqlSession sqlSession = sqlFactory.openSession();
 
@@ -47,11 +46,9 @@ public class DataAccessSell {
 		sqlSession.close();
 
 		return insertCount;	//sql insert 성공하면 true 아니면 false 리턴
-
 	}
 	
 	public int updateSellPost(DataTransferSell dtoSell) {
-		
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 		
@@ -60,11 +57,9 @@ public class DataAccessSell {
 		sqlSession.close();
 
 		return updateCount;
-
 	}
 
 	public List<DataTransferSell> selectSellAll() {
-
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 
@@ -72,11 +67,9 @@ public class DataAccessSell {
 		sqlSession.close();
 
 		return sellList;
-
 	}
 
 	public int deleteSellPost(DataTransferSell dtoSell) {
-
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 
@@ -85,18 +78,24 @@ public class DataAccessSell {
 		sqlSession.close();
 
 		return deleteCount;
-
 	}
 	
-	public List<DataTransferSell> selectJoinSell(String loginEmail) {
-
+	public List<DataTransferSell> selectJoinSell(String sessionEmail) {
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 
-		List<DataTransferSell> joinSellList = sqlSession.selectList("getJoinSell", loginEmail);
+		List<DataTransferSell> joinSellList = sqlSession.selectList("getJoinSell", sessionEmail);
 
 		return joinSellList;
+	}
 
+	public List<DataTransferSell> selectMySellList(String sessionEmail) {
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		
+		List<DataTransferSell> sellPostList = sqlSession.selectList("selectSellByEmail", sessionEmail);
+		
+		return sellPostList;
 	}
 
 }

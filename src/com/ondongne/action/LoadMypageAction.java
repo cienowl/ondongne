@@ -24,25 +24,23 @@ public class LoadMypageAction implements Action {
 		
 		if (sessionEmail != null) {		
 
-
 //			게시한 Circle Post 불러오기
 			CircleService circleService = new CircleService();
 			List<DataTransferCircle> circlePostList = circleService.selectPostCircle(sessionEmail);
 			request.setAttribute("postList", circlePostList);
 
 //			Circle 참여 불러오기
-//			CircleService circleService = new CircleService();
 			List<DataTransferCircle> circleList = circleService.selectJoinCircle(sessionEmail);
 			request.setAttribute("circleList", circleList);
 			
 //			TODO: Sell Post 불러오기
+			SellService sellService = new SellService();
+			List<DataTransferSell> sellPostList = sellService.selectMySell(sessionEmail);
+			request.setAttribute("mySellList", sellPostList);
 			
 //			Sell 스크랩 불러오기
-			SellService sellService = new SellService();
 			List<DataTransferSell> sellList = sellService.selectJoinSell(sessionEmail);
 			request.setAttribute("sellList", sellList);
-			
-			
 			
 			
 			
