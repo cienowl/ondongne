@@ -42,14 +42,19 @@
             <div class="container my-5 pt-5">
                 <h2 class="font-weight-bold dark-grey-text px-5 mb-3">아이디 찾기 결과</h2>
                 <hr class=""/>
-                <div class="col-lg-6 mx-auto my-5 pb-3 wow fadeIn">
+                <div class="col-lg-6 mx-auto my-5 py-5 wow fadeIn">
                     <div class="text-center z-depth-1-half p-5">
-                        <div>
-                            <% String email = (String)request.getParameter("findEmail"); %>
-                            <h4 class="font-weight-bold"><%=email %></h4>
+                        <div class="mb-5">
+                            <%
+                            String email = (String) request.getAttribute("findEmail");
+                            String[] emailParse = email.split("@");
+                            
+                            String result = emailParse[0].substring(0,4) + emailParse[0].substring(4,emailParse[0].length()).replaceAll(".", "*") + "@" + emailParse[1];            
+                            %>
+                            <h4 class="font-weight-bold pt-5"><%=result%></h4>
                         </div>
-                        <a data-toggle="modal" data-target="#signinModal" class="btn btn-primary mt-5 btn-block" type="button">로그인</a>
-                        <button class="btn btn-warning mt-2 btn-block" type="button">비밀번호 찾기</button>
+                        <a data-toggle="modal" data-target="#signinModal" class="btn btn-primary mt-5 btn-block" type="button"><h5 class="font-weight-bold m-0">로그인</h5></a>
+                        <button class="btn btn-warning mt-2 btn-block" type="button"><h5 class="font-weight-bold m-0">비밀번호 찾기</h5></button>
                     </div>
                 </div>
             </div>
