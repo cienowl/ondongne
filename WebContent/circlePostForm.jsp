@@ -52,11 +52,15 @@
 
                 <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">소모임 정보를 등록해주세요.</h2>
 
-                <form action="postinsert.circle" method="POST">
+                <form action="postinsert.circle" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputTitle" >소모임 제목</label>
                             <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title"/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="pictures">사진</label></br>
+                            <input type="file" name="pictures" id="pictures"/>
                         </div>
                     </div>
 

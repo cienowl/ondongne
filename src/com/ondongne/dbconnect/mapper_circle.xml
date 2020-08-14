@@ -4,7 +4,7 @@
 
 <mapper namespace="circle">
 	<insert id="circleInsert" parameterType="com.ondongne.dto.DataTransferCircle">
-		insert into circle(email,pictures, post_date, title, region, zipcode, address, address_detail, event_date, end_date, gender, description, tags, mem_number) values (#{email},'a',NOW(), #{title},#{region},#{zipcode},#{address},#{address_detail},#{event_date},#{end_date},#{gender},#{description},'tag',#{mem_number});
+		insert into circle(email,pictures, post_date, title, region, zipcode, address, address_detail, event_date, end_date, gender, description, tags, mem_number) values (#{email},#{pictures},NOW(), #{title},#{region},#{zipcode},#{address},#{address_detail},#{event_date},#{end_date},#{gender},#{description},'tag',#{mem_number});
 	</insert>
 	
 	<select id="getCirclePostAll" resultType="com.ondongne.dto.DataTransferCircle">
