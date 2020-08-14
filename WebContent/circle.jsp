@@ -321,7 +321,7 @@
 											<!--First slide-->
 											<div class="carousel-item active">
 												<img class="d-block w-100"
-													src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"
+													src="img/circle/<%=circleList.get(i).getPictures()%>"
 													alt="First slide">
 											</div>
 											<!--/First slide-->
@@ -370,6 +370,7 @@
 									<%}%>
 										<input type="hidden" name="postid" id="postid" value="<%=circleList.get(i).getId()%>" />
 										<input type="hidden" name="title" value="<%=circleList.get(i).getTitle()%>" />
+										<input type="hidden" name="pictures" value="<%=circleList.get(i).getPictures() %>" />
 										<input type="hidden" name="memnumber" value="<%=circleList.get(i).getMem_number()%>" />
 										<input type="hidden" name="region" value="<%=circleList.get(i).getRegion()%>" />
 										<input type="hidden" name="gender" value="<%=circleList.get(i).getGender()%>" />

@@ -16,7 +16,7 @@
 	</select>
 	
 	<update id="circleUpdate" parameterType="com.ondongne.dto.DataTransferCircle">
-		update circle set title=#{title}, region=#{region}, zipcode=#{zipcode}, address=#{address}, address_detail=#{address_detail}, event_date=#{event_date}, end_date=#{end_date}, gender=#{gender}, description=#{description}, mem_number=#{mem_number} where id=#{id};
+		update circle set title=#{title}, pictures=#{pictures}, region=#{region}, zipcode=#{zipcode}, address=#{address}, address_detail=#{address_detail}, event_date=#{event_date}, end_date=#{end_date}, gender=#{gender}, description=#{description}, mem_number=#{mem_number} where id=#{id};
 	</update>
 	
 	<delete id="circleDelete" parameterType="com.ondongne.dto.DataTransferCircle">
@@ -29,6 +29,10 @@
 	
 	<select id="getSearchCircle" parameterType="String" resultType="com.ondongne.dto.DataTransferCircle">
 		select * from circle WHERE title LIKE CONCAT('%',#{value},'%') OR description LIKE CONCAT('%',#{value},'%') OR region LIKE CONCAT('%',#{value},'%') OR email LIKE CONCAT('%',#{value},'%') OR address LIKE CONCAT('%',#{value},'%');
+	</select>
+	
+	<select id="getCirclePictures" parameterType="int" resultType="String">
+		select pictures from circle WHERE id=#{postid};
 	</select>
 	
 </mapper>

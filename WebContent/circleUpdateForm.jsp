@@ -1,6 +1,9 @@
 <!-- 작성자: 김나예 -->
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.ondongne.dao.DataAccessCircle"%>
 
 <!DOCTYPE html>
 <html>
@@ -57,8 +60,16 @@
 			String address = request.getParameter("address");
 			String address_detail = request.getParameter("address_detail");
 			String description = request.getParameter("description");
-
 		%>
+		<%
+			SqlSessionFactory factory = DataAccessCircle.getConnection();
+			SqlSession sqlSession = factory.openSession();
+			
+			String picturesName = sqlSession.selectOne("getCirclePictures",postid);
+			sqlSession.close();
+		%>
+		
+		<%=picturesName %>
 
         <!-- Main Start -->
         <main class="mt-5 pt-5">
@@ -66,12 +77,16 @@
 
                 <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">소모임글 정보 수정</h2>
 
-                <form action="postupdate.circle" method="POST">
+                <form action="postupdate.circle" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="postid" value="<%=postid %>"/>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputTitle" >소모임 제목</label>
                             <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title" value="<%= title %>"/>                           
+                        </div>
+                         <div class="form-group col-md-6">
+                            <label for="pictures">사진</label></br>
+                            <input type="file" name="pictures" id="pictures" value="<%=picturesName%>"/>
                         </div>
                     </div>
 
