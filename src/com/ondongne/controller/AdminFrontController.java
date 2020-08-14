@@ -16,8 +16,8 @@ import com.ondongne.action.AdminNoticeUpdateAction;
 import com.ondongne.action.AdminNoticeWriteAction;
 import com.ondongne.action.AdminSigninAction;
 import com.ondongne.action.AdminSignoutAction;
-import com.ondongne.action.GetDashboardInfoAction;
-import com.ondongne.action.GetDongneInfoAction;
+import com.ondongne.action.AdminGetDashboardInfoAction;
+import com.ondongne.action.AdminGetDongneInfoAction;
 import com.ondongne.action.AdminHotplaceInsertAction;
 import com.ondongne.action.AdminHotplaceUpdateAction;
 import com.ondongne.dto.ActionForward;
@@ -65,7 +65,7 @@ public class AdminFrontController extends HttpServlet {
 		
 		else if (command.equals("/dashboard.admin")) {
 //			dashboard로 이동
-			action = new GetDashboardInfoAction();
+			action = new AdminGetDashboardInfoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -74,7 +74,7 @@ public class AdminFrontController extends HttpServlet {
 		}
 		
 		else if (command.equals("/dongneposts.admin")) {
-			action = new GetDongneInfoAction();
+			action = new AdminGetDongneInfoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

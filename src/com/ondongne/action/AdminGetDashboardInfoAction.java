@@ -12,7 +12,7 @@ import com.ondongne.dto.NoticeBean;
 import com.ondongne.service.AdminService;
 import com.ondongne.service.HotplaceService;
 
-public class GetDashboardInfoAction implements Action {
+public class AdminGetDashboardInfoAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -27,9 +27,9 @@ public class GetDashboardInfoAction implements Action {
 			List<NoticeBean> noticeList = adminService.selectNoticeAll();			
 			request.setAttribute("noticeList", noticeList);
 			
-//			Hotplace 리스트 불러오기			
-			List<HotplaceBean> hotplaceList = adminService.selectHotplaceAll();
-			request.setAttribute("hotplaceList", hotplaceList);
+////			Hotplace 리스트 불러오기			
+//			List<HotplaceBean> hotplaceList = adminService.selectHotplaceAll();
+//			request.setAttribute("hotplaceList", hotplaceList);
 			
 			forward = new ActionForward();
 			forward.setPath("admin_dashboard.jsp");

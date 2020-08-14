@@ -12,7 +12,7 @@ import com.ondongne.dto.NoticeBean;
 import com.ondongne.service.AdminService;
 import com.ondongne.service.HotplaceService;
 
-public class GetDongneInfoAction implements Action {
+public class AdminGetDongneInfoAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

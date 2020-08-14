@@ -1,13 +1,11 @@
 <!-- 작성자: 이호준, 김나예, 한송희-->
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.ondongne.dto.HotplaceBean"%>
 <%@page import="com.ondongne.dto.NoticeBean"%>
 <%@page import="java.util.List"%>
 
 <%
 	List<NoticeBean> noticeList = (List<NoticeBean>) request.getAttribute("noticeList");
-	List<HotplaceBean> hotplaceList = (List<HotplaceBean>) request.getAttribute("hotplaceList");
     String dataTarget = null;
     String region = null;
 %>
