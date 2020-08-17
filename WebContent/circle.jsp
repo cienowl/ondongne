@@ -97,6 +97,13 @@
 			white-space: nowrap;
 		}
 		</style>
+		
+		<style>
+			#listImage{
+				width:255px;
+				height:170px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -248,6 +255,11 @@
 			padding-top: .6rem;
 		}
 		</style>
+		<style>
+		#circle_image{
+			height:300px;
+		}
+		</style>
 
 
 
@@ -304,8 +316,11 @@
 							<div class="modal-header p-0">
 								<!--Grid column-->
 								<div class="row">
-									<!--Carousel Wrapper-->
-									<div id="carousel-list-1z" class="carousel slide carousel-fade"
+									<div class="">
+										<img class="img-responsive" src="img/circle/<%=circleList.get(i).getPictures()%>" alt="" id="circle_image" />
+									</div>
+									<%-- <!--Carousel Wrapper-->
+									<div id="carousel-list-1z" class="carousel slide carousel-fade center-block"
 										data-ride="carousel">
 										<!--Indicators-->
 										<ol class="carousel-indicators">
@@ -317,12 +332,12 @@
 										<!--/.Indicators-->
 
 										<!--Slides-->
-										<div class="carousel-inner" role="listbox">
+										<div class="" role="listbox">
 											<!--First slide-->
 											<div class="carousel-item active">
-												<img class="d-block w-100"
+												<img class="img-responsive center-block"
 													src="img/circle/<%=circleList.get(i).getPictures()%>"
-													alt="First slide">
+													alt="" id="circle_image">
 											</div>
 											<!--/First slide-->
 											<!--Second slide-->
@@ -355,9 +370,9 @@
 										</a>
 										<!--/.Controls-->
 									</div>
-									<!--/.Carousel Wrapper-->
-								</div>
+									<!--/.Carousel Wrapper--> --%>
 								<!-- Grid column -->
+								</div>
 							</div>
 
 							<div class="modal-body">
@@ -472,8 +487,8 @@
 								<a class="card hoverable mb-4" data-toggle="modal"
 									data-target="<%=dataTarget%>"> <!-- Card image --> <img
 									class="card-img-top"
-									src="https://mdbootstrap.com/img/Photos/Others/img3.jpg"
-									alt="Card image cap"> <!-- Card content -->
+									src="img/circle/<%=circleList.get(i).getPictures()%>"
+									alt="" id="listImage"> <!-- Card content -->
 									<div class="card-body">
 										<h5 class="mb-3" id="cardTitle"><%=circleList.get(i).getTitle()%></h5>
 										<p class="font-small grey-text mb-2" id="cardEmail"><%=circleList.get(i).getEmail()%></p>

@@ -306,7 +306,10 @@
 					var today = getToday();
 					
 					if(event_date<select_date){
-						$("#enddateHelp").html("<p>마감일은 소모임날짜 이전에만 등록가능합니다.</p>");
+						$("#enddateHelp").html("<p>마감일은 소모임날짜 이전으로 등록가능합니다.</p>");
+						$("#end_date").val('');
+					}else if(select_date<today){
+						$("#enddateHelp").html("<p>오늘 날짜 이후로 설정해주세요.</p>");
 						$("#end_date").val('');
 					}else{
 						$("#enddateHelp").html('');
@@ -325,6 +328,7 @@
 		<script>
 			function validation(){
 				var inputTitle = document.getElementById("inputTitle");
+				var pictures = document.getElementById("pictures");
 				var mem_number = document.getElementById("memnumber");
 				var inputRegion = document.getElementById("inputRegion");
 				var event_date = document.getElementById("event_date");
@@ -337,6 +341,11 @@
 				if(inputTitle.value==""){
 					alert("소모임 제목을 입력하세요.");
 					inputTitle.focus();
+					return false;	
+				}
+				if(pictures.value==""){
+					alert("사진을 등록해주세요.");
+					pictures.focus();
 					return false;	
 				}
 				if(memnumber.value==""){
