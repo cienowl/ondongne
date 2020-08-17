@@ -45,6 +45,11 @@ F2F2F2
 
 * ORACLE JDK8.0
 
+### Ext API
+
+- GSON https://javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/module-summary.html
+
+
 ## JavaScript
 
 * oo

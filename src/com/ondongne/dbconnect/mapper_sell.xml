@@ -43,6 +43,10 @@
 	
 	<select id="selectSellByEmail" resultType="com.ondongne.dto.DataTransferSell" parameterType="String">
 		select * from sell where email=#{email}
+	</select>
+	
+	<select id="searchSellList" resultType="com.ondongne.dto.DataTransferSell" parameterType="String">
+		select * from sell WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%')
 	</select>	
 	
 	<delete id="deleteSellPost" parameterType="com.ondongne.dto.DataTransferSell">

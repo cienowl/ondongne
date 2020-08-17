@@ -33,11 +33,12 @@ public class UserLostEmail implements Action{
 			out.println("alert('가입되지 않은 회원입니다.')");
 			out.println("history.back();");
 			out.println("</script>");
-		}else {
+		} else {
+			request.setAttribute("findEmail", email);
 			forward = new ActionForward();
-			forward.setRedirect(true);
-			forward.setPath("lostidResult.jsp?findEmail="+email);
+			forward.setPath("lostidResult.jsp");
 		}
+		
 		return forward;
 	}
 	
