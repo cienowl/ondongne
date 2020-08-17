@@ -24,5 +24,5 @@
         result = "";
     }
 
-    out.println(result);
+    out.print(result);
 %>

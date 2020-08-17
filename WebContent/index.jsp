@@ -524,7 +524,14 @@
                             url:'checkPhone.jsp?inputPhone='+phone,
                             type:"GET",
                             success:function(request){
-                                $("#checkDupPhone").append(request);
+                            	//console.log(request+"/"+$("#checkDupPhone").val());
+                                console.log(request.trim());
+                            	if(request.trim()!=""){
+                            		$("#checkDupPhone").append(request);
+                                	$("#signupPhone").val('');    
+                                }else{
+                                	$("#checkDupPhone").append(request);
+                                }
                             },
                             error:function(request,status,error){
                                 //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

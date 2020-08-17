@@ -59,7 +59,7 @@
                     <a class="nav-link dropdown-toggle" id="navbar-signon-usermenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <%-- <i class="fas fa-user"></i> --%>
                         <% if(profile_picture==null){ %>
-                        <img alt="" width="25" height="25" src="img/avatar/default_profile_image" class="mr-2 rounded-circle">
+                        <img alt="" width="25" height="25" src="img/avatar/default_profile_image.png" class="mr-2 rounded-circle">
                         <%} else{ %>
                         <img alt="" width="25" height="25" src="img/avatar/<%=profile_picture %>" class="mr-2 rounded-circle">
                         <%} %>

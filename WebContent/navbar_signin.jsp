@@ -168,7 +168,7 @@
 
                     <input type="text" class="form-control mb-3" id="signupName" name="signupName" placeholder="이름" required/>
                     <input type="text" class="form-control" id="signupPhone" name="signupPhone" placeholder="전화번호" />
-					<small id="checkDupPhone" class="form-text text-success mb-5" style="height: 20px;"></small>
+					<small id="checkDupPhone" class="form-text text-danger mb-5" style="height: 20px;"></small>
 					
                     <button type="submit" class="btn btn-unique mt-4 btn-block" onclick="return signupValidate();" >
                         <h5 class="m-0">ON동네 회원가입</h5>
