@@ -36,5 +36,9 @@
 	<select id="userInfo" resultType="com.ondongne.dto.DataTransferUsers" parameterType="String">
 		select * from users WHERE email=#{email};
 	</select>
+	
+	<select id="getAvatar" parameterType="String" resultType="String">
+		select profile_picture from users WHERE email=#{email};
+	</select>
 
 </mapper>

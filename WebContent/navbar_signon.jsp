@@ -1,8 +1,12 @@
 <!--
 작성자: 이호준, 김나예
 -->
-
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.ondongne.dao.DataAccessUsers" %>
+
 
 <style>
     .top-nav-collapse {
@@ -44,10 +48,21 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto nav-flex-icons">
+             <%
+             	SqlSessionFactory factory = DataAccessUsers.getConnection();
+               	SqlSession sqlSession = factory.openSession();
+               	
+               	String profile_picture = sqlSession.selectOne("getAvatar",session.getAttribute("email"));
+               	sqlSession.close();
+				%>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbar-signon-usermenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <%-- <i class="fas fa-user"></i> --%>
-                        <img alt="@cienowl" width="25" height="25" src="https://avatars3.githubusercontent.com/u/43317591?s=60&amp;v=4" class="mr-2 rounded-circle">
+                        <% if(profile_picture==null){ %>
+                        <img alt="" width="25" height="25" src="img/avatar/default_profile_image" class="mr-2 rounded-circle">
+                        <%} else{ %>
+                        <img alt="" width="25" height="25" src="img/avatar/<%=profile_picture %>" class="mr-2 rounded-circle">
+                        <%} %>
                         <%= session.getAttribute("email") %>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-signon-usermenu">

@@ -9,6 +9,7 @@
 <%@page import="com.ondongne.dto.DataTransferCircle"%>
 <%@page import="com.ondongne.dto.DataTransferCircleJoin"%>
 <%@page import="com.ondongne.dao.DataAccessCircleJoin"%>
+<%@page import="com.ondongne.dao.DataAccessUsers" %>
 
 <%
 	DecimalFormat priceFormat = new DecimalFormat("###,###");
@@ -102,11 +103,22 @@
         <main class="pt-5 mx-lg-5">
             <div class="container-fluid">
                 <div class="row">
-
+                <%
+					SqlSessionFactory factory2 = DataAccessUsers.getConnection();
+                	SqlSession sqlSession2 = factory2.openSession();
+                	
+                	String profile_picture = sqlSession2.selectOne("getAvatar",session.getAttribute("email"));
+                	sqlSession2.close();
+				%>
+				
                     <div class="col-xl-2 my-5">
                         <div class="card sticky-top">
                             <div class="view overlay zoom p-2" onClick="uploadAvatar()" style="background:#f2d4c2;">
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid z-depth-1-half img-thumbnail mx-auto d-block rounded-circle my-3" id="avatarImage" style="width:150px; height:150px" alt="zoom"/>
+                            	<% if(profile_picture!=null){ %>
+                            	<img src="img/avatar/<%=profile_picture %>" class="img-fluid z-depth-1-half img-thumbnail mx-auto d-block rounded-circle my-3" id="avatarImage" style="width:150px; height:150px" alt="zoom"/>
+                                <%} else{ %>
+                                <img src="img/avatar/default_profile_image.png" class="img-fluid z-depth-1-half img-thumbnail mx-auto d-block rounded-circle my-3" id="avatarImage" style="width:150px; height:150px" alt="zoom"/>
+                                <%} %>
                                 <div class="mask flex-center waves-effect waves-light">
                                     <p class="white-text">사진 변경</p>
                                 </div>
@@ -218,7 +230,7 @@
                                                     <input type="hidden" name="address_detail" value="<%=postCircleList.get(i).getAddress_detail()%>" />
                                                     <input type="hidden" name="description" value="<%=postCircleList.get(i).getDescription()%>" />
 
-                                                    <tr class="tex-=center">
+                                                    <tr class="text-center">
                                                         <th><%=postCircleList.get(i).getTitle()%></th>
                                                         <td><a class="text-danger"><%=joinCount%></a>/<%=postCircleList.get(i).getMem_number() %></td>
                                                         <td><%=postCircleList.get(i).getEvent_date() %></td>
