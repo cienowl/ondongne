@@ -362,6 +362,8 @@
                 var inputEmail = document.getElementById("signupEmail");
                 var inputPassword1 = document.getElementById("signupPassword1");
                 var inputPassword2 = document.getElementById("signupPassword2");
+                var inputPhone = document.getElementById("signupPhone"); 
+               
                 // var checkAgree = document.getElementById("checkAgree");
 
                 // alert(checkAgree.value);
@@ -401,6 +403,12 @@
                     //lert("패스워드 확인을 입력하세요.");
                     inputPassword2.focus();
                     return false;
+                }
+                
+                if (inputPhone.value==""){
+                	alert("핸드폰 번호를 입력하세요.");
+                	inputPhone.focus();
+                	return false;
                 }
 
                 //비밀번호와 비밀번호 확인이 일치 하지 않을 경우
@@ -451,6 +459,8 @@
                     }
                 }
             }
+            
+          
         </script>
 
         <script>
@@ -503,9 +513,30 @@
                         });
                     }
                 });
+                
+                //회원가입 폼에서 핸드폰번호 db 조회 확인
+                $("#signupPhone").blur(function(){
+                    var phone = $("#signupPhone").val();
+                    $("#checkDupPhone").empty();
+
+                    if (phone != "") {
+                        $.ajax({
+                            url:'checkPhone.jsp?inputPhone='+phone,
+                            type:"GET",
+                            success:function(request){
+                                $("#checkDupPhone").append(request);
+                            },
+                            error:function(request,status,error){
+                                //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                            	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                            }
+                        });
+                    }
+                });
 
             });
         </script>
+
 
         <!-- Initializations -->
         <script type="text/javascript">
