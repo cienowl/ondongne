@@ -29,8 +29,6 @@
                 background: #880e4f !important;
             }
         </style>
-
-       
     </head>
 
     <body>
@@ -59,8 +57,11 @@
                             <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="pictures">사진</label></br>
-                            <input type="file" name="pictures" id="pictures"/>
+                            <label for="pictures">사진</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="pictures" aria-describedby="inputFile">
+                                <label class="custom-file-label" for="pictures">사진 선택</label>
+                            </div>
                         </div>
                     </div>
 
@@ -165,12 +166,12 @@
                         <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="display: none;"/>
                         <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="display: none;"/>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea3">소모임 관련 설명</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea3" rows="7" name="description"></textarea>
+                        <label for="description">소모임 관련 설명</label>
+                        <textarea class="form-control" id="description" rows="7" name="description"></textarea>
                     </div>
-                    
+
                     <div class="form-row float-right">
                         <button type="submit" class="btn btn-lg btn-primary" onclick="return validation();">등록</button>
                         <button type="button" class="btn btn-lg btn-danger" href="view.circle">취소</button>
@@ -264,14 +265,7 @@
                 }).open();
             }
         </script>
-        
-        <!-- 소모임페이지 눌렀을 때 맨위로 커서 올라가게 -->
-        <script>
-			$(document).ready(function(){
-				$("#inputTitle").focus();
-			});
-		</script>
-		
+
 		<!-- 이벤트 날짜 설정시에 오늘날짜 이후로 선택가능하도록 -->
 		<script>
 			$(document).ready(function(){
@@ -279,7 +273,7 @@
 					var select_date = $("#event_date").val();
 					var today = getToday();
 					//alert("선택날짜 : "+select_date+" / 오늘날짜 : "+today);
-					
+
 					if(select_date<today){
 						//alert("asdfadf");
 						$("#eventdateHelp").html("<p>오늘 날짜 이후로 설정해주세요.</p>");
@@ -287,16 +281,16 @@
 					}else{
 						$("#eventdateHelp").html('');
 					}
-					
+
 				});
-				
+
 			});
 			function getToday(){
 				var date = new Date();
 				return date.getFullYear()+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+("0"+date.getDate()).slice(-2);
 			}
 		</script>
-		
+
 		<!-- 마감날짜 선택시 모임날짜보다 이전까지만 받도록 -->
 		<script>
 			$(document).ready(function(){
@@ -304,7 +298,7 @@
 					var select_date = $("#end_date").val();
 					var event_date = $("#event_date").val();
 					var today = getToday();
-					
+
 					if(event_date<select_date){
 						$("#enddateHelp").html("<p>마감일은 소모임날짜 이전으로 등록가능합니다.</p>");
 						$("#end_date").val('');
@@ -314,16 +308,16 @@
 					}else{
 						$("#enddateHelp").html('');
 					}
-					
+
 				});
-				
+
 			});
 			function getToday(){
 				var date = new Date();
 				return date.getFullYear()+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+("0"+date.getDate()).slice(-2);
 			}
 		</script>
-		
+
 		<!-- 입력값 유효성 검사 -->
 		<script>
 			function validation(){
@@ -336,57 +330,57 @@
 				var sample4_postcode = document.getElementById("sample4_postcode");
 				var sample4_roadAddress = document.getElementById("sample4_roadAddress");
 				var sample4_detailAddress = document.getElementById("sample4_detailAddress");
-				var exampleFormControlTextarea3 = document.getElementById("exampleFormControlTextarea3");
-				//alert(inputTitle.value+"/"+mem_number.value+"/"+event_date.value+"/"+end_date.value+"/"+sample4_postcode.value+"/"+sample4_roadAddress.value+"/"+sample4_detailAddress.value+"/"+exampleFormControlTextarea3.value);
+				var description = document.getElementById("description");
+
 				if(inputTitle.value==""){
 					alert("소모임 제목을 입력하세요.");
 					inputTitle.focus();
-					return false;	
+					return false;
 				}
 				if(pictures.value==""){
 					alert("사진을 등록해주세요.");
 					pictures.focus();
-					return false;	
+					return false;
 				}
 				if(memnumber.value==""){
 					alert("인원수를 선택해주세요.");
 					memnumber.focus();
-					return false;	
+					return false;
 				}
 				if(inputRegion.value==""){
 					alert("지역구를 선택해주세요.");
 					inputRegion.focus();
-					return false;	
+					return false;
 				}
 				if(event_date.value==""){
 					alert("소모임 날짜를 확인해주세요.");
 					event_date.focus();
-					return false;	
+					return false;
 				}
 				if(end_date.value==""){
 					alert("모집마감 날짜를 확인해주세요.");
 					end_date.focus();
-					return false;	
+					return false;
 				}
 				if(sample4_postcode.value==""){
 					alert("주소를 확인해주세요.");
 					sample4_postcode.focus();
-					return false;	
+					return false;
 				}
 				if(sample4_roadAddress.value==""){
 					alert("주소를 확인해주세요.");
 					sample4_roadAddress.focus();
-					return false;	
+					return false;
 				}
 				if(sample4_detailAddress.value==""){
 					alert("주소를 확인해주세요.");
 					sample4_detailAddress.focus();
-					return false;	
+					return false;
 				}
-				if(exampleFormControlTextarea3.value==""){
+				if(description.value==""){
 					alert("소모임 설명을 작성해주세요.");
-					exampleFormControlTextarea3.focus();
-					return false;	
+					description.focus();
+					return false;
 				}
 			}
 		</script>

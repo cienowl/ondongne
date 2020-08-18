@@ -182,7 +182,7 @@
                             <!-- Card -->
                             <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.circle';">
                                 <!-- Card image -->
-                                <img class="card-img-top index-intro" src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" alt="Card image cap">
+                                <img class="card-img-top index-intro h-100" src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" alt="Card image cap">
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
@@ -201,7 +201,7 @@
                             <!-- Card -->
                             <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.sell';">
                                 <!-- Card image -->
-                                <img class="card-img-top index-intro" src="img/index/fleemarket.png" alt="Card image cap">
+                                <img class="card-img-top index-intro h-100" src="img/index/fleemarket.png" alt="Card image cap">
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
@@ -220,7 +220,7 @@
                             <!-- Card -->
                             <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.hotplace';">
                                 <!-- Card image -->
-                                <img class="card-img-top index-intro" src="img/index/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg" alt="Card image cap">
+                                <img class="card-img-top index-intro h-100" src="img/index/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg" alt="Card image cap">
                                 <!-- Card content -->
                                 <div class="card-body">
                                     <!-- Title -->
@@ -362,8 +362,8 @@
                 var inputEmail = document.getElementById("signupEmail");
                 var inputPassword1 = document.getElementById("signupPassword1");
                 var inputPassword2 = document.getElementById("signupPassword2");
-                var inputPhone = document.getElementById("signupPhone"); 
-               
+                var inputPhone = document.getElementById("signupPhone");
+
                 // var checkAgree = document.getElementById("checkAgree");
 
                 // alert(checkAgree.value);
@@ -404,11 +404,11 @@
                     inputPassword2.focus();
                     return false;
                 }
-                
+
                 if (inputPhone.value==""){
-                	alert("핸드폰 번호를 입력하세요.");
-                	inputPhone.focus();
-                	return false;
+                    alert("핸드폰 번호를 입력하세요.");
+                    inputPhone.focus();
+                    return false;
                 }
 
                 //비밀번호와 비밀번호 확인이 일치 하지 않을 경우
@@ -459,8 +459,7 @@
                     }
                 }
             }
-            
-          
+
         </script>
 
         <script>
@@ -505,7 +504,14 @@
                             type:"GET",
                             // dataType:"html",             //연결하는 문서의 타입
                             success:function(request){
-                                $("#checkDupEmail").append(request);
+                                console.log(request.trin());
+                                if (request.trim() != '') {
+                                    $("#checkDupEmail").append(request);
+                                    $("#signupEmail").val('');
+                                } else {
+                                    $('#checkDupEmail').append(request);
+                                }
+                                
                             },
                             error:function(request,status,error){
                                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -513,7 +519,7 @@
                         });
                     }
                 });
-                
+
                 //회원가입 폼에서 핸드폰번호 db 조회 확인
                 $("#signupPhone").blur(function(){
                     var phone = $("#signupPhone").val();
@@ -524,18 +530,18 @@
                             url:'checkPhone.jsp?inputPhone='+phone,
                             type:"GET",
                             success:function(request){
-                            	//console.log(request+"/"+$("#checkDupPhone").val());
+                                //console.log(request+"/"+$("#checkDupPhone").val());
                                 console.log(request.trim());
-                            	if(request.trim()!=""){
-                            		$("#checkDupPhone").append(request);
-                                	$("#signupPhone").val('');    
-                                }else{
-                                	$("#checkDupPhone").append(request);
+                                if (request.trim() != "") {
+                                    $("#checkDupPhone").append(request);
+                                    $("#signupPhone").val('');
+                                } else {
+                                    $("#checkDupPhone").append(request);
                                 }
                             },
                             error:function(request,status,error){
                                 //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                            	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                             }
                         });
                     }

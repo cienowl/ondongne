@@ -28,7 +28,7 @@
 			#{is_parcel},
 			#{is_active},
 			#{pictures},
-			#{tags},
+			'tags',
 			now()
 		)
 	</insert>

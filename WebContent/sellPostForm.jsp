@@ -47,17 +47,22 @@
         <!-- Main Start -->
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn mb-5">
-
-                <div class="row mb-4">
-                    <h2 class="font-weight-bold dark-grey-text">판매물품 정보 등록</h2>
-                </div>
-
-                <form action="submit.sell" method="POST">
+                <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">판매물품 정보를 등록해주세요.</h2>
+                <form action="submit.sell" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="inputTitle">판매글 제목</label>
                             <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title"/>
                         </div>
+                        <div class="form-group col-md-6">
+                            <label for="pictures">사진</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile"/>
+                                <label class="custom-file-label" for="pictures">사진 선택</label>
+                            </div>
+                        </div>
+
+                        
                     </div>
 
                     <div class="form-row">
@@ -116,21 +121,13 @@
                         </div>
                     </div>
 
-                    <!-- TODO: 사진 입력 -->
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="pictures">사진</label>
-                            <!-- <textarea class="form-control" id="description" rows="7" class="description" style="width: 100%;"></textarea> -->
-                        </div>
-                    </div>
-
                     <div class="form-row float-right">
                         <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
-                        <button type="submit" class="btn btn-lg btn-primary">등록</button>
+                        <button type="submit" class="btn btn-lg btn-primary" onclick="return validation();">등록</button>
                         <button type="button" class="btn btn-lg btn-danger" href="view.sell">취소</button>
                     </div>
 
-                    <div class="clearfix pb-5"></div>
+                    <div class="clearfix mb-4"></div>
 
                 </form>
 
@@ -159,18 +156,46 @@
             new WOW().init();
         </script>
 
-        <!-- tag js url: https://codepen.io/sniperwolf/pen/geFxq-->
-        <script src="https://cdn.rawgit.com/sniperwolf/taggingJS/master/tagging.min.js"></script>
         <script>
-            // More info: https://github.com/sniperwolf/taggingJS
-            // jQuery on Ready example
-            (function( $, window, document, undefined ) {
-                $( document ).ready(function() {
-                    var t = $( "#tag" ).tagging();
-                    t[0].addClass( "form-control" );
-                    // console.log( t[0] );
-                });
-            })( window.jQuery, window, document );
+            function validation() {
+                var inputTitle = document.getElementById("inputTitle");
+                var pictures = document.getElementById("pictures");
+                var sellPrice = document.getElementById("sellPrice");
+                var sellMethod = document.getElementById("sellMethod");
+                var inputRegion = document.getElementById("inputRegion");
+                var description = document.getElementById("description");
+
+                if (inputTitle.value == '') {
+                    alert('판매글 제목을 입력해주세요.');
+                    inputTitle.focus();
+                    return false;
+                }
+                if (pictures.value == '') {
+                    alert('사진을 등록해주세요.');
+                    pictures.focus();
+                    return false;
+                }
+                if (sellPrice.value == '') {
+                    alert('판매가를 입력해주세요.');
+                    sellPrice.focus();
+                    return false;
+                }
+                if (sellMethod.value == '') {
+                    alert('판매방법을 선택해주세요.');
+                    sellMethod.focus();
+                    return false;
+                }
+                if (inputRegion.value == '') {
+                    alert('지역구를 선택해주세요.');
+                    inputRegion.focus();
+                    return false;
+                }
+                if (description.value == '') {
+                    alert('판매물품 설명을 작성해주세요.');
+                    description.focus();
+                    return false;
+                }
+            }
         </script>
 
     </body>
