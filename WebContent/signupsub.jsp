@@ -80,8 +80,7 @@
                         </div>
                          <div class="form-group col-md-6">
                          	프로필사진</br>
-                        	<button type="button" name="image_reset" id="image_reset" class="btn light-green lighten-4 btn-sm"><i class="fas fa-undo mr-1"></i>프로필사진 초기화</button>
-                        	<button type="button" name="image_update" id="image_update" class="btn light-green lighten-4 btn-sm"><i class="fas fa-magic mr-1"></i>프로필사진 변경</button>
+                        	<button type="button" name="image_reset" id="image_reset" class="btn light-green lighten-4 btn-sm" ><i class="fas fa-undo mr-1"></i>프로필사진 초기화</button>
                         </div>
                     </div>
                     
