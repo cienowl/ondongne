@@ -78,6 +78,11 @@
                             <input type="text" class="form-control" id="inputEmail" placeholder="" name="inputEmail" value="<%=email%>" readonly/>
                             <!-- <small id="emailHelp" class="form-text text-danger">[주의] 이메일 변경시 로그인 이메일이 변경됩니다!</small> -->
                         </div>
+                         <div class="form-group col-md-6">
+                         	프로필사진</br>
+                        	<button type="button" name="image_reset" id="image_reset" class="btn light-green lighten-4 btn-sm"><i class="fas fa-undo mr-1"></i>프로필사진 초기화</button>
+                        	<button type="button" name="image_update" id="image_update" class="btn light-green lighten-4 btn-sm"><i class="fas fa-magic mr-1"></i>프로필사진 변경</button>
+                        </div>
                     </div>
                     
                     <div class="form-row">
@@ -259,6 +264,10 @@
                             <label for="inputEmail">이메일</label>
                             <input type="text" class="form-control" id="inputEmail" placeholder="" name="inputEmail" value="<%=email%>" readonly/>
                             <!-- <small id="emailHelp" class="form-text text-danger">[주의] 이메일 변경시 로그인 이메일이 변경됩니다!</small> -->
+                        </div>
+                         <div class="form-group col-md-6">
+                         	프로필사진</br>
+                        	<button type="button" name="image_reset" id="image_reset" class="btn light-green lighten-4 btn-sm" ><i class="fas fa-undo mr-1"></i>프로필사진 초기화</button>
                         </div>
                     </div>
                     
@@ -702,6 +711,29 @@
                 //     });
                 // });
             });
+        </script>
+
+         <!-- Avatar 초기화 버튼 눌렀을 때 -->
+        <script>
+        	$(document).ready(function(){
+        		$("#image_reset").click(function(){
+        			var check = confirm("정말로 초기화하시겠습니까?");
+        			if(check==true){
+        				$.ajax({
+        					url:"deleteAvatar.users",
+        					type:"GET",
+        					success:function(request){
+        						alert("초기화가 완료되었습니다.");
+        					},
+        					error:function(request){
+        						alert("error");
+        					}
+        				})
+        			}else if(check==false){
+        				alert("초기화가 취소되었습니다.");
+        			}
+        		})
+        	})
         </script>
 
     </body>

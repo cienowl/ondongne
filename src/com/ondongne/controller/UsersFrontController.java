@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.UserAvatarDeleteAction;
 import com.ondongne.action.UserAvatarSetAction;
 import com.ondongne.action.UserDeleteAction;
 import com.ondongne.action.UserLostEmail;
@@ -104,6 +105,15 @@ public class UsersFrontController extends HttpServlet
 					e.printStackTrace();
 				}
 				
+			}
+			
+			else if (command.equals("/deleteAvatar.users")) {
+				action = new UserAvatarDeleteAction();
+				try {
+					forward = action.execute(request, response);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
 			}
 			
 			else if (command.equals("/lostid.users")) {

@@ -113,4 +113,18 @@ public class UsersService {
 		return email;
 	}
 	
+	// 아바타 지우기
+	public boolean deleteAvatar(String loginEmail) {
+		boolean isDeleteSuccess = false;
+		DataAccessUsers daoUser = DataAccessUsers.getInstance();
+		int deleteCount = daoUser.deleteAvatar(loginEmail);
+		
+		if(deleteCount>0) {
+			isDeleteSuccess = true;
+			System.out.println("deleteAvatar"+isDeleteSuccess);
+		}
+		
+		return isDeleteSuccess;
+	}
+	
 }

@@ -97,6 +97,16 @@ public class DataAccessUsers {
 
 	}
 	
+	public int deleteAvatar(String loginEmail) {
+		
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();	
+		int deleteCount = sqlSession.update("deleteAvatar", loginEmail);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return deleteCount;
+	}	
 	public String findEmail(DataTransferUsers dtoUser) {
 		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();

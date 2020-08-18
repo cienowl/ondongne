@@ -44,5 +44,9 @@
 	<select id="checkPhone" parameterType="String" resultType="String">
 		select phone from users where phone=#{phone};
 	</select>
+	
+	<update id="deleteAvatar" parameterType="String">
+		update users set profile_picture=null WHERE email=#{loginEmail};
+	</update>
 
 </mapper>
