@@ -1,6 +1,4 @@
-<!--
-작성자: 이호준, 김나예
--->
+<!-- 작성자: 이호준, 김나예 -->
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
@@ -62,14 +60,10 @@
             <!-- Right -->
             <ul class="navbar-nav nav-flex-icons">
                 <li class="nav-item ml-1">
-                    <a href="" class="nav-link" type="button" data-toggle="modal" data-target="#signinModal">
-                    로그인
-                    </a>
+                    <a href="" class="nav-link" type="button" data-toggle="modal" data-target="#signinModal">로그인</a>
                 </li>
                 <li class="nav-item ml-1">
-                    <a href="" class="nav-link" type="button" data-toggle="modal" data-target="#signupModal">
-                    회원가입
-                    </a>
+                    <a href="" class="nav-link" type="button" data-toggle="modal" data-target="#signupModal">회원가입</a>
                 </li>
             </ul>
         </div>

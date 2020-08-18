@@ -14,7 +14,6 @@
 
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,7 +28,6 @@
         <link href="css/mdb.min.css" rel="stylesheet">
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet">
-
         <style type="text/css">
             @media (max-width: 770px) {
                 .navbar {
@@ -172,7 +170,7 @@
                                                 </ol>
                                                 <div class="carousel-inner" role="listbox">
                                                     <div class="carousel-item active">
-                                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide">
+                                                        <img class="d-block w-100" src="img/sell/<%= sellList.get(i).getPictures() %>" alt="First slide">
                                                     </div>
                                                     <div class="carousel-item">
                                                         <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
@@ -257,6 +255,20 @@
                         <% } %>
                     </div>
 
+                    <%-- <style>
+                        /* .imgtest {
+                            background: url('img/sell/<%=sellList.get(i).getPictures()%>');
+
+                            Full height */
+                            height: 100%;
+
+                            /* Center and scale the image nicely */
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                        } */
+                    </style> --%>
+
                     <!-- Sell 카드 -->
                     <div class="tab-content mb-5">
                         <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
@@ -265,7 +277,10 @@
                                 <% dataTarget = "sellList" + Integer.toString(i); %>
                                 <div class="col-md-6 col-lg-3">
                                     <a class="card hoverable mb-4" data-toggle="modal" data-target="#<%= dataTarget %>">
-                                        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" alt="Card image cap">
+                                        <%-- <div class="imgtest"></div> --%>
+                                        <div class="">
+                                        <img class="card-img-top" src="img/sell/<%= sellList.get(i).getPictures() %>" alt="Card image cap" style="height: 200px;">
+                                        </div>
                                         <div class="card-body">
                                             <h5 class="mb-3 cardTitle"><%= sellList.get(i).getTitle() %></h5>
                                             <p class="font-small grey-text mb-2 cardEmail"><%= sellList.get(i).getEmail() %></p>
@@ -278,9 +293,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /Sell 카드 -->
+
                 </section>
-                <!-- Section -->
+
             </div>
         </main>
         <!--Main layout-->
@@ -331,7 +346,7 @@
                                         $('#cardContents').append(
                                             '<div class="col-md-6 col-lg-3">'+
                                                 '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+index+'">'+
-                                                    '<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" alt="Card image cap">'+
+                                                    '<img class="card-img-top" src="img/sell/'+cardResult.pictures+'" alt="Card image cap">'+
                                                     '<div class="card-body">'+
                                                         '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
                                                         '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.email+'</p>'+
@@ -356,7 +371,7 @@
                                                                     '</ol>'+
                                                                     '<div class="carousel-inner" role="listbox">'+
                                                                         '<div class="carousel-item active">'+
-                                                                            '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide">'+
+                                                                            '<img class="d-block w-100" src="img/sell/'+cardResult.pictures+'" alt="First slide">'+
                                                                         '</div>'+
                                                                         '<div class="carousel-item">'+
                                                                             '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">'+

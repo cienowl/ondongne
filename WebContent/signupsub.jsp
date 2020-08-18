@@ -5,12 +5,11 @@
     JavaScript  - 이호준, 김나예, 한송희
 -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="com.ondongne.dao.DataAccessUsers"%>
 <%@page import="com.ondongne.dto.DataTransferUsers" %>
-
 
 <!DOCTYPE html>
 <html>
@@ -35,9 +34,7 @@
         </style>
     </head>
 
-
     <body>
-
         <header>
             <jsp:include page="navbar_signon.jsp"/>
         </header>
@@ -62,13 +59,12 @@
 			String region2 = userBean.getRegion2();
 			String region3 = userBean.getRegion3();
 		%>
-		
 
         <main>
             <div class="container my-5 pt-5">
 
                 <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">추가정보 입력</h2>
-		<% if(birthday==null||gender==null||zipcode==null||address==null||address_detail==null||region1==null||region2==null||region3==null){ %>
+                <% if(birthday==null||gender==null||zipcode==null||address==null||address_detail==null||region1==null||region2==null||region3==null){ %>
 				<!-- null 있을 때 form (처음 수정하는 경우) -->
                 <form action="updatesub.users" method="POST">
 
@@ -78,9 +74,9 @@
                             <input type="text" class="form-control" id="inputEmail" placeholder="" name="inputEmail" value="<%=email%>" readonly/>
                             <!-- <small id="emailHelp" class="form-text text-danger">[주의] 이메일 변경시 로그인 이메일이 변경됩니다!</small> -->
                         </div>
-                         <div class="form-group col-md-6">
-                         	프로필사진</br>
-                        	<button type="button" name="image_reset" id="image_reset" class="btn light-green lighten-4 btn-sm" ><i class="fas fa-undo mr-1"></i>프로필사진 초기화</button>
+                        <div class="form-group col-md-6">
+                            프로필사진<br/>
+                            <button type="button" name="image_reset" id="image_reset" class="btn light-green lighten-4 btn-sm" ><i class="fas fa-undo mr-1"></i>프로필사진 초기화</button>
                         </div>
                     </div>
                     
@@ -95,7 +91,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputPhone">전화번호</label>
-                            <input type="number" class="form-control" id="inputPhone" maxlength="11" oninput="numberMaxLength(this);" name="inputPhone" value="<%=phone%>"/>
+                            <input type="text" class="form-control" id="inputPhone" maxlength="11" oninput="numberMaxLength(this);" name="inputPhone" value="<%=phone%>" numbersOnly/>
                             
                         </div>
                     </div>
@@ -103,14 +99,14 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputBirthday">생년월일</label>
-                            <input type="number" class="form-control" id="inputBirthday" name="inputBirthday" minlength="8" maxlength="8" placeholder="YYYYMMDD" numberonly="true" oninput="numberMaxLength(this);"  onchange="numberMinLength(this);" />
+                            <input type="text" class="form-control" id="inputBirthday" name="inputBirthday" minlength="8" maxlength="8" placeholder="YYYYMMDD" numberonly="true" oninput="numberMaxLength(this);"  onchange="numberMinLength(this);" numbersOnly/>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputGender">성별</label></br>
-                           	<input class="m-2" type="radio" name="inputGender" value="male" />남
-                           	<input class="m-2" type="radio" name="inputGender" value="female"/>여
+                            <label for="inputGender">성별</label><br/>
+                            <input class="m-2" type="radio" name="inputGender" value="male" />남
+                            <input class="m-2" type="radio" name="inputGender" value="female"/>여
                         </div>
                     </div>
 
@@ -175,7 +171,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputRegion2">지역구2</label>
                             <select id="inputRegion2" class="form-control" name="inputRegion2">
-                               	<option selected disabled value="">선택</option>
+                                <option selected disabled value="">선택</option>
                                 <option>강남구</option>
                                 <option>강동구</option>
                                 <option>강북구</option>
@@ -237,13 +233,13 @@
                         </div>
                     </div>
                     
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputPassword1">비밀번호</label>
                             <input type="password" class="form-control" id="inputPassword1" placeholder="" name="inputPassword1"/>
                         </div>
                         
-                         <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <label for="inputPassword2">비밀번호확인</label>
                             <input type="password" class="form-control" id="inputPassword2" placeholder="" name="inputPassword2"/>
                         </div>
@@ -264,9 +260,9 @@
                             <input type="text" class="form-control" id="inputEmail" placeholder="" name="inputEmail" value="<%=email%>" readonly/>
                             <!-- <small id="emailHelp" class="form-text text-danger">[주의] 이메일 변경시 로그인 이메일이 변경됩니다!</small> -->
                         </div>
-                         <div class="form-group col-md-6">
-                         	프로필사진</br>
-                        	<button type="button" name="image_reset" id="image_reset" class="btn light-green lighten-4 btn-sm" ><i class="fas fa-undo mr-1"></i>프로필사진 초기화</button>
+                        <div class="form-group col-md-6">
+                            프로필사진<br/>
+                            <button type="button" name="image_reset" id="image_reset" class="btn light-green lighten-4 btn-sm" ><i class="fas fa-undo mr-1"></i>프로필사진 초기화</button>
                         </div>
                     </div>
                     
@@ -281,7 +277,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputPhone">전화번호</label>
-                            <input type="number" class="form-control" id="inputPhone" maxlength="11" oninput="numberMaxLength(this);" placeholder="- 없이 입력" name="inputPhone" value="<%=phone%>"/>
+                            <input type="text" class="form-control" id="inputPhone" maxlength="11" oninput="numberMaxLength(this);" placeholder="- 없이 입력" name="inputPhone" value="<%=phone%>" numbersOnly/>
                             
                         </div>
                     </div>
@@ -289,19 +285,19 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputBirthday">생년월일</label>
-                            <input type="number" class="form-control" id="inputBirthday" name="inputBirthday" minlength="8" maxlength="8" numberonly="true" oninput="numberMaxLength(this);"  onchange="numberMinLength(this);" value="<%=birthday%>"/>
+                            <input type="text" class="form-control" id="inputBirthday" name="inputBirthday" minlength="8" maxlength="8" oninput="numberMaxLength(this);" onchange="numberMinLength(this);" value="<%=birthday%>" numbersOnly/>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputGender">성별</label></br>
                             <% if(gender.equals("male")){ %>
-                            	<input class="m-2" type="radio" name="inputGender" value="male" checked/>남
-                            	<input class="m-2" type="radio" name="inputGender" value="female"/>여
+                                <input class="m-2" type="radio" name="inputGender" value="male" checked/>남
+                                <input class="m-2" type="radio" name="inputGender" value="female"/>여
                             <%} else if(gender.equals("female")){ %>
-                           		<input class="m-2" type="radio" name="inputGender" value="male" />남
-                            	<input class="m-2" type="radio" name="inputGender" value="female" checked/>여
-                            	<%} %>
+                                <input class="m-2" type="radio" name="inputGender" value="male" />남
+                                <input class="m-2" type="radio" name="inputGender" value="female" checked/>여
+                            <%} %>
                         </div>
                     </div>
 
@@ -428,13 +424,13 @@
                         </div>
                     </div>
                     
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputPassword1">비밀번호</label>
                             <input type="password" class="form-control" id="inputPassword1" placeholder="" name="inputPassword1"/>
                         </div>
                         
-                         <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <label for="inputPassword2">비밀번호확인</label>
                             <input type="password" class="form-control" id="inputPassword2" placeholder="" name="inputPassword2"/>
                         </div>
@@ -668,6 +664,12 @@
 
             }
         </script>
+        
+        <script>
+            $("input:text[numbersOnly]").on("keyup", function() {
+                $(this).val($(this).val().replace(/[^0-9]/g,""));
+            });
+        </script>
 
         <script>
             $(document).ready(function(){
@@ -712,27 +714,27 @@
             });
         </script>
 
-         <!-- Avatar 초기화 버튼 눌렀을 때 -->
+        <!-- Avatar 초기화 버튼 눌렀을 때 -->
         <script>
-        	$(document).ready(function(){
-        		$("#image_reset").click(function(){
-        			var check = confirm("정말로 초기화하시겠습니까?");
-        			if(check==true){
-        				$.ajax({
-        					url:"deleteAvatar.users",
-        					type:"GET",
-        					success:function(request){
-        						alert("초기화가 완료되었습니다.");
-        					},
-        					error:function(request){
-        						alert("error");
-        					}
-        				})
-        			}else if(check==false){
-        				alert("초기화가 취소되었습니다.");
-        			}
-        		})
-        	})
+            $(document).ready(function(){
+                $("#image_reset").click(function(){
+                    var check = confirm("정말로 초기화하시겠습니까?");
+                    if(check==true){
+                        $.ajax({
+                            url:"deleteAvatar.users",
+                            type:"GET",
+                            success:function(request){
+                                alert("초기화가 완료되었습니다.");
+                            },
+                            error:function(request){
+                                alert("error");
+                            }
+                        })
+                    }else if(check==false){
+                        alert("초기화가 취소되었습니다.");
+                    }
+                })
+            })
         </script>
 
     </body>

@@ -109,12 +109,9 @@
                     };
                     %>
                     <% for (int i = 0; i < 3; i++) { %>
-                        <!-- slide -->
                         <div class="<%= carouselClass[i] %>">
                             <div class="view" style="background-image: url('<%= imgUrl[i] %>'); background-repeat: no-repeat; background-size: cover;">
-                                <!-- Mask & flexbox options -->
                                 <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-                                    <!-- Content -->
                                     <div class="container">
                                         <div class="white-text col-md-12 wow fadeIn">
                                             <h1 class="display-4 mb-4">
@@ -138,18 +135,11 @@
                                             <% } %>
                                         </div>
                                     </div>
-                                    <!-- Content -->
                                 </div>
-                                <!-- Mask & flexbox options -->
                             </div>
                         </div>
-                        <!-- /slide -->
                     <% } %>
-
                 </div>
-                <!--/.Slides-->
-
-                <!--Controls-->
                 <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -158,8 +148,6 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-                <!--/.Controls-->
-
             </div>
             <!-- /.Carousel Wrapper -->
         </header>
@@ -167,7 +155,7 @@
 
         <main>
 
-            <!--Section: Content-->
+            <!-- Section: Content -->
             <div class="container my-5 py-4 wow fadeIn">
                 <section class="py-5">
 
@@ -239,9 +227,9 @@
 
                 </section>
             </div>
-            <!--Section: Content-->
+            <!-- /Section: Content -->
 
-            <!-- Section: QnA -->
+            <!-- /Section: QnA -->
             <div class="faq-background-color">
                 <div class="container my-5 pt-5 fadeIn">
                     <section class="pb-5">
@@ -286,9 +274,9 @@
                     </section>
                 </div>
             </div>
-            <!-- Section: QnA -->
+            <!-- /Section: QnA -->
 
-            <!-- Call to action -->
+            <!-- Section: Call to action -->
             <div class="container my-5 py-5">
                 <section class="text-center px-md-5 mx-md-5 my-5 dark-grey-text fadeIn">
                     <h1 class="font-weight-bold mb-4 display-4">나에게 딱 맞는 동네정보 찾기</h1>
@@ -308,7 +296,7 @@
 
                 </section>
             </div>
-            <!-- Section: Call to action -->
+            <!-- /Section: Call to action -->
 
         </main>
 
@@ -511,7 +499,7 @@
                                 } else {
                                     $('#checkDupEmail').append(request);
                                 }
-                                
+
                             },
                             error:function(request,status,error){
                                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

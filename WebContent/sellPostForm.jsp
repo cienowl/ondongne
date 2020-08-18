@@ -31,20 +31,14 @@
     </head>
 
     <body>
-
-        <!-- Header Start -->
         <header>
-            <!-- Navbar signin form -->
             <% if (session.getAttribute("email") != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
         </header>
-        <!-- Header End -->
 
-
-        <!-- Main Start -->
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn mb-5">
                 <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">판매물품 정보를 등록해주세요.</h2>
@@ -61,14 +55,11 @@
                                 <label class="custom-file-label" for="pictures">사진 선택</label>
                             </div>
                         </div>
-
-                        
                     </div>
-
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="sellPrice">판매가격</label>
-                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice">
+                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice" numbersOnly>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="sellmethod">거래방법</label>
@@ -79,7 +70,6 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputRegion">판매지역</label>
@@ -113,37 +103,28 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="description">판매 설명글</label>
                             <textarea class="form-control" id="description" rows="12" name="description"></textarea>
                         </div>
                     </div>
-
                     <div class="form-row float-right">
                         <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
                         <button type="submit" class="btn btn-lg btn-primary" onclick="return validation();">등록</button>
                         <button type="button" class="btn btn-lg btn-danger" href="view.sell">취소</button>
                     </div>
-
                     <div class="clearfix mb-4"></div>
-
                 </form>
-
             </div>
         </main>
-        <!-- Main End -->
-
 
         <!-- Footer import -->
         <%@ include file="footer.jsp" %>
 
-
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
@@ -154,6 +135,11 @@
         <script type="text/javascript">
             // Animations initialization
             new WOW().init();
+        </script>
+        <script>
+            $("input:text[numbersOnly]").on("keyup", function() {
+                $(this).val($(this).val().replace(/[^0-9]/g,""));
+            });
         </script>
 
         <script>
@@ -171,11 +157,13 @@
                     return false;
                 }
                 if (pictures.value == '') {
+                    //TODO: 이미지만 가능하게 제한 걸기
                     alert('사진을 등록해주세요.');
                     pictures.focus();
                     return false;
                 }
                 if (sellPrice.value == '') {
+                    //TODO: 숫자만 가능하게 제한 걸기
                     alert('판매가를 입력해주세요.');
                     sellPrice.focus();
                     return false;
