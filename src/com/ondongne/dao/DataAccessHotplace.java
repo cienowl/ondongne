@@ -102,5 +102,28 @@ public class DataAccessHotplace {
 		
 		return insertCount;
 	}
+
+	public List<HotplaceBean> selectscrapPlace(String userID) {
+		// TODO Auto-generated method stub
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		
+		List<HotplaceBean> scrapPlace = sqlSession.selectList("showScrap", userID);
+		sqlSession.close();
+		
+		return scrapPlace;
+	}
+
+	public int scrapPlaceCancle(ScrapPlaceBean scrapBean) {
+		// TODO Auto-generated method stub
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		
+		int deleteCount = sqlSession.delete("cancelScrapPlace", scrapBean);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return deleteCount;
+	}
 	
 }

@@ -9,7 +9,9 @@ import javax.servlet.http.HttpSession;
 import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.DataTransferCircle;
 import com.ondongne.dto.DataTransferSell;
+import com.ondongne.dto.HotplaceBean;
 import com.ondongne.service.CircleService;
+import com.ondongne.service.HotplaceService;
 import com.ondongne.service.SellService;
 
 public class LoadMypageAction implements Action {
@@ -42,6 +44,10 @@ public class LoadMypageAction implements Action {
 			List<DataTransferSell> sellList = sellService.selectJoinSell(sessionEmail);
 			request.setAttribute("sellList", sellList);
 			
+//			TODO: Hotplace 스크랩 불러오기
+			HotplaceService hotplaceSVC = new HotplaceService();
+			List<HotplaceBean> scrapList = hotplaceSVC.selectScrapPlace(sessionEmail);
+			request.setAttribute("scrapList", scrapList);
 			
 			
 			forward.setPath("mypage.jsp");

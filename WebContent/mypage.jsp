@@ -1,3 +1,4 @@
+<%@page import="com.ondongne.dto.HotplaceBean"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
@@ -22,6 +23,9 @@
     List<DataTransferSell> joinSellList = (List<DataTransferSell>)request.getAttribute("sellList");
     //Sell 등록한 게시물
     List<DataTransferSell> mySellList = (List<DataTransferSell>)request.getAttribute("mySellList");
+    
+    //Hotplace 스크랩 게시물
+    List<HotplaceBean> scrapPlace = (List<HotplaceBean>)request.getAttribute("scrapList");
     
     //TODO: 프로필 사진은 session 에서
     
@@ -175,7 +179,27 @@
                                 <div class="card">
                                     <div class="card-header">핫플레이스 스크랩</div>
                                     <div class="card-body">
-                                        <%-- TODO: 핫플레이스 스크랩 구현 --%>
+                                        <table class="table table-hover">
+										<thead>
+											<tr class="text-center">
+												<th scope="col">지역</th>
+												<th scope="col">장소명</th>
+												<th scope="col">스크랩취소</th>
+											</tr>
+										</thead>
+										<form action="cancelPlace.hotplace">
+										<tbody>
+											<% for(int i = 0; i < scrapPlace.size() ; i++){   	%>
+											<input type="hidden" name="scrap_id" id="scrapid" value="<%=scrapPlace.get(i).getId()%>" />
+											<tr class="text-center">
+												<th><%=scrapPlace.get(i).getRegion() %></th>
+												<th><%=scrapPlace.get(i).getTitle() %></th>
+												<th><button type="submit" class="btn btn-sm btn-danger m-0" onclick="delete_check_hotPlace(this.form)"></button></th>
+											</tr>											
+											<% } %>
+										</tbody>
+										</form>
+									</table>
                                     </div>
                                 </div>
                             </div>

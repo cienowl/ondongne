@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.CancelScrapPlaceAction;
 import com.ondongne.action.GetHotplaceAction;
+import com.ondongne.action.LoadMypageAction;
 import com.ondongne.action.ScrapPlaceAction;
 import com.ondongne.dto.ActionForward;
 
@@ -28,7 +30,7 @@ public class HotplaceFrontController extends javax.servlet.http.HttpServlet {
 		Action action = null;
 
 		if (command.equals("/view.hotplace")) {
-//			핫플레이스 출력 페이지
+//			핫플레이스 모달 출력 페이지
 			action = new GetHotplaceAction();
 			try {
 				forward = action.execute(request, response);
@@ -39,6 +41,24 @@ public class HotplaceFrontController extends javax.servlet.http.HttpServlet {
 		else if (command.equals("/scrap.hotplace")) {
 			//핫플레이스 스크랩
 			action = new ScrapPlaceAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if (command.equals("/togoListPlace.hotplace")) {
+			//스크랩리스트 마이페이지에 출력
+			action = new LoadMypageAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if (command.equals("/cancelPlace.hotplace")) {
+			//스크랩리스트에서 삭제
+			action = new CancelScrapPlaceAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

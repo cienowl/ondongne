@@ -7,45 +7,39 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ondongne.dto.ActionForward;
-import com.ondongne.dto.HotplaceBean;
 import com.ondongne.dto.ScrapPlaceBean;
 import com.ondongne.service.HotplaceService;
 
-public class ScrapPlaceAction implements Action {
+public class CancelScrapPlaceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession();
-		ActionForward forward = new ActionForward();
-
+		
 		ScrapPlaceBean scrapBean = new ScrapPlaceBean();
-		scrapBean.setScrap_id(Integer.parseInt(request.getParameter("postid")));
-		scrapBean.setScrap_email((String) session.getAttribute("email"));
+		scrapBean.setScrap_email((String)session.getAttribute("email"));
+		scrapBean.setScrap_id(Integer.parseInt((String)request.getParameter("scrap_id")));
 		
-		HotplaceService hotplaceSvc = new HotplaceService();
-		boolean isWriteSuccess = hotplaceSvc.setHotplaceScrap(scrapBean);
+		HotplaceService hotplaceSVC = new HotplaceService();
+		boolean cancelSuccess = hotplaceSVC.cancelScrapPlace(scrapBean);
+		System.out.println("cancel scrapPlace" + cancelSuccess);
 		
-		//스크랩실패
-		if(!isWriteSuccess) {
+		ActionForward forward = null;
+		if(!cancelSuccess) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('등록실패')");
+			out.println("alert('취소실패')");
 			out.println("history.back();");
-			out.println("</script>");				
-		} else {
-			
-			System.out.println(scrapBean.getScrap_email());
-			System.out.println(scrapBean.getScrap_id());
-			
+			out.println("</script>");
+		}
+		else {
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("togoListPlace.hotplace");
+			forward.setPath("mypage.ondongne");
 		}
-		
-		
 		return forward;
 	}
 
