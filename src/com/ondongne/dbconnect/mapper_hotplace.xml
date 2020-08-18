@@ -36,6 +36,15 @@
 		select * from hotplace;
 	</select>
 	
+	<insert id="scrapHotplace"
+		parameterType="com.ondongne.dto.ScrapPlaceBean">
+		insert into helper_hotplace(scrap_email, scrap_id) values (#{scrap_email},
+		#{scrap_id});
+	</insert>
+	<select id="showScrap" parameterType="String" resultType="com.ondongne.dto.HotplaceBean">
+		select id, title, email, event_date from hotplace where id IN(select scrap_id from helper_hotplace where scrap_email=#{loginEmail});
+	</select>
+	
 	
 	
 	

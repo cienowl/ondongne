@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.ondongne.dto.HotplaceBean;
+import com.ondongne.dto.ScrapPlaceBean;
 
 public class DataAccessHotplace {
 
@@ -88,6 +89,18 @@ public class DataAccessHotplace {
 		sqlSession.close();
 		
 		return deleteCount;
+	}
+
+	public int scrapPlaceInsert(ScrapPlaceBean scrapBean) {
+		// TODO Auto-generated method stub
+		sqlFactory = getConnection();
+		SqlSession sqlSession = sqlFactory.openSession();
+		
+		int insertCount = sqlSession.insert("scrapHotplace", scrapBean);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return insertCount;
 	}
 	
 }

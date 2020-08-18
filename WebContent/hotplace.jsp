@@ -494,6 +494,7 @@
                             <div class="row">
                             <% for (int i = 0; i < hotplaceList.size(); i++) { %>
                                 <% dataTarget = "hotplaceList" + Integer.toString(i); %>
+                                
                                 <div class="col-md-6 col-lg-3">
                                     <a class="card hoverable mb-4" data-toggle="modal" data-target="#<%= dataTarget %>">
 

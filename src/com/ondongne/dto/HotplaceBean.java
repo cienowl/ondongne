@@ -14,7 +14,7 @@ public class HotplaceBean {
 	private String tags;
 	private String postdate;
 	private String lastupdate;
-
+	
 	public String getAdmin_id() {
 		return admin_id;
 	}
@@ -86,6 +86,6 @@ public class HotplaceBean {
 	}
 	public void setLastupdate(String lastupdate) {
 		this.lastupdate = lastupdate;
-	}
+	}	
 
 }

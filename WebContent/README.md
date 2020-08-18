@@ -204,3 +204,16 @@ CREATE TABLE `helper_sell` (
   CONSTRAINT `helper_sell_postid` FOREIGN KEY (`join_postid`) REFERENCES `sell` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ~~~
+
+helper_hotplace : 스크랩한 장소
+
+~~~sql
+CREATE TABLE `helper_hotplace` (
+  `scrap_id` int(11) NOT NULL,
+  `scrap_email` varchar(50) NOT NULL,
+  KEY `scrap_id_idx` (`scrap_id`),
+  KEY `scrap_email_idx` (`scrap_email`),
+  CONSTRAINT `scrap_email` FOREIGN KEY (`scrap_email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `scrap_id` FOREIGN KEY (`scrap_id`) REFERENCES `hotplace` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+~~~

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ondongne.dao.DataAccessHotplace;
 import com.ondongne.dto.HotplaceBean;
+import com.ondongne.dto.ScrapPlaceBean;
 
 public class HotplaceService {
 	
@@ -16,8 +17,18 @@ public class HotplaceService {
 		
 	}
 	
-	public void setHotplaceScrap() {
+	public boolean setHotplaceScrap(ScrapPlaceBean scrapBean) throws Exception {
 //		TODO 핫플레이스 스크랩
+		boolean isWriteSuccess = false;
+		
+		DataAccessHotplace hotplaceDAO = DataAccessHotplace.getInstance();
+		int insertCount = hotplaceDAO.scrapPlaceInsert(scrapBean);
+		
+		if(insertCount>0) 
+			isWriteSuccess = true;
+		
+		return isWriteSuccess;
+		
 	}
 	
 	public void getHotplaceScrap() {

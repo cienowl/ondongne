@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
 import com.ondongne.action.GetHotplaceAction;
+import com.ondongne.action.ScrapPlaceAction;
 import com.ondongne.dto.ActionForward;
 
 @WebServlet("*.hotplace")
@@ -29,6 +30,15 @@ public class HotplaceFrontController extends javax.servlet.http.HttpServlet {
 		if (command.equals("/view.hotplace")) {
 //			핫플레이스 출력 페이지
 			action = new GetHotplaceAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if (command.equals("/scrap.hotplace")) {
+			//핫플레이스 스크랩
+			action = new ScrapPlaceAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
