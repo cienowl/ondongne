@@ -59,7 +59,7 @@
                         <div class="form-group col-md-6">
                             <label for="pictures">사진</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="pictures" aria-describedby="inputFile">
+                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile">
                                 <label class="custom-file-label" for="pictures">사진 선택</label>
                             </div>
                         </div>
