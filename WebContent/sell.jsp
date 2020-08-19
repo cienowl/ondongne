@@ -6,9 +6,9 @@
 <%@page import="java.util.List"%>
 
 <%
-	List<DataTransferSell> sellList = (List<DataTransferSell>) request.getAttribute("sellList");
-	DecimalFormat priceFormat = new DecimalFormat("###,###");
-    String dataTarget = null;
+	//List<DataTransferSell> sellList = (List<DataTransferSell>) request.getAttribute("sellList");
+	//DecimalFormat priceFormat = new DecimalFormat("###,###");
+    //String dataTarget = null;
     String sessionEmail = (String) session.getAttribute("email");
 %>
 
@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 mr-auto">
-                                    <button type="button" class="btn btn-block btn-outline-white" id="searchbtn">
+                                    <button type="button" class="btn btn-block btn-outline-white" id="searchBtn">
                                         <h6 class="text-white m-0">검색</h6>
                                     </button>
                                 </div>
@@ -134,6 +134,7 @@
                     </style>
 
                     <div id="modalSellContent">
+                    <%--
                         <%
                         String price = null;
                         String email = null;
@@ -255,7 +256,7 @@
                             </div>
                         </div>
                         <!-- /Modal: 판매글 내용 -->
-                        <% } %>
+                        <% } %> --%>
                     </div>
 
                     <%-- <style>
@@ -276,11 +277,11 @@
                     <div class="tab-content mb-5">
                         <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
                             <div class="row" id="cardContents">
-                            <% for (int i = 0; i < sellList.size(); i++) { %>
+                            <%-- <% for (int i = 0; i < sellList.size(); i++) { %>
                                 <% dataTarget = "sellList" + Integer.toString(i); %>
                                 <div class="col-md-6 col-lg-3">
                                     <a class="card hoverable mb-4" data-toggle="modal" data-target="#<%= dataTarget %>">
-                                        <%-- <div class="imgtest"></div> --%>
+                                        <div class="imgtest"></div>
                                         <div class="">
                                         <img class="card-img-top" src="img/sell/<%= sellList.get(i).getPictures() %>" alt="Card image cap" style="height: 200px;">
                                         </div>
@@ -292,7 +293,7 @@
                                         </div>
                                     </a>
                                 </div>
-                            <% } %>
+                            <% } %> --%>
                             </div>
                         </div>
                     </div>
@@ -312,12 +313,17 @@
         <script>
             $(document).ready(function() {
                 var sessionEmail = '<%=(String) session.getAttribute("email")%>';
-                $("#searchBox").on("keyup", function(){
+
+                //로딩 후 전체 목록 가져오기
+                getSellAll(sessionEmail);
+
+                //검색시 사용
+                $("#searchBtn").on("click", function(){
                     var searchWord = $("#searchBox").val();
                     if (searchWord != "") {
-                        getSell(searchWord);
+                        getSell(sessionEmail, searchWord);
                     } else {
-                        //getSellAll();
+                        getSellAll(sessionEmail);
                     }
                 });
             })
@@ -335,8 +341,7 @@
         </script>
 
         <script>
-            function getSellAll() {
-                //TODO: 입력 내용없을때 전체 내용으로 다시 업데이트 Ajax
+            function getSellAll(sessionEmail) {
                 $.ajax({
                     url:'getSellAll.jsp',
                     //data:{},
@@ -456,7 +461,6 @@
                                         '</div>'+
                                     '</div>'
                                 );
-
                                 if (sessionEmail != null) {
                                     if (sessionEmail == cardResult.email){
                                         $('#'+buttonSelector).append(
@@ -484,7 +488,7 @@
                                     }
                                 }
                             });
-                        } 
+                        }
                     },
                     error:function(request,status,error){
                         alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -492,15 +496,15 @@
                 });
             }
             //검색결과 Ajax
-            function getSell(searchWord) {
+            function getSell(sessionEmail, searchWord) {
                 $.ajax({
                     url:'getSell.jsp',
                     data:{'searchWord':searchWord},
                     type:'GET',
                     dataType:'JSON',
                     success:function(request){
-                        $('#cardContents').empty();     //Sell Card 삭제
-                        $('#modalSellContent').empty(); //Sell Modal 삭제
+                        $('#cardContents').empty();
+                        $('#modalSellContent').empty();
                         if (request != "") {
                             $.each(request, function(index, requestEach){
                                 var cardResult = JSON.parse(JSON.stringify(requestEach));
@@ -612,7 +616,6 @@
                                         '</div>'+
                                     '</div>'
                                 );
-
                                 if (sessionEmail != null) {
                                     if (sessionEmail == cardResult.email){
                                         $('#'+buttonSelector).append(
@@ -653,7 +656,6 @@
                     }
                 });
             }
-
             //게시글 삭제 확인
             function confirmDelete(form) {
                 console.log("글번호" + form.postid.value);
