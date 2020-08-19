@@ -46,12 +46,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputTitle">판매글 제목</label>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title"/>
+                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title" required/>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="pictures">사진</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile"/>
+                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile" required/>
                                 <label class="custom-file-label" for="pictures">사진 선택</label>
                             </div>
                         </div>
@@ -59,11 +59,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="sellPrice">판매가격</label>
-                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice" numbersOnly>
+                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice" numbersOnly required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="sellmethod">거래방법</label>
-                            <select id="sellMethod" class="form-control" name="sellMethod">
+                            <select id="sellMethod" class="form-control" name="sellMethod" required>
                                 <option selected disabled value="">선택</option>
                                 <option value="false">직거래</option>
                                 <option value="true">택배거래</option>
@@ -73,7 +73,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputRegion">판매지역</label>
-                            <select id="inputRegion" class="form-control" name="region">
+                            <select id="inputRegion" class="form-control" name="region" required>
                                 <option selected disabled value="">선택</option>
                                 <option>강남구</option>
                                 <option>강동구</option>
@@ -106,7 +106,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="description">판매 설명글</label>
-                            <textarea class="form-control" id="description" rows="12" name="description"></textarea>
+                            <textarea class="form-control" id="description" rows="12" name="description" required></textarea>
                         </div>
                     </div>
                     <div class="form-row float-right">
@@ -163,7 +163,6 @@
                     return false;
                 }
                 if (sellPrice.value == '') {
-                    //TODO: 숫자만 가능하게 제한 걸기
                     alert('판매가를 입력해주세요.');
                     sellPrice.focus();
                     return false;

@@ -34,70 +34,58 @@
 		<!-- Your custom styles (optional) -->
 		<link href="css/style.min.css" rel="stylesheet">
 
-		<!-- half-page-carousel image-->
 		<style type="text/css">
-		html, body, header, .top-carousel {
-			height: 60vh;
-		}
-
-		@media ( max-width : 740px) {
-			html, body, header, .carousel {
-				height: 100vh;
+			html, body, header, .top-carousel {
+				height: 60vh;
 			}
-		}
-
-		@media ( min-width : 800px) and (max-width: 850px) {
-			html, body, header, .carousel {
-				height: 100vh;
+			@media ( max-width : 740px) {
+				html, body, header, .carousel {
+					height: 100vh;
+				}
 			}
-		}
-
-		@media ( min-width : 800px) and (max-width: 850px) {
-			.navbar:not (.top-nav-collapse ) {
-				background: #880e4f !important;
+			@media ( min-width : 800px) and (max-width: 850px) {
+				html, body, header, .carousel {
+					height: 100vh;
+				}
 			}
-		}
+			@media ( min-width : 800px) and (max-width: 850px) {
+				.navbar:not (.top-nav-collapse ) {
+					background: #880e4f !important;
+				}
+			}
+			.modal-open .navbar-expand-lg {
+				padding-right: 16px !important;
+			}
 		</style>
 		<style>
-		.modal-open .navbar-expand-lg {
-			padding-right: 16px !important;
-		}
-		</style>
-		<style>
-		.input-grey .input-group-lg>.input-group-prepend>.input-group-text {
-			border-radius: .125rem;
-		}
-
-		.input-grey .form-control {
-			border-radius: .125rem;
-		}
-
-		.input-grey .form-control.form-control-lg {
-			font-size: 1rem;
-		}
-
-		.form-control:focus {
-			background-color: rgba(255, 255, 255, .3);
-		}
-
-		.input-grey input::placeholder {
-			color: #fff;
-		}
-
-		.input-grey .input-group-lg>.form-control:not(textarea) {
-			height: calc(1.5em + 1rem + 6px);
-		}
+			.input-grey .input-group-lg>.input-group-prepend>.input-group-text {
+				border-radius: .125rem;
+			}
+			.input-grey .form-control {
+				border-radius: .125rem;
+			}
+			.input-grey .form-control.form-control-lg {
+				font-size: 1rem;
+			}
+			.form-control:focus {
+				background-color: rgba(255, 255, 255, .3);
+			}
+			.input-grey input::placeholder {
+				color: #fff;
+			}
+			.input-grey .input-group-lg>.form-control:not(textarea) {
+				height: calc(1.5em + 1rem + 6px);
+			}
 		</style>
 
 		<!-- 소모임페이지 카드 제목길이, 이메일 길이 -->
 		<style>
-		#cardTitle, #cardEmail{
-			overflow:hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
+			.cardTitle, .cardEmail{
+				overflow:hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
 		</style>
-		
 		<style>
 			#listImage{
 				width:255px;
@@ -110,18 +98,11 @@
 
 		<!--Main Navigation-->
 		<header>
-			<!-- Navbar signin form -->
-			<%
-				if (sessionEmail != null) {
-			%>
-			<jsp:include page="navbar_signon.jsp" />
-			<%
-				} else {
-			%>
-			<jsp:include page="navbar_signin.jsp" />
-			<%
-				}
-			%>
+			<% if (sessionEmail != null) { %>
+				<jsp:include page="navbar_signon.jsp" />
+			<% } else { %>
+				<jsp:include page="navbar_signin.jsp" />
+			<% } %>
 
 			<!--Carousel Wrapper-->
 			<div id="carousel-example-1z" class="carousel slide carousel-fade"
@@ -230,7 +211,50 @@
 
 			</div>
 			<!--/.Carousel Wrapper-->
-		</header>
+
+
+
+			<!-- 페이지 화면 헤더 (Ajax 구현시 위 carousel 삭제후 사용)-->
+            <%-- <%
+            String writeButtonSelector = null;
+            if (sessionEmail == null) {
+                writeButtonSelector = "<button type=\"button\" class=\"btn btn-outline-white btn-lg\" data-toggle=\"modal\" data-target=\"#signinModal\">소모임 글쓰기";
+            } else {
+                writeButtonSelector = "<button type=\"button\" class=\"btn btn-outline-white btn-lg\" href=\"postform.circle\">소모임 글쓰기";
+            }
+            %>
+            <section style="background-image: url('img/index/fleemarket.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+                <div class="mask rgba-black-strong py-5">
+                    <div class="container text-center my-5">
+                        <h1 class="font-weight-bold text-center white-text pt-5 pb-3">우리동네 판매장터</h1>
+                        <p class="lead text-center white-text pt-2 mb-5">지금 바로 검색해서 필요한 물건을 찾아보세요!</p>
+                        <form class="input-grey mb-5">
+                            <div class="form-row">
+                                <div class="col-md-4 ml-auto">
+                                    <div class="input-group input-group-lg z-depth-1">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text rgba-white-light border-0"><i class="fa fa-envelope white-text"></i></span>
+                                        </div>
+                                        <input type="text" id="searchBox" name="search" class="form-control form-control-lg rgba-white-light white-text border-0 z-depth-0" placeholder="검색어 입력"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mr-auto">
+                                    <button type="button" class="btn btn-block btn-outline-white" id="searchbtn">
+                                        <h6 class="text-white m-0">검색</h6>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <button type="button" class="btn btn-outline-white btn-lg">
+                            전체보기
+                        </button>
+                        <%=writeButtonSelector%>
+                            <i class="fas fa-pen ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+		</header> --%>
 		<!--Main Navigation-->
 
 
@@ -447,7 +471,7 @@
 								<button type="submit" class="btn btn-warning"
 									onclick="javascript:form.action='postupdateform.circle'">수정하기</button>
 								<button type="button" class="btn btn-danger"
-									onclick="delete_check(this.form)">삭제하기</button>
+									onclick="confirmDelete(this.form)">삭제하기</button>
 								<%
 									} else {
 								%>
@@ -490,8 +514,8 @@
 									src="img/circle/<%=circleList.get(i).getPictures()%>"
 									alt="" id="listImage"> <!-- Card content -->
 									<div class="card-body">
-										<h5 class="mb-3" id="cardTitle"><%=circleList.get(i).getTitle()%></h5>
-										<p class="font-small grey-text mb-2" id="cardEmail"><%=circleList.get(i).getEmail()%></p>
+										<h5 class="mb-3 cardTitle" id="cardTitle"><%=circleList.get(i).getTitle()%></h5>
+										<p class="font-small grey-text mb-2 cardEmail" id="cardEmail"><%=circleList.get(i).getEmail()%></p>
 										<p class="card-text mb-3"
 											style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;"><%=circleList.get(i).getDescription()%></p>
 										<p class="font-small font-weight-bold dark-grey-text mb-0"><%=circleList.get(i).getEvent_date()%>&nbsp<small>(마감:<%=circleList.get(i).getEnd_date()%>
@@ -579,7 +603,7 @@
 
 		<!-- 작성자가 게시글 삭제하기 눌렀을 때 confirm -->
 		<script>
-			function delete_check(form) {
+			function confirmDelete(form) {
 				console.log("글번호" + form.postid.value);
 				var check = confirm("정말로 삭제하시겠습니까?");
 				if (check == true) {
@@ -590,10 +614,6 @@
 				}
 			}
 		</script>
-		
-	
-
-
 	</body>
 
 </html>

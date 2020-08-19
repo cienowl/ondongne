@@ -77,9 +77,9 @@
             <%
             String writeButtonSelector = null;
             if (sessionEmail == null) {
-                writeButtonSelector = "<a class=\"btn btn-outline-white btn-lg\" data-toggle=\"modal\" data-target=\"#signinModal\">판매장터 글쓰기";
+                writeButtonSelector = "<button type=\"button\" class=\"btn btn-outline-white btn-lg\" data-toggle=\"modal\" data-target=\"#signinModal\">판매장터 글쓰기";
             } else {
-                writeButtonSelector = "<a class=\"btn btn-outline-white btn-lg\" href=\"postform.sell\">판매장터 글쓰기";
+                writeButtonSelector = "<button type=\"button\" class=\"btn btn-outline-white btn-lg\" href=\"postform.sell\">판매장터 글쓰기";
             }
             %>
             <section style="background-image: url('img/index/fleemarket.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
@@ -104,9 +104,12 @@
                                 </div>
                             </div>
                         </form>
+                        <button type="button" class="btn btn-outline-white btn-lg">
+                            전체보기
+                        </button>
                         <%=writeButtonSelector%>
                             <i class="fas fa-pen ml-2"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -239,7 +242,7 @@
                                             <% if (sessionEmail != null) { %>
                                                 <% if (sessionEmail.equals(email)) { %>
                                                     <button type="submit" class="btn btn-warning" onclick="javascript:form.action='updateForm.sell';">수정</button>
-                                                    <button type="button" class="btn btn-danger" onclick="delete_check(this.form)">삭제</button>
+                                                    <button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>
                                                 <% } else { %>
                                                     <button type="submit" class="btn btn-unique" onclick="javascript:form.action='scrap.sell';">스크랩</button>
                                                 <% } %>
@@ -300,10 +303,8 @@
         </main>
         <!--Main layout-->
 
-
         <!-- Footer import -->
         <%@ include file="footer.jsp" %>
-
 
         <!-- SCRIPTS -->
         <!-- JQuery -->
@@ -311,7 +312,7 @@
         <script>
             $(document).ready(function() {
                 var sessionEmail = '<%=(String) session.getAttribute("email")%>';
-                $("#searchbtn").click(function(){
+                $("#searchBox").on("keyup", function(){
                     var searchWord = $("#searchBox").val();
                     if (searchWord != "") {
                         $.ajax({
@@ -446,7 +447,7 @@
                                                     '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
                                                     '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
                                                     '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
-                                                    '<button type="button" class="btn btn-danger" onclick="delete_check(this.form)">삭제</button>'
+                                                    '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
                                                 );
                                             } else {
                                                 $('#'+buttonSelector).append(
@@ -463,7 +464,7 @@
                                         }
                                     });
                                 } else {
-                                    alert("검색결과가 없습니다.");
+                                    //alert("검색결과가 없습니다.");
                                 }
                             },
                             error:function(request,status,error){
@@ -487,8 +488,10 @@
         </script>
 
         <script>
+            function 
+
             //게시글 삭제 확인
-            function delete_check(form) {
+            function confirmDelete(form) {
                 console.log("글번호" + form.postid.value);
                 var check = confirm("정말로 삭제하시겠습니까?");
                 if (check == true) {
