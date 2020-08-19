@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                         </form>
-                        <button type="button" class="btn btn-outline-white btn-lg">
+                        <button type="button" class="btn btn-outline-white btn-lg" onclick="getSellAll();">
                             전체보기
                         </button>
                         <%=writeButtonSelector%>
@@ -315,162 +315,9 @@
                 $("#searchBox").on("keyup", function(){
                     var searchWord = $("#searchBox").val();
                     if (searchWord != "") {
-                        $.ajax({
-                            url:"getsell.jsp",
-                            data:{"searchWord":searchWord},
-                            type:"GET",
-                            dataType:"json",
-                            success:function(request){
-                                if (request != "") {
-                                    $('#cardContents').empty();     //Sell Card 삭제
-                                    $('#modalSellContent').empty(); //Sell Modal 삭제
-                                    $.each(request, function(index, requestEach){
-                                        var cardResult = JSON.parse(JSON.stringify(requestEach));
-                                        var isActive = null;
-                                        var isParcel = null;
-                                        // var price = numberWithCommas(cardResult.price);
-
-                                        if (cardResult.is_active) {
-                                            isActive = "판매중";
-                                        } else {
-                                            isActive = "판매완료";
-                                        }
-
-                                        if (cardResult.is_parcel) {
-                                            isParcel = "택배거래";
-                                        } else {
-                                            isParcel = "직거래";
-                                        }
-
-                                        var buttonSelector = 'checkSessionEmail'+index;
-                                        //게시물 카드 plot
-                                        $('#cardContents').append(
-                                            '<div class="col-md-6 col-lg-3">'+
-                                                '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+index+'">'+
-                                                    '<img class="card-img-top" src="img/sell/'+cardResult.pictures+'" alt="Card image cap">'+
-                                                    '<div class="card-body">'+
-                                                        '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
-                                                        '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.email+'</p>'+
-                                                        '<p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;">'+cardResult.description+'</p>'+
-                                                        '<p class="font-small font-weight-bold dark-grey-text mb-0">'+cardResult.post_date+'</p>'+
-                                                    '</div>'+
-                                                '</a>'+
-                                            '</div>'
-                                        );
-                                        //게시물 Modal plot
-                                        $('#modalSellContent').append(
-                                            '<div class="modal fade" id="sellList'+index+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
-                                                '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
-                                                    '<div class="modal-content">'+
-                                                        '<div class="modal-header p-0">'+
-                                                            '<div class="row">'+
-                                                                '<div id="carousel-postid'+cardResult.id+'-'+index+'" class="carousel slide carousel-fade" data-ride="carousel">'+
-                                                                    '<ol class="carousel-indicators">'+
-                                                                        '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="0" class="active"></li>'+
-                                                                        '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="1"></li>'+
-                                                                        '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="2"></li>'+
-                                                                    '</ol>'+
-                                                                    '<div class="carousel-inner" role="listbox">'+
-                                                                        '<div class="carousel-item active">'+
-                                                                            '<img class="d-block w-100" src="img/sell/'+cardResult.pictures+'" alt="First slide">'+
-                                                                        '</div>'+
-                                                                        '<div class="carousel-item">'+
-                                                                            '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">'+
-                                                                        '</div>'+
-                                                                        '<div class="carousel-item">'+
-                                                                            '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">'+
-                                                                        '</div>'+
-                                                                    '</div>'+
-                                                                    '<a class="carousel-control-prev" href="#carousel-postid'+cardResult.id+'-'+index+'" role="button" data-slide="prev">'+
-                                                                        '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'+
-                                                                        '<span class="sr-only">Previous</span>'+
-                                                                    '</a>'+
-                                                                    '<a class="carousel-control-next" href="#carousel-postid'+cardResult.id+'-'+index+'" role="button" data-slide="next">'+
-                                                                        '<span class="carousel-control-next-icon" aria-hidden="true"></span>'+
-                                                                        '<span class="sr-only">Next</span>'+
-                                                                    '</a>'+
-                                                                '</div>'+
-                                                            '</div>'+
-                                                        '</div>'+
-                                                        '<div class="modal-body">'+
-                                                            '<div class="col align-self-center">'+
-                                                                '<small class="text-info">#'+cardResult.id+'</small>'+
-                                                                '<h5 class="font-weight-normal">'+isActive+' '+cardResult.title+'</h5>'+
-                                                                '<div class="row">'+
-                                                                    '<div class="col-sm-8">'+
-                                                                        '<p class="text-muted mb-4">'+cardResult.email+'</p>'+
-                                                                    '</div>'+
-                                                                    '<div class="col-sm-4">'+
-                                                                        '<p class="text-muted mb-4">'+cardResult.post_date+'</p>'+
-                                                                    '</div>'+
-                                                                '</div>'+
-                                                                '<div class="row">'+
-                                                                    '<div class="col-sm-4">'+
-                                                                        '<p class="text-uppercase mb-2"><strong>가격</strong></p>'+
-                                                                        '<p class="text-muted mb-4">₩'+numberWithCommas(cardResult.price)+'원</p>'+
-                                                                    '</div>'+
-                                                                    '<div class="col-sm-4">'+
-                                                                        '<p class="text-uppercase mb-2"><strong>지역</strong></p>'+
-                                                                        '<p class="text-muted mb-4">'+cardResult.region+'</p>'+
-                                                                    '</div>'+
-                                                                    '<div class="col-sm-4">'+
-                                                                        '<p class="text-uppercase mb-2"><strong>거래방법</strong></p>'+
-                                                                        '<p class="text-muted mb-4">'+isParcel+'</p>'+
-                                                                    '</div>'+
-                                                                '</div>'+
-                                                                '<div class="row">'+
-                                                                    '<div class="col">'+
-                                                                        '<p class="text-uppercase mb-2"><strong>설명</strong></p>'+
-                                                                        '<p class="text-muted">'+cardResult.description+'</p>'+
-                                                                    '</div>'+
-                                                                '</div>'+
-                                                            '</div>'+
-                                                        '</div>'+
-                                                        '<div class="modal-footer">'+
-                                                            '<form method="POST" name="form" id="'+buttonSelector+'">'+
-                                                            '</form>'+
-                                                            '<a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>'+
-                                                        '</div>'+
-                                                    '</div>'+
-                                                '</div>'+
-                                            '</div>'
-                                        );
-
-                                        if (sessionEmail != null) {
-                                            if (sessionEmail == cardResult.email){
-                                                $('#'+buttonSelector).append(
-                                                    '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
-                                                    '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
-                                                    '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
-                                                    '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
-                                                    '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
-                                                    '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
-                                                    '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
-                                                    '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
-                                                    '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
-                                                );
-                                            } else {
-                                                $('#'+buttonSelector).append(
-                                                    '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
-                                                    '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
-                                                    '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
-                                                    '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
-                                                    '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
-                                                    '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
-                                                    '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
-                                                    '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
-                                                );
-                                            }
-                                        }
-                                    });
-                                } else {
-                                    //alert("검색결과가 없습니다.");
-                                }
-                            },
-                            error:function(request,status,error){
-                                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                            }
-                        });
+                        getSell(searchWord);
+                    } else {
+                        //getSellAll();
                     }
                 });
             })
@@ -488,7 +335,324 @@
         </script>
 
         <script>
-            function 
+            function getSellAll() {
+                //TODO: 입력 내용없을때 전체 내용으로 다시 업데이트 Ajax
+                $.ajax({
+                    url:'getSellAll.jsp',
+                    //data:{},
+                    type:'GET',
+                    dataType:'JSON',
+                    success:function(request){
+                        $('#cardContents').empty();
+                        $('#modalSellContent').empty();
+                        if (request != "") {
+                            $.each(request, function(index, requestEach){
+                                var cardResult = JSON.parse(JSON.stringify(requestEach));
+                                var isActive = null;
+                                var isParcel = null;
+
+                                if (cardResult.is_active) {
+                                    isActive = "판매중";
+                                } else {
+                                    isActive = "판매완료";
+                                }
+
+                                if (cardResult.is_parcel) {
+                                    isParcel = "택배거래";
+                                } else {
+                                    isParcel = "직거래";
+                                }
+
+                                var buttonSelector = 'checkSessionEmail'+index;
+                                //게시물 카드 plot
+                                $('#cardContents').append(
+                                    '<div class="col-md-6 col-lg-3">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+index+'">'+
+                                            '<img class="card-img-top" src="img/sell/'+cardResult.pictures+'" alt="Card image cap">'+
+                                            '<div class="card-body">'+
+                                                '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
+                                                '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.email+'</p>'+
+                                                '<p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;">'+cardResult.description+'</p>'+
+                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">'+cardResult.post_date+'</p>'+
+                                            '</div>'+
+                                        '</a>'+
+                                    '</div>'
+                                );
+                                //게시물 Modal plot
+                                $('#modalSellContent').append(
+                                    '<div class="modal fade" id="sellList'+index+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
+                                        '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
+                                            '<div class="modal-content">'+
+                                                '<div class="modal-header p-0">'+
+                                                    '<div class="row">'+
+                                                        '<div id="carousel-postid'+cardResult.id+'-'+index+'" class="carousel slide carousel-fade" data-ride="carousel">'+
+                                                            '<ol class="carousel-indicators">'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="0" class="active"></li>'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="1"></li>'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="2"></li>'+
+                                                            '</ol>'+
+                                                            '<div class="carousel-inner" role="listbox">'+
+                                                                '<div class="carousel-item active">'+
+                                                                    '<img class="d-block w-100" src="img/sell/'+cardResult.pictures+'" alt="First slide">'+
+                                                                '</div>'+
+                                                                '<div class="carousel-item">'+
+                                                                    '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">'+
+                                                                '</div>'+
+                                                                '<div class="carousel-item">'+
+                                                                    '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">'+
+                                                                '</div>'+
+                                                            '</div>'+
+                                                            '<a class="carousel-control-prev" href="#carousel-postid'+cardResult.id+'-'+index+'" role="button" data-slide="prev">'+
+                                                                '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'+
+                                                                '<span class="sr-only">Previous</span>'+
+                                                            '</a>'+
+                                                            '<a class="carousel-control-next" href="#carousel-postid'+cardResult.id+'-'+index+'" role="button" data-slide="next">'+
+                                                                '<span class="carousel-control-next-icon" aria-hidden="true"></span>'+
+                                                                '<span class="sr-only">Next</span>'+
+                                                            '</a>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="modal-body">'+
+                                                    '<div class="col align-self-center">'+
+                                                        '<small class="text-info">#'+cardResult.id+'</small>'+
+                                                        '<h5 class="font-weight-normal">'+isActive+' '+cardResult.title+'</h5>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-8">'+
+                                                                '<p class="text-muted mb-4">'+cardResult.email+'</p>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-4">'+
+                                                                '<p class="text-muted mb-4">'+cardResult.post_date+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-4">'+
+                                                                '<p class="text-uppercase mb-2"><strong>가격</strong></p>'+
+                                                                '<p class="text-muted mb-4">₩'+numberWithCommas(cardResult.price)+'원</p>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-4">'+
+                                                                '<p class="text-uppercase mb-2"><strong>지역</strong></p>'+
+                                                                '<p class="text-muted mb-4">'+cardResult.region+'</p>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-4">'+
+                                                                '<p class="text-uppercase mb-2"><strong>거래방법</strong></p>'+
+                                                                '<p class="text-muted mb-4">'+isParcel+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col">'+
+                                                                '<p class="text-uppercase mb-2"><strong>설명</strong></p>'+
+                                                                '<p class="text-muted">'+cardResult.description+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="modal-footer">'+
+                                                    '<form method="POST" name="form" id="'+buttonSelector+'">'+
+                                                    '</form>'+
+                                                    '<a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'
+                                );
+
+                                if (sessionEmail != null) {
+                                    if (sessionEmail == cardResult.email){
+                                        $('#'+buttonSelector).append(
+                                            '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
+                                            '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
+                                            '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
+                                            '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
+                                            '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
+                                            '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
+                                            '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
+                                            '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
+                                            '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
+                                        );
+                                    } else {
+                                        $('#'+buttonSelector).append(
+                                            '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
+                                            '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
+                                            '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
+                                            '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
+                                            '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
+                                            '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
+                                            '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
+                                            '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
+                                        );
+                                    }
+                                }
+                            });
+                        } 
+                    },
+                    error:function(request,status,error){
+                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
+                });
+            }
+            //검색결과 Ajax
+            function getSell(searchWord) {
+                $.ajax({
+                    url:'getSell.jsp',
+                    data:{'searchWord':searchWord},
+                    type:'GET',
+                    dataType:'JSON',
+                    success:function(request){
+                        $('#cardContents').empty();     //Sell Card 삭제
+                        $('#modalSellContent').empty(); //Sell Modal 삭제
+                        if (request != "") {
+                            $.each(request, function(index, requestEach){
+                                var cardResult = JSON.parse(JSON.stringify(requestEach));
+                                var isActive = null;
+                                var isParcel = null;
+
+                                if (cardResult.is_active) {
+                                    isActive = "판매중";
+                                } else {
+                                    isActive = "판매완료";
+                                }
+
+                                if (cardResult.is_parcel) {
+                                    isParcel = "택배거래";
+                                } else {
+                                    isParcel = "직거래";
+                                }
+
+                                var buttonSelector = 'checkSessionEmail'+index;
+                                //게시물 카드 plot
+                                $('#cardContents').append(
+                                    '<div class="col-md-6 col-lg-3">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+index+'">'+
+                                            '<img class="card-img-top" src="img/sell/'+cardResult.pictures+'" alt="Card image cap">'+
+                                            '<div class="card-body">'+
+                                                '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
+                                                '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.email+'</p>'+
+                                                '<p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;">'+cardResult.description+'</p>'+
+                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">'+cardResult.post_date+'</p>'+
+                                            '</div>'+
+                                        '</a>'+
+                                    '</div>'
+                                );
+                                //게시물 Modal plot
+                                $('#modalSellContent').append(
+                                    '<div class="modal fade" id="sellList'+index+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
+                                        '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
+                                            '<div class="modal-content">'+
+                                                '<div class="modal-header p-0">'+
+                                                    '<div class="row">'+
+                                                        '<div id="carousel-postid'+cardResult.id+'-'+index+'" class="carousel slide carousel-fade" data-ride="carousel">'+
+                                                            '<ol class="carousel-indicators">'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="0" class="active"></li>'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="1"></li>'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="2"></li>'+
+                                                            '</ol>'+
+                                                            '<div class="carousel-inner" role="listbox">'+
+                                                                '<div class="carousel-item active">'+
+                                                                    '<img class="d-block w-100" src="img/sell/'+cardResult.pictures+'" alt="First slide">'+
+                                                                '</div>'+
+                                                                '<div class="carousel-item">'+
+                                                                    '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">'+
+                                                                '</div>'+
+                                                                '<div class="carousel-item">'+
+                                                                    '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">'+
+                                                                '</div>'+
+                                                            '</div>'+
+                                                            '<a class="carousel-control-prev" href="#carousel-postid'+cardResult.id+'-'+index+'" role="button" data-slide="prev">'+
+                                                                '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'+
+                                                                '<span class="sr-only">Previous</span>'+
+                                                            '</a>'+
+                                                            '<a class="carousel-control-next" href="#carousel-postid'+cardResult.id+'-'+index+'" role="button" data-slide="next">'+
+                                                                '<span class="carousel-control-next-icon" aria-hidden="true"></span>'+
+                                                                '<span class="sr-only">Next</span>'+
+                                                            '</a>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="modal-body">'+
+                                                    '<div class="col align-self-center">'+
+                                                        '<small class="text-info">#'+cardResult.id+'</small>'+
+                                                        '<h5 class="font-weight-normal">'+isActive+' '+cardResult.title+'</h5>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-8">'+
+                                                                '<p class="text-muted mb-4">'+cardResult.email+'</p>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-4">'+
+                                                                '<p class="text-muted mb-4">'+cardResult.post_date+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-4">'+
+                                                                '<p class="text-uppercase mb-2"><strong>가격</strong></p>'+
+                                                                '<p class="text-muted mb-4">₩'+numberWithCommas(cardResult.price)+'원</p>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-4">'+
+                                                                '<p class="text-uppercase mb-2"><strong>지역</strong></p>'+
+                                                                '<p class="text-muted mb-4">'+cardResult.region+'</p>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-4">'+
+                                                                '<p class="text-uppercase mb-2"><strong>거래방법</strong></p>'+
+                                                                '<p class="text-muted mb-4">'+isParcel+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col">'+
+                                                                '<p class="text-uppercase mb-2"><strong>설명</strong></p>'+
+                                                                '<p class="text-muted">'+cardResult.description+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="modal-footer">'+
+                                                    '<form method="POST" name="form" id="'+buttonSelector+'">'+
+                                                    '</form>'+
+                                                    '<a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'
+                                );
+
+                                if (sessionEmail != null) {
+                                    if (sessionEmail == cardResult.email){
+                                        $('#'+buttonSelector).append(
+                                            '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
+                                            '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
+                                            '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
+                                            '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
+                                            '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
+                                            '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
+                                            '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
+                                            '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
+                                            '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
+                                        );
+                                    } else {
+                                        $('#'+buttonSelector).append(
+                                            '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
+                                            '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
+                                            '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
+                                            '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
+                                            '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
+                                            '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
+                                            '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
+                                            '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
+                                        );
+                                    }
+                                }
+                            });
+                        } else {
+                            $('#cardContents').append(
+                                '<div class="col-md text-center">'+
+                                    '<h2 class="dark-grey-text">검색 결과가 없습니다.</h2>'+
+                                '</div>'
+                            );
+                        }
+                    },
+                    error:function(request,status,error){
+                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
+                });
+            }
 
             //게시글 삭제 확인
             function confirmDelete(form) {

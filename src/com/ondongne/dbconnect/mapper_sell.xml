@@ -34,7 +34,7 @@
 	</insert>
 	
 	<select id="selectSellPostAll" resultType="com.ondongne.dto.DataTransferSell">
-		select * from sell
+		select * from sell order by post_date desc
 	</select>
 	
 	<select id="getJoinSell" resultType="com.ondongne.dto.DataTransferSell" parameterType="String">
