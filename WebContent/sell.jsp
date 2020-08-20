@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                         </form>
-                        <button type="button" class="btn btn-outline-white btn-lg" onclick="getSellAll();">
+                        <button type="button" class="btn btn-outline-white btn-lg" id="viewAllBtn">
                             전체보기
                         </button>
                         <%=writeButtonSelector%>
@@ -316,10 +316,14 @@
 
                 //로딩 후 전체 목록 가져오기
                 getSellAll(sessionEmail);
+                
+                $('#viewAllBtn').on('click',function(){
+                    getSellAll(sessionEmail);
+                });
 
                 //검색시 사용
-                $("#searchBtn").on("click", function(){
-                    var searchWord = $("#searchBox").val();
+                $("#searchBtn").on('click', function(){
+                    var searchWord = $('#searchBox').val();
                     if (searchWord != "") {
                         getSell(sessionEmail, searchWord);
                     } else {
@@ -357,15 +361,15 @@
                                 var isParcel = null;
 
                                 if (cardResult.is_active) {
-                                    isActive = "판매중";
+                                    isActive = '판매중';
                                 } else {
-                                    isActive = "판매완료";
+                                    isActive = '판매완료';
                                 }
 
                                 if (cardResult.is_parcel) {
-                                    isParcel = "택배거래";
+                                    isParcel = '택배거래';
                                 } else {
-                                    isParcel = "직거래";
+                                    isParcel = '직거래';
                                 }
 
                                 var buttonSelector = 'checkSessionEmail'+index;
@@ -491,7 +495,7 @@
                         }
                     },
                     error:function(request,status,error){
-                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                        alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
                     }
                 });
             }
@@ -512,15 +516,15 @@
                                 var isParcel = null;
 
                                 if (cardResult.is_active) {
-                                    isActive = "판매중";
+                                    isActive = '판매중';
                                 } else {
-                                    isActive = "판매완료";
+                                    isActive = '판매완료';
                                 }
 
                                 if (cardResult.is_parcel) {
-                                    isParcel = "택배거래";
+                                    isParcel = '택배거래';
                                 } else {
-                                    isParcel = "직거래";
+                                    isParcel = '직거래';
                                 }
 
                                 var buttonSelector = 'checkSessionEmail'+index;
@@ -652,17 +656,16 @@
                         }
                     },
                     error:function(request,status,error){
-                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                        alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
                     }
                 });
             }
             //게시글 삭제 확인
             function confirmDelete(form) {
-                console.log("글번호" + form.postid.value);
-                var check = confirm("정말로 삭제하시겠습니까?");
+                console.log('글번호' + form.postid.value);
+                var check = confirm('정말로 삭제하시겠습니까?');
                 if (check == true) {
-                    window.location.href = "delete.sell?postid="
-                            + form.postid.value;
+                    window.location.href = 'delete.sell?postid='+form.postid.value;
                 } else if (check == false) {
                     alert("삭제가 취소되었습니다.");
                 }
