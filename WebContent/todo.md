@@ -3,7 +3,7 @@
 할일 리스트
 
 - 긴급리스트
-  - helper_circle & helper_sell 충돌 해결 - 호준
+  - ~~helper_circle & helper_sell 충돌 해결 - 호준~~
 
 1. index 페이지
    1. 중간 서비스 내용 수정
