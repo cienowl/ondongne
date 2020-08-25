@@ -47,7 +47,7 @@ F2F2F2
 
 ### Ext API
 
-- GSON https://javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/module-summary.html
+- GSON https://search.maven.org/artifact/com.google.code.gson/gson/2.8.6/jar
 
 
 ## JavaScript
