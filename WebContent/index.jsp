@@ -485,15 +485,12 @@
 
                     if (email != "") {
                         $.ajax({
-                            url:'checkDupEmail.jsp',
-                            data:{
-                                "inputEmail":email
-                            },
+                            url:'checkDupEmail.jsp?inputEmail='+email,
                             type:"GET",
                             // dataType:"html",             //연결하는 문서의 타입
                             success:function(request){
-                                console.log(request.trin());
-                                if (request.trim() != '') {
+                                console.log(request.trim());
+                                if (request.trim() != "") {
                                     $("#checkDupEmail").append(request);
                                     $("#signupEmail").val('');
                                 } else {
