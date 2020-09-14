@@ -468,7 +468,14 @@
                             type:"GET",
                             // dataType:"html",             //연결하는 문서의 타입
                             success:function(request){
-                                $("#checkEmail").append(request);
+                            	if (request.trim() !=""){
+                            		$("#checkEmail").append(request);
+                            		$("#signinEmail").val('');
+                            	}else{
+                            		$("#checkEmail").append(request);
+                            	}
+                               
+                                
                             },
                             error:function(request,status,error){
                                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
