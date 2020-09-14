@@ -73,7 +73,8 @@ public class AdminFrontController extends HttpServlet {
 			}			
 		}
 		
-		else if (command.equals("/dongneposts.admin")) {
+		else if (command.equals("/hotplace.admin")) {
+//			hotplace 관리페이지 로드
 			action = new AdminGetDongneInfoAction();
 			try {
 				forward = action.execute(request, response);
@@ -81,6 +82,26 @@ public class AdminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}	
 		}
+		
+		else if (command.equals("/circle.admin")) {
+//			TODO Circle 관리페이지 로드
+			action = null;
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}
+		
+		else if (command.equals("/sell.admin")) {
+//			TODO Sell 관리페이지 로드
+			action = null;
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}		
 		
 		else if (command.equals("/notice/write.admin")) {
 //			공지사항 작성

@@ -32,7 +32,7 @@ public class AdminGetDongneInfoAction implements Action {
 			request.setAttribute("hotplaceList", hotplaceList);
 			
 			forward = new ActionForward();
-			forward.setPath("admin_dongneposts.jsp");
+			forward.setPath("admin_hotplace.jsp");
 		} else {
 			forward = new ActionForward();
 			forward.setRedirect(true);

@@ -79,7 +79,7 @@
             if (sessionEmail == null) {
                 writeButtonSelector = "<button type=\"button\" class=\"btn btn-outline-white btn-lg\" data-toggle=\"modal\" data-target=\"#signinModal\">판매장터 글쓰기";
             } else {
-                writeButtonSelector = "<button type=\"button\" class=\"btn btn-outline-white btn-lg\" href=\"postform.sell\">판매장터 글쓰기";
+                writeButtonSelector = "<a type=\"button\" class=\"btn btn-outline-white btn-lg\" href=\"postform.sell\">판매장터 글쓰기</a>";
             }
             %>
             <section style="background-image: url('img/index/fleemarket.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
@@ -132,131 +132,10 @@
                             padding-top: .6rem;
                         }
                     </style>
-
+					
+					<!-- Sell 목록 -->
                     <div id="modalSellContent">
-                    <%--
-                        <%
-                        String price = null;
-                        String email = null;
-                        String isActive = null;
-                        String isParcel = null;
-                        String pictureCarouselId = null;
-                        for (int i = 0; i < sellList.size(); i++) {
-                            dataTarget = "sellList" + Integer.toString(i);
-                            pictureCarouselId = "carousel-list-"+Integer.toString(i);
-                            email = sellList.get(i).getEmail();
-                            price = priceFormat.format(Integer.parseInt(sellList.get(i).getPrice()));
 
-                            if (sellList.get(i).isIs_active()) {
-                                isActive = "판매중";
-                            } else {
-                                isActive = "판매완료";
-                            }
-
-                            if (sellList.get(i).isIs_parcel()) {
-                                isParcel = "택배거래";
-                            } else {
-                                isParcel = "직거래";
-                            }
-                        %>
-                        <!-- Modal: 판매글 내용 -->
-                        <div class="modal fade" id="<%= dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
-                                <div class="modal-content">
-
-                                    <div class="modal-header p-0">
-                                        <div class="row">
-                                            <div id="<%= pictureCarouselId %>" class="carousel slide carousel-fade" data-ride="carousel">
-                                                <ol class="carousel-indicators">
-                                                    <li data-target="#<%= pictureCarouselId %>" data-slide-to="0" class="active"></li>
-                                                    <li data-target="#<%= pictureCarouselId %>" data-slide-to="1"></li>
-                                                    <li data-target="#<%= pictureCarouselId %>" data-slide-to="2"></li>
-                                                </ol>
-                                                <div class="carousel-inner" role="listbox">
-                                                    <div class="carousel-item active">
-                                                        <img class="d-block w-100" src="img/sell/<%= sellList.get(i).getPictures() %>" alt="First slide">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
-                                                    </div>
-                                                </div>
-                                                <a class="carousel-control-prev" href="#<%= pictureCarouselId %>" role="button" data-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                                <a class="carousel-control-next" href="#<%= pictureCarouselId %>" role="button" data-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <div class="col align-self-center">
-                                            <small class="text-info">#<%= sellList.get(i).getId() %></small>
-                                            <h5 class="font-weight-normal"><%= isActive %> <%= sellList.get(i).getTitle() %></h5>
-                                            <div class="row">
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-4"><%= sellList.get(i).getEmail() %></p>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <p class="text-muted mb-4"><%= sellList.get(i).getPost_date() %></p>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <p class="text-uppercase mb-2"><strong>가격</strong></p>
-                                                    <p class="text-muted mb-4">₩<%= price %>원</p>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <p class="text-uppercase mb-2"><strong>지역</strong></p>
-                                                    <p class="text-muted mb-4"><%= sellList.get(i).getRegion() %></p>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <p class="text-uppercase mb-2"><strong>거래방법</strong></p>
-                                                    <p class="text-muted mb-4"><%= isParcel %></p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p class="text-uppercase mb-2"><strong>설명</strong></p>
-                                                    <p class="text-muted"><%= sellList.get(i).getDescription() %></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <form method="POST" name="form">
-                                            <input type="hidden" name="postid" value="<%= sellList.get(i).getId() %>"/>
-                                            <input type="hidden" name="title" value="<%= sellList.get(i).getTitle() %>"/>
-                                            <input type="hidden" name="price" value="<%= sellList.get(i).getPrice() %>"/>
-                                            <input type="hidden" name="sellMethod" value="<%= sellList.get(i).isIs_parcel() %>"/>
-                                            <input type="hidden" name="region" value="<%= sellList.get(i).getRegion() %>"/>
-                                            <input type="hidden" name="description" value="<%= sellList.get(i).getDescription() %>"/>
-                                            <input type="hidden" name="pictures" value="<%= sellList.get(i).getPictures() %>"/>
-                                            <% if (sessionEmail != null) { %>
-                                                <% if (sessionEmail.equals(email)) { %>
-                                                    <button type="submit" class="btn btn-warning" onclick="javascript:form.action='updateForm.sell';">수정</button>
-                                                    <button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>
-                                                <% } else { %>
-                                                    <button type="submit" class="btn btn-unique" onclick="javascript:form.action='scrap.sell';">스크랩</button>
-                                                <% } %>
-                                            <% } %>
-                                        </form>
-                                        <a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Modal: 판매글 내용 -->
-                        <% } %> --%>
                     </div>
 
                     <%-- <style>
@@ -273,27 +152,11 @@
                         } */
                     </style> --%>
 
-                    <!-- Sell 카드 -->
+                    <!-- Sell 카드 상세 내용 -->
                     <div class="tab-content mb-5">
                         <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
                             <div class="row" id="cardContents">
-                            <%-- <% for (int i = 0; i < sellList.size(); i++) { %>
-                                <% dataTarget = "sellList" + Integer.toString(i); %>
-                                <div class="col-md-6 col-lg-3">
-                                    <a class="card hoverable mb-4" data-toggle="modal" data-target="#<%= dataTarget %>">
-                                        <div class="imgtest"></div>
-                                        <div class="">
-                                        <img class="card-img-top" src="img/sell/<%= sellList.get(i).getPictures() %>" alt="Card image cap" style="height: 200px;">
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="mb-3 cardTitle"><%= sellList.get(i).getTitle() %></h5>
-                                            <p class="font-small grey-text mb-2 cardEmail"><%= sellList.get(i).getEmail() %></p>
-                                            <p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;"><%= sellList.get(i).getDescription() %></p>
-                                            <p class="font-small font-weight-bold dark-grey-text mb-0"><%= sellList.get(i).getPost_date() %></p>
-                                        </div>
-                                    </a>
-                                </div>
-                            <% } %> --%>
+                            
                             </div>
                         </div>
                     </div>
@@ -311,11 +174,16 @@
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
         <script>
+        	var page = 1;
+        	
             $(document).ready(function() {
                 var sessionEmail = '<%=(String) session.getAttribute("email")%>';
+                
 
                 //로딩 후 전체 목록 가져오기
                 getSellAll(sessionEmail);
+                
+                
                 
                 $('#viewAllBtn').on('click',function(){
                     getSellAll(sessionEmail);
@@ -331,6 +199,16 @@
                     }
                 });
             })
+            
+            $(window).scroll(function() {
+            	if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+            		getList(page);
+            		page++;
+            	}
+            });
+        </script>
+        <script type="text/javascript">
+        	//TODO 페이징 기능 목록 가져오기
         </script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
@@ -673,6 +551,9 @@
             //가격 comma formatter
             function numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            function sellPost() {
+            	
             }
         </script>
 

@@ -5,7 +5,7 @@
 <%@page import="java.util.List"%>
 
 <%
-	List<HotplaceBean> hotplaceList = (List<HotplaceBean>) request.getAttribute("hotplaceList");
+	//List<HotplaceBean> hotplaceList = (List<HotplaceBean>) request.getAttribute("hotplaceList");
     String dataTarget = null;
     String region = null;
 %>
@@ -16,7 +16,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-        <title>ON동네 ADMIN - Hotplace 관리</title>
+        <title>ON동네 ADMIN - Circle 관리</title>
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
@@ -56,64 +56,8 @@
 
 
     <body>
-
         <header>
-            <!-- Navbar -->
-            <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-                <div class="container-fluid">
-
-                <!-- Brand -->
-                <a class="navbar-brand waves-effect" href="dashboard.admin" target="">
-                    <strong class="blue-text">ON동네 ADMIN</strong>
-                </a>
-
-                <!-- Collapse -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Links -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <!-- Left -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a href="dashboard.admin" class="list-group-item list-group-item-action active waves-effect">
-                                <i class="fas fa-chart-pie mr-3"></i>대시보드
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="list-group-item list-group-item-action waves-effect">
-                                <i class="fas fa-user mr-3"></i>회원관리
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="dongneposts.admin" class="list-group-item list-group-item-action waves-effect">
-                                <i class="fas fa-map mr-3"></i>동네게시물 관리
-                            </a>
-                        </li>
-                    </ul>
-
-                    <!-- Right -->
-                    <ul class="navbar-nav nav-flex-icons">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle border border-light rounded waves-effect" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user mr-2"></i> <%= (String) session.getAttribute("adminId") %>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                                <%-- <a class="dropdown-item" href="info.admin">관리자관리</a> --%>
-                                <a class="dropdown-item" href="signout.admin">로그아웃</a>
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-
-                </div>
-            </nav>
-            <!-- Navbar -->
-
+			 <jsp:include page="navbar_admin.jsp"/>
         </header>
 
         <main>
