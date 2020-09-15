@@ -231,7 +231,7 @@
         <script>
         	//TODO 페이징 기능 목록 가져오기
             function getSellAll(page) {
-        		alert('getSellAll실행');
+        		//alert('getSellAll실행');
                 $.ajax({
                     url:'getSellAll.jsp',
                     data:{'page':page},
