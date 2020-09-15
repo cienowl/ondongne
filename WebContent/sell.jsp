@@ -1,9 +1,9 @@
 <!-- 작성자: 이호준 -->
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.ondongne.dto.DataTransferSell"%>
-<%@page import="java.text.DecimalFormat"%>
-<%@page import="java.util.List"%>
+<!--<%@page import="com.ondongne.dto.DataTransferSell"%>-->
+<!--<%@page import="java.text.DecimalFormat"%>-->
+<!--<%@page import="java.util.List"%>-->
 
 <%
 	//List<DataTransferSell> sellList = (List<DataTransferSell>) request.getAttribute("sellList");
@@ -174,10 +174,10 @@
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
         <script>
-			var page = 0;
-            var sessionEmail = '<%=(String) session.getAttribute("email")%>';
+            var sessionEmail = '<%=(String) session.getAttribute("email")%>';   //참고: JSP 구문 사용하기위해서 따옴표 써서 null 도 문자열값으로 들어감
 
             $(document).ready(function() {
+			    var page = 0;
 
                 //로딩 후 목록 가져오기
                 getSellAll(page);
@@ -202,19 +202,20 @@
                         getSell(page, searchWord);
                     }
                 });
+
+                //스크롤 맨 아래 까지 가면 실행
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+                        page++;
+                        var searchWord = $('#searchBox').val();
+                        if (searchWord != "")
+                            getSell(page, searchWord);	//스크롤시 검색박스에 값이 있으면, 검색어 같이 보냄
+                        else
+                            getSellAll(page);	//스크롤시 검색박스에 값이 없으면, 전체 읽기 실행
+                    }
+                });
             })
 
-            //스크롤 맨 아래에서 400px 위까지 가면 실행
-            $(window).scroll(function() {
-            	if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
-            		page++;
-            		var searchWord = $('#searchBox').val();
-            		if (searchWord != "")
-            			getSell(page, searchWord);	//스크롤시 검색박스에 값이 있으면, 검색어 같이 보냄
-            		else
-            			getSellAll(page);	//스크롤시 검색박스에 값이 없으면, 전체 읽기 실행
-            	}
-            });
         </script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
@@ -229,12 +230,14 @@
         </script>
 
         <script>
-        	//TODO 페이징 기능 목록 가져오기
+            //전체결과 Ajax
             function getSellAll(page) {
         		//alert('getSellAll실행');
                 $.ajax({
                     url:'getSellAll.jsp',
-                    data:{'page':page},
+                    data:{
+                        'page':page
+                        },
                     type:'GET',
                     dataType:'JSON',
                     success:function(request){
@@ -342,6 +345,13 @@
                                                 '</div>'+
                                                 '<div class="modal-footer">'+
                                                     '<form method="POST" name="form" id="'+buttonSelector+'">'+
+                                                        '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
+                                                        '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
+                                                        '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
+                                                        '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
+                                                        '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
+                                                        '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
+                                                        '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
                                                     '</form>'+
                                                     '<a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>'+
                                                 '</div>'+
@@ -349,37 +359,29 @@
                                         '</div>'+
                                     '</div>'
                                 );
-                                if (sessionEmail != null) {
-                                    if (sessionEmail == cardResult.email){
+                                // if (page == 1) {
+                                    if (sessionEmail == 'null') {
                                         $('#'+buttonSelector).append(
-                                            '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
-                                            '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
-                                            '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
-                                            '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
-                                            '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
-                                            '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
-                                            '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
-                                            '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
-                                            '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
+                                            '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">스크랩</a>'
                                         );
                                     } else {
-                                        $('#'+buttonSelector).append(
-                                            '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
-                                            '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
-                                            '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
-                                            '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
-                                            '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
-                                            '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
-                                            '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
-                                            '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
-                                        );
+                                        if (sessionEmail == cardResult.email){
+                                            $('#'+buttonSelector).append(
+                                                '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
+                                                '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
+                                            );
+                                        } else {
+                                            $('#'+buttonSelector).append(
+                                                '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
+                                            );
+                                        }
                                     }
-                                }
+                                // }
                             });
                         }
                     },
                     error:function(request,status,error,page){
-                        alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error,+'page:'+page);
+                        alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
                     }
                 });
             }
@@ -498,6 +500,13 @@
                                                 '</div>'+
                                                 '<div class="modal-footer">'+
                                                     '<form method="POST" name="form" id="'+buttonSelector+'">'+
+                                                        '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
+                                                        '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
+                                                        '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
+                                                        '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
+                                                        '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
+                                                        '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
+                                                        '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
                                                     '</form>'+
                                                     '<a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>'+
                                                 '</div>'+
@@ -505,39 +514,25 @@
                                         '</div>'+
                                     '</div>'
                                 );
-                                if (sessionEmail != null) {
-                                    if (sessionEmail == cardResult.email){
+                                // if (page == 1) {
+                                    if (sessionEmail == 'null') {
                                         $('#'+buttonSelector).append(
-                                            '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
-                                            '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
-                                            '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
-                                            '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
-                                            '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
-                                            '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
-                                            '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
-                                            '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
-                                            '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
+                                            '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">스크랩</a>'
                                         );
                                     } else {
-                                        $('#'+buttonSelector).append(
-                                            '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
-                                            '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
-                                            '<input type="hidden" name="price" value="'+cardResult.price+'"/>'+
-                                            '<input type="hidden" name="sellMethod" value="'+cardResult.is_parcel+'"/>'+
-                                            '<input type="hidden" name="region" value="'+cardResult.region+'"/>'+
-                                            '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
-                                            '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
-                                            '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
-                                        );
+                                        if (sessionEmail == cardResult.email){
+                                            $('#'+buttonSelector).append(
+                                                '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
+                                                '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
+                                            );
+                                        } else {
+                                            $('#'+buttonSelector).append(
+                                                '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
+                                            );
+                                        }
                                     }
-                                }
+                                // }
                             });
-                        } else {
-                            //$('#cardContents').append(
-                            //   '<div class="col-md text-center">'+
-                            //        '<h2 class="dark-grey-text">검색 결과가 없습니다.</h2>'+
-                            //    '</div>'
-                            //);
                         }
                     },
                     error:function(request,status,error){
