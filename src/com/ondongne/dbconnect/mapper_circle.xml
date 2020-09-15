@@ -35,4 +35,12 @@
 		select pictures from circle WHERE id=#{postid};
 	</select>
 	
+	<update id="postCount" parameterType="int">
+		update circle a, circle b set a.post_count = b.post_count+1 where a.id=b.id AND a.id=#{postid};
+	</update>
+	
+	<select id="getPostCount" parameterType="int" resultType="int">
+		select post_count from circle WHERE id=#{postid};
+	</select>
+	
 </mapper>

@@ -19,6 +19,7 @@ public class DataTransferCircle {
 	private String description;
 	private String tags;
 	private String mem_number;
+	private int post_count;
 	
 	public int getId() {
 		return id;
@@ -117,6 +118,12 @@ public class DataTransferCircle {
 		this.mem_number = mem_number;
 	}
 	
+	public int getPost_count() {
+		return post_count;
+	}
+	public void setPost_count(int post_count) {
+		this.post_count = post_count;
+	}
 	
 	
 	

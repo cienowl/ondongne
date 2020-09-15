@@ -1,5 +1,6 @@
 <!-- 작성자: 김나예 -->
 
+<%@page import="com.ondongne.dao.DataAccessCircle"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
@@ -293,16 +294,17 @@
 				<%
 					dataTarget = "circleList" + Integer.toString(i);
 				%>
-
+				
+				<!-- 게시물 참여자 -->
 				<%
 					SqlSessionFactory factory = DataAccessCircleJoin.getConnection();
 					SqlSession sqlSession = factory.openSession();
 
+					// 게시물 참여자 select
 					int joinCount = sqlSession.selectOne("getJoinCount",circleList.get(i).getId());
 					sqlSession.close();
 				%>
-
-
+			
 				<!-- 참여버튼 눌렀을 때 로그인 되어있는지 확인 -->
 				<%
 					String joinButtonSelector = null;
@@ -335,6 +337,21 @@
 									} else {
 										check = false;
 									}
+							%>
+							
+							<!-- 게시물 조회수 -->
+							<%
+								SqlSessionFactory factory2 = DataAccessCircleJoin.getConnection();
+								SqlSession sqlSession2 = factory.openSession();
+			
+							
+								// 게시물 조회수 update
+								sqlSession2.update("postCount",circleList.get(i).getId());
+								sqlSession2.commit();
+								// 게시물 조회수 select
+								int postCount = sqlSession2.selectOne("getPostCount",circleList.get(i).getId());
+								
+								sqlSession2.close();
 							%>
 
 							<div class="modal-header p-0">
@@ -420,6 +437,9 @@
 										<input type="hidden" name="address_detail" value="<%=circleList.get(i).getAddress_detail()%>" />
 										<input type="hidden" name="description" value="<%=circleList.get(i).getDescription()%>" />
 									<h5 class="font-weight-bold mb-3"><%=circleList.get(i).getTitle()%></h5>
+									<p class="text-muted mb-2 text-right font-small">
+										조회수 : <a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%=circleList.get(i).getPost_count()%></a>
+									</p>
 									<p class="text-muted mb-4 text-right font-small">
 										작성자 : <a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%=circleList.get(i).getEmail()%></a>
 									</p>
