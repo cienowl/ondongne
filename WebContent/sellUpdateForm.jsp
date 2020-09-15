@@ -72,18 +72,18 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputTitle">판매글 제목</label>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title" value="<%= title %>"/>
+                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title" value="<%= title %>" required/>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="sellPrice">판매가격</label>
-                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice" value="<%= price %>">
+                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice" value="<%= price %>" maxlength="9" numbersOnly required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="sellmethod">거래방법</label>
-                            <select id="sellMethod" class="form-control" name="sellMethod">
+                            <select id="sellMethod" class="form-control" name="sellMethod" required>
                                 <option selected disabled value="<%= isParcel %>"><%= sellMethod %></option>
                                 <option value="false">직거래</option>
                                 <option value="true">택배거래</option>
@@ -94,7 +94,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputRegion">판매지역</label>
-                            <select id="inputRegion" class="form-control" name="region">
+                            <select id="inputRegion" class="form-control" name="region" required>
                                 <option selected disabled value="<%= region %>"><%= region %></option>
                                 <option>강남구</option>
                                 <option>강동구</option>
@@ -174,20 +174,53 @@
             // Animations initialization
             new WOW().init();
         </script>
-
-        <!-- tag js url: https://codepen.io/sniperwolf/pen/geFxq-->
-        <script src="https://cdn.rawgit.com/sniperwolf/taggingJS/master/tagging.min.js"></script>
         <script>
-            // More info: https://github.com/sniperwolf/taggingJS
-            // jQuery on Ready example
-            (function( $, window, document, undefined ) {
-                $( document ).ready(function() {
-                    var t = $( "#tag" ).tagging();
-                    t[0].addClass( "form-control" );
-                    // console.log( t[0] );
-                });
-            })( window.jQuery, window, document );
+            //숫자만 써지게 하기
+            $("input:text[numbersOnly]").on("keyup", function() {
+                $(this).val($(this).val().replace(/[^0-9]/g,""));
+            });
         </script>
+        <script>
+            function validation() {
+                var inputTitle = document.getElementById("inputTitle");
+                var pictures = document.getElementById("pictures");
+                var sellPrice = document.getElementById("sellPrice");
+                var sellMethod = document.getElementById("sellMethod");
+                var inputRegion = document.getElementById("inputRegion");
+                var description = document.getElementById("description");
 
+                if (inputTitle.value == '') {
+                    alert('판매글 제목을 입력해주세요.');
+                    inputTitle.focus();
+                    return false;
+                }
+                if (pictures.value == '') {
+                    //TODO: 이미지만 가능하게 제한 걸기
+                    alert('사진을 등록해주세요.');
+                    pictures.focus();
+                    return false;
+                }
+                if (sellPrice.value == '') {
+                    alert('판매가를 입력해주세요.');
+                    sellPrice.focus();
+                    return false;
+                }
+                if (sellMethod.value == '') {
+                    alert('판매방법을 선택해주세요.');
+                    sellMethod.focus();
+                    return false;
+                }
+                if (inputRegion.value == '') {
+                    alert('지역구를 선택해주세요.');
+                    inputRegion.focus();
+                    return false;
+                }
+                if (description.value == '') {
+                    alert('판매물품 설명을 작성해주세요.');
+                    description.focus();
+                    return false;
+                }
+            }
+        </script>
     </body>
 </html>

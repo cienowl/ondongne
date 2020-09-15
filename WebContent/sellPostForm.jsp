@@ -51,7 +51,7 @@
                         <div class="form-group col-md-6">
                             <label for="pictures">사진</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile" required/>
+                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile" onchange="imgChecker(this);" accept=".jpg, .png, .jpeg" required/>
                                 <label class="custom-file-label" for="pictures">사진 선택</label>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="sellPrice">판매가격</label>
-                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice" numbersOnly required>
+                            <input type="text" class="form-control" id="sellPrice" placeholder="가격" name="sellPrice" maxlength="9" numbersOnly required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="sellmethod">거래방법</label>
@@ -141,7 +141,23 @@
                 $(this).val($(this).val().replace(/[^0-9]/g,""));
             });
         </script>
-
+        <script>
+            //파일 사이즈 5Mb 제한
+            function imgChecker(inputFile) {
+                //용량 체크
+                var maxSize = 5 * 1024 * 1024;
+                if (inputFile.files && inputFile.files[0].size > maxSize) {
+                    alert("첨부할 이미지 파일은 5MB 이하여야 합니다.");
+                    inputFile.value = null;
+                }
+                //이미지 파일 체크 jpg, png, jpeg만 받음
+                var fileExtension = /(.*?)\.(jpg|png|jpeg)$/;
+                if (!inputFile.value.match(fileExtension)) {
+                    alert("JPG, PNG, JPEG 파일만 업로드 가능");
+                    inputFile.value = null;
+                }
+            }
+        </script>
         <script>
             function validation() {
                 var inputTitle = document.getElementById("inputTitle");

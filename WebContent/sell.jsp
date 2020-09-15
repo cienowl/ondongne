@@ -132,7 +132,7 @@
                             padding-top: .6rem;
                         }
                     </style>
-					
+
 					<!-- Sell 목록 -->
                     <div id="modalSellContent">
 
@@ -156,7 +156,7 @@
                     <div class="tab-content mb-5">
                         <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
                             <div class="row" id="cardContents">
-                            
+
                             </div>
                         </div>
                     </div>
@@ -174,41 +174,47 @@
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
         <script>
-        	var page = 1;
-        	
-            $(document).ready(function() {
-                var sessionEmail = '<%=(String) session.getAttribute("email")%>';
-                
+			var page = 0;
+            var sessionEmail = '<%=(String) session.getAttribute("email")%>';
 
-                //로딩 후 전체 목록 가져오기
-                getSellAll(sessionEmail);
-                
-                
-                
+            $(document).ready(function() {
+
+                //로딩 후 목록 가져오기
+                getSellAll(page);
+
+                //전체보기 버튼 클릭하면 내용 싹다 지우고 새로 로딩, page는 0으로 리셋
                 $('#viewAllBtn').on('click',function(){
-                    getSellAll(sessionEmail);
+                    $('#cardContents').empty();
+                    $('#modalSellContent').empty();
+                    $('#searchBox').val('');
+                    window.scrollTo(0,0);
+                    page = 0;
+                    getSellAll(page);
                 });
 
                 //검색시 사용
                 $("#searchBtn").on('click', function(){
                     var searchWord = $('#searchBox').val();
                     if (searchWord != "") {
-                        getSell(sessionEmail, searchWord);
-                    } else {
-                        getSellAll(sessionEmail);
+                        $('#cardContents').empty();
+                        $('#modalSellContent').empty();
+                        page = 0;
+                        getSell(page, searchWord);
                     }
                 });
             })
-            
+
+            //스크롤 맨 아래에서 400px 위까지 가면 실행
             $(window).scroll(function() {
             	if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
-            		getList(page);
             		page++;
+            		var searchWord = $('#searchBox').val();
+            		if (searchWord != "")
+            			getSell(page, searchWord);	//스크롤시 검색박스에 값이 있으면, 검색어 같이 보냄
+            		else
+            			getSellAll(page);	//스크롤시 검색박스에 값이 없으면, 전체 읽기 실행
             	}
             });
-        </script>
-        <script type="text/javascript">
-        	//TODO 페이징 기능 목록 가져오기
         </script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
@@ -223,15 +229,15 @@
         </script>
 
         <script>
-            function getSellAll(sessionEmail) {
+        	//TODO 페이징 기능 목록 가져오기
+            function getSellAll(page) {
+        		alert('getSellAll실행');
                 $.ajax({
                     url:'getSellAll.jsp',
-                    //data:{},
+                    data:{'page':page},
                     type:'GET',
                     dataType:'JSON',
                     success:function(request){
-                        $('#cardContents').empty();
-                        $('#modalSellContent').empty();
                         if (request != "") {
                             $.each(request, function(index, requestEach){
                                 var cardResult = JSON.parse(JSON.stringify(requestEach));
@@ -372,21 +378,22 @@
                             });
                         }
                     },
-                    error:function(request,status,error){
-                        alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
+                    error:function(request,status,error,page){
+                        alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error,+'page:'+page);
                     }
                 });
             }
             //검색결과 Ajax
-            function getSell(sessionEmail, searchWord) {
+            function getSell(page, searchWord) {
                 $.ajax({
                     url:'getSell.jsp',
-                    data:{'searchWord':searchWord},
+                    data:{
+                    	'searchWord':searchWord,
+                    	'page':page
+                    	},
                     type:'GET',
                     dataType:'JSON',
                     success:function(request){
-                        $('#cardContents').empty();
-                        $('#modalSellContent').empty();
                         if (request != "") {
                             $.each(request, function(index, requestEach){
                                 var cardResult = JSON.parse(JSON.stringify(requestEach));
@@ -526,11 +533,11 @@
                                 }
                             });
                         } else {
-                            $('#cardContents').append(
-                                '<div class="col-md text-center">'+
-                                    '<h2 class="dark-grey-text">검색 결과가 없습니다.</h2>'+
-                                '</div>'
-                            );
+                            //$('#cardContents').append(
+                            //   '<div class="col-md text-center">'+
+                            //        '<h2 class="dark-grey-text">검색 결과가 없습니다.</h2>'+
+                            //    '</div>'
+                            //);
                         }
                     },
                     error:function(request,status,error){
@@ -538,6 +545,7 @@
                     }
                 });
             }
+
             //게시글 삭제 확인
             function confirmDelete(form) {
                 console.log('글번호' + form.postid.value);
@@ -548,12 +556,10 @@
                     alert("삭제가 취소되었습니다.");
                 }
             }
+
             //가격 comma formatter
             function numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            }
-            function sellPost() {
-            	
             }
         </script>
 

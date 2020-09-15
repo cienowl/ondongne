@@ -1,4 +1,5 @@
 
+<%@page import="com.ondongne.dto.SearchSellBean"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
@@ -11,14 +12,20 @@
 	// 작성자: 이호준
 
     request.setCharacterEncoding("utf-8");
-
+	
+	//페이지 수에 따라 12개씩 출력
+	int pageOffset = Integer.parseInt((String) request.getParameter("page"))*12;
     String searchWord = request.getParameter("searchWord");
+    
+    SearchSellBean searchSellBean = new SearchSellBean();
+    searchSellBean.setSearchWord(searchWord);
+    searchSellBean.setPage(pageOffset);
 	
     DataAccessSell daoSell = DataAccessSell.getInstance();
     SqlSessionFactory factory = DataAccessSell.getConnection();
     SqlSession sqlSession = factory.openSession();
 
-    List<DataTransferSell> searchSellList = sqlSession.selectList("searchSellList", searchWord);
+    List<DataTransferSell> searchSellList = sqlSession.selectList("searchSellListPaging", searchSellBean);
     sqlSession.close();
     
     Gson gson = new Gson();

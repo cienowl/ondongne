@@ -11,11 +11,14 @@
 
     request.setCharacterEncoding("utf-8");
 
+	//페이지 수에 따라 12개씩 출력
+	int pageOffset = Integer.parseInt((String) request.getParameter("page"))*12;
+
     DataAccessSell daoSell = DataAccessSell.getInstance();
     SqlSessionFactory factory = DataAccessSell.getConnection();
     SqlSession sqlSession = factory.openSession();
 
-    List<DataTransferSell> getSellList = sqlSession.selectList("selectSellPostAll");
+    List<DataTransferSell> getSellList = sqlSession.selectList("selectSellPostAllPaging", pageOffset);
     sqlSession.close();
     
     Gson gson = new Gson();

@@ -32,6 +32,7 @@ public class DataTransferSell{
 	private String description;
 	private String tags;
 	private boolean is_active;
+	private int post_count;
 
 	public int getId() {
 		return id;
@@ -99,5 +100,10 @@ public class DataTransferSell{
 	public void setIs_active(boolean is_active) {
 		this.is_active = is_active;
 	}
-
+	public int getPost_count() {
+		return post_count;
+	}
+	public void setPost_count(int post_count) {
+		this.post_count = post_count;
+	}
 }

@@ -37,6 +37,10 @@
 		select * from sell order by post_date desc
 	</select>
 	
+	<select id="selectSellPostAllPaging" resultType="com.ondongne.dto.DataTransferSell" parameterType="int">
+		select * from sell order by post_date desc limit 12 offset #{pageOffset}
+	</select>
+	
 	<select id="getJoinSell" resultType="com.ondongne.dto.DataTransferSell" parameterType="String">
 		select id, email, title, price from sell where id in(select join_postid from helper_sell where join_email=#{loginEmail})
 	</select>
@@ -48,6 +52,10 @@
 	<select id="searchSellList" resultType="com.ondongne.dto.DataTransferSell" parameterType="String">
 		select * from sell WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%')
 	</select>	
+	
+	<select id="searchSellListPaging" resultType="com.ondongne.dto.DataTransferSell" parameterType="com.ondongne.dto.SearchSellBean">
+		select * from sell WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') limit 12 offset #{page}
+	</select>
 	
 	<delete id="deleteSellPost" parameterType="com.ondongne.dto.DataTransferSell">
 		delete from sell where id=#{id}

@@ -1,6 +1,8 @@
 package com.ondongne.action;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +21,11 @@ public class PostSellAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		HttpSession session = request.getSession();
+		String sessionEmail = (String)session.getAttribute("email");
+		
+//		long time = System.currentTimeMillis();
+//		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-mm-dd.hh:mm:ss");
+//		String uploadTime = dayTime.format(new Date(time));
 		
 		String realFolder = "";
 		String saveFolder = "img/sell";
@@ -30,7 +37,7 @@ public class PostSellAction implements Action {
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 		
 		DataTransferSell dtoSell = new DataTransferSell();
-		dtoSell.setEmail((String)session.getAttribute("email"));
+		dtoSell.setEmail(sessionEmail);
 		dtoSell.setTitle(multi.getParameter("title"));
 		dtoSell.setIs_parcel(Boolean.parseBoolean(multi.getParameter("sellMethod")));
 		dtoSell.setPrice(multi.getParameter("sellPrice"));

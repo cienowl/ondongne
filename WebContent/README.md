@@ -114,6 +114,7 @@ CREATE TABLE `sell` (
   `pictures` text NOT NULL,
   `tags` varchar(100) NOT NULL,
   `post_date` datetime NOT NULL,
+  `post_count` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `sell_email_idx` (`email`),
   CONSTRAINT `sell_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE

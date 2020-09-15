@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ondongne.action.Action;
 import com.ondongne.action.CancelJoinSellAction;
@@ -24,22 +25,26 @@ public class SellFrontController extends HttpServlet {
 	public void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
 		request.setCharacterEncoding("UTF-8");
+//		HttpSession session = request.getSession();
 
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
+//		String sessionEmail = (String)session.getAttribute("email");
 		
 		ActionForward forward = null;
 		Action action = null;
 	
 		if (command.equals("/view.sell")) {
 //			navbar 에서 처음 들어오거나 sellpostform.jsp 에서 글쓰기 취소 버튼을 누르면 sell.jsp로 이동	
-			action = new GetSellAction();
-			try {
-				forward = action.execute(request, response);	//action 진행 후 리턴된 forward 대입
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+//			action = new GetSellAction();
+//			try {
+//				forward = action.execute(request, response);	//action 진행 후 리턴된 forward 대입
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+			forward = new ActionForward();
+			forward.setPath("/sell.jsp");
 		}
 
 		else if (command.equals("/postform.sell")) {
