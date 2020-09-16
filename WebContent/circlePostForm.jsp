@@ -32,8 +32,6 @@
     </head>
 
     <body>
-
-        <!-- Header Start -->
         <header>
             <% if (session.getAttribute("email") != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
@@ -41,14 +39,11 @@
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
         </header>
-        <!-- Header End -->
 
-
-        <!-- Main Start -->
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn">
-
-                <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">소모임 정보를 등록해주세요.</h2>
+                <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">소모임 정보를 입력해주세요.</h2>
+                <hr class=""/>
 
                 <form action="postinsert.circle" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
@@ -183,12 +178,9 @@
             </div>
 
         </main>
-        <!-- Main End -->
-
 
         <!-- Footer import -->
         <%@ include file="footer.jsp" %>
-
 
         <!-- SCRIPTS -->
         <!-- JQuery -->
@@ -265,8 +257,8 @@
                 }).open();
             }
         </script>
-        
-        <!-- 게시물 올릴때 사진 크기, 확장자제한 -->	
+
+        <!-- 게시물 올릴때 사진 크기, 확장자제한 -->
         <script>
         	function imgChecker(inputFile){
         		 //용량 체크
@@ -402,6 +394,5 @@
 				}
 			}
 		</script>
-
     </body>
 </html>

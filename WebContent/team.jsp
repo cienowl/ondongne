@@ -75,10 +75,13 @@
 
             <div class="container my-5 pt-5">
                 <!--Section: Content-->
-                <section class="team-section text-center dark-grey-text">
+                <section class="team-section dark-grey-text">
 
-                    <h2 class="font-weight-bold pb-2 mb-4">ON동네 팀원들</h2>
-                    <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">ON동네를 만들고 있는 팀원들을 만나보세요!</p>
+                    <h2 class="font-weight-bold mb-3">ON동네 만든이들</h2>
+                    
+                    <hr class=""/>
+
+                    <p class="lead text-muted mx-auto mt-4 pt-2 mb-5">ON동네를 만들고 있는 팀원들을 만나보세요!</p>
 
                     <%-- <h2 class="font-weight-bold pb-2 mb-4">ON동네 팀원들</h2>
                     <p class="text-muted w-responsive mx-auto mb-5">ON동네를 만들고 있는 팀원들을 만나보세요!</p> --%>

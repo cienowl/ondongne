@@ -36,7 +36,7 @@
 
         <main>
             <div class="container mt-5 pt-5">
-                <h2 class="font-weight-bold dark-grey-text px-4 mb-3">아이디 찾기</h2>
+                <h2 class="font-weight-bold dark-grey-text mb-3">아이디 찾기</h2>
 
                 <hr class=""/>
 

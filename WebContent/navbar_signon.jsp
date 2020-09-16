@@ -39,14 +39,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="view.hotplace">동네명소</a>
                 </li>
-                <li class="nav-item dropdown">
+                <%-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbar-signon-menulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">게시판</a>
                     <div class="dropdown-menu dropdown-default" aria-labelledby="navbar-signon-menulink">
                         <a class="dropdown-item" href="#">자유게시판</a>
                         <a class="dropdown-item" href="#">동네게시판</a>
                         <a class="dropdown-item" href="#">질문게시판</a>
                     </div>
-                </li>
+                </li> --%>
             </ul>
             <ul class="navbar-nav ml-auto nav-flex-icons">
                 <%

@@ -16,8 +16,7 @@
     SqlSession sqlSession = factory.openSession();
 
     getPhone = sqlSession.selectOne("checkPhone", phone);
-	//out.print(getPhone);
-    
+
     if (getPhone != null) {
         result = "이미 존재하는 핸드폰번호입니다.";
     } else {

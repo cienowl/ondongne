@@ -20,10 +20,10 @@
 
     List<DataTransferSell> getSellList = sqlSession.selectList("selectSellPostAllPaging", pageOffset);
     sqlSession.close();
-    
+
     Gson gson = new Gson();
 
-	String resultSell = gson.toJson(getSellList); 
-	
+	String resultSell = gson.toJson(getSellList);
+
 	out.println(resultSell);
 %>

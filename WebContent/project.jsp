@@ -70,9 +70,11 @@
                 <section class="dark-grey-text">
 
                     <!-- Section heading -->
-                    <h2 class="font-weight-bold pb-2 mb-4">프로젝트 소개 페이지</h2>
-                    <!-- Section description -->
-                    <%-- <p class="text-muted w-responsive mx-auto mb-5">ON동네를 만들고 있는 팀원들을 만나보세요!</p> --%>
+                    <h2 class="font-weight-bold mb-3">프로젝트 소개 페이지</h2>
+                    
+                    <hr class=""/>
+
+                    <p class="lead text-muted mx-auto mt-4 pt-2 mb-5">ON동네 프로젝트를 알려드립니다!</p>
 
                     <!-- Grid row-->
                     <div class="row text-center text-md-left">

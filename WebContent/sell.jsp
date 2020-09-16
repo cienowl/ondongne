@@ -117,7 +117,6 @@
 
         <main>
             <div class="container my-5">
-
                 <section>
                     <style>
                         .md-pills .nav-link.active {
@@ -135,34 +134,21 @@
 
 					<!-- Sell 목록 -->
                     <div id="modalSellContent">
-
+                        <!-- 페이지 카드 들어가는 곳 -->
                     </div>
-
-                    <%-- <style>
-                        /* .imgtest {
-                            background: url('img/sell/<%=sellList.get(i).getPictures()%>');
-
-                            Full height */
-                            height: 100%;
-
-                            /* Center and scale the image nicely */
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                        } */
-                    </style> --%>
+                    <!-- /Sell 목록 -->
 
                     <!-- Sell 카드 상세 내용 -->
                     <div class="tab-content mb-5">
                         <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
                             <div class="row" id="cardContents">
-
+                                <!-- 모달 내용 들어가는 곳 -->
                             </div>
                         </div>
                     </div>
+                    <!-- /Sell 카드 상세 내용 -->
 
                 </section>
-
             </div>
         </main>
         <!--Main layout-->
@@ -173,6 +159,16 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <!-- Initializations -->
+        <script type="text/javascript">
+            new wow().init();
+        </script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
         <script>
             var sessionEmail = '<%=(String) session.getAttribute("email")%>';   //참고: JSP 구문 사용하기위해서 따옴표 써서 null 도 문자열값으로 들어감
 
@@ -216,20 +212,7 @@
                     getSellAll(page);
                 });
             })
-
         </script>
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="js/popper.min.js"></script>
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
-        <!-- Initializations -->
-        <script type="text/javascript">
-            // Animations initialization
-            new WOW().init();
-        </script>
-
         <script>
             //전체결과 Ajax
             function getSellAll(page) {
@@ -265,7 +248,7 @@
                                 $('#cardContents').append(
                                     '<div class="col-md-6 col-lg-3">'+
                                         '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+(index+pageOffset)+'">'+
-                                            '<img class="card-img-top" src="img/sell/'+cardResult.pictures+'" alt="Card image cap">'+
+                                            '<div class="card-img-top zoom sellCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
                                                 '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
                                                 '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.email+'</p>'+
@@ -275,6 +258,10 @@
                                         '</a>'+
                                     '</div>'
                                 );
+                                $('.sellCardBg'+(index+pageOffset)).css('background-image','url("img/sell/'+cardResult.pictures+'")');
+                                $('.sellCardBg'+(index+pageOffset)).css('background-position','center');
+                                $('.sellCardBg'+(index+pageOffset)).css('background-size','cover');
+                                $('.sellCardBg'+(index+pageOffset)).css('height','170px');
                                 //게시물 Modal plot
                                 $('#modalSellContent').append(
                                     '<div class="modal fade" id="sellList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
@@ -288,9 +275,9 @@
                                                                 '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="1"></li>'+
                                                                 '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="2"></li>'+
                                                             '</ol>'+
-                                                            '<div class="carousel-inner" role="listbox">'+
+                                                            '<div class="carousel-inner" role="listbox" style="height: 500px;">'+
                                                                 '<div class="carousel-item active">'+
-                                                                    '<img class="d-block w-100" src="img/sell/'+cardResult.pictures+'" alt="First slide">'+
+                                                                    '<img class="d-block w-100 h-100" src="img/sell/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
                                                                 '</div>'+
                                                                 '<div class="carousel-item">'+
                                                                     '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">'+
@@ -419,7 +406,7 @@
                                 $('#cardContents').append(
                                     '<div class="col-md-6 col-lg-3">'+
                                         '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+(index+pageOffset)+'">'+
-                                            '<img class="card-img-top" src="img/sell/'+cardResult.pictures+'" alt="Card image cap">'+
+                                            '<div class="card-img-top sellCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
                                                 '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
                                                 '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.email+'</p>'+
@@ -429,6 +416,10 @@
                                         '</a>'+
                                     '</div>'
                                 );
+                                $('.sellCardBg'+(index+pageOffset)).css('background-image','url("img/sell/'+cardResult.pictures+'")');
+                                $('.sellCardBg'+(index+pageOffset)).css('background-position','center');
+                                $('.sellCardBg'+(index+pageOffset)).css('background-size','cover');
+                                $('.sellCardBg'+(index+pageOffset)).css('height','170px');
                                 //게시물 Modal plot
                                 $('#modalSellContent').append(
                                     '<div class="modal fade" id="sellList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+

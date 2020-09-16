@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="selectNoticeAll" resultType="com.ondongne.dto.NoticeBean">
-		select * from notice
+		select * from notice order by postdate desc
 	</select>
 	
 	<delete id="deleteNoticeOne" parameterType="String">

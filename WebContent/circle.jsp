@@ -15,7 +15,6 @@
 	String sessionEmail = (String) session.getAttribute("email");
 %>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -96,8 +95,6 @@
 	</head>
 
 	<body>
-
-		<!--Main Navigation-->
 		<header>
 			<% if (sessionEmail != null) { %>
 				<jsp:include page="navbar_signon.jsp" />
@@ -176,7 +173,7 @@
 											<div class="col-md-2 mr-auto">
 												<button type="submit" class="btn btn-block btn-lg btn-outline-white">검색</button>
 											</div>
-											
+
 										</div>
 									</form>
 
@@ -286,15 +283,15 @@
 			height:300px;
 		}
 		</style>
-		
-		
+
+
 				<%
 					for (int i = 0; i < circleList.size(); i++) {
 				%>
 				<%
 					dataTarget = "circleList" + Integer.toString(i);
 				%>
-				
+
 				<!-- 게시물 참여자 -->
 				<%
 					SqlSessionFactory factory = DataAccessCircleJoin.getConnection();
@@ -304,7 +301,7 @@
 					int joinCount = sqlSession.selectOne("getJoinCount",circleList.get(i).getId());
 					sqlSession.close();
 				%>
-			
+
 				<!-- 참여버튼 눌렀을 때 로그인 되어있는지 확인 -->
 				<%
 					String joinButtonSelector = null;
@@ -337,8 +334,8 @@
 										check = false;
 									}
 							%>
-							
-							
+
+
 							<div class="modal-header p-0">
 								<!--Grid column-->
 								<div class="row">
@@ -403,24 +400,24 @@
 
 							<div class="modal-body">
 								<div class="col align-self-center">
-								
-								
+
+
 								<!-- 게시물 조회수 -->
 							<%
 								SqlSessionFactory factory2 = DataAccessCircleJoin.getConnection();
 								SqlSession sqlSession2 = factory.openSession();
-			
-							
+
+
 								// 게시물 조회수 update
 								sqlSession2.update("postCount",circleList.get(i).getId());
 								sqlSession2.commit();
 								// 게시물 조회수 select
 								int postCount = sqlSession2.selectOne("getPostCount",circleList.get(i).getId());
-								
+
 								sqlSession2.close();
 							%>
-							
-								
+
+
 
 									<%if (!check) {%>
 									<form action="postjoin.circle" method="POST" >
@@ -531,8 +528,8 @@
 							<!-- Grid column 1 -->
 							<div class="col-md-6 col-lg-3" onclick="post_count(this)">
 								<!-- Card -->
-								<a class="card hoverable mb-4" data-toggle="modal" data-target="<%=dataTarget%>"> 
-								<!-- Card image --> 
+								<a class="card hoverable mb-4" data-toggle="modal" data-target="<%=dataTarget%>">
+								<!-- Card image -->
 									<img class="card-img-top" src="img/circle/<%=circleList.get(i).getPictures()%>" alt="" id="listImage">
 							 	<!-- Card content -->
 									<div class="card-body">
@@ -550,9 +547,9 @@
 									</div>
 								</a>
 								<!-- Card -->
-								
+
 							</div>
-							
+
 							<!-- Grid column  -->
 							<%
 								}
@@ -608,9 +605,9 @@
 					});
 				});
 		</script>
-			
+
 		<script>
-			
+
 		</script>
 
 		<!-- Initializations -->
@@ -644,7 +641,7 @@
 				}
 			}
 		</script>
-		
+
 		<!-- 게시글 조회수 -->
 		<script>
 			function post_count(this){
@@ -653,8 +650,8 @@
 				//console.log("aaa");
 			}
 		</script>
-		
-		
+
+
 	</body>
 
 </html>

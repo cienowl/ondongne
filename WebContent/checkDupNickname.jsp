@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%
-    /*
-    작성자:
-        JSP	- 김나예
-    */
+    //작성자: 김나예
 
-    request.setCharacterEncoding("utf-8"); 
+    request.setCharacterEncoding("utf-8");
 
     String inputNickname = request.getParameter("inputNickname");
     String result = null;
@@ -22,7 +19,7 @@
 			throw new Exception("데이터베이스에 연결할 수 없습니다.");
 
 		stmt = conn.createStatement();
-		
+
 		String command = "SELECT nickname FROM users WHERE nickname='" + inputNickname + "';";
         ResultSet rs = stmt.executeQuery(command);
 

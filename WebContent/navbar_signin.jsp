@@ -32,7 +32,7 @@
         aria-controls="navbar-signin" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbar-signin">
             <ul class="navbar-nav mr-auto">
                 <!-- <li class="nav-item active">
@@ -49,7 +49,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="view.hotplace">동네명소</a>
                 </li>
-                <li class="nav-item dropdown">
+                <%-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbar-signin-menu" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">게시판
                     </a>
@@ -58,7 +58,7 @@
                         <a class="dropdown-item" href="#">동네게시판</a>
                         <a class="dropdown-item" href="#">질문게시판</a>
                     </div>
-                </li>
+                </li> --%>
             </ul>
             <!-- Right -->
             <ul class="navbar-nav nav-flex-icons">
@@ -166,7 +166,7 @@
                     <input type="text" class="form-control form-control-lg mb-3" id="signupName" name="signupName" placeholder="이름" required/>
                     <input type="text" class="form-control form-control-lg" id="signupPhone" name="signupPhone" placeholder="전화번호" maxlength="11" required numbersOnly />
 					<small id="checkDupPhone" class="form-text text-danger mb-5" style="height: 20px;"></small>
-					
+
                     <button type="submit" class="btn btn-orange accent-4 mt-4 btn-block" onclick="return signupValidate();" >
                         <h5 class="m-0">ON동네 회원가입</h5>
                     </button>

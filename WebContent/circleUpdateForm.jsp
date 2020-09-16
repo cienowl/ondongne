@@ -32,12 +32,10 @@
             }
         </style>
 
-       
+
     </head>
 
     <body>
-
-        <!-- Header Start -->
         <header>
             <!-- Navbar signin form -->
             <% if (session.getAttribute("email") != null) {%>
@@ -47,7 +45,6 @@
 			<%} %>
 
         </header>
-        <!-- Header End -->
 		<%
 			int postid = (Integer.parseInt(request.getParameter("postid")));
 			String title = request.getParameter("title");
@@ -60,32 +57,28 @@
 			String address = request.getParameter("address");
 			String address_detail = request.getParameter("address_detail");
 			String description = request.getParameter("description");
-		%>
-		<%
+
 			SqlSessionFactory factory = DataAccessCircle.getConnection();
 			SqlSession sqlSession = factory.openSession();
-			
+
 			String picturesName = sqlSession.selectOne("getCirclePictures",postid);
 			sqlSession.close();
 		%>
-		
-		
 
-        <!-- Main Start -->
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn">
-
-                <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">소모임글 정보 수정</h2>
+                <h2 class="font-weight-bold dark-grey-text pb-2 mb-3">소모임글 정보 수정</h2>
+                <hr class=""/>
 
                 <form action="postupdate.circle" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="postid" value="<%=postid %>"/>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputTitle" >소모임 제목</label>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title" value="<%= title %>"/>                           
+                            <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title" value="<%= title %>"/>
                         </div>
                          <div class="form-group col-md-6">
-                            <label for="pictures">사진</label></br>
+                            <label for="pictures">사진</label><br/>
                             <input type="file" name="pictures" id="pictures" value="<%=picturesName%>"/>
                         </div>
                     </div>
@@ -160,7 +153,7 @@
                                 <input type="radio" name="gender" value="male" /> 남
                                 <input class="ml-2" type="radio" name="gender" value="female" /> 여
                                 <input class="ml-2" type="radio" name="gender" value="none" checked /> 무관
-                                <% } %>
+                            <% } %>
                         </div>
                     </div>
 
@@ -214,16 +207,11 @@
 
                     <div class="clearfix mb-4"></div>
                 </form>
-
             </div>
-
         </main>
-        <!-- Main End -->
-
 
         <!-- Footer import -->
         <%@ include file="footer.jsp" %>
-
 
         <!-- SCRIPTS -->
         <!-- JQuery -->
@@ -306,7 +294,7 @@
 				$("#inputTitle").focus();
 			})
 		</script>
-		
+
 		<!-- 이벤트 날짜 설정시에 오늘날짜 이후로 선택가능하도록 -->
 		<script>
 			$(document).ready(function(){
@@ -314,7 +302,7 @@
 					var select_date = $("#event_date").val();
 					var today = getToday();
 					//alert("선택날짜 : "+select_date+" / 오늘날짜 : "+today);
-					
+
 					if(select_date<today){
 						//alert("asdfadf");
 						$("#eventdateHelp").html("<p>오늘 날짜 이후로 설정해주세요.</p>");
@@ -322,16 +310,16 @@
 					}else{
 						$("#eventdateHelp").html('');
 					}
-					
+
 				});
-				
+
 			});
 			function getToday(){
 				var date = new Date();
 				return date.getFullYear()+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+("0"+date.getDate()).slice(-2);
 			}
 		</script>
-		
+
 		<!-- 마감날짜 선택시 모임날짜보다 이전까지만 받도록 -->
 		<script>
 			$(document).ready(function(){
@@ -339,7 +327,7 @@
 					var select_date = $("#end_date").val();
 					var event_date = $("#event_date").val();
 					var today = getToday();
-					
+
 					if(event_date<select_date){
 						$("#enddateHelp").html("<p>마감일은 소모임날짜 이전에만 등록가능합니다.</p>");
 						$("#end_date").val('');
@@ -349,16 +337,16 @@
 					}else{
 						$("#enddateHelp").html('');
 					}
-					
+
 				});
-				
+
 			});
 			function getToday(){
 				var date = new Date();
 				return date.getFullYear()+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+("0"+date.getDate()).slice(-2);
 			}
 		</script>
-		
+
 		<!-- 입력값 유효성 검사 -->
 		<script>
 			function validation(){
@@ -376,52 +364,52 @@
 				if(inputTitle.value==""){
 					alert("소모임 제목을 입력하세요.");
 					inputTitle.focus();
-					return false;	
+					return false;
 				}
 				if(pictures.value==""){
 					alert("사진을 등록해주세요.");
 					pictures.focus();
-					return false;	
+					return false;
 				}
 				if(memnumber.value==""){
 					alert("인원수를 선택해주세요.");
 					memnumber.focus();
-					return false;	
+					return false;
 				}
 				if(inputRegion.value==""){
 					alert("지역구를 선택해주세요.");
 					inputRegion.focus();
-					return false;	
+					return false;
 				}
 				if(event_date.value==""){
 					alert("소모임 날짜를 확인해주세요.");
 					event_date.focus();
-					return false;	
+					return false;
 				}
 				if(end_date.value==""){
 					alert("모집마감 날짜를 확인해주세요.");
 					end_date.focus();
-					return false;	
+					return false;
 				}
 				if(sample4_postcode.value==""){
 					alert("주소를 확인해주세요.");
 					sample4_postcode.focus();
-					return false;	
+					return false;
 				}
 				if(sample4_roadAddress.value==""){
 					alert("주소를 확인해주세요.");
 					sample4_roadAddress.focus();
-					return false;	
+					return false;
 				}
 				if(sample4_detailAddress.value==""){
 					alert("주소를 확인해주세요.");
 					sample4_detailAddress.focus();
-					return false;	
+					return false;
 				}
 				if(exampleFormControlTextarea3.value==""){
 					alert("소모임 설명을 작성해주세요.");
 					exampleFormControlTextarea3.focus();
-					return false;	
+					return false;
 				}
 			}
 		</script>

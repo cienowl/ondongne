@@ -50,20 +50,24 @@
         <main>
 
             <div class="container my-5 pt-5">
-                <h2 class="font-weight-bold dark-grey-text pl-5 pr-5 pb-2 mb-4">공지사항</h2>
-                <div class="list-group list-group-flush pr-5 pl-5">
-                    <% for (int i = noticeList.size()-1; i >= 0; i--) { %>
+                <h2 class="font-weight-bold dark-grey-text mb-3">공지사항</h2>
+                
+                <hr class=""/>
+                <div class="list-group list-group-flush mt-5">
+                    <!-- 공지사항 목록 -->
+                    <% for (int i = 0; i < noticeList.size(); i++) { %>
                     <% dataTarget = "#noticeList" + Integer.toString(i); %>
                         <a href="#" class="list-group-item list-group-item-action" style="cursor: pointer;" data-toggle="modal" data-target="<%= dataTarget %>">
-                            <h5 class="pb-1 pt-3"><%= noticeList.get(i).getTitle() %></h5>
-                            <h6 class="pb-2 text-muted"><%= noticeList.get(i).getPostdate() %></h6>
+                            <h4 class="pb-1 pt-3 dark-grey-text text-weight-bold"><%= noticeList.get(i).getTitle() %></h4>
+                            <h6 class="pb-2 text-muted"><%= noticeList.get(i).getPostdate().split(" ")[0] %></h6>
                         </a>
                     <% } %>
+                    <!-- /공지사항 목록 -->
                 </div>
             </div>
 
             <!-- Modal: 공지사항 출력 -->
-            <% for (int i = noticeList.size()-1; i >= 0; i--) { %>
+            <% for (int i = 0; i <noticeList.size(); i++) { %>
             <% dataTarget = "noticeList" + Integer.toString(i); %>
             <div class="modal fade" id="<%= dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -77,7 +81,7 @@
 
                         <div class="modal-body p-5">
                             <h6 class="font-weight-bold deep-orange-text float-left">Admin</h6>
-                            <p class="font-weight-bold dark-grey-text float-right"><i class="fas fa-clock-o pr-2"></i><%= noticeList.get(i).getPostdate() %></p>
+                            <p class="font-weight-bold dark-grey-text float-right"><i class="fas fa-clock-o pr-2"></i><%= noticeList.get(i).getPostdate().split(" ")[0] %></p>
                             <div class="clearfix"></div>
                             <p class="dark-grey-text"><%= noticeList.get(i).getContent() %></p>
                         </div>

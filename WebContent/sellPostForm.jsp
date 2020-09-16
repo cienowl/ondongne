@@ -41,7 +41,9 @@
 
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn mb-5">
-                <h2 class="font-weight-bold dark-grey-text pb-2 mb-4">판매물품 정보를 등록해주세요.</h2>
+                <h2 class="font-weight-bold dark-grey-text pb-2 mb-3">판매물품 정보를 입력해주세요.</h2>
+                <hr class=""/>
+
                 <form action="submit.sell" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group col-md-6">

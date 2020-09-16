@@ -67,8 +67,10 @@
 
             <div class="container my-5 pt-5">
                 <!--Section: Content-->
-                <section class="">
-                    이용 약관
+                <section class="dark-grey-text">
+                    <h2 class="font-weight-bold mb-3">이용 약관</h2>
+                    
+                    <hr class=""/>
 안녕하세요?
 
 (주)당근마켓 서비스를 이용해 주셔서 감사합니다. 지역 정보 모바일 서비스를 제공하는 당근마켓이 아래 준비한 약관을 읽어주시면 감사드리겠습니다.

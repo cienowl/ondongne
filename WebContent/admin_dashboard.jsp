@@ -159,11 +159,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <% for (int i = noticeList.size()-1; i >=0; i--) { %>
+                                <% for (int i = 0; i < noticeList.size(); i++) { %>
                                 <% dataTarget = "#noticeList" + Integer.toString(i); %>
                                     <tr class="text-center" style="cursor: pointer;" data-toggle="modal" data-target="<%= dataTarget %>">
                                         <td><%= noticeList.get(i).getId() %></td>
-                                        <td><%= noticeList.get(i).getPostdate() %></td>
+                                        <td><%= noticeList.get(i).getPostdate().split(' ')[0] %></td>
                                         <td><%= noticeList.get(i).getTitle() %></td>
                                     </tr>
                                 <% } %>
@@ -212,7 +212,7 @@
                 <!-- /Modal: 공지사항 입력 폼 -->
 
                 <!-- Modal: 공지사항 출력 -->
-                <% for (int i = noticeList.size()-1; i >=0; i--) { %>
+                <% for (int i = 0; i < noticeList.size(); i++) { %>
                 <% dataTarget = "noticeList" + Integer.toString(i); %>
                 <div class="modal fade" id="<%= dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-centered">

@@ -59,7 +59,7 @@
         <header>
 			 <jsp:include page="navbar_admin.jsp"/>
         </header>
-        
+
         <main>
             <div class="container mt-5 pt-5">
 

@@ -156,8 +156,8 @@
         <main>
 
             <!-- Section: Content -->
-            <div class="container my-5 py-4 wow fadeIn">
-                <section class="py-5">
+            <div class="container my-5 py-5 wow fadeIn">
+                <section class="py-5 my-5">
 
                     <!-- Section heading -->
                     <h1 class="text-center font-weight-bold dark-grey-text mb-5">서비스 소개</h1>
@@ -230,7 +230,7 @@
             <!-- /Section: Content -->
 
             <!-- /Section: QnA -->
-            <div class="faq-background-color">
+            <div class="faq-background-color my-5 py-5">
                 <div class="container my-5 pt-5 fadeIn">
                     <section class="pb-5">
                         <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">FAQ</h6>
@@ -278,7 +278,7 @@
 
             <!-- Section: Call to action -->
             <div class="container my-5 py-5">
-                <section class="text-center px-md-5 mx-md-5 my-5 dark-grey-text fadeIn">
+                <section class="text-center px-md-5 mx-md-5 my-5 py-5 dark-grey-text fadeIn">
                     <h1 class="font-weight-bold mb-4 display-4">나에게 딱 맞는 동네정보 찾기</h1>
                     <h4 class="text-center mx-auto">회원가입 후, 지금 가장 인기있는 동네 소식을 찾아보세요.</h4>
 
@@ -300,14 +300,16 @@
 
         </main>
 
-
         <!-- Footer import -->
         <%@ include file="footer.jsp" %>
-
 
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <!-- Initializations -->
+        <script type="text/javascript">
+            new WOW().init();
+        </script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
@@ -316,11 +318,6 @@
         <script type="text/javascript" src="js/mdb.min.js"></script>
 
         <!-- Optional JavaScript -->
-        <script>
-            $("input:text[numbersOnly]").on("keyup", function() {
-                $(this).val($(this).val().replace(/[^0-9]/g,""));
-            });
-        </script>
         <script>
             //Signin Form Checker
             function signinValidate() {
@@ -340,13 +337,10 @@
                     return false;
                 }
 
-                // alert(checkStoreEmail.checked);
-
                 //TODO: storeId 일 경우 쿠키에 저장
                 if (checkStoreEmail.checked == true) {
                     //쿠키에 로그임 이메일 저장
                 }
-
             }
 
             //Singup Form Checker
@@ -452,24 +446,25 @@
                     }
                 }
             }
-
         </script>
 
         <script>
-            //로그인시 가입한 이메일이 있는지 확인
             $(document).ready(function(){
+                //전화번호 숫자만
+                $("input:text[numbersOnly]").on("keyup", function() {
+                    $(this).val($(this).val().replace(/[^0-9]/g,""));
+                });
 
                 //로그인시 가입된 이메일인지 확인
                 $("#signinEmail").blur(function(){
                     var email = $("#signinEmail").val();
                     $("#checkEmail").empty();
-
                     if (email != "") {
                         $.ajax({
                             url:"checkEmail.jsp",
                             data:{
                                 "inputEmail":email
-                            },
+                                },
                             type:"GET",
                             // dataType:"html",             //연결하는 문서의 타입
                             success:function(request){
@@ -479,8 +474,6 @@
                             	}else{
                             		$("#checkEmail").append(request);
                             	}
-                               
-                                
                             },
                             error:function(request,status,error){
                                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -494,21 +487,18 @@
                 $("#signupEmail").blur(function(){
                     var email = $("#signupEmail").val();
                     $("#checkDupEmail").empty();
-
                     if (email != "") {
                         $.ajax({
                             url:'checkDupEmail.jsp?inputEmail='+email,
                             type:"GET",
                             // dataType:"html",             //연결하는 문서의 타입
                             success:function(request){
-                                console.log(request.trim());
                                 if (request.trim() != "") {
                                     $("#checkDupEmail").append(request);
                                     $("#signupEmail").val('');
                                 } else {
                                     $('#checkDupEmail').append(request);
                                 }
-
                             },
                             error:function(request,status,error){
                                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -527,8 +517,6 @@
                             url:'checkPhone.jsp?inputPhone='+phone,
                             type:"GET",
                             success:function(request){
-                                //console.log(request+"/"+$("#checkDupPhone").val());
-                                console.log(request.trim());
                                 if (request.trim() != "") {
                                     $("#checkDupPhone").append(request);
                                     $("#signupPhone").val('');
@@ -537,7 +525,6 @@
                                 }
                             },
                             error:function(request,status,error){
-                                //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                             }
                         });
@@ -546,14 +533,5 @@
 
             });
         </script>
-
-
-        <!-- Initializations -->
-        <script type="text/javascript">
-            // Animations initialization
-            new WOW().init();
-        </script>
-
-
     </body>
 </html>
