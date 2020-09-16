@@ -286,9 +286,8 @@
 			height:300px;
 		}
 		</style>
-
-
-
+		
+		
 				<%
 					for (int i = 0; i < circleList.size(); i++) {
 				%>
@@ -321,10 +320,9 @@
 
 					}
 				%>
-
 				<!-- Modal: Card Content -->
 				<div class="modal fade" id="<%=dataTarget%>" tabindex="-1"
-					role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
 					<div
 						class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered"
 						role="document">
@@ -406,6 +404,7 @@
 							<div class="modal-body">
 								<div class="col align-self-center">
 								
+								
 								<!-- 게시물 조회수 -->
 							<%
 								SqlSessionFactory factory2 = DataAccessCircleJoin.getConnection();
@@ -420,6 +419,7 @@
 								
 								sqlSession2.close();
 							%>
+							
 								
 
 									<%if (!check) {%>
@@ -442,7 +442,7 @@
 									<h5 class="font-weight-bold mb-3"><%=circleList.get(i).getTitle()%></h5>
 									<p class="text-muted mb-2 text-right font-small">
 										조회수 : <a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%=circleList.get(i).getPost_count()%></a>
-									</p>
+									</p><%=dataTarget %>
 									<p class="text-muted mb-4 text-right font-small">
 										작성자 : <a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%=circleList.get(i).getEmail()%></a>
 									</p>
@@ -529,14 +529,15 @@
 								dataTarget = "#circleList" + Integer.toString(i);
 							%>
 							<!-- Grid column 1 -->
-							<div class="col-md-6 col-lg-3">
+							<div class="col-md-6 col-lg-3" onclick="post_count(this)">
 								<!-- Card -->
-								<a class="card hoverable mb-4" data-toggle="modal"
-									data-target="<%=dataTarget%>"> <!-- Card image --> <img
-									class="card-img-top"
-									src="img/circle/<%=circleList.get(i).getPictures()%>"
-									alt="" id="listImage"> <!-- Card content -->
+								<a class="card hoverable mb-4" data-toggle="modal" data-target="<%=dataTarget%>"> 
+								<!-- Card image --> 
+									<img class="card-img-top" src="img/circle/<%=circleList.get(i).getPictures()%>" alt="" id="listImage">
+							 	<!-- Card content -->
 									<div class="card-body">
+										<%= circleList.get(i).getId() %>
+										<input type="hidden" name="postid" id="postid" value="<%=circleList.get(i).getId()%>" />
 										<h5 class="mb-3 cardTitle" id="cardTitle"><%=circleList.get(i).getTitle()%></h5>
 										<p class="font-small grey-text mb-2 cardEmail" id="cardEmail"><%=circleList.get(i).getEmail()%></p>
 										<p class="card-text mb-3"
@@ -549,7 +550,9 @@
 									</div>
 								</a>
 								<!-- Card -->
+								
 							</div>
+							
 							<!-- Grid column  -->
 							<%
 								}
@@ -604,7 +607,11 @@
 						}, 300);
 					});
 				});
-			</script>
+		</script>
+			
+		<script>
+			
+		</script>
 
 		<!-- Initializations -->
 		<script type="text/javascript">
@@ -637,6 +644,17 @@
 				}
 			}
 		</script>
+		
+		<!-- 게시글 조회수 -->
+		<script>
+			function post_count(this){
+				console.log("글번호" + this.postid.value);
+				//console.log(this.document.getElementById('postid').value);
+				//console.log("aaa");
+			}
+		</script>
+		
+		
 	</body>
 
 </html>
