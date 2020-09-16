@@ -1,9 +1,4 @@
-<!--
-작성자:
-    html        - 이호준, 김나예, 한송희
-    JSP         - 이호준, 김나예, 한송희
-    JavaScript  - 이호준, 김나예, 한송희
--->
+<!-- 작성자: 이호준 -->
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.ondongne.dto.NoticeBean"%>
 <%@page import="java.util.List"%>
@@ -43,9 +38,7 @@
         </style>
     </head>
 
-
     <body>
-
         <header>
             <% if (session.getAttribute("email") != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
@@ -53,7 +46,6 @@
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
         </header>
-
 
         <main>
 
@@ -101,10 +93,8 @@
 
         </main>
 
-
         <!-- Footer import -->
         <%@ include file="footer.jsp" %>
-
 
         <!-- SCRIPTS -->
         <!-- JQuery -->

@@ -1,9 +1,4 @@
-<!--
-작성자:
-    html        - 이호준, 김나예, 한송희
-    JSP         - 이호준, 김나예, 한송희
-    JavaScript  - 이호준, 김나예, 한송희
--->
+<!-- 작성자: 이호준, 한송희 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 

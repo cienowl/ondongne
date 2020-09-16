@@ -87,13 +87,13 @@
                 <!-- signin form -->
                 <form class="p-4" action="signin.users" method="POST" name="userinfoInsert">
                     <% if (getCookieValue(cookies,"cookieEmail") != null) { %>
-                        <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="이메일" value="<%=getCookieValue(cookies,"cookieEmail") %>" required/>
+                        <input type="email" class="form-control form-control-lg" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="이메일" value="<%=getCookieValue(cookies,"cookieEmail") %>" required/>
                     <% } else { %>
-                        <input type="email" class="form-control" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="이메일" value="" required/>
+                        <input type="email" class="form-control form-control-lg" id="signinEmail" aria-describedby="emailHelp" name="signinEmail" placeholder="이메일" value="" required/>
                     <% } %>
                     <small id="checkEmail" class="form-text text-danger pl-2 mb-2" style="height: 19px;"></small>
 
-                    <input type="password" class="form-control mb-3" id="signinPassword" placeholder="비밀번호" name="signinPassword" required/>
+                    <input type="password" class="form-control mb-3 form-control-lg" id="signinPassword" placeholder="비밀번호" name="signinPassword" required/>
 
                     <div class="form-row pt-2">
                         <div class="col-4">
@@ -149,19 +149,19 @@
             <div class="modal-body">
                 <!-- signup form -->
                 <form class="text-center p-4" action="signup.users" method="POST" name="userinfoInsert">
-                    <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="이메일" onchange="test(signupEmail.value);" required/>
+                    <input type="email" class="form-control form-control-lg" id="signupEmail" aria-describedby="emailHelp" name="signupEmail" placeholder="이메일" onchange="test(signupEmail.value);" required/>
                     <small id="checkDupEmail" class="form-text text-success mb-3" style="height: 20px;"></small>
 
-                    <input type="password" class="form-control mb-3" id="signupPassword1" name="signupPassword1" placeholder="비밀번호" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
+                    <input type="password" class="form-control form-control-lg mb-3" id="signupPassword1" name="signupPassword1" placeholder="비밀번호" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
                     <%-- <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-3" style="height: 19px;">
                         At least 8 characters and 1 digit
                     </small> --%>
 
-                    <input type="password" class="form-control" id="signupPassword2" name="signupPassword2" placeholder="비밀번호 확인" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
+                    <input type="password" class="form-control form-control-lg" id="signupPassword2" name="signupPassword2" placeholder="비밀번호 확인" aria-describedby="defaultRegisterFormPasswordHelpBlock" onchange="confirmPassword(signupPassword1.value, signupPassword2.value);" required/>
                     <small id="checkPassword" class="form-text text-danger mb-3" style="height: 20px;"></small>
 
-                    <input type="text" class="form-control mb-3" id="signupName" name="signupName" placeholder="이름" required/>
-                    <input type="text" class="form-control" id="signupPhone" name="signupPhone" placeholder="전화번호" />
+                    <input type="text" class="form-control form-control-lg mb-3" id="signupName" name="signupName" placeholder="이름" required/>
+                    <input type="text" class="form-control form-control-lg" id="signupPhone" name="signupPhone" placeholder="전화번호" />
 					<small id="checkDupPhone" class="form-text text-danger mb-5" style="height: 20px;"></small>
 					
                     <button type="submit" class="btn btn-unique mt-4 btn-block" onclick="return signupValidate();" >

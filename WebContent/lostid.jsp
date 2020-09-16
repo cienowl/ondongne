@@ -24,7 +24,7 @@
                 padding-right: 16px !important;
             }
             .navbar {
-                background: #880e4f !important;
+                background: #ff6d00 !important;
             }
         </style>
     </head>
@@ -36,25 +36,64 @@
         </header>
 
         <main>
-            <div class="container my-5 pt-5">
-                <h2 class="font-weight-bold dark-grey-text px-5 mb-3">아이디 찾기</h2>
+            <div class="container mt-5 pt-5">
+                <h2 class="font-weight-bold dark-grey-text px-4 mb-3">아이디 찾기</h2>
 
                 <hr class=""/>
 
-                <div class="col-lg-6 mx-auto my-5 pb-3 wow fadeIn">
-                    <form class="text-center z-depth-1-half p-5" action="lostidcheck.users" method="POST">
-                        <input type="text" id="name" name="name" class="form-control form-control-lg mb-4" placeholder="이름을 입력하세요." required/>
-                        <input type="text" id="phone" name="phone" class="form-control form-control-lg mb-5" placeholder="핸드폰번호를 입력하세요." required/>
-                        <button class="btn btn-lg btn-unique my-5 btn-block" type="submit">
-                            <h5 class="m-0">확인</h5>
-                        </button>
+                <section class="dark-grey-text">
+                    <div class="col-lg-6 mx-auto my-5 pb-3 wow fadeIn" id="formContainer">
+                        <form class="text-center z-depth-1-half p-5 my-4" action="lostidcheck.users" method="POST">
+                            <h2 class="font-weight-bold px-5 mb-5">정보입력</h2>
+                            <input type="text" id="name" name="name" class="form-control form-control-lg mb-4" placeholder="이름을 입력하세요." required/>
+                            <input type="text" id="phone" name="phone" class="form-control form-control-lg mb-5" placeholder="핸드폰번호를 입력하세요." maxlength="11" required numbersOnly/>
+                            <button class="btn btn-lg orange accent-4 my-5 btn-block" type="submit">
+                                <h5 class="m-0">확인</h5>
+                            </button>
 
-                        <hr/>
+                            <hr/>
 
-                        <p>ON동네 회원이 아니신가요?</p>
-                        <a href="" data-toggle="modal" data-target="#signupModal">회원가입</a>으로 이동합니다.
-                    </form>
-                </div>
+                            <p>ON동네 회원이 아니신가요?</p>
+                            <a href="" data-toggle="modal" data-target="#signupModal">회원가입</a>으로 이동합니다.
+                        </form>
+                    </div>
+                </section>
+
+                <section class="dark-grey-text my-5 py-5">
+                    <h2 class="font-weight-bold dark-grey-text px-4 mb-3">ON동네 서비스</h2>
+                    <hr class="mb-5"/>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" class="img-fluid" alt="Sample image">
+                                <div class="mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-outline-white btn-rounded">더보기</a>
+                                </div>
+                            </div>
+                            <%-- <p class="text-uppercase text-center text-muted mb-0">우리동네 소모임</p> --%>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src=" https://mdbootstrap.com/img/Photos/Others/img4.jpg" class="img-fluid" alt="Sample image">
+                                <div class=" mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-outline-white btn-rounded">더보기</a>
+                                </div>
+                            </div>
+                            <%-- <p class="text-uppercase text-center text-muted mb-0">우리동네 장터</p> --%>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" class="img-fluid" alt="Sample image">
+                                <div class="mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-outline-white btn-rounded">더보기</a>
+                                </div>
+                            </div>
+                            <%-- <p class="text-uppercase text-center text-muted mb-0">우리동네 명소</p> --%>
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </main>
 
@@ -76,6 +115,19 @@
         <script type="text/javascript">
             // Animations initialization
             new WOW().init();
+        </script>
+
+        <script>
+            // $(document).ready(function(){
+            //     var height = window.screen.height;
+            //     $('#formContainer').css('height',height);
+            // })
+        </script>
+        
+        <script>
+            $("input:text[numbersOnly]").on("keyup", function() {
+                $(this).val($(this).val().replace(/[^0-9]/g,""));
+            });
         </script>
 
     </body>
