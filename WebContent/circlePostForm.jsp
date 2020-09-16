@@ -59,7 +59,7 @@
                         <div class="form-group col-md-6">
                             <label for="pictures">사진</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile">
+                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile" onchange="imgChecker(this);" accept=".jpg, .png, .jpeg" required />
                                 <label class="custom-file-label" for="pictures">사진 선택</label>
                             </div>
                         </div>
@@ -264,6 +264,24 @@
                     }
                 }).open();
             }
+        </script>
+        
+        <!-- 게시물 올릴때 사진 크기, 확장자제한 -->	
+        <script>
+        	function imgChecker(inputFile){
+        		 //용량 체크
+        		var maxSize = 5 * 1024 * 1024;
+        		if (inputFile.files && inputFile.files[0].size > maxSize) {
+                    alert("첨부할 이미지 파일은 5MB 이하여야 합니다.");
+                    inputFile.value = null;
+                }
+                //이미지 파일 체크 jpg, png, jpeg만 받음
+                var fileExtension = /(.*?)\.(jpg|png|jpeg)$/;
+                if (!inputFile.value.match(fileExtension)) {
+                    alert("JPG, PNG, JPEG 파일만 업로드 가능");
+                    inputFile.value = null;
+                }
+        	}
         </script>
 
 		<!-- 이벤트 날짜 설정시에 오늘날짜 이후로 선택가능하도록 -->
