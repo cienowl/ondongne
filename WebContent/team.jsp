@@ -30,23 +30,23 @@
             }
             @media (max-width: 740px) {
                 .navbar {
-                    background: #880e4f !important;
+                    background: #ff6d00 !important;
                 }
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 .navbar {
-                    background: #880e4f !important;
+                    background: #ff6d00 !important;
                 }
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 .navbar:not(.top-nav-collapse) {
-                    background: #880e4f!important;
+                    background: #ff6d00 !important;
                 }
             }
         </style>
         <style>
             .navbar {
-                background: #880e4f !important;
+                background: #ff6d00 !important;
             }
         </style>
 

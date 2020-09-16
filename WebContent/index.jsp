@@ -37,7 +37,7 @@
                     height: 100%;
                 }
                 .navbar {
-                    background: #880e4f !important;
+                    background: #ff6d00 !important;
                 }
                 /* .index-intro {
                     height:250px;
@@ -49,7 +49,7 @@
                     height: 100%;
                 }
                 .navbar {
-                    background: #880e4f !important;
+                    background: #ff6d00 !important;
                 }
                 /* .index-intro {
                     height:500px;
@@ -57,7 +57,7 @@
             }
             @media (min-width: 800px) and (max-width: 850px) {
                 .navbar:not(.top-nav-collapse) {
-                    background: #880e4f !important;
+                    background: #ff6d00 !important;
                 }
             }
         </style>
@@ -289,7 +289,7 @@
                             <h4 class="m-2 font-weight-bold">마이페이지로 이동 <i class="fas fa-arrow-right"></i></h4>
                         </a>
                     <% } else { %>
-                        <a class="btn btn-lg btn-unique" data-toggle="modal" data-target="#signupModal">
+                        <a class="btn btn-lg btn-orange accent-4" data-toggle="modal" data-target="#signupModal">
                             <h5 class="m-2 font-weight-bold">지금 시작하기 <i class="far fa-user ml-2"></i></h5>
                         </a>
                     <% } %>

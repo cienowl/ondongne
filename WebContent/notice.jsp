@@ -27,7 +27,7 @@
 
         <style>
             .navbar {
-                background: #880e4f !important;
+                background: #ff6d00 !important;
             }
         </style>
         <!-- Modal scrolling place -->

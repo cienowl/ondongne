@@ -54,7 +54,7 @@
                 padding-right: 16px !important;
             }
             .navbar {
-                background: #880e4f !important;
+                background: #ff6d00 !important;
             }
             .sticky-top {
                 top: 6em;

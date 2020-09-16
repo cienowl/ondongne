@@ -176,6 +176,7 @@
 											<div class="col-md-2 mr-auto">
 												<button type="submit" class="btn btn-block btn-lg btn-outline-white">검색</button>
 											</div>
+											
 										</div>
 									</form>
 
@@ -339,26 +340,12 @@
 									}
 							%>
 							
-							<!-- 게시물 조회수 -->
-							<%
-								SqlSessionFactory factory2 = DataAccessCircleJoin.getConnection();
-								SqlSession sqlSession2 = factory.openSession();
-			
 							
-								// 게시물 조회수 update
-								sqlSession2.update("postCount",circleList.get(i).getId());
-								sqlSession2.commit();
-								// 게시물 조회수 select
-								int postCount = sqlSession2.selectOne("getPostCount",circleList.get(i).getId());
-								
-								sqlSession2.close();
-							%>
-
 							<div class="modal-header p-0">
 								<!--Grid column-->
 								<div class="row">
-									<div class="">
-										<img class="img-responsive" src="img/circle/<%=circleList.get(i).getPictures()%>" alt="" id="circle_image" />
+									<div style="width: 800px; height: 300px; overflow: hidden">
+									    <img class="img-responsive" src="img/circle/<%=circleList.get(i).getPictures()%>" alt="" id="circle_image" style="width: auto; height: 300px; margin: auto 0" />
 									</div>
 									<%-- <!--Carousel Wrapper-->
 									<div id="carousel-list-1z" class="carousel slide carousel-fade center-block"
@@ -418,6 +405,22 @@
 
 							<div class="modal-body">
 								<div class="col align-self-center">
+								
+								<!-- 게시물 조회수 -->
+							<%
+								SqlSessionFactory factory2 = DataAccessCircleJoin.getConnection();
+								SqlSession sqlSession2 = factory.openSession();
+			
+							
+								// 게시물 조회수 update
+								sqlSession2.update("postCount",circleList.get(i).getId());
+								sqlSession2.commit();
+								// 게시물 조회수 select
+								int postCount = sqlSession2.selectOne("getPostCount",circleList.get(i).getId());
+								
+								sqlSession2.close();
+							%>
+								
 
 									<%if (!check) {%>
 									<form action="postjoin.circle" method="POST" >

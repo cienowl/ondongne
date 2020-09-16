@@ -18,7 +18,7 @@
 
 <style>
     .top-nav-collapse {
-        background: #880e4f !important;
+        background:#ff6d00 !important;
     }
 </style>
 
@@ -108,7 +108,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-unique btn-block mt-5 waves-effect waves-light" id="signinSubmit" onclick="return signinValidate();">
+                    <button type="submit" class="btn btn-orange accent-4 btn-block mt-5 waves-effect waves-light" id="signinSubmit" onclick="return signinValidate();">
                         <h5 class="m-0">ON동네 시작하기</h5>
                     </button>
 
@@ -164,7 +164,7 @@
                     <input type="text" class="form-control form-control-lg" id="signupPhone" name="signupPhone" placeholder="전화번호" />
 					<small id="checkDupPhone" class="form-text text-danger mb-5" style="height: 20px;"></small>
 					
-                    <button type="submit" class="btn btn-unique mt-4 btn-block" onclick="return signupValidate();" >
+                    <button type="submit" class="btn btn-orange accent-4 mt-4 btn-block" onclick="return signupValidate();" >
                         <h5 class="m-0">ON동네 회원가입</h5>
                     </button>
 

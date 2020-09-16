@@ -45,11 +45,11 @@
             } */
             @media (min-width: 800px) and (max-width: 850px) {
                 .navbar:not(.top-nav-collapse) {
-                    background: #880e4f !important;
+                    background: #ff6d00 !important;
                 }
             }
             .navbar {
-                background: #880e4f !important;
+                background: #ff6d00 !important;
             }
         </style>
 
