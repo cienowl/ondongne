@@ -30,7 +30,6 @@
     </head>
 
     <body>
-
         <header>
             <jsp:include page="navbar_signin.jsp"/>
         </header>
@@ -47,7 +46,7 @@
                             <h2 class="font-weight-bold px-5 mb-5">정보입력</h2>
                             <input type="text" id="name" name="name" class="form-control form-control-lg mb-4" placeholder="이름을 입력하세요." required/>
                             <input type="text" id="phone" name="phone" class="form-control form-control-lg mb-5" placeholder="핸드폰번호를 입력하세요." maxlength="11" required numbersOnly/>
-                            <button class="btn btn-lg orange accent-4 my-5 btn-block" type="submit">
+                            <button class="btn btn-lg btn-orange accent-4 my-5 btn-block" type="submit">
                                 <h5 class="m-0">확인</h5>
                             </button>
 
@@ -68,28 +67,31 @@
                             <div class="view overlay z-depth-1">
                             <img src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" class="img-fluid" alt="Sample image">
                                 <div class="mask flex-center peach-gradient-rgba">
-                                    <a class="btn btn-outline-white btn-rounded">더보기</a>
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.circle">
+                                        우리동네 소모임 <i class="fas fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
-                            <%-- <p class="text-uppercase text-center text-muted mb-0">우리동네 소모임</p> --%>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-3">
                             <div class="view overlay z-depth-1">
                             <img src=" https://mdbootstrap.com/img/Photos/Others/img4.jpg" class="img-fluid" alt="Sample image">
                                 <div class=" mask flex-center peach-gradient-rgba">
-                                    <a class="btn btn-outline-white btn-rounded">더보기</a>
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.sell">
+                                        우리동네 장터 <i class="fas fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
-                            <%-- <p class="text-uppercase text-center text-muted mb-0">우리동네 장터</p> --%>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-3">
                             <div class="view overlay z-depth-1">
                             <img src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" class="img-fluid" alt="Sample image">
                                 <div class="mask flex-center peach-gradient-rgba">
-                                    <a class="btn btn-outline-white btn-rounded">더보기</a>
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.hotplace">
+                                        우리동네 명소 <i class="fas fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
-                            <%-- <p class="text-uppercase text-center text-muted mb-0">우리동네 명소</p> --%>
                         </div>
                     </div>
                 </section>
@@ -97,10 +99,8 @@
             </div>
         </main>
 
-
         <!-- Footer import -->
         <%@ include file="footer.jsp" %>
-
 
         <!-- SCRIPTS -->
         <!-- JQuery -->
@@ -117,13 +117,6 @@
             new WOW().init();
         </script>
 
-        <script>
-            // $(document).ready(function(){
-            //     var height = window.screen.height;
-            //     $('#formContainer').css('height',height);
-            // })
-        </script>
-        
         <script>
             $("input:text[numbersOnly]").on("keyup", function() {
                 $(this).val($(this).val().replace(/[^0-9]/g,""));

@@ -50,11 +50,11 @@
 	</select>
 	
 	<select id="searchSellList" resultType="com.ondongne.dto.DataTransferSell" parameterType="String">
-		select * from sell WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%')
+		select * from sell WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') order by post_date desc
 	</select>	
 	
 	<select id="searchSellListPaging" resultType="com.ondongne.dto.DataTransferSell" parameterType="com.ondongne.dto.SearchSellBean">
-		select * from sell WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') limit 12 offset #{page}
+		select * from sell WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') order by post_date desc limit 12 offset #{page}
 	</select>
 	
 	<delete id="deleteSellPost" parameterType="com.ondongne.dto.DataTransferSell">

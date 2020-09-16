@@ -317,6 +317,11 @@
 
         <!-- Optional JavaScript -->
         <script>
+            $("input:text[numbersOnly]").on("keyup", function() {
+                $(this).val($(this).val().replace(/[^0-9]/g,""));
+            });
+        </script>
+        <script>
             //Signin Form Checker
             function signinValidate() {
                 var inputEmail = document.getElementById("signinEmail");

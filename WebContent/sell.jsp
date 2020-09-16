@@ -177,19 +177,22 @@
             var sessionEmail = '<%=(String) session.getAttribute("email")%>';   //참고: JSP 구문 사용하기위해서 따옴표 써서 null 도 문자열값으로 들어감
 
             $(document).ready(function() {
-			    var page = 0;
+			    var page = 0;   //페이지 로딩 후 페이지 0
 
                 //로딩 후 목록 가져오기
                 getSellAll(page);
 
-                //전체보기 버튼 클릭하면 내용 싹다 지우고 새로 로딩, page는 0으로 리셋
-                $('#viewAllBtn').on('click',function(){
-                    $('#cardContents').empty();
-                    $('#modalSellContent').empty();
-                    $('#searchBox').val('');
-                    window.scrollTo(0,0);
-                    page = 0;
-                    getSellAll(page);
+                //스크롤 맨 아래 까지 가면 실행
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+                        page++;
+                        var searchWord = $('#searchBox').val();
+                        if (searchWord != "") {
+                            getSell(page, searchWord);	//스크롤시 검색박스에 값이 있으면, 검색어 같이 보냄
+                        } else {
+                            getSellAll(page);	//스크롤시 검색박스에 값이 없으면, 전체 읽기 실행
+                        }
+                    }
                 });
 
                 //검색시 사용
@@ -203,16 +206,14 @@
                     }
                 });
 
-                //스크롤 맨 아래 까지 가면 실행
-                $(window).scroll(function() {
-                    if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
-                        page++;
-                        var searchWord = $('#searchBox').val();
-                        if (searchWord != "")
-                            getSell(page, searchWord);	//스크롤시 검색박스에 값이 있으면, 검색어 같이 보냄
-                        else
-                            getSellAll(page);	//스크롤시 검색박스에 값이 없으면, 전체 읽기 실행
-                    }
+                //전체보기 버튼 클릭하면 내용 싹다 지우고 새로 로딩, page는 0으로 리셋
+                $('#viewAllBtn').on('click',function(){
+                    $('#cardContents').empty();
+                    $('#modalSellContent').empty();
+                    $('#searchBox').val('');    //input 박스 초기화
+                    window.scrollTo(0,0);   //페이지 맨위로 이동
+                    page = 0;       //페이징 초기화
+                    getSellAll(page);
                 });
             })
 
@@ -232,7 +233,6 @@
         <script>
             //전체결과 Ajax
             function getSellAll(page) {
-        		//alert('getSellAll실행');
                 $.ajax({
                     url:'getSellAll.jsp',
                     data:{
@@ -259,33 +259,34 @@
                                     isParcel = '직거래';
                                 }
 
-                                var buttonSelector = 'checkSessionEmail'+index;
+                                var pageOffset = page * 12;     //페이지당 12개씩
+                                var buttonSelector = 'checkSessionEmail'+(index+pageOffset);
                                 //게시물 카드 plot
                                 $('#cardContents').append(
                                     '<div class="col-md-6 col-lg-3">'+
-                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+index+'">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+(index+pageOffset)+'">'+
                                             '<img class="card-img-top" src="img/sell/'+cardResult.pictures+'" alt="Card image cap">'+
                                             '<div class="card-body">'+
                                                 '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
                                                 '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.email+'</p>'+
                                                 '<p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;">'+cardResult.description+'</p>'+
-                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">'+cardResult.post_date+'</p>'+
+                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">'+cardResult.post_date.split(' ')[0]+'</p>'+
                                             '</div>'+
                                         '</a>'+
                                     '</div>'
                                 );
                                 //게시물 Modal plot
                                 $('#modalSellContent').append(
-                                    '<div class="modal fade" id="sellList'+index+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
+                                    '<div class="modal fade" id="sellList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
                                         '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
                                             '<div class="modal-content">'+
                                                 '<div class="modal-header p-0">'+
                                                     '<div class="row">'+
-                                                        '<div id="carousel-postid'+cardResult.id+'-'+index+'" class="carousel slide carousel-fade" data-ride="carousel">'+
+                                                        '<div id="carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" class="carousel slide carousel-fade" data-ride="carousel">'+
                                                             '<ol class="carousel-indicators">'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="0" class="active"></li>'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="1"></li>'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="2"></li>'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="0" class="active"></li>'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="1"></li>'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="2"></li>'+
                                                             '</ol>'+
                                                             '<div class="carousel-inner" role="listbox">'+
                                                                 '<div class="carousel-item active">'+
@@ -298,11 +299,11 @@
                                                                     '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">'+
                                                                 '</div>'+
                                                             '</div>'+
-                                                            '<a class="carousel-control-prev" href="#carousel-postid'+cardResult.id+'-'+index+'" role="button" data-slide="prev">'+
+                                                            '<a class="carousel-control-prev" href="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" role="button" data-slide="prev">'+
                                                                 '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'+
                                                                 '<span class="sr-only">Previous</span>'+
                                                             '</a>'+
-                                                            '<a class="carousel-control-next" href="#carousel-postid'+cardResult.id+'-'+index+'" role="button" data-slide="next">'+
+                                                            '<a class="carousel-control-next" href="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" role="button" data-slide="next">'+
                                                                 '<span class="carousel-control-next-icon" aria-hidden="true"></span>'+
                                                                 '<span class="sr-only">Next</span>'+
                                                             '</a>'+
@@ -318,7 +319,7 @@
                                                                 '<p class="text-muted mb-4">'+cardResult.email+'</p>'+
                                                             '</div>'+
                                                             '<div class="col-sm-4">'+
-                                                                '<p class="text-muted mb-4">'+cardResult.post_date+'</p>'+
+                                                                '<p class="text-muted mb-4">'+cardResult.post_date.split(' ')[0]+'</p>'+
                                                             '</div>'+
                                                         '</div>'+
                                                         '<div class="row">'+
@@ -359,24 +360,22 @@
                                         '</div>'+
                                     '</div>'
                                 );
-                                // if (page == 1) {
-                                    if (sessionEmail == 'null') {
+                                if (sessionEmail == 'null') {
+                                    $('#'+buttonSelector).append(
+                                        '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">스크랩</a>'
+                                    );
+                                } else {
+                                    if (sessionEmail == cardResult.email){
                                         $('#'+buttonSelector).append(
-                                            '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">스크랩</a>'
+                                            '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
+                                            '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
                                         );
                                     } else {
-                                        if (sessionEmail == cardResult.email){
-                                            $('#'+buttonSelector).append(
-                                                '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
-                                                '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
-                                            );
-                                        } else {
-                                            $('#'+buttonSelector).append(
-                                                '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
-                                            );
-                                        }
+                                        $('#'+buttonSelector).append(
+                                            '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
+                                        );
                                     }
-                                // }
+                                }
                             });
                         }
                     },
@@ -414,33 +413,34 @@
                                     isParcel = '직거래';
                                 }
 
-                                var buttonSelector = 'checkSessionEmail'+index;
+                                var pageOffset = page * 12;
+                                var buttonSelector = 'checkSessionEmail'+(index+pageOffset);
                                 //게시물 카드 plot
                                 $('#cardContents').append(
                                     '<div class="col-md-6 col-lg-3">'+
-                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+index+'">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+(index+pageOffset)+'">'+
                                             '<img class="card-img-top" src="img/sell/'+cardResult.pictures+'" alt="Card image cap">'+
                                             '<div class="card-body">'+
                                                 '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
                                                 '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.email+'</p>'+
                                                 '<p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;">'+cardResult.description+'</p>'+
-                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">'+cardResult.post_date+'</p>'+
+                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">'+cardResult.post_date.split(' ')[0]+'</p>'+
                                             '</div>'+
                                         '</a>'+
                                     '</div>'
                                 );
                                 //게시물 Modal plot
                                 $('#modalSellContent').append(
-                                    '<div class="modal fade" id="sellList'+index+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
+                                    '<div class="modal fade" id="sellList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
                                         '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
                                             '<div class="modal-content">'+
                                                 '<div class="modal-header p-0">'+
                                                     '<div class="row">'+
-                                                        '<div id="carousel-postid'+cardResult.id+'-'+index+'" class="carousel slide carousel-fade" data-ride="carousel">'+
+                                                        '<div id="carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" class="carousel slide carousel-fade" data-ride="carousel">'+
                                                             '<ol class="carousel-indicators">'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="0" class="active"></li>'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="1"></li>'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+index+'" data-slide-to="2"></li>'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="0" class="active"></li>'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="1"></li>'+
+                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="2"></li>'+
                                                             '</ol>'+
                                                             '<div class="carousel-inner" role="listbox">'+
                                                                 '<div class="carousel-item active">'+
@@ -453,11 +453,11 @@
                                                                     '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">'+
                                                                 '</div>'+
                                                             '</div>'+
-                                                            '<a class="carousel-control-prev" href="#carousel-postid'+cardResult.id+'-'+index+'" role="button" data-slide="prev">'+
+                                                            '<a class="carousel-control-prev" href="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" role="button" data-slide="prev">'+
                                                                 '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'+
                                                                 '<span class="sr-only">Previous</span>'+
                                                             '</a>'+
-                                                            '<a class="carousel-control-next" href="#carousel-postid'+cardResult.id+'-'+index+'" role="button" data-slide="next">'+
+                                                            '<a class="carousel-control-next" href="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" role="button" data-slide="next">'+
                                                                 '<span class="carousel-control-next-icon" aria-hidden="true"></span>'+
                                                                 '<span class="sr-only">Next</span>'+
                                                             '</a>'+
@@ -473,7 +473,7 @@
                                                                 '<p class="text-muted mb-4">'+cardResult.email+'</p>'+
                                                             '</div>'+
                                                             '<div class="col-sm-4">'+
-                                                                '<p class="text-muted mb-4">'+cardResult.post_date+'</p>'+
+                                                                '<p class="text-muted mb-4">'+cardResult.post_date.split(' ')[0]+'</p>'+
                                                             '</div>'+
                                                         '</div>'+
                                                         '<div class="row">'+
@@ -514,24 +514,22 @@
                                         '</div>'+
                                     '</div>'
                                 );
-                                // if (page == 1) {
-                                    if (sessionEmail == 'null') {
+                                if (sessionEmail == 'null') {
+                                    $('#'+buttonSelector).append(
+                                        '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">스크랩</a>'
+                                    );
+                                } else {
+                                    if (sessionEmail == cardResult.email){
                                         $('#'+buttonSelector).append(
-                                            '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">스크랩</a>'
+                                            '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
+                                            '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
                                         );
                                     } else {
-                                        if (sessionEmail == cardResult.email){
-                                            $('#'+buttonSelector).append(
-                                                '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'updateForm.sell\';">수정</button>'+
-                                                '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
-                                            );
-                                        } else {
-                                            $('#'+buttonSelector).append(
-                                                '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
-                                            );
-                                        }
+                                        $('#'+buttonSelector).append(
+                                            '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.sell\';">스크랩</button>'
+                                        );
                                     }
-                                // }
+                                }
                             });
                         }
                     },

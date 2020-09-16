@@ -26,10 +26,13 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.ondongne">ON동네</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
-        aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-signin"
+        aria-controls="navbar-signin" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="collapse navbar-collapse" id="navbar-signin">
             <ul class="navbar-nav mr-auto">
                 <!-- <li class="nav-item active">
@@ -161,13 +164,14 @@
                     <small id="checkPassword" class="form-text text-danger mb-3" style="height: 20px;"></small>
 
                     <input type="text" class="form-control form-control-lg mb-3" id="signupName" name="signupName" placeholder="이름" required/>
-                    <input type="text" class="form-control form-control-lg" id="signupPhone" name="signupPhone" placeholder="전화번호" />
+                    <input type="text" class="form-control form-control-lg" id="signupPhone" name="signupPhone" placeholder="전화번호" maxlength="11" required numbersOnly />
 					<small id="checkDupPhone" class="form-text text-danger mb-5" style="height: 20px;"></small>
 					
                     <button type="submit" class="btn btn-orange accent-4 mt-4 btn-block" onclick="return signupValidate();" >
                         <h5 class="m-0">ON동네 회원가입</h5>
                     </button>
 
+                    <!-- social signup -->
                     <%-- <p>or sign up with:</p>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
