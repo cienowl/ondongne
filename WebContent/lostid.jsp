@@ -37,16 +37,15 @@
         <main>
             <div class="container mt-5 pt-5">
                 <h2 class="font-weight-bold dark-grey-text mb-3">아이디 찾기</h2>
-
                 <hr class=""/>
 
                 <section class="dark-grey-text">
                     <div class="col-lg-6 mx-auto my-5 pb-3 wow fadeIn" id="formContainer">
-                        <form class="text-center z-depth-1-half p-5 my-4" action="lostidcheck.users" method="POST">
+                        <form class="text-center z-depth-1-half p-5 my-4">
                             <h2 class="font-weight-bold px-5 mb-5">정보입력</h2>
                             <input type="text" id="name" name="name" class="form-control form-control-lg mb-4" placeholder="이름을 입력하세요." required/>
                             <input type="text" id="phone" name="phone" class="form-control form-control-lg mb-5" placeholder="핸드폰번호를 입력하세요." maxlength="11" required numbersOnly/>
-                            <button class="btn btn-lg btn-orange accent-4 my-5 btn-block" type="submit">
+                            <button class="btn btn-lg btn-orange accent-4 my-5 btn-block" type="button" id="findIdBtn">
                                 <h5 class="m-0">확인</h5>
                             </button>
 
@@ -118,10 +117,61 @@
         </script>
 
         <script>
-            $("input:text[numbersOnly]").on("keyup", function() {
-                $(this).val($(this).val().replace(/[^0-9]/g,""));
-            });
-        </script>
+            $(document).ready(function(){
+                $("input:text[numbersOnly]").on("keyup", function() {
+                    $(this).val($(this).val().replace(/[^0-9]/g,""));
+                });
 
+                $('#findIdBtn').on('click',function(){
+                    var name = $('#name').val();
+                    var phone = $('#phone').val();
+                    checkId(name, phone);
+                });
+            })
+
+            //아이디 체크 Ajax
+            function checkId(name, phone){
+                $.ajax({
+                    url:'lostidResult.jsp',
+                    data:{
+                        'name':name,
+                        'phone':phone
+                    },
+                    type:'GET',
+                    dataType:'JSON',
+                    success:function(request) {
+                        var result = JSON.parse(JSON.stringify(request));
+                        console.log(result);
+                        console.log(result.email);
+                        if (result.email != 'null') {
+                            $('#formContainer').empty();
+                            $('#formContainer').append(
+                                '<div class="text-center z-depth-1-half p-5">'+
+                                    '<h2 class="font-weight-bold px-5 mb-5">아이디 찾기 결과</h2>'+
+                                    '<div class="mb-5 pb-1">'+
+                                        '<h4 class="font-weight-bold py-5 my-5">' + result.email + '</h4>'+
+                                    '</div>'+
+                                    '<a data-toggle="modal" data-target="#signinModal" class="btn btn-primary mt-5 btn-block" type="button"><h5 class="font-weight-bold m-0">로그인</h5></a>'+
+                                    '<button class="btn btn-warning mt-3 btn-block" type="button"><h5 class="font-weight-bold m-0">비밀번호 찾기</h5></button>'+
+                                '</div>'
+                            );
+                        } else {
+                            $('#formContainer').empty();
+                            $('#formContainer').append(
+                                '<div class="text-center z-depth-1-half p-5">'+
+                                    '<div class="my-5 pb-3">'+
+                                        '<h4 class="font-weight-bold py-5 my-5">가입한 아이디가 없습니다.</h4>'+
+                                    '</div>'+
+                                    '<a data-toggle="modal" data-target="#signupModal" class="btn btn-primary mt-5 btn-block" type="button"><h5 class="font-weight-bold m-0">회원가입</h5></a>'+
+                                '</div>'
+                            );
+                        }
+                    },
+                    error:function(request, status, error, page) {
+                        alert('code:' + request.satus + '\n' + 'message:' + request.responseText + '\n' + 'error:' + error);
+                    }
+                });
+            }
+        </script>
     </body>
 </html>

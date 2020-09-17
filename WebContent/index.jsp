@@ -238,37 +238,58 @@
                         <h1 class="font-weight-bold dark-grey-text mb-4 pb-2 text-center">자주 묻는 질문</h1>
                         <hr class="w-header">
                         <!-- Section description -->
-                        <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">Got a question? We've got answers. If you have some other questions, see our support center.</p>
+                        <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">질문이 생겼나요? ON동네에 궁금한점을 찾아보세요!</p>
 
                         <div class="row text-center text-md-left">
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-normal mb-3">What payment services do you support?</h5>
-                                <p class="text-muted">We accept all major credit cards.</p>
+                                <h5 class="font-weight-bold mb-3">동네 소모임은 어떻게 만드나요?</h5>
+                                <p class="text-muted">좌측 상단의 동네 소모임으로 이동하여 소모임 글쓰기를 클릭 후 모임이름,
+                                관심사, 설명, 지역 등을 고르신 후 모임만들기를 누르시면 됩니다.</p>
                             </div>
 
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-normal mb-3">Can I update my card details?</h5>
-                                <p class="text-muted">Yes. Go to the billing section of your dashboard and update your payment information.</p>
+                                <h5 class="font-weight-bold mb-3">모임 가입은 어떻게 하나요?</h5>
+                                <p class="text-muted">내가 관심있는 분야를 검색합니다. 그런 뒤 가입하실 모임을 클릭하면 해당 모임의 내용이 나옵니다.
+                                하단의 모임 가입하기 버튼을 누르면 참여 완료됩니다. 인원이 다 찼을 경우에는 참여가 불가능 합니다.</p>
                             </div>
 
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-normal mb-3">Is this a secure site for purchases?</h5>
-                                <p class="text-muted">Absolutely! We work with top payment companies which guarantees your safety and security. All billing information is stored on our payment processing partner which has the most stringent level of certification available in the payments industry.</p>
+                                <h5 class="font-weight-bold mb-3">동네 장터의 거래 및 환불은 어떻게 이루어지나요?</h5>
+                                <p class="text-muted">동네 장터에서는 거래 당사자들끼리 자유롭게 진행할 수 있습니다. 
+                                구매자의 무리한 요구와 비매너적인 언행에는 거절할 권리가 있어요. 환불 관련 문제가 생겼을 때, 
+                                판매자의 실수나 잘못이 없는 다음과 같은 상황이라면 거부할 권리가 있습니다.</p>
                             </div>
 
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-normal mb-3">Can I cancel my subscription?</h5>
-                                <p class="text-muted">You can cancel your subscription anytime in your account. Once the subscription is cancelled, you will not be charged next month. You will continue to have access to your account until your current subscription expires.</p>
+                                <h5 class="font-weight-bold mb-3">동네 명소가 뭐에요?</h5>
+                                <p class="text-muted">동네 명소에서는 우리동네에서 가볼만한 곳이나, 유명한 점포들을 검색해 볼 수 있어요!
+                                내가 아직까지 알지 못했던 힙한 장소를 찾아보고 이용해 보세요. 만약 너무나 만족스러웠다면 마이페이지로 스크랩 할 수 있습니다.</p>
                             </div>
 
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-normal mb-3">How long are your contracts?</h5>
-                                <p class="text-muted">Currently, we only offer monthly subscription. You can upgrade or cancel your monthly account at any time with no further obligation.</p>
+                                <h5 class="font-weight-bold mb-3">게시글들은 어떻게 수정하나요?</h5>
+                                <p class="text-muted">게시글 수정하는 방법은 아주 간단해요. 
+                                [마이페이지 > 수정하려는 게시글의 수정 버튼 > 수정] 에서 내용을 자유롭게 수정해 주시면 됩니다.
+                                또는 자신의 글에서 수정할 수도 있습니다. 이때 게시글 내용, 사진, 가격, 카테고리를 수정할 수 있어요.</p>
                             </div>
 
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-normal mb-3">Can I request refund?</h5>
-                                <p class="text-muted">Unfortunately, not. We do not issue full or partial refunds for any reason.</p>
+                                <h5 class="font-weight-bold mb-3">회원정보 수정 및 탈퇴는 어떻게 하나요?</h5>
+                                <p class="text-muted">[마이페이지 > 프로필 사진] 을 클릭해 보세요. [프로필 설정] 페이지로 이동합니다. 
+                                [프로필 설정] 페이지에서 사진과 닉네임을 자유롭게 변경할 수 있어요. 탈퇴는 [마이페이지 > 탈퇴하기] 에서 탈퇴할 수 있어요. 
+                                탈퇴하면 모든 게시글과 채팅 내용이 삭제되고 복구할 수 없으니 신중하게 탈퇴해 주세요.</p>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <h5 class="font-weight-bold mb-3">관심 지역 변경은 어떻게 하나요?</h5>
+                                <p class="text-muted">[마이페이지 > 관심지역 설정하기] 에서 변경가능합니다. 
+                                관심지역은 3곳까지 설정 가능하며, 동네도 변경/추가해 보세요.</p>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <h5 class="font-weight-bold mb-3">ON동네에 대해 알려주세요.</h5>
+                                <p class="text-muted">동네의 장소와 직거래, 소모임 등을 이웃과 함께 공유하기 때문에 믿을 수 있고 편리합니다. 
+                                동네의 이웃과 함께인 만큼 무엇보다 '매너'를 중요하게 생각해요.</p>
                             </div>
                         </div>
                     </section>
@@ -285,7 +306,7 @@
                     <hr class="w-20 my-5">
 
                     <% if (sessionEmail != null) { %>
-                        <a class="btn btn-lg btn-unique" href="mypage.ondongne">
+                        <a class="btn btn-lg btn-orange accent-4" href="mypage.ondongne">
                             <h4 class="m-2 font-weight-bold">마이페이지로 이동 <i class="fas fa-arrow-right"></i></h4>
                         </a>
                     <% } else { %>

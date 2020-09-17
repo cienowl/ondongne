@@ -107,7 +107,7 @@
                         </div>
                         <div class="col text-right">
                             <a href="lostid.users">아이디 찾기</a> |
-                            <a href="lostpw.users">비밀번호 찾기</a>
+                            <a href="">비밀번호 찾기</a>
                         </div>
                     </div>
 

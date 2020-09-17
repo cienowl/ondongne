@@ -128,16 +128,6 @@ public class UsersFrontController extends HttpServlet
 				forward.setPath("lostpw.jsp");				
 			}
 			
-			else if(command.equals("/lostidcheck.users")) {
-//				이름과 핸드폰번호 입력 후 이메일 찾기
-				action = new UserLostEmail();
-				try {
-					forward = action.execute(request, response);
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
-			
 			if (forward != null) {		
 				if (forward.isRedirect()) {		
 					response.sendRedirect(forward.getPath());	

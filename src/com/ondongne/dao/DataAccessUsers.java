@@ -109,9 +109,10 @@ public class DataAccessUsers {
 	}	
 	public String findEmail(DataTransferUsers dtoUser) {
 		sqlFactory = getConnection();
-		SqlSession sqlsession = sqlFactory.openSession();
+		SqlSession sqlSession = sqlFactory.openSession();
 		
-		String email = sqlsession.selectOne("findEmail",dtoUser);
+		String email = sqlSession.selectOne("findEmail",dtoUser);
+		sqlSession.close();
 		
 		return email;
 	}
