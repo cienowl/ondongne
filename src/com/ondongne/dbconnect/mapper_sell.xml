@@ -62,7 +62,11 @@
 	</delete>
 	
 	<update id="updateSellPost" parameterType="com.ondongne.dto.DataTransferSell">
-		update sell set email=#{email}, title=#{title},	price=#{price}, region=#{region}, description=#{description}, is_parcel=#{is_parcel}, is_active=#{is_active}, pictures=#{pictures}, tags=#{tags}, post_date=now() where id=#{id}
+		update sell set email=#{email}, title=#{title},	price=#{price}, region=#{region}, description=#{description}, is_parcel=#{is_parcel}, is_active=#{is_active}, pictures=#{pictures}, tags='tags', post_date=now() where id=#{id}
+	</update>
+	
+	<update id="updateSellPostExPic" parameterType="com.ondongne.dto.DataTransferSell">
+		update sell set email=#{email}, title=#{title},	price=#{price}, region=#{region}, description=#{description}, is_parcel=#{is_parcel}, is_active=#{is_active}, tags='tags', post_date=now() where id=#{id}
 	</update>
 
 </mapper>

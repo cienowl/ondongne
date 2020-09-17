@@ -41,7 +41,7 @@
 
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn mb-5">
-                <h2 class="font-weight-bold dark-grey-text pb-2 mb-3">판매물품 정보를 입력해주세요.</h2>
+                <h2 class="font-weight-bold dark-grey-text mb-3">판매물품 정보를 입력해주세요.</h2>
                 <hr class=""/>
 
                 <form action="submit.sell" method="POST" enctype="multipart/form-data">
@@ -112,12 +112,48 @@
                         </div>
                     </div>
                     <div class="form-row float-right">
-                        <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
                         <button type="submit" class="btn btn-lg btn-primary" onclick="return validation();">등록</button>
                         <button type="button" class="btn btn-lg btn-danger" href="view.sell">취소</button>
                     </div>
                     <div class="clearfix mb-4"></div>
                 </form>
+                <section class="dark-grey-text my-5 py-5">
+                    <h2 class="font-weight-bold dark-grey-text px-4 mb-3">ON동네 서비스</h2>
+                    <hr class="mb-5"/>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" class="img-fluid" alt="Sample image">
+                                <div class="mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.circle">
+                                        우리동네 소모임 <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src=" https://mdbootstrap.com/img/Photos/Others/img4.jpg" class="img-fluid" alt="Sample image">
+                                <div class=" mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.sell">
+                                        우리동네 장터 <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" class="img-fluid" alt="Sample image">
+                                <div class="mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.hotplace">
+                                        우리동네 명소 <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </main>
 
@@ -139,11 +175,11 @@
             new WOW().init();
         </script>
         <script>
+            //숫자만
             $("input:text[numbersOnly]").on("keyup", function() {
                 $(this).val($(this).val().replace(/[^0-9]/g,""));
             });
-        </script>
-        <script>
+            
             //파일 사이즈 5Mb 제한
             function imgChecker(inputFile) {
                 //용량 체크
@@ -175,7 +211,6 @@
                     return false;
                 }
                 if (pictures.value == '') {
-                    //TODO: 이미지만 가능하게 제한 걸기
                     alert('사진을 등록해주세요.');
                     pictures.focus();
                     return false;
@@ -202,6 +237,5 @@
                 }
             }
         </script>
-
     </body>
 </html>

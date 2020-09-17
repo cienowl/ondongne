@@ -24,7 +24,7 @@
                 padding-right: 16px !important;
             }
             .navbar {
-                background: #880e4f !important;
+                background: #ff6d00 !important;
             }
         </style>
 
@@ -43,12 +43,9 @@
             sellMethod = "택배거래";
         else
             sellMethod = "직거래";
-
     %>
 
     <body>
-
-        <!-- Header Start -->
         <header>
             <% if (session.getAttribute("email") != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
@@ -56,23 +53,25 @@
                 <jsp:include page="navbar_signin.jsp"/>
 			<%} %>
         </header>
-        <!-- Header End -->
 
-
-        <!-- Main Start -->
         <main class="mt-5 pt-5">
             <div class="container wow fadeIn mb-5">
+                <h2 class="font-weight-bold dark-grey-text mb-3">판매글 정보 수정</h2>
+                <hr class=""/>
 
-                <div class="row mb-4">
-                    <h2 class="font-weight-bold dark-grey-text">판매글 정보 수정</h2>
-                </div>
-
-                <form action="update.sell" method="POST">
+                <form action="update.sell" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="postid" value="<%= postid %>"/>
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="inputTitle">판매글 제목</label>
                             <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력하세요." name="title" value="<%= title %>" required/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="pictures">사진</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile" onchange="imgChecker(this);" accept=".jpg, .png, .jpeg"/>
+                                <label class="custom-file-label" for="pictures">사진 선택</label>
+                            </div>
                         </div>
                     </div>
 
@@ -124,40 +123,61 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="description">판매 설명글</label>
                             <textarea class="form-control" id="description" rows="12" name="description"><%= description %></textarea>
                         </div>
                     </div>
-
-                    <!-- TODO: 사진 입력 -->
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="pictures">사진</label>
-                            <!-- <textarea class="form-control" id="description" rows="7" class="description" style="width: 100%;"></textarea> -->
-                        </div>
-                    </div>
-
                     <div class="form-row float-right">
-                        <button type="button" class="btn btn-lg btn-info">게시물 미리보기</button>
-                        <button type="submit" class="btn btn-lg btn-primary">등록</button>
+                        <button type="submit" class="btn btn-lg btn-primary" onclick="return validation();">수정</button>
                         <button type="button" class="btn btn-lg btn-danger" onclick="javascript:location.href='view.sell'">취소</button>
                     </div>
-
                     <div class="clearfix pb-5"></div>
-
                 </form>
 
+                <section class="dark-grey-text my-5 py-5">
+                    <h2 class="font-weight-bold dark-grey-text px-4 mb-3">ON동네 서비스</h2>
+                    <hr class="mb-5"/>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" class="img-fluid" alt="Sample image">
+                                <div class="mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.circle">
+                                        우리동네 소모임 <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src=" https://mdbootstrap.com/img/Photos/Others/img4.jpg" class="img-fluid" alt="Sample image">
+                                <div class=" mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.sell">
+                                        우리동네 장터 <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" class="img-fluid" alt="Sample image">
+                                <div class="mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.hotplace">
+                                        우리동네 명소 <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </main>
-        <!-- Main End -->
-
 
         <!-- Footer import -->
         <%@ include file="footer.jsp" %>
-
 
         <!-- SCRIPTS -->
         <!-- JQuery -->
@@ -179,11 +199,27 @@
             $("input:text[numbersOnly]").on("keyup", function() {
                 $(this).val($(this).val().replace(/[^0-9]/g,""));
             });
+
+            //파일 사이즈 5Mb 제한
+            function imgChecker(inputFile) {
+                //용량 체크
+                var maxSize = 5 * 1024 * 1024;
+                if (inputFile.files && inputFile.files[0].size > maxSize) {
+                    alert("첨부할 이미지 파일은 5MB 이하여야 합니다.");
+                    inputFile.value = null;
+                }
+                //이미지 파일 체크 jpg, png, jpeg만 받음
+                var fileExtension = /(.*?)\.(jpg|png|jpeg)$/;
+                if (!inputFile.value.match(fileExtension)) {
+                    alert("JPG, PNG, JPEG 파일만 업로드 가능");
+                    inputFile.value = null;
+                }
+            }
         </script>
         <script>
             function validation() {
                 var inputTitle = document.getElementById("inputTitle");
-                var pictures = document.getElementById("pictures");
+                // var pictures = document.getElementById("pictures");
                 var sellPrice = document.getElementById("sellPrice");
                 var sellMethod = document.getElementById("sellMethod");
                 var inputRegion = document.getElementById("inputRegion");
@@ -194,12 +230,11 @@
                     inputTitle.focus();
                     return false;
                 }
-                if (pictures.value == '') {
-                    //TODO: 이미지만 가능하게 제한 걸기
-                    alert('사진을 등록해주세요.');
-                    pictures.focus();
-                    return false;
-                }
+                // if (pictures.value == '') {
+                //     alert('사진을 등록해주세요.');
+                //     pictures.focus();
+                //     return false;
+                // }
                 if (sellPrice.value == '') {
                     alert('판매가를 입력해주세요.');
                     sellPrice.focus();

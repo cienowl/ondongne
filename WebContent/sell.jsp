@@ -268,33 +268,8 @@
                                         '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
                                             '<div class="modal-content">'+
                                                 '<div class="modal-header p-0">'+
-                                                    '<div class="row">'+
-                                                        '<div id="carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" class="carousel slide carousel-fade" data-ride="carousel">'+
-                                                            '<ol class="carousel-indicators">'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="0" class="active"></li>'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="1"></li>'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="2"></li>'+
-                                                            '</ol>'+
-                                                            '<div class="carousel-inner" role="listbox" style="height: 500px;">'+
-                                                                '<div class="carousel-item active">'+
-                                                                    '<img class="d-block w-100 h-100" src="img/sell/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
-                                                                '</div>'+
-                                                                '<div class="carousel-item">'+
-                                                                    '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">'+
-                                                                '</div>'+
-                                                                '<div class="carousel-item">'+
-                                                                    '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">'+
-                                                                '</div>'+
-                                                            '</div>'+
-                                                            '<a class="carousel-control-prev" href="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" role="button" data-slide="prev">'+
-                                                                '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'+
-                                                                '<span class="sr-only">Previous</span>'+
-                                                            '</a>'+
-                                                            '<a class="carousel-control-next" href="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" role="button" data-slide="next">'+
-                                                                '<span class="carousel-control-next-icon" aria-hidden="true"></span>'+
-                                                                '<span class="sr-only">Next</span>'+
-                                                            '</a>'+
-                                                        '</div>'+
+                                                    '<div class="row" style="height: 500px;">'+
+                                                        '<img class="d-block w-100 h-100" src="img/sell/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
                                                     '</div>'+
                                                 '</div>'+
                                                 '<div class="modal-body">'+
@@ -426,33 +401,8 @@
                                         '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
                                             '<div class="modal-content">'+
                                                 '<div class="modal-header p-0">'+
-                                                    '<div class="row">'+
-                                                        '<div id="carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" class="carousel slide carousel-fade" data-ride="carousel">'+
-                                                            '<ol class="carousel-indicators">'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="0" class="active"></li>'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="1"></li>'+
-                                                                '<li data-target="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" data-slide-to="2"></li>'+
-                                                            '</ol>'+
-                                                            '<div class="carousel-inner" role="listbox">'+
-                                                                '<div class="carousel-item active">'+
-                                                                    '<img class="d-block w-100" src="img/sell/'+cardResult.pictures+'" alt="First slide">'+
-                                                                '</div>'+
-                                                                '<div class="carousel-item">'+
-                                                                    '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">'+
-                                                                '</div>'+
-                                                                '<div class="carousel-item">'+
-                                                                    '<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">'+
-                                                                '</div>'+
-                                                            '</div>'+
-                                                            '<a class="carousel-control-prev" href="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" role="button" data-slide="prev">'+
-                                                                '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'+
-                                                                '<span class="sr-only">Previous</span>'+
-                                                            '</a>'+
-                                                            '<a class="carousel-control-next" href="#carousel-postid'+cardResult.id+'-'+(index+pageOffset)+'" role="button" data-slide="next">'+
-                                                                '<span class="carousel-control-next-icon" aria-hidden="true"></span>'+
-                                                                '<span class="sr-only">Next</span>'+
-                                                            '</a>'+
-                                                        '</div>'+
+                                                    '<div class="row" style="height: 500px;">'+
+                                                        '<img class="d-block w-100 h-100" src="img/sell/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
                                                     '</div>'+
                                                 '</div>'+
                                                 '<div class="modal-body">'+

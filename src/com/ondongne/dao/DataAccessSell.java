@@ -52,7 +52,16 @@ public class DataAccessSell {
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 		
-		int updateCount = sqlSession.update("updateSellPost", dtoSell);
+		int updateCount;
+		
+		if (dtoSell.getPictures() == null) {
+			System.out.println(dtoSell.getPictures());
+			updateCount = sqlSession.update("updateSellPostExPic", dtoSell);
+		} else {
+			System.out.println(dtoSell.getPictures());
+			updateCount = sqlSession.update("updateSellPost", dtoSell);
+		}
+		
 		sqlSession.commit();
 		sqlSession.close();
 
