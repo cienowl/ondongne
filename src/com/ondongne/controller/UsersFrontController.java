@@ -13,7 +13,6 @@ import com.ondongne.action.Action;
 import com.ondongne.action.UserAvatarDeleteAction;
 import com.ondongne.action.UserAvatarSetAction;
 import com.ondongne.action.UserDeleteAction;
-import com.ondongne.action.UserLostEmail;
 import com.ondongne.action.UserSigninAction;
 import com.ondongne.action.UserSignoutAction;
 import com.ondongne.action.UserSignupBasicAction;

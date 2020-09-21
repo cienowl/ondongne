@@ -35,13 +35,14 @@ public class CircleFrontController extends HttpServlet {
 		
 		// 소모임 게시판으로 이동
 		if(command.equals("/view.circle")) {
-			
-			action = new GetCircleAction();
-			try {
-				forward = action.execute(request, response);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
+//			action = new GetCircleAction();
+//			try {
+//				forward = action.execute(request, response);
+//			}catch(Exception e) {
+//				e.printStackTrace();
+//			}
+			forward = new ActionForward();
+			forward.setPath("/circle.jsp");
 		}
 		
 		// 소모임 페이지의 글작성 버튼을 눌렀을때

@@ -10,8 +10,8 @@
 <%@page import="java.util.List"%>
 
 <%
-	List<DataTransferCircle> circleList = (List<DataTransferCircle>) request.getAttribute("circleList");
-	String dataTarget = null;
+	/* List<DataTransferCircle> circleList = (List<DataTransferCircle>) request.getAttribute("circleList");
+	String dataTarget = null; */
 	String sessionEmail = (String) session.getAttribute("email");
 %>
 
@@ -102,7 +102,7 @@
 				<jsp:include page="navbar_signin.jsp" />
 			<% } %>
 
-			<!--Carousel Wrapper-->
+			<%-- <!--Carousel Wrapper-->
 			<div id="carousel-example-1z" class="carousel slide carousel-fade"
 				data-ride="carousel">
 
@@ -157,7 +157,8 @@
 											Bootstrap 4. Loved by over 500 000 users. Video and written
 											versions available. Create your own, stunning website.</strong>
 									</p>
-									<form class="input-grey mb-5" action="searchcircle.circle" method="post">
+									<!-- <form class="input-grey mb-5" action="searchcircle.circle" method="post">  -->
+									<form class="input-grey mb-5">
 										<div class="form-row">
 											<div class="col-md-4 ml-auto">
 												<div class="input-group input-group-lg z-depth-1">
@@ -165,13 +166,14 @@
 														<span class="input-group-text rgba-white-light border-0"><i
 															class="fas fa-search white-text"></i></span>
 													</div>
-													<input type="text" name="search"
+													<input type="text" name="search" id="search"
 														class="form-control form-control rgba-white-light white-text border-0 z-depth-0"
 														placeholder="검색어 입력">
 												</div>
 											</div>
 											<div class="col-md-2 mr-auto">
-												<button type="submit" class="btn btn-block btn-lg btn-outline-white">검색</button>
+												<button type="button" id="searchBtn" class="btn btn-block btn-lg btn-outline-white" 
+												onclick="circleSearch(this.form)">검색</button>
 											</div>
 
 										</div>
@@ -209,24 +211,24 @@
 				<!--/.Controls-->
 
 			</div>
-			<!--/.Carousel Wrapper-->
+			<!--/.Carousel Wrapper--> --%>
 
 
 
-			<!-- 페이지 화면 헤더 (Ajax 구현시 위 carousel 삭제후 사용)-->
-            <%-- <%
+			<!-- 페이지 화면 헤더 -->
+           <%
             String writeButtonSelector = null;
             if (sessionEmail == null) {
                 writeButtonSelector = "<button type=\"button\" class=\"btn btn-outline-white btn-lg\" data-toggle=\"modal\" data-target=\"#signinModal\">소모임 글쓰기";
             } else {
-                writeButtonSelector = "<button type=\"button\" class=\"btn btn-outline-white btn-lg\" href=\"postform.circle\">소모임 글쓰기";
+                writeButtonSelector = "<a type=\"button\" class=\"btn btn-outline-white btn-lg\" href=\"postform.circle\">소모임 글쓰기</a>";
             }
             %>
             <section style="background-image: url('img/index/fleemarket.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
                 <div class="mask rgba-black-strong py-5">
                     <div class="container text-center my-5">
-                        <h1 class="font-weight-bold text-center white-text pt-5 pb-3">우리동네 판매장터</h1>
-                        <p class="lead text-center white-text pt-2 mb-5">지금 바로 검색해서 필요한 물건을 찾아보세요!</p>
+                        <h1 class="font-weight-bold text-center white-text pt-5 pb-3">우리동네 소모임</h1>
+                        <p class="lead text-center white-text pt-2 mb-5">지금 바로 검색해서 원하는 소모임을 찾아보세요!</p>
                         <form class="input-grey mb-5">
                             <div class="form-row">
                                 <div class="col-md-4 ml-auto">
@@ -238,13 +240,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 mr-auto">
-                                    <button type="button" class="btn btn-block btn-outline-white" id="searchbtn">
+                                    <button type="button" class="btn btn-block btn-outline-white" id="searchBtn" >
                                         <h6 class="text-white m-0">검색</h6>
                                     </button>
                                 </div>
                             </div>
                         </form>
-                        <button type="button" class="btn btn-outline-white btn-lg">
+                        <button type="button" class="btn btn-outline-white btn-lg" id="viewAllBtn">
                             전체보기
                         </button>
                         <%=writeButtonSelector%>
@@ -253,38 +255,56 @@
                     </div>
                 </div>
             </section>
-		</header> --%>
+		</header>
 		<!--Main Navigation-->
 
 
 		<!--Main layout-->
 		<main>
-		<div class="container my-5">
+			<div class="container my-5">
 
-		<!-- Section -->
-		<section>
-
-		<style>
-		.md-pills .nav-link.active {
-			color: #fff;
-			background-color: #616161;
-		}
-
-		#list.close {
-			position: absolute;
-			right: 0;
-			z-index: 2;
-			padding-right: 1rem;
-			padding-top: .6rem;
-		}
-		</style>
-		<style>
-		#circle_image{
-			height:300px;
-		}
-		</style>
-
-
+			<!-- Section -->
+			<section>
+	
+				<style>
+				.md-pills .nav-link.active {
+					color: #fff;
+					background-color: #616161;
+				}
+		
+				#list.close {
+					position: absolute;
+					right: 0;
+					z-index: 2;
+					padding-right: 1rem;
+					padding-top: .6rem;
+				}
+				</style>
+				<style>
+				#circle_image{
+					height:300px;
+				}
+				</style>
+	
+				<!-- Circle 목록 -->
+				<div id="modalCircleContent">
+					<!-- 페이지 카드 들어가는 곳 -->
+				</div>
+				<!-- /Circle 목록 -->
+				
+				<!-- Circle 카드 상세 내용 -->
+				<div class="tab-content mb-5">
+	                <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
+	                    <div class="row" id="cardContents">
+	                        <!-- 모달 내용 들어가는 곳 -->
+	                    </div>
+	                </div>
+	            </div>
+	            <!-- /Circle 카드 상세 내용 -->
+            </section>
+           </div>
+         </main>
+           <%--  <!-- Main layout -->
 				<%
 					for (int i = 0; i < circleList.size(); i++) {
 				%>
@@ -342,7 +362,7 @@
 									<div style="width: 800px; height: 300px; overflow: hidden">
 									    <img class="img-responsive" src="img/circle/<%=circleList.get(i).getPictures()%>" alt="" id="circle_image" style="width: auto; height: 300px; margin: auto 0" />
 									</div>
-									<%-- <!--Carousel Wrapper-->
+									<!--Carousel Wrapper-->
 									<div id="carousel-list-1z" class="carousel slide carousel-fade center-block"
 										data-ride="carousel">
 										<!--Indicators-->
@@ -393,18 +413,18 @@
 										</a>
 										<!--/.Controls-->
 									</div>
-									<!--/.Carousel Wrapper--> --%>
+									<!--/.Carousel Wrapper-->
 								<!-- Grid column -->
 								</div>
 							</div>
 
-							<div class="modal-body">
+							<div class="modal-body" >
 								<div class="col align-self-center">
 
 									<%if (!check) {%>
-									<form action="postjoin.circle" method="POST" >
+									<form action="postjoin.circle" method="POST"  id="circleModal">
 									<%} else {%>
-									<form action="" method="POST">
+									<form action="" method="POST" id="circleModal">
 									<%}%>
 										<input type="hidden" name="postid" id="postid" value="<%=circleList.get(i).getId()%>" />
 										<input type="hidden" name="title" value="<%=circleList.get(i).getTitle()%>" />
@@ -419,8 +439,9 @@
 										<input type="hidden" name="address_detail" value="<%=circleList.get(i).getAddress_detail()%>" />
 										<input type="hidden" name="description" value="<%=circleList.get(i).getDescription()%>" />
 									<h5 class="font-weight-bold mb-3"><%=circleList.get(i).getTitle()%></h5>
-									<p class="text-muted mb-2 text-right font-small" >
-										조회수 : <small id="postcount"></small>
+									
+									<p class="text-muted mb-2 text-right font-small" > 
+										조회수 : <%=circleList.get(i).getPost_count() %>
 									</p>
 									<p class="text-muted mb-4 text-right font-small">
 										작성자 : <a href="https://mdbootstrap.com/docs/jquery/design-blocks/"><%=circleList.get(i).getEmail()%></a>
@@ -512,8 +533,7 @@
 								<!-- Card -->
 								
 								<input type="hidden" name="postid" id="postid" value="<%=circleList.get(i).getId()%>" />
-								<a class="card hoverable mb-4" data-toggle="modal" data-target="<%=dataTarget%>" onclick='post_count(<%=circleList.get(i).getId()%>)'>
-								
+								<a class="card hoverable mb-4" data-toggle="modal" data-target="<%=dataTarget%>" onclick="post_count(<%=circleList.get(i).getId()%>, <%=i%>)">
 								<!-- Card image -->
 									<img class="card-img-top" src="img/circle/<%=circleList.get(i).getPictures()%>" alt="" id="listImage">
 							 	<!-- Card content -->
@@ -552,7 +572,7 @@
 
 
 		</main>
-		<!--Main layout-->
+		<!--Main layout--> --%>
 
 
 		<!-- Footer import -->
@@ -562,6 +582,11 @@
 		<!-- SCRIPTS -->
 		<!-- JQuery -->
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+				<!-- Initializations -->
+		<script type="text/javascript">
+			// Animations initialization
+			new WOW().init();
+		</script>
 		<!-- Bootstrap tooltips -->
 		<script type="text/javascript" src="js/popper.min.js"></script>
 		<!-- Bootstrap core JavaScript -->
@@ -569,6 +594,10 @@
 		<!-- MDB core JavaScript -->
 		<script type="text/javascript" src="js/mdb.min.js"></script>
 		<!-- Optional JavaScript -->
+		
+		<script>
+		
+		</script>
 
 
 		<!-- cards effect -->
@@ -589,15 +618,319 @@
 		</script>
 
 		<script>
+			var sessionEmail = '<%=(String) session.getAttribute("email")%>';
+			
+			$(document).ready(function(){
+				 var page = 0;   //페이지 로딩 후 페이지 0
 
+                //로딩 후 목록 가져오기
+                getCircleAll(page);
+
+                //스크롤 맨 아래 까지 가면 실행
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+                        page++;
+                        var searchWord = $('#searchBox').val();
+                        if (searchWord != "") {
+                            getCircle(page, searchWord);	//스크롤시 검색박스에 값이 있으면, 검색어 같이 보냄
+                        } else {
+                            getCircleAll(page);	//스크롤시 검색박스에 값이 없으면, 전체 읽기 실행
+                        }
+                    }
+                });
+				
+              //검색시 사용
+                $("#searchBtn").on('click', function(){
+                    var searchWord = $('#searchBox').val();
+                    if (searchWord != "") {
+                        $('#cardContents').empty();
+                        $('#modalCircleContent').empty();
+                        page = 0;
+                        getCircle(page, searchWord);
+                    }
+                });
+
+                //전체보기 버튼 클릭하면 내용 싹다 지우고 새로 로딩, page는 0으로 리셋
+                $('#viewAllBtn').on('click',function(){
+                    $('#cardContents').empty();
+                    $('#modalCircleContent').empty();
+                    $('#searchBox').val('');    //input 박스 초기화
+                    window.scrollTo(0,0);   //페이지 맨위로 이동
+                    page = 0;       //페이징 초기화
+                    getCircleAll(page);
+                });
+			})
 		</script>
-
-		<!-- Initializations -->
-		<script type="text/javascript">
-				// Animations initialization
-				new WOW().init();
-			</script>
-
+		<script>
+			//전체결과 Ajax
+			function getCircleAll(page){
+				$.ajax({
+					url:'getCircleAll.jsp',
+					data:{
+						'page':page
+					},
+					type:'GET',
+					dataType:'JSON',
+					success:function(request){
+						if (request != "") {
+                            $.each(request, function(index, requestEach){
+                                var cardResult = JSON.parse(JSON.stringify(requestEach));
+                               
+                                var pageOffset = page * 12;     //페이지당 12개씩
+                                var buttonSelector = 'checkSessionEmail'+(index+pageOffset);
+                                //게시물 카드 plot
+                                $('#cardContents').append(
+                                    '<div class="col-md-6 col-lg-3">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#circleList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+')">'+
+                                            '<div class="card-img-top zoom circleCardBg'+(index+pageOffset)+'"></div>'+
+                                            '<div class="card-body">'+
+                                                '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
+                                                '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.email+'</p>'+
+                                                '<p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;">'+cardResult.description+'</p>'+
+                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">'+cardResult.event_date.split(' ')[0]+'</p>'+
+                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">( 마감 : '+cardResult.end_date.split(' ')[0]+' )</p>'+
+                                            '</div>'+
+                                        '</a>'+
+                                    '</div>'
+                                );
+                                $('.circleCardBg'+(index+pageOffset)).css('background-image','url("img/circle/'+cardResult.pictures+'")');
+                                $('.circleCardBg'+(index+pageOffset)).css('background-position','center');
+                                $('.circleCardBg'+(index+pageOffset)).css('background-size','cover');
+                                $('.circleCardBg'+(index+pageOffset)).css('height','170px');
+                                
+                                //게시물 Modal plot
+                                $('#modalCircleContent').append(
+                                    '<div class="modal fade" id="circleList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
+                                        '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
+                                            '<div class="modal-content">'+
+                                                '<div class="modal-header p-0">'+
+                                                    '<div class="row" style="height: 500px;">'+
+                                                        '<img class="d-block w-100 h-100" src="img/circle/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="modal-body">'+
+                                                    '<div class="col align-self-center">'+
+                                                        '<small class="text-info">#'+cardResult.id+'</small>'+
+                                                        '<p class="text-muted mb-0 text-right">조회수 : '+cardResult.post_count+'</p>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-12">'+
+                                                                '<p class="text-muted mb-2 text-right"> 작성자 : '+cardResult.email+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-6">'+
+                                                                '<p class="text-uppercase mb-2"><strong> 소모임 날짜 </strong></p><p class="text-muted mb-4">'+cardResult.event_date.split(' ')[0]+'</p>'+
+                                                           	 '</div>'+
+                                                           	'<div class="col-sm-6">'+
+                                                           		'<p class="text-uppercase mb-2"><strong> 마감 날짜 </strong></p><p class="text-muted mb-4 text-danger">'+cardResult.end_date.split(' ')[0]+'</p>'+
+                                                           	'</div>'+
+                                                    	'</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-6">'+
+                                                                '<p class="text-uppercase mb-2"><strong>참여인원</strong></p>'+
+                                                                '<p class="text-muted mb-4">'+'/'+cardResult.mem_number+'명</p>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-6">'+
+                                                                '<p class="text-uppercase mb-2"><strong>지역</strong></p>'+
+                                                                '<p class="text-muted mb-4">'+cardResult.region+'</p>'+
+                                                            '</div>'+
+                                                       	'</div>'+
+                                                       	'<div class="row">'+
+                                                            '<div class="col-sm-12">'+
+                                                                '<p class="text-uppercase mb-2"><strong>상세주소</strong></p>'+
+                                                                '<p class="text-muted mb-4">('+cardResult.zipcode+')'+cardResult.address+cardResult.address_detail+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col">'+
+                                                                '<p class="text-uppercase mb-2"><strong>설명</strong></p>'+
+                                                                '<p class="text-muted" style="height: 100px; word-break: break-all;">'+cardResult.description+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="modal-footer">'+
+                                                    '<form method="POST" name="form" id="'+buttonSelector+'">'+
+                                                        '<input type="hidden" name="postid" id="postid" value="'+cardResult.id+'"/>'+
+                                                        '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
+                                                        '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
+                                                        '<input type="hidden" name="memnumber" value="'+cardResult.mem_number+'" />'+
+                                                        '<input type="hidden" name="region" value="'+cardResult.region+'" />'+
+                                                        '<input type="hidden" name="gender" value="'+cardResult.gender+'" />'+
+                                                        '<input type="hidden" name="event_date" value="'+cardResult.event_date+'" />'+
+                                                        '<input type="hidden" name="end_date" value="'+cardResult.end_date+'" />'+
+                                                        '<input type="hidden" name="zipcode" value="'+cardResult.zipcode+'" />'+
+                                                        '<input type="hidden" name="address" value="'+cardResult.address+'" />'+
+                                                        '<input type="hidden" name="address_detail" value="'+cardResult.address_detail+'" />'+
+                                                        '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
+                                                    '</form>'+
+                                                    '<a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'
+                                );
+                                if (sessionEmail == 'null') {
+                                    $('#'+buttonSelector).append(
+                                        '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">참여하기</a>'
+                                    );
+                                } else {
+                                    if (sessionEmail == cardResult.email){
+                                        $('#'+buttonSelector).append(
+                                            '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'postupdateform.circle\';">수정</button>'+
+                                            '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
+                                        );
+                                    } else {
+                                        $('#'+buttonSelector).append(
+                                            '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'postjoin.circle\';">참여하기</button>'
+                                        );
+                                    }
+                                }
+                            });
+                        }
+					},
+					 error:function(request,status,error){
+                        alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
+                    }
+				});
+			}
+			//검색결과 Ajax
+			function getCircle(page, searchWord) {
+				console.log("aaa");
+                $.ajax({
+                    url:'getCircle.jsp',
+                    data:{
+                    	'searchWord':searchWord,
+                    	'page':page
+                    	},
+                    type:'GET',
+                    dataType:'JSON',
+                    success:function(request){
+                        if (request != "") {
+                            $.each(request, function(index, requestEach){
+                                var cardResult = JSON.parse(JSON.stringify(requestEach));
+                                
+                                var pageOffset = page * 12;
+                                var buttonSelector = 'checkSessionEmail'+(index+pageOffset);
+                                //게시물 카드 plot
+                                $('#cardContents').append(
+                                    '<div class="col-md-6 col-lg-3">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#circleList'+(index+pageOffset)+'">'+
+                                            '<div class="card-img-top zoom circleCardBg'+(index+pageOffset)+'"></div>'+
+                                            '<div class="card-body">'+
+                                                '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
+                                                '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.email+'</p>'+
+                                                '<p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;">'+cardResult.description+'</p>'+
+                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">'+cardResult.event_date.split(' ')[0]+'</p>'+
+                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">( 마감 : '+cardResult.end_date.split(' ')[0]+' )</p>'+
+                                            '</div>'+
+                                        '</a>'+
+                                    '</div>'
+                                );
+                                $('.circleCardBg'+(index+pageOffset)).css('background-image','url("img/circle/'+cardResult.pictures+'")');
+                                $('.circleCardBg'+(index+pageOffset)).css('background-position','center');
+                                $('.circleCardBg'+(index+pageOffset)).css('background-size','cover');
+                                $('.circleCardBg'+(index+pageOffset)).css('height','170px');
+                                
+                                //게시물 Modal plot
+                                $('#modalCircleContent').append(
+                                    '<div class="modal fade" id="circleList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
+                                        '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
+                                            '<div class="modal-content">'+
+                                                '<div class="modal-header p-0">'+
+                                                    '<div class="row" style="height: 500px;">'+
+                                                        '<img class="d-block w-100 h-100" src="img/circle/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="modal-body">'+
+                                                    '<div class="col align-self-center">'+
+                                                        '<small class="text-info">#'+cardResult.id+'</small></br>'+
+                                                        '<p class="text-muted mb-0 text-right">조회수 : '+cardResult.post_count+'</p>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-12">'+
+                                                                '<p class="text-muted mb-2 text-right"> 작성자 : '+cardResult.email+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-6">'+
+                                                                '<p class="text-uppercase mb-2"><strong> 소모임 날짜 </strong></p><p class="text-muted mb-4">'+cardResult.event_date.split(' ')[0]+'</p>'+
+                                                           	 '</div>'+
+                                                           	'<div class="col-sm-6">'+
+                                                           		'<p class="text-uppercase mb-2"><strong> 마감 날짜 </strong></p><p class="text-muted mb-4 text-danger">'+cardResult.end_date.split(' ')[0]+'</p>'+
+                                                           	'</div>'+
+                                                    	'</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-6">'+
+                                                                '<p class="text-uppercase mb-2"><strong>참여인원</strong></p>'+
+                                                                '<p class="text-muted mb-4">'+'/'+cardResult.mem_number+'명</p>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-6">'+
+                                                                '<p class="text-uppercase mb-2"><strong>지역</strong></p>'+
+                                                                '<p class="text-muted mb-4">'+cardResult.region+'</p>'+
+                                                            '</div>'+
+                                                       	'</div>'+
+                                                       	'<div class="row">'+
+                                                            '<div class="col-sm-12">'+
+                                                                '<p class="text-uppercase mb-2"><strong>상세주소</strong></p>'+
+                                                                '<p class="text-muted mb-4">('+cardResult.zipcode+')'+cardResult.address+cardResult.address_detail+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col">'+
+                                                                '<p class="text-uppercase mb-2"><strong>설명</strong></p>'+
+                                                                '<p class="text-muted" style="height: 100px; word-break: break-all;">'+cardResult.description+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="modal-footer">'+
+                                                    '<form method="POST" name="form" id="'+buttonSelector+'">'+
+                                                        '<input type="hidden" name="postid" id="postid" value="'+cardResult.id+'"/>'+
+                                                        '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
+                                                        '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
+                                                        '<input type="hidden" name="memnumber" value="'+cardResult.mem_number+'" />'+
+                                                        '<input type="hidden" name="region" value="'+cardResult.region+'" />'+
+                                                        '<input type="hidden" name="gender" value="'+cardResult.gender+'" />'+
+                                                        '<input type="hidden" name="event_date" value="'+cardResult.event_date+'" />'+
+                                                        '<input type="hidden" name="end_date" value="'+cardResult.end_date+'" />'+
+                                                        '<input type="hidden" name="zipcode" value="'+cardResult.zipcode+'" />'+
+                                                        '<input type="hidden" name="address" value="'+cardResult.address+'" />'+
+                                                        '<input type="hidden" name="address_detail" value="'+cardResult.address_detail+'" />'+
+                                                        '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
+                                                    '</form>'+
+                                                    '<a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'
+                                );
+                                if (sessionEmail == 'null') {
+                                    $('#'+buttonSelector).append(
+                                        '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">참여하기</a>'
+                                    );
+                                } else {
+                                    if (sessionEmail == cardResult.email){
+                                        $('#'+buttonSelector).append(
+                                            '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'postupdateform.circle\';">수정</button>'+
+                                            '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
+                                        );
+                                    } else {
+                                        $('#'+buttonSelector).append(
+                                            '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'postjoin.circle\';">참여하기</button>'
+                                        );
+                                    }
+                                }
+                            });
+                        }
+					},
+					 error:function(request,status,error){
+                        alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
+                    }
+				});
+            }
+		</script>
+		
+		
 		<!-- login check -->
 		<script>
 				function checksession(){
@@ -623,22 +956,34 @@
 				}
 			}
 		</script>
-
+		
+		
 		<!-- 게시글 조회수 -->
 		<script>
-			function post_count(postid){
+			function post_count(postid,i){
 				//console.log("글번호" + form.postid.value);
 				//console.log(this.document.getElementById('postid').value);
+				//$("#postcount").append("aaa");
 				console.log("글번호 : " + postid);
 				$.ajax({
 					url:'circlePostCount.jsp?postid='+postid,
 					type:"GET",
 					success : function(request){
+						// 성공했을때 a태그를 만들어서 넣어야함 ( 이미 모달창화면이 만들어진상태라 반영안됨)
+						
 						console.log("조회수 : "+request.trim());
-						$("#postcount").append(request.trim());
-					}
+						//$("#postcount").append("조회수 : "+request.trim());
+						//var abc = $('#postcount').text();
+						//console.log(abc);
+						
+				        //$("#circleModal #postcount").innerHTML = "<a> 조회수 : "+request.trim()+" </a>" ;
+				        //window.location.href = "circlePostCountGet.jsp?postcount="+request.trim()+"&&i="+i;
+				        
+					},
+					 error:function(request,status,error){
+	                     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	                 }
 				})
-				//window.location.href = "postcount.circle?postid="+postid;
 			
 			}
 		</script>

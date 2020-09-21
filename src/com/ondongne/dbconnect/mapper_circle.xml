@@ -7,29 +7,37 @@
 		insert into circle(email,pictures, post_date, title, region, zipcode, address, address_detail, event_date, end_date, gender, description, tags, mem_number) values (#{email},#{pictures},NOW(), #{title},#{region},#{zipcode},#{address},#{address_detail},#{event_date},#{end_date},#{gender},#{description},'tag',#{mem_number});
 	</insert>
 	
-	<select id="getCirclePostAll" resultType="com.ondongne.dto.DataTransferCircle">
-		select * from circle;
+	<select id="selectCirclePostAll" resultType="com.ondongne.dto.DataTransferCircle">
+		select * from circle order by post_date desc;
+	</select>
+	
+	<select id="selectCirclePostAllPaging" resultType="com.ondongne.dto.DataTransferCircle" parameterType="int">
+		select * from circle order by post_date desc limit 12 offset #{pageOffset};
 	</select>
 	
 	<select id="getJoinCircle" parameterType="String" resultType="com.ondongne.dto.DataTransferCircle">
 		select id, title, email, event_date from circle where id IN(select join_postid from helper_circle where join_email=#{loginEmail});
 	</select>
 	
-	<update id="circleUpdate" parameterType="com.ondongne.dto.DataTransferCircle">
-		update circle set title=#{title}, pictures=#{pictures}, region=#{region}, zipcode=#{zipcode}, address=#{address}, address_detail=#{address_detail}, event_date=#{event_date}, end_date=#{end_date}, gender=#{gender}, description=#{description}, mem_number=#{mem_number} where id=#{id};
-	</update>
+	<select id="selectCircleByEmail" resultType="com.ondongne.dto.DataTransferCircle" parameterType="String">
+		select * from circle where email=#{email};
+	</select>
+	
+	<select id="searchCircleList" resultType="com.ondongne.dto.DataTransferCircle" parameterType="String">
+		select * from circle WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') order by post_date desc;
+	</select>
+	
+	<select id="searchCircleListPaging" resultType="com.ondongne.dto.DataTransferCircle" parameterType="com.ondongne.dto.SearchCircleBean">
+		select * from circle WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') order by post_date desc limit 12 offset #{page}
+	</select>
 	
 	<delete id="circleDelete" parameterType="com.ondongne.dto.DataTransferCircle">
 		delete from circle where id=#{id} AND email=#{email};
 	</delete>
 	
-	<select id="getPostCircle" parameterType="String" resultType="com.ondongne.dto.DataTransferCircle">
-		select * from circle where email=#{loginEmail};
-	</select>
-	
-	<select id="getSearchCircle" parameterType="String" resultType="com.ondongne.dto.DataTransferCircle">
-		select * from circle WHERE title LIKE CONCAT('%',#{value},'%') OR description LIKE CONCAT('%',#{value},'%') OR region LIKE CONCAT('%',#{value},'%') OR email LIKE CONCAT('%',#{value},'%') OR address LIKE CONCAT('%',#{value},'%');
-	</select>
+	<update id="circleUpdate" parameterType="com.ondongne.dto.DataTransferCircle">
+		update circle set title=#{title}, pictures=#{pictures}, region=#{region}, zipcode=#{zipcode}, address=#{address}, address_detail=#{address_detail}, event_date=#{event_date}, end_date=#{end_date}, gender=#{gender}, description=#{description}, mem_number=#{mem_number} where id=#{id};
+	</update>
 	
 	<select id="getCirclePictures" parameterType="int" resultType="String">
 		select pictures from circle WHERE id=#{postid};

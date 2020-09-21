@@ -107,7 +107,7 @@ public class DataAccessCircle {
 		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();
 		
-		List<DataTransferCircle> postCircleList = sqlsession.selectList("getPostCircle",loginEmail);
+		List<DataTransferCircle> postCircleList = sqlsession.selectList("selectCircleByEmail",loginEmail);
 		
 		return postCircleList;
 		
