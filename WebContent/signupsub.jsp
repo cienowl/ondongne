@@ -29,7 +29,7 @@
         <link href="css/style.min.css" rel="stylesheet"/>
         <style>
             .navbar {
-                background: #880e4f !important;
+                background: #ff6d00 !important;
             }
         </style>
     </head>

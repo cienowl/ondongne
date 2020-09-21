@@ -48,7 +48,6 @@
         </header>
 
         <main>
-
             <div class="container my-5 pt-5">
                 <h2 class="font-weight-bold dark-grey-text mb-3">공지사항</h2>
                 
@@ -58,7 +57,7 @@
                     <% for (int i = 0; i < noticeList.size(); i++) { %>
                     <% dataTarget = "#noticeList" + Integer.toString(i); %>
                         <a href="#" class="list-group-item list-group-item-action" style="cursor: pointer;" data-toggle="modal" data-target="<%= dataTarget %>">
-                            <h4 class="pb-1 pt-3 dark-grey-text text-weight-bold"><%= noticeList.get(i).getTitle() %></h4>
+                            <h5 class="pb-1 pt-3 dark-grey-text text-weight-bold"><%= noticeList.get(i).getTitle() %></h5>
                             <h6 class="pb-2 text-muted"><%= noticeList.get(i).getPostdate().split(" ")[0] %></h6>
                         </a>
                     <% } %>
