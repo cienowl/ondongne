@@ -142,11 +142,12 @@ CREATE TABLE `circle` (
   `description` text NOT NULL,
   `tags` varchar(100) NOT NULL,
   `mem_number` varchar(30) NOT NULL,
-  `post_count` int(11) DEFAULT NULL,
+  `post_count` int(11) DEFAULT '0',
+  `join_mem_number` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `email_idx` (`email`),
   CONSTRAINT `circle_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8
 ~~~
 
 hotplace: 동네장소 테이블
