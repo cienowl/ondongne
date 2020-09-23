@@ -118,7 +118,7 @@
         <main>
             <div class="container my-5">
                 <section>
-                    <style>
+                    <%-- <style>
                         .md-pills .nav-link.active {
                             color: #fff;
                             background-color: #616161;
@@ -130,23 +130,23 @@
                             padding-right: 1rem;
                             padding-top: .6rem;
                         }
-                    </style>
+                    </style> --%>
 
-					<!-- Sell 목록 -->
-                    <div id="modalSellContent">
-                        <!-- 페이지 카드 들어가는 곳 -->
-                    </div>
-                    <!-- /Sell 목록 -->
-
-                    <!-- Sell 카드 상세 내용 -->
+                    <!-- Sell 카드 -->
                     <div class="tab-content mb-5">
                         <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
                             <div class="row" id="cardContents">
-                                <!-- 모달 내용 들어가는 곳 -->
+                                <!-- 페이지 카드 들어가는 곳 -->
                             </div>
                         </div>
                     </div>
-                    <!-- /Sell 카드 상세 내용 -->
+                    <!-- /Sell 카드 -->
+
+					<!-- Modal: Sell 상세 내용 목록 -->
+                    <div id="modalContents">
+                        <!-- 모달 내용 들어가는 곳 -->
+                    </div>
+                    <!-- /Modal: Sell 상세 내용 목록 -->
 
                 </section>
             </div>
@@ -196,7 +196,7 @@
                     var searchWord = $('#searchBox').val();
                     if (searchWord != "") {
                         $('#cardContents').empty();
-                        $('#modalSellContent').empty();
+                        $('#modalContents').empty();
                         page = 0;
                         getSell(page, searchWord);
                     }
@@ -205,7 +205,7 @@
                 //전체보기 버튼 클릭하면 내용 싹다 지우고 새로 로딩, page는 0으로 리셋
                 $('#viewAllBtn').on('click',function(){
                     $('#cardContents').empty();
-                    $('#modalSellContent').empty();
+                    $('#modalContents').empty();
                     $('#searchBox').val('');    //input 박스 초기화
                     window.scrollTo(0,0);   //페이지 맨위로 이동
                     page = 0;       //페이징 초기화
@@ -262,8 +262,9 @@
                                 $('.sellCardBg'+(index+pageOffset)).css('background-position','center');
                                 $('.sellCardBg'+(index+pageOffset)).css('background-size','cover');
                                 $('.sellCardBg'+(index+pageOffset)).css('height','170px');
+
                                 //게시물 Modal plot
-                                $('#modalSellContent').append(
+                                $('#modalContents').append(
                                     '<div class="modal fade" id="sellList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
                                         '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
                                             '<div class="modal-content">'+
@@ -322,6 +323,7 @@
                                         '</div>'+
                                     '</div>'
                                 );
+
                                 if (sessionEmail == 'null') {
                                     $('#'+buttonSelector).append(
                                         '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">스크랩</a>'
@@ -396,7 +398,7 @@
                                 $('.sellCardBg'+(index+pageOffset)).css('background-size','cover');
                                 $('.sellCardBg'+(index+pageOffset)).css('height','170px');
                                 //게시물 Modal plot
-                                $('#modalSellContent').append(
+                                $('#modalContents').append(
                                     '<div class="modal fade" id="sellList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
                                         '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
                                             '<div class="modal-content">'+

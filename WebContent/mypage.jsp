@@ -23,12 +23,12 @@
     List<DataTransferSell> joinSellList = (List<DataTransferSell>)request.getAttribute("sellList");
     //Sell 등록한 게시물
     List<DataTransferSell> mySellList = (List<DataTransferSell>)request.getAttribute("mySellList");
-    
+
     //Hotplace 스크랩 게시물
     List<HotplaceBean> scrapPlace = (List<HotplaceBean>)request.getAttribute("scrapList");
-    
+
     //TODO: 프로필 사진은 session 에서
-    
+
 %>
 
 <!DOCTYPE html>
@@ -110,11 +110,11 @@
                 <%
 					SqlSessionFactory factory2 = DataAccessUsers.getConnection();
                 	SqlSession sqlSession2 = factory2.openSession();
-                	
+
                 	String profile_picture = sqlSession2.selectOne("getAvatar",session.getAttribute("email"));
                 	sqlSession2.close();
 				%>
-				
+
                     <div class="col-xl-2 my-5">
                         <div class="card sticky-top">
                             <div class="view overlay zoom p-2" onClick="uploadAvatar()" style="background:#f2d4c2;">
@@ -144,8 +144,6 @@
                                     </a> --%>
                                     <a href="mypage.ondongne" class="list-group-item list-group-item-action">대시보드</a>
                                     <a href="signupsub.users" class="list-group-item list-group-item-action">개인정보수정</a>
-                                    <a href="" class="list-group-item list-group-item-action" onclick="acyncMovePage('testform2.html');">Ajax Test</a>
-                                    <%-- <a href="" class="list-group-item list-group-item-action">팔로잉/팔로워</a> --%>
                                     <a href="" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#modalConfirmDelete">탈퇴하기</a>
                                 </div>
                             </div>
@@ -194,8 +192,8 @@
 											<tr class="text-center">
 												<th><%=scrapPlace.get(i).getRegion() %></th>
 												<th><%=scrapPlace.get(i).getTitle() %></th>
-												<th><button type="submit" class="btn btn-sm btn-danger m-0" onclick="delete_check_hotPlace(this.form)"></button></th>
-											</tr>											
+												<th><button type="submit" class="btn btn-sm btn-danger m-0" onclick="delete_check_hotPlace(this.form)"><i class="fas fa-trash"></i></button></th>
+											</tr>
 											<% } %>
 										</tbody>
 										</form>
@@ -292,12 +290,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <%                                                 
+                                                <%
                                                 String price = null;
                                                 String email = null;
                                                 String isActive = null;
                                                 String isParcel = null;
-                                                
+
                                                 for (int i = 0; i < mySellList.size(); i++) {
                                                     price = priceFormat.format(Integer.parseInt(mySellList.get(i).getPrice()));
 
@@ -312,7 +310,7 @@
                                                     } else {
                                                         isParcel = "직거래";
                                                     }
-                                                %>  
+                                                %>
                                                 <form method="POST">
                                                     <input type="hidden" name="postid" id="postid" value="<%=mySellList.get(i).getId()%>" />
                                                     <input type="hidden" name="title" value="<%= mySellList.get(i).getTitle() %>"/>
@@ -320,13 +318,13 @@
                                                     <input type="hidden" name="sellMethod" value="<%= mySellList.get(i).isIs_parcel() %>"/>
                                                     <input type="hidden" name="region" value="<%= mySellList.get(i).getRegion() %>"/>
                                                     <input type="hidden" name="description" value="<%= mySellList.get(i).getDescription() %>"/>
-                                                    <input type="hidden" name="pictures" value="<%= mySellList.get(i).getPictures() %>"/>             
+                                                    <input type="hidden" name="pictures" value="<%= mySellList.get(i).getPictures() %>"/>
                                                     <tr class="text-center">
                                                         <th><%=mySellList.get(i).getTitle()%></th>
                                                         <td>₩<%=price%>원</td>
                                                         <td><%=isParcel%></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-sm btn-info m-0" onclick="javascript:form.action='inactivate.sell'"><%=isActive%></button>                                                            
+                                                            <button type="button" class="btn btn-sm btn-info m-0" onclick="javascript:form.action='inactivate.sell'"><%=isActive%></button>
                                                         </td>
                                                         <td>
                                                             <button type="submit" class="btn btn-sm btn-warning m-0" onclick="javascript:form.action='updateForm.sell'"><i class="fas fa-pencil-alt"></i></button>
@@ -395,16 +393,19 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <% for (int i = 0; i < joinSellList.size(); i++) { %>
+                                                <%
+                                                for (int i = 0; i < joinSellList.size(); i++) {
+                                                    price = priceFormat.format(Integer.parseInt(joinSellList.get(i).getPrice()));
+                                                %>
                                                 <form>
                                                     <input type="hidden" name="scrapId"  id="scrapId" value="<%=joinSellList.get(i).getId() %>" />
                                                     <input type="hidden" name="scrapTitle" id="scrapTitle" value="<%=joinSellList.get(i).getTitle()%>"/>
                                                     <tr class="text-center">
                                                         <td><%=joinSellList.get(i).getTitle()%></td>
                                                         <th><%=joinSellList.get(i).getEmail()%></th>
-                                                        <td><%=joinSellList.get(i).getPrice()%></td>
+                                                        <td>₩<%=price%>원</td>
                                                         <td>
-                                                            <button type="button" class="btn btn-info btn-sm m-0" onclick="scrapCancel(this.form)"><i class="fas fa-times"></i></button>
+                                                            <button type="button" class="btn btn-danger btn-sm m-0" onclick="scrapCancel(this.form)"><i class="fas fa-times"></i></button>
                                                         </td>
                                                     </tr>
                                                 </form>
@@ -452,27 +453,6 @@
         <script type="text/javascript">
             // Animations initialization
             new WOW().init();
-        </script>
-
-        <script>
-            function acyncMovePage(url){
-                // ajax option
-                var ajaxOption = {
-                    url : url,
-                    async : true,
-                    type : "POST",
-                    dataType : "text",
-                    cache : false
-                };
-
-                $.ajax(ajaxOption).done(function(data){
-                    $('#bodyContents').children().remove();
-                    // $('#bodyContents').children().empty();
-                    $('#bodyContents').html(data);
-                    // $('#bodyContents').append("data");
-                    // console.log("dd");
-                });
-            }
         </script>
 
         <script>

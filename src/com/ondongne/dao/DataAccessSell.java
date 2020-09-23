@@ -55,10 +55,8 @@ public class DataAccessSell {
 		int updateCount;
 		
 		if (dtoSell.getPictures() == null) {
-			System.out.println(dtoSell.getPictures());
 			updateCount = sqlSession.update("updateSellPostExPic", dtoSell);
 		} else {
-			System.out.println(dtoSell.getPictures());
 			updateCount = sqlSession.update("updateSellPost", dtoSell);
 		}
 		

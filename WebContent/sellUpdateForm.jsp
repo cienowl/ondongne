@@ -219,7 +219,6 @@
         <script>
             function validation() {
                 var inputTitle = document.getElementById("inputTitle");
-                // var pictures = document.getElementById("pictures");
                 var sellPrice = document.getElementById("sellPrice");
                 var sellMethod = document.getElementById("sellMethod");
                 var inputRegion = document.getElementById("inputRegion");
@@ -230,11 +229,6 @@
                     inputTitle.focus();
                     return false;
                 }
-                // if (pictures.value == '') {
-                //     alert('사진을 등록해주세요.');
-                //     pictures.focus();
-                //     return false;
-                // }
                 if (sellPrice.value == '') {
                     alert('판매가를 입력해주세요.');
                     sellPrice.focus();

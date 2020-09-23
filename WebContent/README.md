@@ -114,11 +114,11 @@ CREATE TABLE `sell` (
   `pictures` text NOT NULL,
   `tags` varchar(100) NOT NULL,
   `post_date` datetime NOT NULL,
-  `post_count` int(11) DEFAULT NULL,
+  `post_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `sell_email_idx` (`email`),
   CONSTRAINT `sell_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ~~~
 
 circle: 소모임 테이블
@@ -147,7 +147,7 @@ CREATE TABLE `circle` (
   PRIMARY KEY (`id`),
   KEY `email_idx` (`email`),
   CONSTRAINT `circle_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ~~~
 
 hotplace: 동네장소 테이블
@@ -165,9 +165,9 @@ CREATE TABLE `hotplace` (
   `postdate` datetime NOT NULL,
   `lastupdate` datetime DEFAULT NULL,
   `description` text,
-  `tags` varchar(100) DEFAULT NULL,
+  `post_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ~~~
 
 notice: 공지사항 테이블
