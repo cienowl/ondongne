@@ -89,4 +89,16 @@ public class CircleService {
 		return searchCircleList;
 	}
 	
+	// 참여버튼 눌렀을 때 해당 게시물 참여인원 update
+	public boolean updateJoinMem(DataTransferCircle circleBean) {
+		boolean isWriteSuccess = false;
+		
+		DataAccessCircle daoCircle = DataAccessCircle.getinstance();
+		int updateCount = daoCircle.updateJoinMem(circleBean);
+		if(updateCount>0) {
+			isWriteSuccess=true;
+		}
+		return isWriteSuccess;
+	}
+	
 }

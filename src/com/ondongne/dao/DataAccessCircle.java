@@ -123,5 +123,18 @@ public class DataAccessCircle {
 		
 		return searchCircleList;
 	}
+	
+	// 참여버튼 눌렀을 때 해당 게시물 참여인원 update
+	public int updateJoinMem(DataTransferCircle circleBean) {
+		
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		int updateCount = sqlsession.update("updateJoinMem", circleBean);
+		sqlsession.commit();
+		sqlsession.close();
+		
+		return updateCount;
+	}
 
 }

@@ -83,4 +83,14 @@ public class DataAccessCircleJoin {
 		return cancelCount;
 	}
 	
+	// 참여버튼 눌렀을 때 현재까지 참여한 인원 
+	public int joinCountMem(int join_postid) {
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		int joinCount = sqlsession.selectOne("getJoinCount",join_postid);
+		
+		return joinCount;
+	}
+	
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ondongne.action.Action;
 import com.ondongne.action.CancelJoinCircleAction;
 import com.ondongne.action.JoinCircleAction;
+import com.ondongne.action.JoinCountAction;
 import com.ondongne.action.DeleteCircleAction;
 import com.ondongne.action.GetCircleAction;
 import com.ondongne.action.PostCircleAction;
@@ -64,6 +65,16 @@ public class CircleFrontController extends HttpServlet {
 		// 소모임 게시글 참여버튼을 눌렀을때
 		else if(command.equals("/postjoin.circle")) {
 			action = new JoinCircleAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 소모임 참여버튼 눌렀을때 현재 참여인원 count
+		else if(command.equals("/joincount.circle")) {
+			action = new JoinCountAction();
 			try {
 				forward = action.execute(request, response);
 			}catch(Exception e) {

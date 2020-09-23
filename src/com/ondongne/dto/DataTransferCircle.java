@@ -20,6 +20,7 @@ public class DataTransferCircle {
 	private String tags;
 	private String mem_number;
 	private int post_count;
+	private String join_mem_number;
 	
 	public int getId() {
 		return id;
@@ -125,7 +126,11 @@ public class DataTransferCircle {
 		this.post_count = post_count;
 	}
 	
-	
-	
+	public String getJoin_mem_number() {
+		return join_mem_number;
+	}
+	public void setJoin_mem_number(String join_mem_number) {
+		this.join_mem_number = join_mem_number;
+	}
 	
 }

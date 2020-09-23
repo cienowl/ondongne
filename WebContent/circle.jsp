@@ -697,7 +697,7 @@
                                 $('.circleCardBg'+(index+pageOffset)).css('background-position','center');
                                 $('.circleCardBg'+(index+pageOffset)).css('background-size','cover');
                                 $('.circleCardBg'+(index+pageOffset)).css('height','170px');
-                                
+                               
                                 //게시물 Modal plot
                                 $('#modalCircleContent').append(
                                     '<div class="modal fade" id="circleList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
@@ -728,7 +728,7 @@
                                                         '<div class="row">'+
                                                             '<div class="col-sm-6">'+
                                                                 '<p class="text-uppercase mb-2"><strong>참여인원</strong></p>'+
-                                                                '<p class="text-muted mb-4">'+'/'+cardResult.mem_number+'명</p>'+
+                                                                '<p class="text-muted mb-4">'+cardResult.join_mem_number+'/'+cardResult.mem_number+'명</p>'+
                                                             '</div>'+
                                                             '<div class="col-sm-6">'+
                                                                 '<p class="text-uppercase mb-2"><strong>지역</strong></p>'+
@@ -754,7 +754,7 @@
                                                         '<input type="hidden" name="postid" id="postid" value="'+cardResult.id+'"/>'+
                                                         '<input type="hidden" name="title" value="'+cardResult.title+'"/>'+
                                                         '<input type="hidden" name="pictures" value="'+cardResult.pictures+'"/>'+
-                                                        '<input type="hidden" name="memnumber" value="'+cardResult.mem_number+'" />'+
+                                                        '<input type="hidden" id="memnumber" name="memnumber" value="'+cardResult.mem_number+'" />'+
                                                         '<input type="hidden" name="region" value="'+cardResult.region+'" />'+
                                                         '<input type="hidden" name="gender" value="'+cardResult.gender+'" />'+
                                                         '<input type="hidden" name="event_date" value="'+cardResult.event_date+'" />'+
@@ -763,6 +763,7 @@
                                                         '<input type="hidden" name="address" value="'+cardResult.address+'" />'+
                                                         '<input type="hidden" name="address_detail" value="'+cardResult.address_detail+'" />'+
                                                         '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
+                                                        '<input type="hidden" id="joinmemnumber" name="joinmemnumber" value="'+cardResult.join_mem_number+'"/>'+
                                                     '</form>'+
                                                     '<a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>'+
                                                 '</div>'+
@@ -770,22 +771,25 @@
                                         '</div>'+
                                     '</div>'
                                 );
-                                if (sessionEmail == 'null') {
+                               
+                               	if (sessionEmail == 'null') {
                                     $('#'+buttonSelector).append(
                                         '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">참여하기</a>'
                                     );
                                 } else {
-                                    if (sessionEmail == cardResult.email){
+                                	console.log("인원 : "+cardResult.mem_number+"/ 참여 인원 : "+cardResult.join_mem_number);
+                                    console.log("이메일 : "+cardResult.email);
+                                    
+                                	if (sessionEmail == cardResult.email){
                                         $('#'+buttonSelector).append(
                                             '<button type="submit" class="btn btn-warning" onclick="javascript:form.action=\'postupdateform.circle\';">수정</button>'+
                                             '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
                                         );
                                     } else {
-                                        $('#'+buttonSelector).append(
-                                            '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'postjoin.circle\';">참여하기</button>'
-                                        );
+                                    	console.log("인원 : "+cardResult.mem_number+"/ 참여 인원 : "+cardResult.join_mem_number);
+                                   		$('#'+buttonSelector).append('<button type="submit" class="btn btn-primary" onclick="javascript:form.action=\'postjoin.circle\';" >참여하기</button>');  
                                     }
-                                }
+                                } 
                             });
                         }
 					},
@@ -796,7 +800,6 @@
 			}
 			//검색결과 Ajax
 			function getCircle(page, searchWord) {
-				console.log("aaa");
                 $.ajax({
                     url:'getCircle.jsp',
                     data:{
@@ -862,7 +865,7 @@
                                                         '<div class="row">'+
                                                             '<div class="col-sm-6">'+
                                                                 '<p class="text-uppercase mb-2"><strong>참여인원</strong></p>'+
-                                                                '<p class="text-muted mb-4">'+'/'+cardResult.mem_number+'명</p>'+
+                                                                '<p class="text-muted mb-4">'+cardResult.join_mem_number+'/'+cardResult.mem_number+'명</p>'+
                                                             '</div>'+
                                                             '<div class="col-sm-6">'+
                                                                 '<p class="text-uppercase mb-2"><strong>지역</strong></p>'+
@@ -897,6 +900,7 @@
                                                         '<input type="hidden" name="address" value="'+cardResult.address+'" />'+
                                                         '<input type="hidden" name="address_detail" value="'+cardResult.address_detail+'" />'+
                                                         '<input type="hidden" name="description" value="'+cardResult.description+'"/>'+
+                                                        '<input type="hidden" id="joinmemnumber" name="joinmemnumber" value="'+cardResult.join_mem_number+'"/>'+
                                                     '</form>'+
                                                     '<a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>'+
                                                 '</div>'+
@@ -904,6 +908,7 @@
                                         '</div>'+
                                     '</div>'
                                 );
+                               
                                 if (sessionEmail == 'null') {
                                     $('#'+buttonSelector).append(
                                         '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">참여하기</a>'
@@ -915,9 +920,7 @@
                                             '<button type="button" class="btn btn-danger" onclick="confirmDelete(this.form)">삭제</button>'
                                         );
                                     } else {
-                                        $('#'+buttonSelector).append(
-                                            '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'postjoin.circle\';">참여하기</button>'
-                                        );
+                                   		$('#'+buttonSelector).append('<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'postjoin.circle\';" >참여하기</button>');                             	
                                     }
                                 }
                             });
@@ -987,6 +990,7 @@
 			
 			}
 		</script>
+
 
 
 	</body>

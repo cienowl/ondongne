@@ -40,5 +40,14 @@ public class CircleJoinService {
 		
 		return isWriteSuccess;
 	}
+	
+	// 참여버튼 눌렀을 때 현재까지 참여한 인원 count
+	public int joinCountMem(int join_postid) {
+		
+		DataAccessCircleJoin circleDao = DataAccessCircleJoin.getInstance();
+		int joinCount = circleDao.joinCountMem(join_postid);
+		
+		return joinCount;
+	}
 
 }

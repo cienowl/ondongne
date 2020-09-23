@@ -51,4 +51,8 @@
 		select post_count from circle WHERE id=#{postid};
 	</select>
 	
+	<update id="updateJoinMem" parameterType="com.ondongne.dto.DataTransferCircle">
+		update circle set join_mem_number=#{join_mem_number} where id=#{id};
+	</update>
+	
 </mapper>
