@@ -160,7 +160,10 @@
                                 <div class="card-img-top zoom" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/58.jpg'); background-position: center; background-size: cover; height: 250px;"></div>
                                 <div class="card-body">
                                     <a href="#!" class="dark-grey-text"><h3>우리동네 소모임</h3></a>
-                                    <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
+                                    <p class="card-title text-muted font-small mt-3 mb-2">
+	                                    근처 가까운 곳에서 만들어진 동네 모임부터, 내가 원한 주제의 모임까지!
+										나와 같은 관심사를 가진 사람들과 함께 다양한 모임 동호회 활동을 하면서 천천히 스며들 듯 친해질 수 있어요. 다양한 지역과 관심사의 동호회를 찾아 여가시간을 의미 있게 보내세요!
+									</p>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +172,10 @@
                                 <div class="card-img-top zoom" style="background-image: url('img/index/fleemarket.png'); background-position: center; background-size: cover; height: 250px;"></div>
                                 <div class="card-body">
                                     <a href="#!" class="dark-grey-text"><h3>우리동네 장터</h3></a>
-                                    <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
+                                    <p class="card-title text-muted font-small mt-3 mb-2">
+                                    	동네 주민들과 가깝고 따뜻한 거래를 원하신다면 지금 시작해보세요!
+										나에게 필요 없어진 물건을 팔고 싶을 때, 갖고 싶은 제품을 저렴한 가격에 사고 싶을 때 '온동네'를 통해 가까운 곳에서 물건을 사고 팔수 있어요. 우리 동네 장터를 지금 바로 둘러보세요!
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +184,10 @@
                                 <div class="card-img-top zoom" style="background-image: url('img/index/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg'); background-position: center; background-size: cover; height: 250px;"></div>
                                 <div class="card-body">
                                     <a href="#!" class="dark-grey-text"><h3>우리동네 명소</h3></a>
-                                    <p class="card-title text-muted font-small mt-3 mb-2">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
+                                    <p class="card-title text-muted font-small mt-3 mb-2">
+                                    	주위 맛집부터 명소까지 한번에! 내 주변의 맛집과 명소 위치를 지도로 확인하고 스크랩해서 볼 수 있어요. 
+                                    	우리 동네는 물론, 가고싶었던 곳의 맛집과 명소까지 찾아볼 수 있어요. 지금 바로 온동네에서 우리 동네 맛집과 명소를 둘러보세요! 
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -818,7 +818,7 @@
                                 //게시물 카드 plot
                                 $('#cardContents').append(
                                     '<div class="col-md-6 col-lg-3">'+
-                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#circleList'+(index+pageOffset)+'">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#circleList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+')">'+
                                             '<div class="card-img-top zoom circleCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
                                                 '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
