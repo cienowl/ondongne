@@ -11,10 +11,16 @@ public class HotplaceBean {
 	private String address_detail;
 	private String region;
 	private String description;
-	private String tags;
 	private String postdate;
 	private String lastupdate;
+	private String post_count;
 	
+	public String getPost_count() {
+		return post_count;
+	}
+	public void setPost_count(String post_count) {
+		this.post_count = post_count;
+	}
 	public String getAdmin_id() {
 		return admin_id;
 	}
@@ -68,12 +74,6 @@ public class HotplaceBean {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public String getTags() {
-		return tags;
-	}
-	public void setTags(String tags) {
-		this.tags = tags;
 	}
 	public String getPostdate() {
 		return postdate;

@@ -58,12 +58,6 @@ public class UsersFrontController extends HttpServlet
 					e.printStackTrace();
 				}		
 			}
-
-//			TODO: 회원정보 수정
-			else if (command.equals("/update.users")) {
-
-			}
-
 			else if (command.equals("/signin.users")) {
 //				TODO: RSA 암호화 필요
 //				로그인

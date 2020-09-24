@@ -666,6 +666,7 @@
         </script>
         
         <script>
+            //전화번호 숫자만
             $("input:text[numbersOnly]").on("keyup", function() {
                 $(this).val($(this).val().replace(/[^0-9]/g,""));
             });
@@ -692,25 +693,6 @@
 
                     });
                 });
-
-                // //회원정보 수정시 가입된 닉네임이 있는지 확인
-                // $("#inputNickname").blur(function(){
-                //     var nickname = $("#inputNickname").val();
-
-                //     $.ajax({
-                //         url:'checkDupNickname.jsp',
-                //         data:{"inputNickname":nickname},
-                //         type:"GET",
-                //         success:function(request){
-                //             $("#nicknameHelp").empty();
-                //             $("#nicknameHelp").append(request);
-                //         },
-                //         error:function(request,status,error){
-                //             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                //         }
-
-                //     });
-                // });
             });
         </script>
 

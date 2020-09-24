@@ -73,7 +73,13 @@ public class DataAccessHotplace {
 		sqlFactory = getConnection();
 		SqlSession sqlSession = sqlFactory.openSession();
 		
-		int updateCount = sqlSession.update("updateHotplace", hotplaceBean);
+		int updateCount;
+		if (hotplaceBean.getPictures() == null) {
+			updateCount = sqlSession.update("updateHotplaceExPic", hotplaceBean);
+		} else {
+			updateCount = sqlSession.update("updateHotplace", hotplaceBean);
+		}
+		
 		sqlSession.commit();
 		sqlSession.close();
 		

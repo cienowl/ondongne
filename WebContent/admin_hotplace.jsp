@@ -134,16 +134,23 @@
                             <form action="hotplace/write.admin"  method="POST" enctype="multipart/form-data">
                                 <div class="modal-body">
                                     <div class="form-row">
-                                        <div class="form-group col-md-8">
+                                        <div class="form-group col-md-6">
                                             <label for="placeName">장소 이름</label>
-                                            <input type="text" class="form-control" id="placeName" placeholder="장소 이름을 입력하세요." name="title"/>
+                                            <input type="text" class="form-control" id="placeName" placeholder="장소 이름을 입력하세요." name="title" required/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="pictures">사진</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile" onchange="imgChecker(this);" accept=".jpg, .png, .jpeg" required/>
+                                                <label class="custom-file-label" for="pictures">사진 선택</label>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-6">
                                             <label for="placeRegion">지역구</label>
-                                            <select id="placeRegion" class="form-control" name="region">
+                                            <select id="placeRegion" class="form-control" name="region" required>
                                                 <option selected disabled value="">선택</option>
                                                 <option>강남구</option>
                                                 <option>강동구</option>
@@ -177,7 +184,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="sample4_postcode">우편번호</label>
-                                            <input type="text" class="form-control" id="sample4_postcode" placeholder="우편번호" name="zipcode" readonly/>
+                                            <input type="text" class="form-control" id="sample4_postcode" placeholder="우편번호" name="zipcode" readonly required/>
                                         </div>
                                         <div class="form-group col-md-6" style="padding-top: 32px">
                                             <label for="findAddress"></label>
@@ -188,26 +195,15 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="sample4_roadAddress">도로명주소</label>
-                                            <input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" name="address" readonly/>
+                                            <input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" name="address" readonly required/>
                                         </div>
                                         <span id="guide" style="color: #999; display: none"></span>
                                         <div class="form-group col-md-6">
                                             <label for="sample4_detailAddress">상세주소</label>
-                                            <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" name="address_detail"/>
+                                            <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" name="address_detail" required/>
                                         </div>
                                         <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="display: none;"/>
                                         <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="display: none;"/>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <!-- <div class="form-group col-md-8"> -->
-                                        <div class="example-wrapper form-group col-md-12">
-                                            <div class="tags well">
-                                                <label for="tagg">태그<small>(최대5개)</small></label><br/>
-                                                <div data-tags-input-name="taggone" id="tag" name="tags">preexisting-tag, another-tag</div>
-                                                <!-- <p class="help-block">Press Enter, Comma or Spacebar to create a new tag, Backspace or Delete to remove the last one.</p> -->
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -217,8 +213,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-info">게시물미리보기</button>
-                                    <button type="submit" class="btn btn-primary">등록</button>
+                                    <button type="submit" class="btn btn-primary" onclick="return validation();">등록</button>
                                     <button type="button" class="btn btn-danger">취소</button>
                                 </div>
                             </form>
@@ -248,9 +243,16 @@
                                 <form class="" method="POST" enctype="multipart/form-data" name="hotplaceUpdateForm<%=i%>">
                                     <input type="hidden" class="form-control" id="hotplacePostId" name="postid" value="<%= hotplaceList.get(i).getId() %>"/>
                                     <div class="form-row">
-                                        <div class="form-group col-md-8">
+                                        <div class="form-group col-md-6">
                                             <label for="placeName">장소 이름</label>
                                             <input type="text" class="form-control" id="placeName" placeholder="장소 이름을 입력하세요." name="title" value="<%= hotplaceList.get(i).getTitle() %>"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="updatePictures">사진</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="updatePictures" name="pictures" aria-describedby="inputFile" onchange="imgChecker(this);" accept=".jpg, .png, .jpeg"/>
+                                                <label class="custom-file-label" for="pictures">사진 선택</label>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -290,39 +292,28 @@
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="sample4_postcode">우편번호</label>
-                                            <input type="text" class="form-control" id="sample4_postcode" placeholder="우편번호" name="zipcode" value="<%= hotplaceList.get(i).getZipcode() %>" readonly/>
+                                            <label for="sample3_postcode">우편번호</label>
+                                            <input type="text" class="form-control" id="sample3_postcode" placeholder="우편번호" name="zipcode" value="<%= hotplaceList.get(i).getZipcode() %>" readonly required/>
                                         </div>
                                         <div class="form-group col-md-6" style="padding-top: 32px">
                                             <label for="findAddress"></label>
-                                            <input type="button" class="btn btn-primary" id="findAddress" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"/>
+                                            <input type="button" class="btn btn-primary" id="findAddress" onclick="sample3_execDaumPostcode()" value="우편번호 찾기"/>
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="sample4_roadAddress">도로명주소</label>
-                                            <input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" name="address" value="<%= hotplaceList.get(i).getAddress() %>" readonly/>
+                                            <label for="sample3_roadAddress">도로명주소</label>
+                                            <input type="text" class="form-control" id="sample3_roadAddress" placeholder="도로명주소" name="address" value="<%= hotplaceList.get(i).getAddress() %>" readonly/>
                                         </div>
                                         <span id="guide" style="color: #999; display: none"></span>
                                         <div class="form-group col-md-6">
-                                            <label for="sample4_detailAddress">상세주소</label>
-                                            <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" name="address_detail" value="<%= hotplaceList.get(i).getAddress_detail() %>"/>
+                                            <label for="sample3_detailAddress">상세주소</label>
+                                            <input type="text" class="form-control" id="sample3_detailAddress" placeholder="상세주소" name="address_detail" value="<%= hotplaceList.get(i).getAddress_detail() %>"/>
                                         </div>
-                                        <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="display: none;"/>
-                                        <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="display: none;"/>
+                                        <input type="text" id="sample3_jibunAddress" placeholder="지번주소" style="display: none;"/>
+                                        <input type="text" id="sample3_extraAddress" placeholder="참고항목" style="display: none;"/>
                                     </div>
-
-                                    <%-- <div class="form-row">
-                                        <!-- <div class="form-group col-md-8"> -->
-                                        <div class="example-wrapper form-group col-md-12">
-                                            <div class="tags well">
-                                                <label for="tagg">태그<small>(최대5개)</small></label><br/>
-                                                <div data-tags-input-name="taggone" id="tag" name="tags">preexisting-tag, another-tag</div>
-                                                <!-- <p class="help-block">Press Enter, Comma or Spacebar to create a new tag, Backspace or Delete to remove the last one.</p> -->
-                                            </div>
-                                        </div>
-                                    </div> --%>
 
                                     <div class="form-group">
                                         <label for="placeDescription">장소 관련 설명</label>
@@ -381,6 +372,72 @@
             // Animations initialization
             new WOW().init();
         </script>
+        
+        <script>
+             //파일 사이즈 5Mb 제한
+            function imgChecker(inputFile) {
+                //용량 체크
+                var maxSize = 5 * 1024 * 1024;
+                if (inputFile.files && inputFile.files[0].size > maxSize) {
+                    alert("첨부할 이미지 파일은 5MB 이하여야 합니다.");
+                    inputFile.value = null;
+                }
+                //이미지 파일 체크 jpg, png, jpeg만 받음
+                var fileExtension = /(.*?)\.(jpg|png|jpeg)$/;
+                if (!inputFile.value.match(fileExtension)) {
+                    alert("JPG, PNG, JPEG 파일만 업로드 가능");
+                    inputFile.value = null;
+                }
+            }
+            
+            //유효성 검사
+            function validation() {
+                var placeName = document.getElementById("placeName");
+                var pictures = document.getElementById("pictures");
+                var placeRegion = document.getElementById("placeRegion");
+				var sample4_postcode = document.getElementById("sample4_postcode");
+				var sample4_roadAddress = document.getElementById("sample4_roadAddress");
+				var sample4_detailAddress = document.getElementById("sample4_detailAddress");
+                var placeDescription = document.getElementById("description");
+
+                if (placeName.value == '') {
+                    alert('핫플레이스 제목을 입력해주세요.');
+                    inputTitle.focus();
+                    return false;
+                }
+                if (pictures.value == '') {
+                    alert('사진을 등록해주세요.');
+                    pictures.focus();
+                    return false;
+                }
+                if (placeRegion.value == '') {
+                    alert('지역구를 선택해주세요.');
+                    sellPrice.focus();
+                    return false;
+                }
+				if(sample4_postcode.value==""){
+					alert("주소를 확인해주세요.");
+					sample4_postcode.focus();
+					return false;
+				}
+				if(sample4_roadAddress.value==""){
+					alert("주소를 확인해주세요.");
+					sample4_roadAddress.focus();
+					return false;
+				}
+				if(sample4_detailAddress.value==""){
+					alert("주소를 확인해주세요.");
+					sample4_detailAddress.focus();
+					return false;
+				}
+                // if (placeDescription.value == '') {
+                //     alert('장소 설명을 작성해주세요.');
+                //     description.focus();
+                //     return false;
+                // }
+            }        
+        </script>
+        
 
         <!-- kakao 우편번호 서비스 http://postcode.map.daum.net/guide -->
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -420,6 +477,66 @@
                             document.getElementById("sample4_extraAddress").value = extraRoadAddr;
                         } else {
                             document.getElementById("sample4_extraAddress").value = '';
+                        }
+
+                        var guideTextBox = document.getElementById("guide");
+                        // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                        if(data.autoRoadAddress) {
+                            var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                            guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                            guideTextBox.style.display = 'block';
+
+                        } else if(data.autoJibunAddress) {
+                            var expJibunAddr = data.autoJibunAddress;
+                            guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                            guideTextBox.style.display = 'block';
+                        } else {
+                            guideTextBox.innerHTML = '';
+                            guideTextBox.style.display = 'none';
+                        }
+                    }
+                }).open();
+            }
+        </script>
+
+        <!-- kakao 우편번호 서비스 http://postcode.map.daum.net/guide -->
+        <script>
+            // 수정용 우편번호 서비스 id가 같은것들이 있어서 따로 구분
+            //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+            function sample3_execDaumPostcode() {
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                        // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                        var roadAddr = data.roadAddress; // 도로명 주소 변수
+                        var extraRoadAddr = ''; // 참고 항목 변수
+
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                            extraRoadAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if(data.buildingName !== '' && data.apartment === 'Y'){
+                            extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if(extraRoadAddr !== ''){
+                            extraRoadAddr = ' (' + extraRoadAddr + ')';
+                        }
+
+                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                        document.getElementById('sample3_postcode').value = data.zonecode;
+                        document.getElementById("sample3_roadAddress").value = roadAddr;
+                        document.getElementById("sample3_jibunAddress").value = data.jibunAddress;
+
+                        // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                        if(roadAddr !== ''){
+                            document.getElementById("sample3_extraAddress").value = extraRoadAddr;
+                        } else {
+                            document.getElementById("sample3_extraAddress").value = '';
                         }
 
                         var guideTextBox = document.getElementById("guide");

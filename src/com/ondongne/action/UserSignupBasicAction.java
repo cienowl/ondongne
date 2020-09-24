@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.DataTransferUsers;
@@ -14,9 +15,12 @@ public class UserSignupBasicAction extends HttpServlet implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpSession session = request.getSession();
 
 		DataTransferUsers dtoUser = new DataTransferUsers();
-		dtoUser.setEmail((String) request.getParameter("signupEmail"));
+		String email = (String) request.getParameter("signupEmail");
+		dtoUser.setEmail(email);
 		dtoUser.setPassword(request.getParameter("signupPassword1"));
 		dtoUser.setName(request.getParameter("signupName"));
 		dtoUser.setPhone(request.getParameter("signupPhone"));
@@ -34,9 +38,11 @@ public class UserSignupBasicAction extends HttpServlet implements Action {
 			out.println("history.back();");
 			out.println("</script>");
 		} else {
+			session.setAttribute("email", email);
+			
 			forward = new ActionForward();	//ActionForward() 객체 생성
 			forward.setRedirect(true);		//setRedirect 값을 true로 지정
-			forward.setPath("index.ondongne");	//글쓰기 성공시 boardList.bo로 이동
+			forward.setPath("signupsub.users");
 		}
 
 		return forward;

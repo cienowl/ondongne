@@ -49,6 +49,7 @@ public class UserSignupSubAction implements Action {
 		UsersService userService = new UsersService();
 		boolean isUpdateSuccess = userService.signupSub(dtoUser);
 		
+		
 		ActionForward forward = null;
 		
 		if (!isUpdateSuccess) {
@@ -59,6 +60,9 @@ public class UserSignupSubAction implements Action {
 			out.println("history.back();");
 			out.println("</script>");
 		} else {
+			session.setAttribute("region1", region1);
+			session.setAttribute("region2", region2);
+			session.setAttribute("region3", region3);
 			forward = new ActionForward();	//ActionForward() 객체 생성
 			forward.setRedirect(true);		//setRedirect 값을 true로 지정
 			forward.setPath("mypage.ondongne");	//글쓰기 성공시 boardList.bo로 이동

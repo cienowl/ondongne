@@ -6,10 +6,10 @@ import com.ondongne.dto.DataTransferUsers;
 public class UsersService {
 	
 //	로그인 확인
-	public boolean checkUser(DataTransferUsers userBean) throws Exception{
+	public DataTransferUsers checkUser(DataTransferUsers userBean) throws Exception{
 		
 //		userBean : 로그인창에서 입력받은 값
-		boolean userSuccess = false;	//입력받은값과 DB에 저장된값 체크하기 위한 변수
+//		boolean userSuccess = false;	//입력받은값과 DB에 저장된값 체크하기 위한 변수
 		String dbEmail = null;
 		String dbPassword = null;
 		
@@ -22,14 +22,14 @@ public class UsersService {
 		
 //		정보가 DB와 일치할때
 		if(userBean.getEmail().equals(dbEmail)&&userBean.getPassword().equals(dbPassword)) {
-			userSuccess = true;
+			return dto;
 		}
 //		DB정보와 일치하지 않을때
 		else {
-			userSuccess = false;
+			return null;
 		}
 		
-		return userSuccess;
+//		return userSuccess;
 	}
 	
 	public boolean signupBasic(DataTransferUsers dtoUser) {

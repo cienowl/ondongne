@@ -4,12 +4,12 @@
 
 <mapper namespace="hotplace">
 
-	<insert id="insertHotplace" parameterType="com.ondongne.dto.HotplaceBean" timeout="5">
-		insert into hotplace(admin_id, id, title, pictures, zipcode, address, address_detail, region, description, tags, postdate)
-		values(#{admin_id}, default, #{title},	#{pictures}, #{zipcode}, #{address}, #{address_detail},	#{region}, #{description}, #{tags}, now())
+	<insert id="insertHotplace" parameterType="com.ondongne.dto.HotplaceBean">
+		insert into hotplace(admin_id, id, title, pictures, zipcode, address, address_detail, region, description, postdate, lastupdate)
+		values(#{admin_id}, default, #{title},	#{pictures}, #{zipcode}, #{address}, #{address_detail},	#{region}, #{description}, now(), now())
 	</insert>
 
-	<update id="updateHotplace" parameterType="com.ondongne.dto.HotplaceBean" timeout="5">
+	<update id="updateHotplace" parameterType="com.ondongne.dto.HotplaceBean">
 		update hotplace set
 			admin_id=#{admin_id},
 			title=#{title},
@@ -19,11 +19,29 @@
 			address=#{address},
 			address_detail=#{address_detail},
 			description=#{description},
-			tags=#{tags},
 			lastupdate=now()
 		where id=#{id}
 	</update>
 	
+	<update id="updateHotplaceExPic" parameterType="com.ondongne.dto.HotplaceBean">
+		update hotplace set
+			admin_id=#{admin_id},
+			title=#{title},
+			region=#{region},
+			zipcode=#{zipcode},
+			address=#{address},
+			address_detail=#{address_detail},
+			description=#{description},
+			lastupdate=now()
+		where id=#{id}
+	</update>
+	
+	<select id="searchHotplaceListPaging" resultType="com.ondongne.dto.HotplaceBean" parameterType="com.ondongne.dto.SearchHotplaceBean">
+		select * from hotplace WHERE region=#{region} order by postdate desc limit 12 offset #{page}
+	</select>
+
+
+
 	<delete id="deleteHotplace" parameterType="String">
 		delete from hotplace where id=#{id};
 	</delete>
@@ -48,11 +66,7 @@
 	
 	<delete id="cancelScrapPlace" parameterType="com.ondongne.dto.ScrapPlaceBean">
 		delete from helper_hotplace where scrap_id=#{scrap_id} AND scrap_email=#{scrap_email};
-	</delete>
-	
-	
-	
-	
+	</delete>	
 
 	<select id="selectContent" resultType="com.ondongne.dto.HotplaceBean">
 		select * from hotplace where id = #{id};

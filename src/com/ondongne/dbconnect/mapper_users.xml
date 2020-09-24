@@ -13,8 +13,8 @@
 		select email from users where email=#{email}
 	</select>
 
-	<select id="checkSignin" resultType="com.ondongne.dto.DataTransferUsers" >
-		select email, password from users where email=#{email}
+	<select id="checkSignin" resultType="com.ondongne.dto.DataTransferUsers" parameterType="String">
+		select * from users where email=#{email}
 	</select>
 
 	<update id="userUpdate" parameterType="com.ondongne.dto.DataTransferUsers">

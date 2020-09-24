@@ -29,6 +29,9 @@ public class UserSignoutAction implements Action {
 			out.println("</script>");			
 		} else {			
 			session.removeAttribute("email");
+			session.removeAttribute("region1");
+			session.removeAttribute("region2");
+			session.removeAttribute("region3");
 			session.invalidate();
 
 			forward = new ActionForward();

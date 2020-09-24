@@ -33,13 +33,13 @@ public class UserSigninAction extends HttpServlet implements Action{
 //		System.out.println(storeEmail);
 		
 //		service 패키지
-		UsersService userCheck = new UsersService();
-		boolean userSuccess = userCheck.checkUser(userBean);
+		UsersService userService = new UsersService();
+		userBean = userService.checkUser(userBean);
 //		System.out.println("login "+userSuccess);
 		
 //		로그인 실패시
 //		TODO: 이슈)로그인실패시 index페이지로 넘어가고 입력했던 email 뜸 
-		if(!userSuccess) {
+		if(userBean == null) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -58,7 +58,12 @@ public class UserSigninAction extends HttpServlet implements Action{
 				cookie = new Cookie("cookieEmail",null);
 				response.addCookie(cookie);
 			}
+			
 			session.setAttribute("email", userBean.getEmail());
+			session.setAttribute("region1", userBean.getRegion1());
+			session.setAttribute("region2", userBean.getRegion2());
+			session.setAttribute("region3", userBean.getRegion3());
+			
 			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath("mypage.ondongne");

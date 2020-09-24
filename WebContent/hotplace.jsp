@@ -6,7 +6,10 @@
 
 <%
 	List<HotplaceBean> hotplaceList = (List<HotplaceBean>) request.getAttribute("hotplaceList");
-	String sessionEmail = (String) session.getAttribute("email");
+	String userEmail = (String) session.getAttribute("email");
+	String userRegion1 = (String) session.getAttribute("region1");
+	String userRegion2 = (String) session.getAttribute("region2");
+	String userRegion3 = (String) session.getAttribute("region3");
     String dataTarget = null;
 %>
 
@@ -151,8 +154,8 @@
             .map_wrap, .map_wrap * {
                 margin: 0;
                 padding: 0;
-                font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
-                font-size: 12px;
+                /* font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+                font-size: 12px; */
             }
             .map_wrap a, .map_wrap a:hover, .map_wrap a:active {
                 color: #000;
@@ -160,8 +163,8 @@
             }
             .map_wrap {
                 position: relative;
-                width: 85%;
-                height: 600px;
+                width: 100%;
+                height: 500px;
             }
             #menu_wrap {
                 position: absolute;
@@ -177,9 +180,9 @@
                 font-size: 12px;
                 border-radius: 10px;
             }
-            .bg_white {
+            /* .bg_white {
                 background: #fff;
-            }
+            } */
             #menu_wrap hr {
                 display: block;
                 height: 1px;
@@ -187,7 +190,7 @@
                 border-top: 2px solid #5F5F5F;
                 margin: 3px 0;
             }
-            #menu_wrap .option {
+            /* #menu_wrap .option {
                 text-align: center;
             }
             #menu_wrap .option p {
@@ -195,7 +198,7 @@
             }
             #menu_wrap .option button {
                 margin-left: 5px;
-            }
+            } */
             #placesList li {
                 list-style: none;
             }
@@ -298,15 +301,12 @@
                 cursor: default;
                 color: #777;
             }
-            /* .row {
-                margin-top: 30px;
-            } */
         </style>
     </head>
 
     <body>
         <header>
-            <% if (sessionEmail != null) {%>
+            <% if (userEmail != null) {%>
                 <jsp:include page="navbar_signon.jsp"/>
             <%} else {%>
                 <jsp:include page="navbar_signin.jsp"/>
@@ -315,36 +315,21 @@
 
         <main>
             <div class="container-fluid mt-5 pt-5">
-                <%-- <div class="map_wrap"> --%>
-                    <!--  <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>-->
-                    <%-- <div id="map" style="width: 100%; height: 100%; position: relative;"></div>
-                    <div id="menu_wrap" class="bg_white">
-                        <div class="option">
-                            <div>
-                                <form onsubmit="searchPlaces();" action="searchPlaceForm.hotplace" method="post">
-                                    키워드 : <input type="text" value="강남 맛집" id="keyword" size="15" name="searchRegion">
-                                    <button type="submit">검색하기</button>
-                                </form>
-                            </div>
-                        </div>
-                        <hr>
-                        <ul id="placesList"></ul>
-                        <div id="pagination"></div>
-                    </div>
-                </div> --%>
-
                 <div class="map_wrap mx-auto">
                     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
-                    <div id="menu_wrap" class="bg_white">
-                        <div class="option">
-                            <div>
-                                <form onsubmit="searchPlaces(); return false;">
-                                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15" name="keyword">
-                                    <button type="submit">검색하기</button>
-                                </form>
+                    <div id="menu_wrap">
+                        <form class="md-form input-group" onsubmit="searchPlaces(); return false;">
+                            <% if (userEmail != null) { %>
+                            <input type="text" class="form-control" id="searchBox" name="keyword" value="<%= userRegion1 %>" size="12" placeholder="검색어 입력" aria-label="검색어 입력창" aria-describedby="searchBtn">
+                            <% } else { %>
+                            <input type="text" class="form-control" id="searchBox" name="keyword" value="강남구" size="12" placeholder="검색어 입력" aria-label="검색어 입력창" aria-describedby="searchBtn">
+                            <% } %>
+                            <div class="input-group-append">
+                                <button class="btn btn-sm btn-outline-primary m-0" type="submit" id="searchBtn">
+                                    <h6 class="font-weight-bold">검색</h6>
+                                </button>
                             </div>
-                        </div>
+                        </form>
                         <hr>
                         <ul id="placesList"></ul>
                         <div id="pagination"></div>
@@ -353,160 +338,27 @@
             </div>
 
             <div class="container">
-                <!-- Section -->
+                <h2 class="font-weight-bold dark-grey-text mb-3 mt-5" id="cardSectionTitle"></h2>
+                <hr class=""/>
                 <section>
-                    <style>
-                        .md-pills .nav-link.active {
-                            color: #fff;
-                            background-color: #616161;
-                        }
-                        #list.close {
-                            position: absolute;
-                            right: 0;
-                            z-index: 2;
-                            padding-right: 1rem;
-                            padding-top: .6rem;
-                        }
-                    </style>
 
-                    <%
-                        String pictureCarouselId = null;
-                        for (int i = 0; i < hotplaceList.size(); i++) {
-                            dataTarget = "hotplaceList" + Integer.toString(i);
-                            pictureCarouselId = "carousel-list-"+Integer.toString(i);
-                    %>
-                    <!-- Modal: 핫플레이스 상세정보 -->
-                    <div class="modal fade" id="<%= dataTarget %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
-                            <div class="modal-content">
-
-                                <div class="modal-header p-0">
-                                    <div class="row">
-                                        <div id="<%= pictureCarouselId %>" class="carousel slide carousel-fade" data-ride="carousel">
-
-                                            <!--Indicators-->
-                                            <ol class="carousel-indicators">
-                                                <li data-target="#<%= pictureCarouselId %>" data-slide-to="0" class="active"></li>
-                                                <li data-target="#<%= pictureCarouselId %>" data-slide-to="1"></li>
-                                                <li data-target="#<%= pictureCarouselId %>" data-slide-to="2"></li>
-                                            </ol>
-                                            <!--/.Indicators-->
-
-                                            <!--Slides-->
-                                            <div class="carousel-inner" role="listbox">
-                                                <!--First slide-->
-                                                <div class="carousel-item active">
-                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide">
-                                                </div>
-                                                <!--/First slide-->
-                                                <!--Second slide-->
-                                                <div class="carousel-item">
-                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
-                                                </div>
-                                                <!--/Second slide-->
-                                                <!--Third slide-->
-                                                <div class="carousel-item">
-                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
-                                                </div>
-                                                <!--/Third slide-->
-
-                                            </div>
-                                            <!--/.Slides-->
-
-                                            <!--Controls-->
-                                            <a class="carousel-control-prev" href="#<%= pictureCarouselId %>" role="button" data-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#<%= pictureCarouselId %>" role="button" data-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                            <!--/.Controls-->
-
-                                        </div>
-                                        <!--/.Carousel Wrapper-->
-                                    </div>
-                                    <!-- Grid column -->
-                                </div>
-
-                                <div class="modal-body">
-                                    <div class="col align-self-center">
-                                        <small class="text-info">#<%= hotplaceList.get(i).getId() %></small>
-                                        <h5 class="font-weight-normal"><%= hotplaceList.get(i).getTitle() %></h5>
-                                        <div class="row">
-                                            <div class="col-sm-8">
-                                                <p class="text-muted mb-4"><%= hotplaceList.get(i).getAdmin_id() %></p>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <p class="text-muted mb-4"><%= hotplaceList.get(i).getRegion() %></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <p class="text-uppercase mb-2"><strong>주소</strong></p>
-                                                <p class="text-muted mb-4"><%= hotplaceList.get(i).getAddress() %></p>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <p class="text-uppercase mb-2"><strong>상세주소</strong></p>
-                                                <p class="text-muted mb-4"><%= hotplaceList.get(i).getAddress_detail() %></p>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <p class="text-uppercase mb-2"><strong>우편번호</strong></p>
-                                                <p class="text-muted mb-4"><%= hotplaceList.get(i).getZipcode() %></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <p class="text-uppercase mb-2"><strong>설명</strong></p>
-                                                <p class="text-muted"><%= hotplaceList.get(i).getDescription() %></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <form method="POST" name="form">
-                                        <input type="hidden" name="postid" value="<%= hotplaceList.get(i).getId() %>"/>
-                                        <% if (sessionEmail != null) { %>
-                                            <button type="submit" class="btn btn-unique" onclick="javascript:form.action='scrap.hotplace';">스크랩</button>
-                                        <% } %>
-                                    </form>
-                                    <a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END: 핫플레이스 상세정보 -->
-                    <% } %>
-
-                    <!-- Card: 핫플레이스 카드 -->
+                    <!-- Hotplace 카드 -->
                     <div class="tab-content my-5">
                         <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
-                            <div class="row">
-                            <% for (int i = 0; i < hotplaceList.size(); i++) { %>
-                                <% dataTarget = "hotplaceList" + Integer.toString(i); %>
-                                <div class="col-md-6 col-lg-3">
-                                    <a class="card hoverable mb-4" data-toggle="modal" data-target="#<%= dataTarget %>">
-                                        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="mb-3" id="cardTitle"><%= hotplaceList.get(i).getTitle() %></h5>
-                                            <p class="font-small grey-text mb-2" id="cardEmail"><%= hotplaceList.get(i).getAdmin_id() %></p>
-                                            <p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;"><%= hotplaceList.get(i).getDescription() %></p>
-                                            <p class="font-small font-weight-bold dark-grey-text mb-0"><i class="far fa-heart"></i><%= hotplaceList.get(i).getRegion() %></p>
-                                        </div>
-                                    </a>
-                                </div>
-                            <% } %>
+                            <div class="row" id="cardContents">
+                                <!-- 페이지 카드 들어가는 곳 -->
                             </div>
-
                         </div>
                     </div>
-                    <!-- End: 핫플레이스 카드 -->
+                    <!-- /Hotplace 카드 -->
+
+                    <!-- Modal: Hotplace 상세 내용 목록 -->
+                    <div id="modalContents">
+                        <!-- 모달 내용 들어가는 곳 -->
+                    </div>
+                    <!-- /Modal: Hotplace 상세 내용 목록 -->
+
                 </section>
-                <!-- Section -->
             </div>
         </main>
         <!--Main layout-->
@@ -530,9 +382,160 @@
         <script type="text/javascript" src="js/mdb.min.js"></script>
 
         <script>
-            //TODO: 로그인 되어있으면 가입자의 지역구 저장
-            var gu = null;
+        	var sessionEmail = '<%= userEmail %>';
+            //로그인시 세션 지역구 저장
+            var sessionRegion1 = '<%= userRegion1 %>';
+            var sessionRegion2 = '<%= userRegion2 %>';
+            var sessionRegion3 = '<%= userRegion3 %>';
 
+            $(document).ready(function() {
+			    var page = 0;   //페이지 로딩 후 페이지 0
+                var gu = '강남구';
+                // var gu = $('searchBox').val;
+                //로딩 후 자역구 기준으로 가져오기
+                if (sessionRegion1 == 'null'){
+                    getHotplace(page, gu);
+                } else {
+                    getHotplace(page, sessionRegion1);
+                }
+
+                //검색시 사용
+                $("#searchBtn").on('click', function(){
+                    var searchWord = $('#searchBox').val();
+                    if (searchWord != "") {
+                        $('#cardContents').empty();
+                        $('#modalContents').empty();
+                        page = 0;
+                        getHotplace(page, searchWord);
+                    }
+                });
+
+                //스크롤 맨 아래 까지 가면 실행
+                // $(window).scroll(function() {
+                //     if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+                //         page++;
+                //         var searchWord = $('#searchBox').val();
+                //         if (searchWord != "") {
+                //             getHotplace(page, searchWord);	//스크롤시 검색박스에 값이 있으면, 검색어 같이 보냄
+                //         } else {
+                //             // getSellAll(page);	//스크롤시 검색박스에 값이 없으면, 전체 읽기 실행
+                //         }
+                //     }
+                // });
+
+            })
+
+            // DB내용 가져오는 Ajax
+            function getHotplace(page, region) {
+                $.ajax({
+                    url:'getHotplace.jsp',
+                    data:{
+                        'region':region,
+                        'page':page
+                    },
+                    type:'GET',
+                    dataType:'JSON',
+                    success:function(request) {
+
+                        // 제목 세팅                        
+                        $('#cardSectionTitle').text(region + '의 핫플레이스');
+
+                        if (request != "") {
+                            $.each(request, function(index, requestEach) {
+                                var cardResult = JSON.parse(JSON.stringify(requestEach));
+                                var pageOffset = page * 12;     //페이지당 12개씩
+                                var buttonSelector = 'checkSessionEmail'+(index+pageOffset);
+
+                                //게시물 카드 plot
+                                $('#cardContents').append(
+                                    '<div class="col-md-6 col-lg-3">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#hotplaceList'+(index+pageOffset)+'">'+
+                                            '<div class="card-img-top zoom hotplaceCardBg'+(index+pageOffset)+'"></div>'+
+                                            '<div class="card-body">'+
+                                                '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
+                                                '<p class="font-small grey-text mb-2 cardEmail">'+cardResult.admin_id+'</p>'+
+                                                '<p class="card-text mb-3" style="overflow: hidden; text-overflow: ellipsis; height: 40px; white-space: nowrap; word-break: break-all;">'+cardResult.description+'</p>'+
+                                                '<p class="font-small font-weight-bold dark-grey-text mb-0">'+cardResult.region+'</p>'+
+                                            '</div>'+
+                                        '</a>'+
+                                    '</div>'
+                                );
+                                $('.hotplaceCardBg'+(index+pageOffset)).css('background-image','url("img/hotplace/'+cardResult.pictures+'")');
+                                $('.hotplaceCardBg'+(index+pageOffset)).css('background-position','center');
+                                $('.hotplaceCardBg'+(index+pageOffset)).css('background-size','cover');
+                                $('.hotplaceCardBg'+(index+pageOffset)).css('height','170px');
+
+                                //게시물 Modal plot
+                                $('#modalContents').append(
+                                    '<div class="modal fade" id="hotplaceList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
+                                        '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
+                                            '<div class="modal-content">'+
+                                                '<div class="modal-header p-0">'+
+                                                    '<div class="row" style="height: 500px;">'+
+                                                        '<img class="d-block w-100 h-100" src="img/hotplace/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="modal-body">'+
+                                                    '<div class="col align-self-center">'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-10">'+
+                                                                '<small class="text-info">#'+cardResult.id+'</small>'+
+                                                                '<h5 class="font-weight-normal">'+cardResult.title+'</h5>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-2">'+
+                                                                '<small class="text-info float-right">'+cardResult.post_count+'</small>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-8">'+
+                                                                '<p class="text-muted mb-4">'+cardResult.region+'</p>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-4">'+
+                                                                '<p class="text-muted mb-4 float-right">최종수정: '+cardResult.lastupdate.split(" ")[0]+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-12">'+
+                                                                '<p class="text-uppercase mb-2"><strong>주소</strong></p>'+
+                                                                '<p class="text-muted mb-4">'+cardResult.address+' '+cardResult.address_detail+' '+cardResult.zipcode+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col">'+
+                                                                '<p class="text-uppercase mb-2"><strong>설명</strong></p>'+
+                                                                '<p class="text-muted">'+cardResult.description+'</p>'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="modal-footer">'+
+                                                    '<form method="POST" name="form" id="'+buttonSelector+'">'+
+                                                        '<input type="hidden" name="postid" value="'+cardResult.id+'"/>'+
+                                                    '</form>'+
+                                                    '<a type="button" class="btn btn-info waves-effect" data-dismiss="modal">닫기</a>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'
+                                );
+
+                                if (sessionEmail == 'null') {
+                                    $('#'+buttonSelector).append(
+                                        '<a type="button" class="btn btn-unique" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">스크랩</a>'
+                                    );
+                                } else {
+                                    $('#'+buttonSelector).append(
+                                        '<button type="submit" class="btn btn-unique" onclick="javascript:form.action=\'scrap.hotplace\';">스크랩</button>'
+                                    );
+                                }
+                            });
+                        }
+                    },
+                    error:function(request,status,error) {
+                        alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
+                    }
+                });
+            }
         </script>
 
         <!-- kakao 지도 API -->
@@ -546,13 +549,16 @@
             // 지도를 표시할 div
             var mapContainer = document.getElementById('map'),
             mapOption = {
-                //TODO: 받은 지역구를 기준으로 센터 설정해야함.
                 center : new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
                 level : 3   // 지도의 확대 레벨
             };
 
             // 지도를 생성합니다
             var map = new kakao.maps.Map(mapContainer, mapOption);
+
+            // 마우스 휠로 지도 확대,축소 불가
+            map.setZoomable(false);
+
             // 장소 검색 객체를 생성합니다
             var ps = new kakao.maps.services.Places();
 
@@ -566,25 +572,22 @@
             // 지도의 우측에 확대 축소 컨트롤을 추가한다
             map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-            // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다: 커스텀 윈도우 사용으로 필요X
-            // var infowindow = new kakao.maps.InfoWindow({
-            //     zIndex : 1
-            // });
-
             // 키워드로 장소를 검색합니다
             searchPlaces();
 
             // 키워드 검색을 요청하는 함수입니다
             function searchPlaces() {
-                var keyword = document.getElementById('keyword').value;
+                var keyword = document.getElementById('searchBox').value;
                 if (!keyword.replace(/^\s+|\s+$/g, '')) {
                     alert('키워드를 입력해주세요!');
                     return false;
                 }
                 // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+                //TODO: DB 에서 정보 가져오기
                 ps.keywordSearch(keyword, placesSearchCB);
             }
 
+            // TODO: DB에서 가져올 경우 수정 필요
             // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
             function placesSearchCB(data, status, pagination) {
                 if (status === kakao.maps.services.Status.OK) {
@@ -619,9 +622,9 @@
                                                 '<div class="close" onclick="closeOverlay()" title="닫기"></div>'+
                                             '</div>' +
                                             '<div class="body">' +
-                                                '<div class="img">'+
-                                                    '<img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-                                                '</div>' +
+                                                // '<div class="img">'+
+                                                    // '<img class="d-block w-100 d-100" src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70" style="object-fit: scale-down;">' +
+                                                // '</div>' +
                                                 '<div class="desc">' +
                                                     '<div class="ellipsis">' + item.road_address_name + '</div>' +
                                                     '<div class="jibun ellipsis">(지번) ' + item.address_name + '</div>' +

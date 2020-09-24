@@ -163,7 +163,7 @@
                                 <% dataTarget = "#noticeList" + Integer.toString(i); %>
                                     <tr class="text-center" style="cursor: pointer;" data-toggle="modal" data-target="<%= dataTarget %>">
                                         <td><%= noticeList.get(i).getId() %></td>
-                                        <td><%= noticeList.get(i).getPostdate().split(' ')[0] %></td>
+                                        <td><%= noticeList.get(i).getPostdate() %></td>
                                         <td><%= noticeList.get(i).getTitle() %></td>
                                     </tr>
                                 <% } %>
