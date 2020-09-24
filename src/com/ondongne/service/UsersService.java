@@ -127,4 +127,16 @@ public class UsersService {
 		return isDeleteSuccess;
 	}
 	
+	// 관리자가 계정 삭제
+	public boolean adminDeleteUser(String email) {
+		boolean isDeleteSuccess = false;
+		DataAccessUsers daoUser = DataAccessUsers.getInstance();
+		int deleteCount = daoUser.adminDeleteUser(email);
+		
+		if(deleteCount>0) {
+			isDeleteSuccess = true;
+		}
+		return isDeleteSuccess;
+	}
+	
 }

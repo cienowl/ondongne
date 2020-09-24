@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ondongne.action.Action;
 import com.ondongne.action.AdminDeleteCircleAction;
 import com.ondongne.action.AdminDeleteSellAction;
+import com.ondongne.action.AdminDeleteUserAction;
 import com.ondongne.action.AdminGetCircleInfoAction;
 import com.ondongne.action.AdminHotplaceDeleteAction;
 import com.ondongne.action.AdminNoticeDeleteAction;
@@ -19,11 +20,13 @@ import com.ondongne.action.AdminNoticeUpdateAction;
 import com.ondongne.action.AdminNoticeWriteAction;
 import com.ondongne.action.AdminSearchCircleAction;
 import com.ondongne.action.AdminSearchSellAction;
+import com.ondongne.action.AdminSearchUserAction;
 import com.ondongne.action.AdminSigninAction;
 import com.ondongne.action.AdminSignoutAction;
 import com.ondongne.action.AdminGetDashboardInfoAction;
 import com.ondongne.action.AdminGetDongneInfoAction;
 import com.ondongne.action.AdminGetSellInfoAction;
+import com.ondongne.action.AdminGetUsersAction;
 import com.ondongne.action.AdminHotplaceInsertAction;
 import com.ondongne.action.AdminHotplaceUpdateAction;
 import com.ondongne.dto.ActionForward;
@@ -79,6 +82,36 @@ public class AdminFrontController extends HttpServlet {
 			}			
 		}
 		
+		else if(command.equals("/users.admin")) {
+//			users 관리페이지 로드
+			action = new AdminGetUsersAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/userDelete.admin")) {
+//			users 관리페이지에서 회원 삭제
+			action = new AdminDeleteUserAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/searchUsers.admin")) {
+//			users 관리페이지에서 회원 검색
+			action = new AdminSearchUserAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		else if (command.equals("/hotplace.admin")) {
 //			hotplace 관리페이지 로드
 			action = new AdminGetDongneInfoAction();
@@ -100,7 +133,7 @@ public class AdminFrontController extends HttpServlet {
 		}
 		
 		else if(command.equals("/circlePostDelete.admin")) {
-//			관리자 페이지에서 소모임 게시물 삭제
+//			Circle 관리자 페이지에서 소모임 게시물 삭제
 			action = new AdminDeleteCircleAction();
 			try {
 				forward = action.execute(request, response);
@@ -110,7 +143,7 @@ public class AdminFrontController extends HttpServlet {
 		}
 		
 		else if(command.equals("/searchCircle.admin")) {
-//			관리자 페이지에서 소모임 게시물 검색
+//			Circle 관리자 페이지에서 소모임 게시물 검색
 			action = new AdminSearchCircleAction();
 			try {
 				forward = action.execute(request, response);
@@ -130,7 +163,7 @@ public class AdminFrontController extends HttpServlet {
 		}	
 		
 		else if(command.equals("/sellPostDelete.admin")) {
-//			관리자 페이지에서 판매 게시물 삭제
+//			Sell 관리자 페이지에서 판매 게시물 삭제
 			action = new AdminDeleteSellAction();
 			try {
 				forward = action.execute(request, response);
@@ -140,7 +173,7 @@ public class AdminFrontController extends HttpServlet {
 		}
 		
 		else if(command.equals("/searchSell.admin")) {
-//			관리자 페이지에서 판매 게시물 검색
+//			Sell 관리자 페이지에서 판매 게시물 검색
 			action = new AdminSearchSellAction();
 			try {
 				forward = action.execute(request, response);

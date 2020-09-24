@@ -48,5 +48,17 @@
 	<update id="deleteAvatar" parameterType="String">
 		update users set profile_picture=null WHERE email=#{loginEmail};
 	</update>
+	
+	<select id="selectUserAll" resultType="com.ondongne.dto.DataTransferUsers">
+		select * from users order by joindate;
+	</select>
+	
+	<delete id="adminDeleteUser" parameterType="String">
+		delete from users where email=#{email};
+	</delete>
+	
+	<select id="searchUserList" parameterType="String">
+		select * from users WHERE email LIKE CONCAT('%',#{searchWord},'%');
+	</select>
 
 </mapper>

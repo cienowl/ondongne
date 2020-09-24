@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="users.admin" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-user mr-3"></i>회원관리
                 </a>
             </li>

@@ -4,6 +4,7 @@ package com.ondongne.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -116,5 +117,39 @@ public class DataAccessUsers {
 		
 		return email;
 	}
+	
+	// 전체 회원정보 불러오기
+	 public List<DataTransferUsers> getUsersAll(){
+		 sqlFactory = getConnection();
+		 SqlSession sqlSession = sqlFactory.openSession();
+		 
+		 List<DataTransferUsers> userList = sqlSession.selectList("selectUserAll");
+		 
+		 return userList;
+		 
+	 }
+	 
+	 // 관리자가 계정 삭제
+	 public int adminDeleteUser(String email) {
+		 sqlFactory = getConnection();
+		 SqlSession sqlSession = sqlFactory.openSession();
+		 
+		 int deleteCount = sqlSession.update("adminDeleteUser", email);
+		 sqlSession.commit();
+		 sqlSession.close();
+		
+		 return deleteCount;
+	 
+	 }
+	 
+	 // 관리자가 계정 검색
+	 public List<DataTransferUsers> getSearchUser(String searchWord){
+		 sqlFactory = getConnection();
+		 SqlSession sqlsession = sqlFactory.openSession();
+		 
+		 List<DataTransferUsers> searchUserList = sqlsession.selectList("searchUserList",searchWord);
+		 
+		 return searchUserList;
+	 }
 
 }
