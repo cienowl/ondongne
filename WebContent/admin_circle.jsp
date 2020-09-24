@@ -72,13 +72,15 @@
                             <span>/</span>
                             <span>circle posts</span>
                         </h4>
-
+						
                         <form class="d-flex justify-content-center" method="POST" action="searchCircle.admin">
                             <input type="search" placeholder="게시물 검색" aria-label="Search" class="form-control" name="search"/>
                             <button class="btn btn-primary btn-sm my-0 p" type="submit">
                             <i class="fas fa-search"></i>
                             </button>
+                            <button class="btn btn-primary btn-sm my-0 p" id="viewAllBtn" >All</button>
                         </form>
+                        
                         
                     </div>
                 </div>
@@ -233,6 +235,17 @@
 				}
 			}
        	</script>
+       	
+       	<!-- 게시물 전체 보기 -->
+       	<script>
+	       	$(document).ready(function(){
+	       		$("#viewAllBtn").on('click',function(){
+	       			window.location.reload();
+	       		})
+	       	})
+	       
+       	</script>
+       	
 
     </body>
 </html>
