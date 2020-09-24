@@ -119,16 +119,6 @@ public class CircleFrontController extends HttpServlet {
 			}
 		}
 		
-		// 관리자가 소모임 게시글 삭제버튼을 눌렀을때
-		else if(command.equals("/adminPostDelete.circle")) {
-			action = new AdminDeleteCircleAction();
-			try {
-				forward = action.execute(request, response);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
 		// 참여자가 소모임 참여 취소버튼을 눌렀을 때
 		else if(command.equals("/joincancel.circle")) {
 			action = new CancelJoinCircleAction();

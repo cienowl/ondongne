@@ -50,7 +50,7 @@
 	</select>
 	
 	<select id="searchSellList" resultType="com.ondongne.dto.DataTransferSell" parameterType="String">
-		select * from sell WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') order by post_date desc
+		select * from sell WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') OR email LIKE CONCAT('%',#{searchWord},'%') OR id LIKE CONCAT('%',#{searchWord},'%') order by post_date desc
 	</select>	
 	
 	<select id="searchSellListPaging" resultType="com.ondongne.dto.DataTransferSell" parameterType="com.ondongne.dto.SearchSellBean">
@@ -68,6 +68,10 @@
 	<update id="updateSellPostExPic" parameterType="com.ondongne.dto.DataTransferSell">
 		update sell set email=#{email}, title=#{title},	price=#{price}, region=#{region}, description=#{description}, is_parcel=#{is_parcel}, is_active=#{is_active}, tags='tags', post_date=now() where id=#{id}
 	</update>
+	
+	<delete id="adminDeleteSell" parameterType="int">
+		delete from sell where id=#{id};
+	</delete>
 
 </mapper>
 

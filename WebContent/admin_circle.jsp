@@ -7,7 +7,6 @@
 <%
 	List<DataTransferCircle> circleList = (List<DataTransferCircle>) request.getAttribute("circleList");
     String dataTarget = null;
-    String region = null;
 %>
 
 <!DOCTYPE html>
@@ -229,7 +228,7 @@
 				//console.log(form.postid.value+"/"+form.title.value);
 				var check = confirm("#" + form.postid.value + "("+ form.title.value+") 을(를) 정말로 삭제하시겠습니까?");
 				if (check == true) {
-					window.location.href = "adminPostDelete.circle?postid=" + form.postid.value;
+					window.location.href = "circlePostDelete.admin?postid=" + form.postid.value;
 				} else if (check == false) {
 					alert("삭제가 취소되었습니다.");
 				}

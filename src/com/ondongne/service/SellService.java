@@ -61,5 +61,17 @@ public class SellService {
 		
 		return sellPostList;
 	}
+	
+	public boolean adminDeleteArticle(int postid) {
+		boolean isDeleteSuccess = false;
+		
+		DataAccessSell daoSell = DataAccessSell.getInstance();
+		int deleteCount = daoSell.adminDeleteSell(postid);
+		
+		if(deleteCount>0) {
+			isDeleteSuccess=true;
+		}
+		return isDeleteSuccess;
+	}
 
 }

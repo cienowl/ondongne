@@ -10,16 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.AdminDeleteCircleAction;
+import com.ondongne.action.AdminDeleteSellAction;
 import com.ondongne.action.AdminGetCircleInfoAction;
 import com.ondongne.action.AdminHotplaceDeleteAction;
 import com.ondongne.action.AdminNoticeDeleteAction;
 import com.ondongne.action.AdminNoticeUpdateAction;
 import com.ondongne.action.AdminNoticeWriteAction;
 import com.ondongne.action.AdminSearchCircleAction;
+import com.ondongne.action.AdminSearchSellAction;
 import com.ondongne.action.AdminSigninAction;
 import com.ondongne.action.AdminSignoutAction;
 import com.ondongne.action.AdminGetDashboardInfoAction;
 import com.ondongne.action.AdminGetDongneInfoAction;
+import com.ondongne.action.AdminGetSellInfoAction;
 import com.ondongne.action.AdminHotplaceInsertAction;
 import com.ondongne.action.AdminHotplaceUpdateAction;
 import com.ondongne.dto.ActionForward;
@@ -86,13 +90,23 @@ public class AdminFrontController extends HttpServlet {
 		}
 		
 		else if (command.equals("/circle.admin")) {
-//			TODO Circle 관리페이지 로드
+//			Circle 관리페이지 로드
 			action = new AdminGetCircleInfoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
+		}
+		
+		else if(command.equals("/circlePostDelete.admin")) {
+//			관리자 페이지에서 소모임 게시물 삭제
+			action = new AdminDeleteCircleAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		else if(command.equals("/searchCircle.admin")) {
@@ -106,14 +120,34 @@ public class AdminFrontController extends HttpServlet {
 		}
 		
 		else if (command.equals("/sell.admin")) {
-//			TODO Sell 관리페이지 로드
-			action = null;
+//			Sell 관리페이지 로드
+			action = new AdminGetSellInfoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
-		}		
+		}	
+		
+		else if(command.equals("/sellPostDelete.admin")) {
+//			관리자 페이지에서 판매 게시물 삭제
+			action = new AdminDeleteSellAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/searchSell.admin")) {
+//			관리자 페이지에서 판매 게시물 검색
+			action = new AdminSearchSellAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		else if (command.equals("/notice/write.admin")) {
 //			공지사항 작성

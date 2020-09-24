@@ -104,5 +104,25 @@ public class DataAccessSell {
 		
 		return sellPostList;
 	}
+	
+	public int adminDeleteSell(int postid) {
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		int deleteCount = sqlsession.delete("adminDeleteSell",postid);
+		sqlsession.commit();
+		sqlsession.close();
+		
+		return deleteCount;
+	}
+	
+	public List<DataTransferSell> getSearchSell(String keyword){
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		List<DataTransferSell> searchSellList = sqlsession.selectList("searchSellList",keyword);
+		
+		return searchSellList;
+	}
 
 }

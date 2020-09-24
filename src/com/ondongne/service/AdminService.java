@@ -5,8 +5,10 @@ import java.util.List;
 import com.ondongne.dao.DataAccessCircle;
 import com.ondongne.dao.DataAccessHotplace;
 import com.ondongne.dao.DataAccessNotice;
+import com.ondongne.dao.DataAccessSell;
 import com.ondongne.dto.AdminBean;
 import com.ondongne.dto.DataTransferCircle;
+import com.ondongne.dto.DataTransferSell;
 import com.ondongne.dto.HotplaceBean;
 import com.ondongne.dto.NoticeBean;
 
@@ -150,6 +152,24 @@ public class AdminService {
 		List<DataTransferCircle> searchCircleList = daoCircle.searchCircle(searchWord);
 		
 		return searchCircleList;
+	}
+	
+	// 판매 전체 게시물 불러오기
+	public List<DataTransferSell> getSellAll(){
+		
+		DataAccessSell daoSell = DataAccessSell.getInstance();
+		List<DataTransferSell> sellList = daoSell.selectSellAll();
+		
+		return sellList;
+	}
+	
+	// 검색한 판매 게시물 불러오기
+	public List<DataTransferSell> getSearchSell(String searchWord){
+		
+		DataAccessSell daoSell = DataAccessSell.getInstance();
+		List<DataTransferSell> searchSellList = daoSell.getSearchSell(searchWord);
+		
+		return searchSellList;
 	}
 
 }
