@@ -71,6 +71,20 @@ public class CircleService {
 		return isWriteSuccess;
 	}
 	
+	// 관리자가 게시글 삭제
+	public boolean adminDeleteArticle(int postid) {
+		boolean isWriteSuccess = false;
+		
+		DataAccessCircle daoCircle = DataAccessCircle.getinstance();
+		int deleteCount = daoCircle.adminDeleteCircle(postid);
+		
+		if(deleteCount>0) {
+			isWriteSuccess=true;
+		}
+		
+		return isWriteSuccess;
+	}
+	
 	// 작성자가 게시한 소모임만 출력
 	public List<DataTransferCircle> selectPostCircle(String loginEmail) {
 		

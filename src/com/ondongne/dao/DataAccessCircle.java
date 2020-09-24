@@ -59,7 +59,7 @@ public class DataAccessCircle {
 		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();
 		
-		List<DataTransferCircle> circleList = sqlsession.selectList("getCirclePostAll");
+		List<DataTransferCircle> circleList = sqlsession.selectList("selectCirclePostAll");
 		
 		return circleList;
 		
@@ -101,6 +101,18 @@ public class DataAccessCircle {
 		return deleteCount;
 	}
 	
+	// 관리자가 게시글 삭제
+	public int adminDeleteCircle(int postid) {
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		int deleteCount = sqlsession.delete("adminDeleteCircle",postid);
+		sqlsession.commit();
+		sqlsession.close();
+		
+		return deleteCount;
+	}
+	
 	// 작성자가 게시한 소모임만 출력
 	public List<DataTransferCircle> selectPostCircle(String loginEmail){
 		
@@ -119,7 +131,7 @@ public class DataAccessCircle {
 		sqlFactory = getConnection();
 		SqlSession sqlsession = sqlFactory.openSession();
 		
-		List<DataTransferCircle> searchCircleList = sqlsession.selectList("getSearchCircle", keyword);
+		List<DataTransferCircle> searchCircleList = sqlsession.selectList("searchCircleList", keyword);
 		
 		return searchCircleList;
 	}

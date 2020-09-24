@@ -2,9 +2,11 @@ package com.ondongne.service;
 
 import java.util.List;
 
+import com.ondongne.dao.DataAccessCircle;
 import com.ondongne.dao.DataAccessHotplace;
 import com.ondongne.dao.DataAccessNotice;
 import com.ondongne.dto.AdminBean;
+import com.ondongne.dto.DataTransferCircle;
 import com.ondongne.dto.HotplaceBean;
 import com.ondongne.dto.NoticeBean;
 
@@ -129,6 +131,25 @@ public class AdminService {
 	    }		
 
 		return deleteSuccess;
+	}
+	
+	// 소모임 전체 게시물 불러오기
+	public List<DataTransferCircle> getCircleAll(){
+		
+		DataAccessCircle daoCircle = DataAccessCircle.getinstance();
+		List<DataTransferCircle> circleList = daoCircle.selectCircleAll();
+		
+		return circleList;
+		
+	}
+	
+	// 검색한 소모임 게시물 불러오기
+	public List<DataTransferCircle> getSearchCircle(String searchWord){
+		
+		DataAccessCircle daoCircle = DataAccessCircle.getinstance();
+		List<DataTransferCircle> searchCircleList = daoCircle.searchCircle(searchWord);
+		
+		return searchCircleList;
 	}
 
 }

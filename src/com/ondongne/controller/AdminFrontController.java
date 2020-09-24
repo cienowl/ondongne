@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ondongne.action.Action;
+import com.ondongne.action.AdminGetCircleInfoAction;
 import com.ondongne.action.AdminHotplaceDeleteAction;
 import com.ondongne.action.AdminNoticeDeleteAction;
 import com.ondongne.action.AdminNoticeUpdateAction;
 import com.ondongne.action.AdminNoticeWriteAction;
+import com.ondongne.action.AdminSearchCircleAction;
 import com.ondongne.action.AdminSigninAction;
 import com.ondongne.action.AdminSignoutAction;
 import com.ondongne.action.AdminGetDashboardInfoAction;
@@ -85,12 +87,22 @@ public class AdminFrontController extends HttpServlet {
 		
 		else if (command.equals("/circle.admin")) {
 //			TODO Circle 관리페이지 로드
-			action = null;
+			action = new AdminGetCircleInfoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
+		}
+		
+		else if(command.equals("/searchCircle.admin")) {
+//			관리자 페이지에서 소모임 게시물 검색
+			action = new AdminSearchCircleAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		else if (command.equals("/sell.admin")) {

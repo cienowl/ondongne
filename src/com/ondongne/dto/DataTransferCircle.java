@@ -21,6 +21,7 @@ public class DataTransferCircle {
 	private String mem_number;
 	private int post_count;
 	private String join_mem_number;
+	private String post_date;
 	
 	public int getId() {
 		return id;
@@ -131,6 +132,12 @@ public class DataTransferCircle {
 	}
 	public void setJoin_mem_number(String join_mem_number) {
 		this.join_mem_number = join_mem_number;
+	}
+	public String getPost_date() {
+		return post_date;
+	}
+	public void setPost_date(String post_date) {
+		this.post_date = post_date;
 	}
 	
 }

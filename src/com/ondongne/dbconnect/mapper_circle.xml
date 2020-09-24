@@ -24,7 +24,7 @@
 	</select>
 	
 	<select id="searchCircleList" resultType="com.ondongne.dto.DataTransferCircle" parameterType="String">
-		select * from circle WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') order by post_date desc;
+		select * from circle WHERE title LIKE CONCAT('%',#{searchWord},'%') OR email LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') OR id LIKE CONCAT('%',#{searchWord},'%')order by post_date desc;
 	</select>
 	
 	<select id="searchCircleListPaging" resultType="com.ondongne.dto.DataTransferCircle" parameterType="com.ondongne.dto.SearchCircleBean">
@@ -54,5 +54,9 @@
 	<update id="updateJoinMem" parameterType="com.ondongne.dto.DataTransferCircle">
 		update circle set join_mem_number=#{join_mem_number} where id=#{id};
 	</update>
+	
+	<delete id="adminDeleteCircle" parameterType="int">
+		delete from circle where id=#{id};
+	</delete>
 	
 </mapper>
