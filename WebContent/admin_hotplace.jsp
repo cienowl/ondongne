@@ -214,7 +214,7 @@
 
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary" onclick="return validation();">등록</button>
-                                    <button type="button" class="btn btn-danger">취소</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">취소</button>
                                 </div>
                             </form>
 

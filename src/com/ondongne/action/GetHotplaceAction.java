@@ -13,7 +13,7 @@ public class GetHotplaceAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+						
 		HotplaceService hotplaceService = new HotplaceService();
 		List<HotplaceBean> hotplaceList = hotplaceService.selectHotplaceAll();
 		

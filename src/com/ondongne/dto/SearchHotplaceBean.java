@@ -1,15 +1,14 @@
 package com.ondongne.dto;
 
 public class SearchHotplaceBean {
-	private String region;
+	private String searchWord;
 	private int page;
 	
-
-	public String getRegion() {
-		return region;
+	public String getSearchWord() {
+		return searchWord;
 	}
-	public void setRegion(String region) {
-		this.region = region;
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
 	}
 	public int getPage() {
 		return page;

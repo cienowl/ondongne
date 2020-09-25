@@ -37,7 +37,7 @@
 	</update>
 	
 	<select id="searchHotplaceListPaging" resultType="com.ondongne.dto.HotplaceBean" parameterType="com.ondongne.dto.SearchHotplaceBean">
-		select * from hotplace WHERE region=#{region} order by postdate desc limit 12 offset #{page}
+		select * from hotplace WHERE title LIKE CONCAT('%',#{searchWord},'%') OR description LIKE CONCAT('%',#{searchWord},'%') or region LIKE CONCAT('%',#{searchWord},'%') order by postdate desc limit 12 offset #{page}
 	</select>
 
 

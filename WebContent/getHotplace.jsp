@@ -16,10 +16,10 @@
 
 	//페이지 수에 따라 12개씩 출력
 	int pageOffset = Integer.parseInt((String) request.getParameter("page"))*12;
-    String region = request.getParameter("region");
+    String searchWord = request.getParameter("searchWord");
     
     SearchHotplaceBean searchHotplaceBean = new SearchHotplaceBean();
-    searchHotplaceBean.setRegion(region);
+    searchHotplaceBean.setSearchWord(searchWord);
     searchHotplaceBean.setPage(pageOffset);
     
     DataAccessHotplace daoHotplace = DataAccessHotplace.getInstance();

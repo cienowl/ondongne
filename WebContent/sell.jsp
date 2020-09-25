@@ -1,9 +1,6 @@
 <!-- 작성자: 이호준 -->
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!--<%@page import="com.ondongne.dto.DataTransferSell"%>-->
-<!--<%@page import="java.text.DecimalFormat"%>-->
-<!--<%@page import="java.util.List"%>-->
 
 <%
 	//List<DataTransferSell> sellList = (List<DataTransferSell>) request.getAttribute("sellList");
@@ -92,8 +89,9 @@
                                 <div class="col-md-4 ml-auto">
                                     <div class="input-group input-group-lg z-depth-1">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text rgba-white-light border-0"><i class="fa fa-envelope white-text"></i></span>
+                                            <span class="input-group-text rgba-white-light border-0"><i class="fas fa-search white-text"></i></span>
                                         </div>
+                                        <input type="hidden"/>
                                         <input type="text" id="searchBox" name="search" class="form-control form-control-lg rgba-white-light white-text border-0 z-depth-0" placeholder="검색어 입력"/>
                                     </div>
                                 </div>
@@ -118,19 +116,6 @@
         <main>
             <div class="container my-5">
                 <section>
-                    <%-- <style>
-                        .md-pills .nav-link.active {
-                            color: #fff;
-                            background-color: #616161;
-                        }
-                        #list.close {
-                            position: absolute;
-                            right: 0;
-                            z-index: 2;
-                            padding-right: 1rem;
-                            padding-top: .6rem;
-                        }
-                    </style> --%>
 
                     <!-- Sell 카드 -->
                     <div class="tab-content mb-5">
@@ -151,7 +136,6 @@
                 </section>
             </div>
         </main>
-        <!--Main layout-->
 
         <!-- Footer import -->
         <%@ include file="footer.jsp" %>
@@ -268,9 +252,9 @@
                                     '<div class="modal fade" id="sellList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
                                         '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
                                             '<div class="modal-content">'+
-                                                '<div class="modal-header p-0">'+
+                                                '<div class="modal-header p-0" style="background-color:#26272b;">'+
                                                     '<div class="row" style="height: 500px;">'+
-                                                        '<img class="d-block w-100 h-100" src="img/sell/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
+                                                        '<img class="d-block w-100 h-100" src="img/sell/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down;">'+
                                                     '</div>'+
                                                 '</div>'+
                                                 '<div class="modal-body">'+
@@ -402,9 +386,9 @@
                                     '<div class="modal fade" id="sellList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
                                         '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
                                             '<div class="modal-content">'+
-                                                '<div class="modal-header p-0">'+
+                                                '<div class="modal-header p-0" style="background-color:#26272b;">'+
                                                     '<div class="row" style="height: 500px;">'+
-                                                        '<img class="d-block w-100 h-100" src="img/sell/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
+                                                        '<img class="d-block w-100 h-100" src="img/sell/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down;">'+
                                                     '</div>'+
                                                 '</div>'+
                                                 '<div class="modal-body">'+
