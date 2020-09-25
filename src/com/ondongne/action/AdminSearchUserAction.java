@@ -21,6 +21,7 @@ public class AdminSearchUserAction implements Action{
 		if(session.getAttribute("adminId") != null) {
 			
 			String searchWord = (String) request.getParameter("search");
+			//System.out.println(searchWord);
 			AdminService adminService = new AdminService();
 			
 			//검색한 회원 정보 불러오기

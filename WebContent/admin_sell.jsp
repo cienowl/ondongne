@@ -115,7 +115,7 @@
                                             <td><%= sellList.get(i).getTitle() %></td>
                                             <td><%= sellList.get(i).getEmail() %></td>
                                             <td><%= sellList.get(i).getPost_date()%>
-                                        	<td><button type="button" class="btn btn-sm btn-danger m-0" onclick="delete_check_circle(this.form)"><i class="fas fa-trash"></i></button><td>
+                                        	<td><button type="button" class="btn btn-sm btn-danger m-0" onclick="delete_check_circle(this.form)"><i class="fas fa-trash"></i></button></td>
                                         </tr>
                                     </form>
                                     <% } %>

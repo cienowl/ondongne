@@ -117,7 +117,7 @@
                                             <td><%= circleList.get(i).getEmail() %></td>
                                             <td><%= circleList.get(i).getJoin_mem_number()%> / <%=circleList.get(i).getMem_number() %></td>
                                             <td><%= circleList.get(i).getPost_date()%>
-                                        	<td><button type="button" class="btn btn-sm btn-danger m-0" onclick="delete_check_circle(this.form)"><i class="fas fa-trash"></i></button><td>
+                                        	<td><button type="button" class="btn btn-sm btn-danger m-0" onclick="delete_check_circle(this.form)"><i class="fas fa-trash"></i></button></td>
                                         </tr>
                                     </form>
                                     <% } %>

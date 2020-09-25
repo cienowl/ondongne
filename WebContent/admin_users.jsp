@@ -112,12 +112,12 @@
                                    		<input type="hidden" name="email" id="email" value="<%= userList.get(i).getEmail()%>"/>
                                    		
                                         <tr class="text-center" style="cursor: pointer;" data-toggle="modal" data-target="#<%= dataTarget %>">
-                                            <td>i+1</td>
+                                            <td><%= i+1%></td>
                                             <td><%= userList.get(i).getEmail() %></td>
                                             <td><%= userList.get(i).getName() %></td>
                                             <td><%= userList.get(i).getJoindate() %></td>
                                             <td><%= userList.get(i).getPhone() %>
-                                        	<td><button type="button" class="btn btn-sm btn-danger m-0" onclick="delete_check_circle(this.form)"><i class="fas fa-trash"></i></button><td>
+                                        	<td><button type="button" class="btn btn-sm btn-danger m-0" onclick="delete_check_circle(this.form)"><i class="fas fa-trash"></i></button></td>
                                         </tr>
                                     </form>
                                     <% } %>

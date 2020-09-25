@@ -57,8 +57,8 @@
 		delete from users where email=#{email};
 	</delete>
 	
-	<select id="searchUserList" parameterType="String">
-		select * from users WHERE email LIKE CONCAT('%',#{searchWord},'%');
+	<select id="searchUserList" parameterType="String" resultType="com.ondongne.dto.DataTransferUsers">
+		select * from users WHERE email LIKE CONCAT('%',#{searchWord},'%') OR name LIKE CONCAT('%',#{searchWord},'%') OR phone LIKE CONCAT('%',#{searchWord},'%') OR joindate LIKE CONCAT('%',#{searchWord},'%') order by joindate;
 	</select>
 
 </mapper>
