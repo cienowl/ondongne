@@ -85,4 +85,10 @@
 		resultType="com.ondongne.dto.HotplaceBean" parameterType="String">
 		select * from hotplace where region like CONCAT('%',#{value},'%');
 	</select>
+	<update id="placePostCount" parameterType="int">
+		update hotplace a, hotplace b set a.post_count = b.post_count+1 where a.id=b.id AND a.id=#{postid};
+	</update>
+	<select id="getPlacePostCount" parameterType="int" resultType="int">
+		select post_count from hotplace WHERE id=#{postid};
+	</select>
 </mapper>

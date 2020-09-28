@@ -1,0 +1,12 @@
+diff a/WebContent/hotplace.jsp b/WebContent/hotplace.jsp	(rejected hunks)
+@@ -28,8 +28,8 @@
+ 
+         <!-- half-page-carousel image-->
+         <style type="text/css">
+-            @media (min-width: 800px) and (max-width: 850px) {
+-                .navbar:not(.top-nav-collapse) {
++            @media (max-width: 770px) {
++                .navbar {
+                     background: #ff6d00 !important;
+                 }
+             }

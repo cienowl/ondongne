@@ -217,7 +217,7 @@
                                 //게시물 카드 plot
                                 $('#cardContents').append(
                                     '<div class="col-md-6 col-lg-3">'+
-                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#hotplaceList'+(index+pageOffset)+'">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#hotplaceList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+','+(index+pageOffset)+')">'+
                                             '<div class="card-img-top zoom hotplaceCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
                                                 '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
@@ -251,7 +251,7 @@
                                                                 '<h5 class="font-weight-normal">'+cardResult.title+'</h5>'+
                                                             '</div>'+
                                                             '<div class="col-sm-2">'+
-                                                                '<small class="text-info float-right">'+cardResult.post_count+'</small>'+
+                                                                '<small class="text-info float-right"  id="postCount'+(index+pageOffset)+'"></small>'+
                                                             '</div>'+
                                                         '</div>'+
                                                         '<div class="row">'+
@@ -412,6 +412,22 @@
                     }
                 });
             }
+        </script>
+        <script>
+        	function post_count(postid, index){
+        		console.log("read Number : " + postid);
+        		$.ajax({
+        			url : 'hotplacePostCount.jsp?postid='+postid,
+        			type : "GET",
+        			success : function(request){
+        				console.log("조회수 : " + request.trim());
+        				$('#postCount' + index).text("조회수 : " + request.trim());
+        			},
+        			error : function(request, status, error){
+        				alert("code : " +request.status+"\n"+"message : "+request.responseText+"\n"+"error : " +error);
+        			}
+        		})
+        	}
         </script>
     </body>
 </html>
