@@ -268,7 +268,7 @@
                     inputFile.value = null;
                 }
                 //이미지 파일 체크 jpg, png, jpeg만 받음
-                var fileExtension = /(.*?)\.(jpg|png|jpeg)$/;
+                var fileExtension = /(.*?)\.(jpg|JPG|png|PNG|jpeg|JPEG)$/;
                 if (!inputFile.value.match(fileExtension)) {
                     alert("JPG, PNG, JPEG 파일만 업로드 가능");
                     inputFile.value = null;
