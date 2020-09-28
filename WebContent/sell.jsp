@@ -36,7 +36,7 @@
             }
             /*카드 제목, 내용 길이*/
             .cardTitle, .cardEmail{
-                overflow:hidden;
+                overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }

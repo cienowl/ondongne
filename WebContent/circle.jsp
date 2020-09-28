@@ -703,9 +703,9 @@
                                     '<div class="modal fade" id="circleList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
                                         '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
                                             '<div class="modal-content">'+
-                                                '<div class="modal-header p-0">'+
+                                                '<div class="modal-header p-0" style="background-color:#26272b;">'+
                                                     '<div class="row" style="height: 500px;">'+
-                                                        '<img class="d-block w-100 h-100" src="img/circle/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
+                                                        '<img class="d-block w-100 h-100" src="img/circle/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down;">'+
                                                     '</div>'+
                                                 '</div>'+
                                                 '<div class="modal-body">'+
@@ -840,9 +840,9 @@
                                     '<div class="modal fade" id="circleList'+(index+pageOffset)+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
                                         '<div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">'+
                                             '<div class="modal-content">'+
-                                                '<div class="modal-header p-0">'+
+                                                '<div class="modal-header p-0" style="background-color:#26272b;">'+
                                                     '<div class="row" style="height: 500px;">'+
-                                                        '<img class="d-block w-100 h-100" src="img/circle/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down; background-color:#26272b;">'+
+                                                        '<img class="d-block w-100 h-100" src="img/circle/'+cardResult.pictures+'" alt="First slide" style="object-fit:scale-down;">'+
                                                     '</div>'+
                                                 '</div>'+
                                                 '<div class="modal-body">'+
