@@ -35,24 +35,11 @@
 		<link href="css/style.min.css" rel="stylesheet">
 
 		<style type="text/css">
-			html, body, header, .top-carousel {
-				height: 60vh;
-			}
-			@media ( max-width : 740px) {
-				html, body, header, .carousel {
-					height: 100vh;
-				}
-			}
-			@media ( min-width : 800px) and (max-width: 850px) {
-				html, body, header, .carousel {
-					height: 100vh;
-				}
-			}
-			@media ( min-width : 800px) and (max-width: 850px) {
-				.navbar:not (.top-nav-collapse ) {
-					background: #ff6d00 !important;
-				}
-			}
+            @media (max-width: 770px) {
+                .navbar {
+                    background: #ff6d00 !important;
+                }
+            }
 			.modal-open .navbar-expand-lg {
 				padding-right: 16px !important;
 			}
