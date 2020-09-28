@@ -700,10 +700,13 @@
                                                         '<small class="text-info">#'+cardResult.id+'</small>'+
                                                         '<p class="text-muted mb-0 text-right" id="postCount'+(index+pageOffset)+'"></p>'+
                                                         '<div class="row">'+
-                                                            '<div class="col-sm-12">'+
-                                                                '<p class="text-muted mb-2 text-right"> 작성자 : '+cardResult.email+'</p>'+
-                                                            '</div>'+
-                                                        '</div>'+
+	                                                        '<div class="col-sm-6">'+
+	                                                            '<h5 class="font-weight-normal">'+cardResult.title+'</p>'+
+	                                                       	 '</div>'+
+	                                                       	 '<div class="col-sm-6">'+
+	                                                             '<p class="text-muted mb-2 text-right"> 작성자 : '+cardResult.email+'</p>'+
+	                                                         '</div>'+
+	                                                	'</div>'+
                                                         '<div class="row">'+
                                                             '<div class="col-sm-6">'+
                                                                 '<p class="text-uppercase mb-2"><strong> 소모임 날짜 </strong></p><p class="text-muted mb-4">'+cardResult.event_date.split(' ')[0]+'</p>'+
@@ -837,10 +840,13 @@
                                                         '<small class="text-info">#'+cardResult.id+'</small></br>'+
                                                         '<p class="text-muted mb-0 text-right" id="postCount'+(index+pageOffset)+'"></p>'+
                                                         '<div class="row">'+
-                                                            '<div class="col-sm-12">'+
-                                                                '<p class="text-muted mb-2 text-right"> 작성자 : '+cardResult.email+'</p>'+
-                                                            '</div>'+
-                                                        '</div>'+
+	                                                        '<div class="col-sm-6">'+
+	                                                            '<h5 class="font-weight-normal">'+cardResult.title+'</p>'+
+	                                                       	 '</div>'+
+	                                                       	 '<div class="col-sm-6">'+
+	                                                             '<p class="text-muted mb-2 text-right"> 작성자 : '+cardResult.email+'</p>'+
+	                                                         '</div>'+
+	                                                	'</div>'+
                                                         '<div class="row">'+
                                                             '<div class="col-sm-6">'+
                                                                 '<p class="text-uppercase mb-2"><strong> 소모임 날짜 </strong></p><p class="text-muted mb-4">'+cardResult.event_date.split(' ')[0]+'</p>'+
