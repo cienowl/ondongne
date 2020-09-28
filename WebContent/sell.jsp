@@ -28,7 +28,7 @@
         <style type="text/css">
             @media (max-width: 770px) {
                 .navbar {
-                    background: #880e4f !important;
+                    background: #ff6d00 !important;
                 }
             }
             .modal-open .navbar-expand-lg {
@@ -231,7 +231,7 @@
                                 //게시물 카드 plot
                                 $('#cardContents').append(
                                     '<div class="col-md-6 col-lg-3">'+
-                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+(index+pageOffset)+'">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+','+(index+pageOffset)+')">'+
                                             '<div class="card-img-top zoom sellCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
                                                 '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
@@ -260,6 +260,7 @@
                                                 '<div class="modal-body">'+
                                                     '<div class="col align-self-center">'+
                                                         '<small class="text-info">#'+cardResult.id+'</small>'+
+                                                        '<p class="text-muted mb-0 text-right" id="postCount'+(index+pageOffset)+'"></p>'+
                                                         '<h5 class="font-weight-normal">'+isActive+' '+cardResult.title+'</h5>'+
                                                         '<div class="row">'+
                                                             '<div class="col-sm-8">'+
@@ -366,7 +367,7 @@
                                 //게시물 카드 plot
                                 $('#cardContents').append(
                                     '<div class="col-md-6 col-lg-3">'+
-                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+(index+pageOffset)+'">'+
+                                    '<a class="card hoverable mb-4" data-toggle="modal" data-target="#sellList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+','+(index+pageOffset)+')">'+
                                             '<div class="card-img-top sellCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
                                                 '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
@@ -394,6 +395,7 @@
                                                 '<div class="modal-body">'+
                                                     '<div class="col align-self-center">'+
                                                         '<small class="text-info">#'+cardResult.id+'</small>'+
+                                                        '<p class="text-muted mb-0 text-right" id="postCount'+(index+pageOffset)+'"></p>'+
                                                         '<h5 class="font-weight-normal">'+isActive+' '+cardResult.title+'</h5>'+
                                                         '<div class="row">'+
                                                             '<div class="col-sm-8">'+
@@ -482,6 +484,28 @@
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
         </script>
+        
+        <!-- 게시글 조회수 -->
+		<script>
+			function post_count(postid, index){
+				console.log("글번호 : " + postid);
+				console.log('#postCount'+index);
+				$.ajax({
+					url:'sellPostCount.jsp?postid='+postid,
+					type:"GET",
+					success : function(request){
+						console.log("조회수 : "+request.trim());
+						//console.log('#postCount'+index);
+						$('#postCount'+index).text("조회수 : " + request.trim());
+						
+					},
+					 error:function(request,status,error){
+	                     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	                 }
+				}) 
+			
+			}
+		</script>
 
     </body>
 

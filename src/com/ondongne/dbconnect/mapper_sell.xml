@@ -72,6 +72,14 @@
 	<delete id="adminDeleteSell" parameterType="int">
 		delete from sell where id=#{id};
 	</delete>
+	
+	<update id="sellPostCount" parameterType="int">
+		update sell a, sell b set a.post_count = b.post_count+1 where a.id=b.id AND a.id=#{postid};
+	</update>
+	
+	<select id="sellGetPostCount" parameterType="int" resultType="int">
+		select post_count from sell WHERE id=#{postid};
+	</select>
 
 </mapper>
 
