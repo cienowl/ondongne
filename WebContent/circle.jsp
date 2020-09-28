@@ -681,7 +681,7 @@
                                 //게시물 카드 plot
                                 $('#cardContents').append(
                                     '<div class="col-md-6 col-lg-3">'+
-                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#circleList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+')">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#circleList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+','+(index+pageOffset)+')">'+
                                             '<div class="card-img-top zoom circleCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
                                                 '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
@@ -711,7 +711,7 @@
                                                 '<div class="modal-body">'+
                                                     '<div class="col align-self-center">'+
                                                         '<small class="text-info">#'+cardResult.id+'</small>'+
-                                                        '<p class="text-muted mb-0 text-right">조회수 : '+cardResult.post_count+'</p>'+
+                                                        '<p class="text-muted mb-0 text-right" id="postCount'+(index+pageOffset)+'"></p>'+
                                                         '<div class="row">'+
                                                             '<div class="col-sm-12">'+
                                                                 '<p class="text-muted mb-2 text-right"> 작성자 : '+cardResult.email+'</p>'+
@@ -818,7 +818,7 @@
                                 //게시물 카드 plot
                                 $('#cardContents').append(
                                     '<div class="col-md-6 col-lg-3">'+
-                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#circleList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+')">'+
+                                        '<a class="card hoverable mb-4" data-toggle="modal" data-target="#circleList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+','+(index+pageOffset)+')">'+
                                             '<div class="card-img-top zoom circleCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
                                                 '<h5 class="mb-3 cardTitle">'+cardResult.title+'</h5>'+
@@ -848,7 +848,7 @@
                                                 '<div class="modal-body">'+
                                                     '<div class="col align-self-center">'+
                                                         '<small class="text-info">#'+cardResult.id+'</small></br>'+
-                                                        '<p class="text-muted mb-0 text-right">조회수 : '+cardResult.post_count+'</p>'+
+                                                        '<p class="text-muted mb-0 text-right" id="postCount'+(index+pageOffset)+'"></p>'+
                                                         '<div class="row">'+
                                                             '<div class="col-sm-12">'+
                                                                 '<p class="text-muted mb-2 text-right"> 작성자 : '+cardResult.email+'</p>'+
@@ -963,7 +963,7 @@
 		
 		<!-- 게시글 조회수 -->
 		<script>
-			function post_count(postid,i){
+			function post_count(postid, index){
 				//console.log("글번호" + form.postid.value);
 				//console.log(this.document.getElementById('postid').value);
 				//$("#postcount").append("aaa");
@@ -971,10 +971,13 @@
 				$.ajax({
 					url:'circlePostCount.jsp?postid='+postid,
 					type:"GET",
+					//data:"text",
 					success : function(request){
 						// 성공했을때 a태그를 만들어서 넣어야함 ( 이미 모달창화면이 만들어진상태라 반영안됨)
 						
 						console.log("조회수 : "+request.trim());
+						//console.log('#postCount'+index);
+						$('#postCount'+index).text("조회수 : " + request.trim());
 						//$("#postcount").append("조회수 : "+request.trim());
 						//var abc = $('#postcount').text();
 						//console.log(abc);
