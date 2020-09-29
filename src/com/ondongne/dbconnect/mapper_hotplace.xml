@@ -85,10 +85,24 @@
 		resultType="com.ondongne.dto.HotplaceBean" parameterType="String">
 		select * from hotplace where region like CONCAT('%',#{value},'%');
 	</select>
+	
 	<update id="placePostCount" parameterType="int">
 		update hotplace a, hotplace b set a.post_count = b.post_count+1 where a.id=b.id AND a.id=#{postid};
 	</update>
+	
 	<select id="getPlacePostCount" parameterType="int" resultType="int">
 		select post_count from hotplace WHERE id=#{postid};
+	</select>
+	
+	<select id="searchHotplaceList" resultType="com.ondongne.dto.HotplaceBean" parameterType="String">
+		select * from hotplace 
+		WHERE id LIKE CONCAT('%',#{searchWord},'%') 
+		OR title LIKE CONCAT('%',#{searchWord},'%') 
+		OR zipcode LIKE CONCAT('%',#{searchWord},'%') 
+		OR address LIKE CONCAT('%',#{searchWord},'%') 
+		OR address_detail LIKE CONCAT('%',#{searchWord},'%') 
+		OR region LIKE CONCAT('%',#{searchWord},'%') 
+		OR description LIKE CONCAT('%',#{searchWord},'%') 
+		OR postdate LIKE CONCAT('%',#{searchWord},'%') order by postdate desc;
 	</select>
 </mapper>

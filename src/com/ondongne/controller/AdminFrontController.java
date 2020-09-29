@@ -19,6 +19,7 @@ import com.ondongne.action.AdminNoticeDeleteAction;
 import com.ondongne.action.AdminNoticeUpdateAction;
 import com.ondongne.action.AdminNoticeWriteAction;
 import com.ondongne.action.AdminSearchCircleAction;
+import com.ondongne.action.AdminSearchHotplaceAction;
 import com.ondongne.action.AdminSearchNoticeAction;
 import com.ondongne.action.AdminSearchSellAction;
 import com.ondongne.action.AdminSearchUserAction;
@@ -131,6 +132,16 @@ public class AdminFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
+		}
+		
+		else if(command.equals("/searchHotplace.admin")) {
+//			hotplace 관리자페이지에서 게시물 검색
+			action = new AdminSearchHotplaceAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		else if (command.equals("/circle.admin")) {

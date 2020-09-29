@@ -202,5 +202,14 @@ public class AdminService {
 		
 		return searchUserList;
 	}
+	
+	// 검색한 hotplace 게시물 불러오기
+	public List<HotplaceBean> getSearchHotplace(String searchWord){
+		
+		DataAccessHotplace daoHotplace = DataAccessHotplace.getInstance();
+		List<HotplaceBean> searchHotplaceList = daoHotplace.getSearchHotplace(searchWord);
+		
+		return searchHotplaceList;
+	}
 
 }

@@ -132,4 +132,14 @@ public class DataAccessHotplace {
 		return deleteCount;
 	}
 	
+	public List<HotplaceBean> getSearchHotplace(String keyword){
+		
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		List<HotplaceBean> searchHotplaceList = sqlsession.selectList("searchHotplaceList",keyword);
+		
+		return searchHotplaceList;
+	}
+	
 }

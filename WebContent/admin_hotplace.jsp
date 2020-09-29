@@ -71,8 +71,8 @@
                             <span>dongneposts</span>
                         </h4>
                         <%-- TODO: 검색기능 --%>
-                        <form class="d-flex justify-content-center">
-                            <input type="search" placeholder="Type your query" aria-label="Search" class="form-control"/>
+                        <form class="d-flex justify-content-center" method="POST" action="searchHotplace.admin">
+                            <input type="search" placeholder="게시물 검색" aria-label="Search" class="form-control" name="search"/>
                             <button class="btn btn-primary btn-sm my-0 p" type="submit">
                             <i class="fas fa-search"></i>
                             </button>
