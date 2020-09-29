@@ -154,13 +154,21 @@
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <script>
-            var sessionEmail = '<%=(String) session.getAttribute("email")%>';   //참고: JSP 구문 사용하기위해서 따옴표 써서 null 도 문자열값으로 들어감
+            let sessionEmail = '<%=(String) session.getAttribute("email")%>';   //참고: JSP 구문 사용하기위해서 따옴표 써서 null 도 문자열값으로 들어감
+            let sessionRegion1 = '<%=(String) session.getAttribute("region1")%>';
+            let sessionRegion2 = '<%=(String) session.getAttribute("region2")%>';
+            let sessionRegion3 = '<%=(String) session.getAttribute("region3")%>';
 
             $(document).ready(function() {
 			    var page = 0;   //페이지 로딩 후 페이지 0
 
                 //로딩 후 목록 가져오기
-                getSellAll(page);
+                if (sessionRegion1 == 'null') {
+                    getSellAll(page);
+                } else {
+                    getSell(page, sessionRegion1);
+                    $('#searchBox').val(sessionRegion1);
+                }
 
                 //스크롤 맨 아래 까지 가면 실행
                 $(window).scroll(function() {
@@ -259,9 +267,15 @@
                                                 '</div>'+
                                                 '<div class="modal-body">'+
                                                     '<div class="col align-self-center">'+
-                                                        '<small class="text-info">#'+cardResult.id+'</small>'+
-                                                        '<p class="text-muted mb-0 text-right" id="postCount'+(index+pageOffset)+'"></p>'+
-                                                        '<h5 class="font-weight-normal">'+isActive+' '+cardResult.title+'</h5>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-10">'+
+                                                                '<small class="text-info">#'+cardResult.id+'</small>'+
+                                                                '<h5 class="font-weight-normal">'+isActive+' '+cardResult.title+'</h5>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-2">'+
+                                                                '<small class="dark-grey-text float-right" id="postCount'+(index+pageOffset)+'"></small>'+
+                                                            '</div>'+
+                                                        '</div>'+
                                                         '<div class="row">'+
                                                             '<div class="col-sm-8">'+
                                                                 '<p class="text-muted mb-4">'+cardResult.email+'</p>'+
@@ -394,9 +408,15 @@
                                                 '</div>'+
                                                 '<div class="modal-body">'+
                                                     '<div class="col align-self-center">'+
-                                                        '<small class="text-info">#'+cardResult.id+'</small>'+
-                                                        '<p class="text-muted mb-0 text-right" id="postCount'+(index+pageOffset)+'"></p>'+
-                                                        '<h5 class="font-weight-normal">'+isActive+' '+cardResult.title+'</h5>'+
+                                                        '<div class="row">'+
+                                                            '<div class="col-sm-10">'+
+                                                                '<small class="text-info">#'+cardResult.id+'</small>'+
+                                                                '<h5 class="font-weight-normal">'+isActive+' '+cardResult.title+'</h5>'+
+                                                            '</div>'+
+                                                            '<div class="col-sm-2">'+
+                                                                '<small class="dark-grey-textfloat-right" id="postCount'+(index+pageOffset)+'"></small>'+
+                                                            '</div>'+
+                                                        '</div>'+
                                                         '<div class="row">'+
                                                             '<div class="col-sm-8">'+
                                                                 '<p class="text-muted mb-4">'+cardResult.email+'</p>'+
@@ -484,7 +504,7 @@
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
         </script>
-        
+
         <!-- 게시글 조회수 -->
 		<script>
 			function post_count(postid, index){
@@ -497,13 +517,13 @@
 						console.log("조회수 : "+request.trim());
 						//console.log('#postCount'+index);
 						$('#postCount'+index).text("조회수 : " + request.trim());
-						
+
 					},
 					 error:function(request,status,error){
 	                     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	                 }
-				}) 
-			
+				})
+
 			}
 		</script>
 

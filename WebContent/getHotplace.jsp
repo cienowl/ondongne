@@ -3,7 +3,6 @@
 <%@page import="com.ondongne.dto.HotplaceBean"%>
 <%@page import="com.ondongne.dao.DataAccessHotplace"%>
 <%@page import="com.ondongne.dto.SearchHotplaceBean"%>
-<%@page import="com.ondongne.dto.SearchSellBean"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@page import="com.google.gson.Gson"%>

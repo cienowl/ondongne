@@ -298,6 +298,24 @@
 			})
 		</script>
 
+        <!-- 게시물 올릴때 사진 크기, 확장자제한 -->
+        <script>
+        	function imgChecker(inputFile){
+        		 //용량 체크
+        		var maxSize = 5 * 1024 * 1024;
+        		if (inputFile.files && inputFile.files[0].size > maxSize) {
+                    alert("첨부할 이미지 파일은 5MB 이하여야 합니다.");
+                    inputFile.value = null;
+                }
+                //이미지 파일 체크 jpg, png, jpeg만 받음
+                var fileExtension = /(.*?)\.(jpg|JPG|png|PNG|jpeg|JPEG)$/;
+                if (!inputFile.value.match(fileExtension)) {
+                    alert("JPG, PNG, JPEG 파일만 업로드 가능");
+                    inputFile.value = null;
+                }
+        	}
+        </script>
+
 		<!-- 이벤트 날짜 설정시에 오늘날짜 이후로 선택가능하도록 -->
 		<script>
 			$(document).ready(function(){

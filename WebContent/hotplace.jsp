@@ -82,7 +82,7 @@
 			<%} %>
 
             <!-- 페이지 화면 헤더 -->
-            <section style="background-image: url('img/index/fleemarket.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <section style="background-image: url('img/index/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
                 <div class="mask rgba-black-strong py-5">
                     <div class="container text-center my-5">
                         <h1 class="font-weight-bold text-center white-text pt-5 pb-3">우리동네 명소</h1>
@@ -154,13 +154,21 @@
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <script>
-            var sessionEmail = '<%=(String) session.getAttribute("email")%>';   //참고: JSP 구문 사용하기위해서 따옴표 써서 null 도 문자열값으로 들어감
+            let sessionEmail = '<%=(String) session.getAttribute("email")%>';   //참고: JSP 구문 사용하기위해서 따옴표 써서 null 도 문자열값으로 들어감
+            let sessionRegion1 = '<%=(String) session.getAttribute("region1")%>';
+            let sessionRegion2 = '<%=(String) session.getAttribute("region2")%>';
+            let sessionRegion3 = '<%=(String) session.getAttribute("region3")%>';
 
             $(document).ready(function() {
 			    var page = 0;   //페이지 로딩 후 페이지 0
 
                 //로딩 후 목록 가져오기
-                getHotplaceAll(page);
+                if (sessionRegion1 == 'null') {
+                    getHotplaceAll(page);
+                } else {
+                    getHotplace(page, sessionRegion1);
+                    $('#searchBox').val(sessionRegion1);
+                }
 
                 //스크롤 맨 아래 까지 가면 실행
                 $(window).scroll(function() {
@@ -182,7 +190,7 @@
                         $('#cardContents').empty();
                         $('#modalContents').empty();
                         page = 0;
-                        getHotplaceAll(page, searchWord);
+                        getHotplace(page, searchWord);
                     }
                 });
 
@@ -251,7 +259,7 @@
                                                                 '<h5 class="font-weight-normal">'+cardResult.title+'</h5>'+
                                                             '</div>'+
                                                             '<div class="col-sm-2">'+
-                                                                '<small class="text-info float-right"  id="postCount'+(index+pageOffset)+'"></small>'+
+                                                                '<small class="dark-grey-text float-right" id="postCount'+(index+pageOffset)+'"></small>'+
                                                             '</div>'+
                                                         '</div>'+
                                                         '<div class="row">'+
@@ -359,7 +367,7 @@
                                                                 '<h5 class="font-weight-normal">'+cardResult.title+'</h5>'+
                                                             '</div>'+
                                                             '<div class="col-sm-2">'+
-                                                                '<small class="text-info float-right">'+cardResult.post_count+'</small>'+
+                                                                '<small class="dark-grey-text float-right">'+cardResult.post_count+'</small>'+
                                                             '</div>'+
                                                         '</div>'+
                                                         '<div class="row">'+
