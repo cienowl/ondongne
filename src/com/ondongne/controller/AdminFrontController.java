@@ -19,6 +19,7 @@ import com.ondongne.action.AdminNoticeDeleteAction;
 import com.ondongne.action.AdminNoticeUpdateAction;
 import com.ondongne.action.AdminNoticeWriteAction;
 import com.ondongne.action.AdminSearchCircleAction;
+import com.ondongne.action.AdminSearchNoticeAction;
 import com.ondongne.action.AdminSearchSellAction;
 import com.ondongne.action.AdminSearchUserAction;
 import com.ondongne.action.AdminSigninAction;
@@ -80,6 +81,16 @@ public class AdminFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
+		}
+		
+		else if(command.equals("/searchNotice.admin")) {
+//			dashboard에서 공지사항 검색
+			action = new AdminSearchNoticeAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		else if(command.equals("/users.admin")) {

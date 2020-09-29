@@ -88,5 +88,18 @@ public class DataAccessNotice {
 		return updateCount;
 
 	}
+	
+	// 공지사항 검색
+	public List<NoticeBean> searchNotice(String keyword){
+		
+		sqlFactory = getConnection();
+		SqlSession sqlsession = sqlFactory.openSession();
+		
+		List<NoticeBean> searchNoticeList = sqlsession.selectList("searchNoticeList",keyword);
+		
+		return searchNoticeList;
+		
+	}
+	
 
 }

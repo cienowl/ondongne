@@ -87,6 +87,9 @@ public class AdminService {
 		return deleteSuccess;
 	}
 	
+	// 검색한 공지사항 불러오기
+	
+	
 	public boolean insertHotplace(HotplaceBean dtoHotplaceBean) {
 		
 		boolean isWriteSuccess = false;
@@ -154,6 +157,14 @@ public class AdminService {
 		List<DataTransferCircle> searchCircleList = daoCircle.searchCircle(searchWord);
 		
 		return searchCircleList;
+	}
+	
+	public List<NoticeBean> getSearchNotice(String searchWord){
+		
+		DataAccessNotice daoNotice = DataAccessNotice.getinstance();
+		List<NoticeBean> searchNoticeList = daoNotice.searchNotice(searchWord);
+		
+		return searchNoticeList;
 	}
 	
 	// 판매 전체 게시물 불러오기

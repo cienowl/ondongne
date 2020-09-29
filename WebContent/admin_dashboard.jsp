@@ -71,8 +71,8 @@
                             <span>Dashboard</span> --%>
                         </h4>
                         <%-- TODO: 공지사항 검색 --%>
-                        <form class="d-flex justify-content-center">
-                            <input type="search" placeholder="Type your query" aria-label="Search" class="form-control"/>
+                        <form class="d-flex justify-content-center" method="POST" action="searchNotice.admin">
+                            <input type="search" placeholder="공지사항 검색" aria-label="Search" class="form-control" name="search"/>
                             <button class="btn btn-primary btn-sm my-0 p" type="submit">
                             <i class="fas fa-search"></i>
                             </button>

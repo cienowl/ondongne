@@ -20,6 +20,11 @@
 	<update id="updateNotice" parameterType="com.ondongne.dto.NoticeBean">
 		update notice set title=#{title}, content=#{content}, postdate=now() where id=#{id}
 	</update>
+	
+	<select id="searchNoticeList" resultType="com.ondongne.dto.NoticeBean" parameterType="String">
+		select * from notice WHERE id LIKE CONCAT('%',#{searchWord},'%') OR title LIKE CONCAT('%',#{searchWord},'%') OR content LIKE CONCAT('%',#{searchWord},'%') OR postdate LIKE CONCAT('%',#{searchWord},'%') order by postdate;
+	</select>
 
 </mapper>
 
+ 
