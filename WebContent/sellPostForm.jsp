@@ -179,7 +179,7 @@
             $("input:text[numbersOnly]").on("keyup", function() {
                 $(this).val($(this).val().replace(/[^0-9]/g,""));
             });
-            
+
             //파일 사이즈 5Mb 제한
             function imgChecker(inputFile) {
                 //용량 체크

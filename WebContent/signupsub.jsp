@@ -43,7 +43,7 @@
 			String email = (String)session.getAttribute("email");
 			SqlSessionFactory factory = DataAccessUsers.getConnection();
 			SqlSession sqlSession = factory.openSession();
-			
+
 			DataTransferUsers userBean = sqlSession.selectOne("userInfo",email);
 			sqlSession.close();
 		%>
@@ -79,7 +79,7 @@
                             <button type="button" name="image_reset" id="image_reset" class="btn light-green lighten-4 btn-sm" ><i class="fas fa-undo mr-1"></i>프로필사진 초기화</button>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputName">이름</label>
@@ -92,7 +92,7 @@
                         <div class="form-group col-md-6">
                             <label for="inputPhone">전화번호</label>
                             <input type="text" class="form-control" id="inputPhone" maxlength="11" oninput="numberMaxLength(this);" name="inputPhone" value="<%=phone%>" numbersOnly/>
-                            
+
                         </div>
                     </div>
 
@@ -232,18 +232,18 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputPassword1">비밀번호</label>
                             <input type="password" class="form-control" id="inputPassword1" placeholder="" name="inputPassword1"/>
                         </div>
-                        
+
                         <div class="form-group col-md-6">
                             <label for="inputPassword2">비밀번호확인</label>
                             <input type="password" class="form-control" id="inputPassword2" placeholder="" name="inputPassword2"/>
                         </div>
-                        
+
                     </div>
 
                     <button type="submit" class="btn btn-primary" onclick="return validation();">저장</button>
@@ -265,7 +265,7 @@
                             <button type="button" name="image_reset" id="image_reset" class="btn light-green lighten-4 btn-sm" ><i class="fas fa-undo mr-1"></i>프로필사진 초기화</button>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputName">이름</label>
@@ -278,7 +278,7 @@
                         <div class="form-group col-md-6">
                             <label for="inputPhone">전화번호</label>
                             <input type="text" class="form-control" id="inputPhone" maxlength="11" oninput="numberMaxLength(this);" placeholder="- 없이 입력" name="inputPhone" value="<%=phone%>" numbersOnly/>
-                            
+
                         </div>
                     </div>
 
@@ -423,18 +423,18 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputPassword1">비밀번호</label>
                             <input type="password" class="form-control" id="inputPassword1" placeholder="" name="inputPassword1"/>
                         </div>
-                        
+
                         <div class="form-group col-md-6">
                             <label for="inputPassword2">비밀번호확인</label>
                             <input type="password" class="form-control" id="inputPassword2" placeholder="" name="inputPassword2"/>
                         </div>
-                        
+
                     </div>
 
                     <button type="submit" class="btn btn-primary" onclick="return validation();">저장</button>
@@ -664,7 +664,7 @@
 
             }
         </script>
-        
+
         <script>
             //전화번호 숫자만
             $("input:text[numbersOnly]").on("keyup", function() {

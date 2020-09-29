@@ -25,8 +25,6 @@
         <link href="css/mdb.min.css" rel="stylesheet"/>
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet"/>
-        <!-- Datatable -->
-        <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
 
         <!-- Modal scrolling place -->
         <style>
@@ -71,7 +69,6 @@
                             <span>/</span>
                             <span>circle posts</span>
                         </h4>
-						
                         <form class="d-flex justify-content-center" method="POST" action="searchCircle.admin">
                             <input type="search" placeholder="게시물 검색" aria-label="Search" class="form-control" name="search"/>
                             <button class="btn btn-primary btn-sm my-0 p" type="submit">
@@ -79,8 +76,6 @@
                             </button>
                             <button class="btn btn-primary btn-sm my-0 p" id="viewAllBtn" >All</button>
                         </form>
-                        
-                        
                     </div>
                 </div>
                 <!-- Heading -->
@@ -110,7 +105,7 @@
                                     <form method="POST">
                                    		<input type="hidden" name="postid" id="postid" value="<%= circleList.get(i).getId()%>"/>
                                    		<input type="hidden" name="title" id="title" value="<%=circleList.get(i).getTitle() %>" />
-                                   		
+
                                         <tr class="text-center" style="cursor: pointer;" data-toggle="modal" data-target="#<%= dataTarget %>">
                                             <td><%= circleList.get(i).getId() %></td>
                                             <td><%= circleList.get(i).getTitle() %></td>
@@ -134,14 +129,6 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-        <%-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --%>
-        <script type="text/javascript">
-            jQuery.noConflict();
-        </script>
-        <!-- Datatable -->
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-        <!-- Datatable -->
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
@@ -214,14 +201,6 @@
             }
         </script>
 
-        <!-- Datatable -->
-        <script>
-        $(document).ready( function () {
-            $('#noticeTable').DataTable();
-        } );
-        </script>
-        
-        
         <!-- 소모임 게시글 삭제 확인 -->
         <script>
 			function delete_check_circle(form) {
@@ -234,7 +213,7 @@
 				}
 			}
        	</script>
-       	
+
        	<!-- 게시물 전체 보기 -->
        	<script>
 	       	$(document).ready(function(){
@@ -242,9 +221,7 @@
 	       			window.location.reload();
 	       		})
 	       	})
-	       
-       	</script>
-       	
 
+       	</script>
     </body>
 </html>

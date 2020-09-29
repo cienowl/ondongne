@@ -75,7 +75,7 @@
                 <section class="team-section dark-grey-text">
 
                     <h2 class="font-weight-bold mb-3">ON동네 만든이들</h2>
-                    
+
                     <hr class=""/>
 
                     <p class="lead text-muted mx-auto mt-4 pt-2 mb-5">ON동네를 만들고 있는 팀원들을 만나보세요!</p>

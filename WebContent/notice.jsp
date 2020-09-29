@@ -50,7 +50,6 @@
         <main>
             <div class="container my-5 pt-5">
                 <h2 class="font-weight-bold dark-grey-text mb-3">공지사항</h2>
-                
                 <hr class=""/>
                 <div class="list-group list-group-flush mt-5">
                     <!-- 공지사항 목록 -->

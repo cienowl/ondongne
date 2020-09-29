@@ -26,8 +26,6 @@
         <link href="css/mdb.min.css" rel="stylesheet"/>
         <!-- Your custom styles (optional) -->
         <link href="css/style.min.css" rel="stylesheet"/>
-        <!-- Datatable -->
-        <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
 
         <!-- Modal scrolling place -->
         <style>
@@ -72,12 +70,13 @@
                             <span>/</span>
                             <span>dongneposts</span>
                         </h4>
-
+                        <%-- TODO: 검색기능 --%>
                         <form class="d-flex justify-content-center">
                             <input type="search" placeholder="Type your query" aria-label="Search" class="form-control"/>
                             <button class="btn btn-primary btn-sm my-0 p" type="submit">
                             <i class="fas fa-search"></i>
                             </button>
+                            <button class="btn btn-primary btn-sm my-0 p" id="viewAllBtn" >All</button>
                         </form>
                     </div>
                 </div>
@@ -357,10 +356,6 @@
         <script type="text/javascript">
             jQuery.noConflict();
         </script>
-        <!-- Datatable -->
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-        <!-- Datatable -->
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
@@ -558,13 +553,5 @@
                 }).open();
             }
         </script>
-
-        <!-- Datatable -->
-        <script>
-        $(document).ready( function () {
-            $('#noticeTable').DataTable();
-        } );
-        </script>
-
     </body>
 </html>

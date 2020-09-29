@@ -87,8 +87,8 @@
 
                         <div class="col-md-6 mb-4">
                             <h5 class="font-weight-bold mb-3">동네 장터의 거래 및 환불은 어떻게 이루어지나요?</h5>
-                            <p class="text-muted">동네 장터에서는 거래 당사자들끼리 자유롭게 진행할 수 있습니다. 
-                            구매자의 무리한 요구와 비매너적인 언행에는 거절할 권리가 있어요. 환불 관련 문제가 생겼을 때, 
+                            <p class="text-muted">동네 장터에서는 거래 당사자들끼리 자유롭게 진행할 수 있습니다.
+                            구매자의 무리한 요구와 비매너적인 언행에는 거절할 권리가 있어요. 환불 관련 문제가 생겼을 때,
                             판매자의 실수나 잘못이 없는 다음과 같은 상황이라면 거부할 권리가 있습니다.</p>
                         </div>
 
@@ -100,32 +100,32 @@
 
                         <div class="col-md-6 mb-4">
                             <h5 class="font-weight-bold mb-3">게시글들은 어떻게 수정하나요?</h5>
-                            <p class="text-muted">게시글 수정하는 방법은 아주 간단해요. 
+                            <p class="text-muted">게시글 수정하는 방법은 아주 간단해요.
                             [마이페이지 > 수정하려는 게시글의 수정 버튼 > 수정] 에서 내용을 자유롭게 수정해 주시면 됩니다.
                              또는 자신의 글에서 수정할 수도 있습니다. 이때 게시글 내용, 사진, 가격, 카테고리를 수정할 수 있어요.</p>
                         </div>
 
                         <div class="col-md-6 mb-4">
                             <h5 class="font-weight-bold mb-3">회원정보 수정 및 탈퇴는 어떻게 하나요?</h5>
-                            <p class="text-muted">[마이페이지 > 프로필 사진] 을 클릭해 보세요. [프로필 설정] 페이지로 이동합니다. 
-                            [프로필 설정] 페이지에서 사진과 닉네임을 자유롭게 변경할 수 있어요. 탈퇴는 [마이페이지 > 탈퇴하기] 에서 탈퇴할 수 있어요. 
+                            <p class="text-muted">[마이페이지 > 프로필 사진] 을 클릭해 보세요. [프로필 설정] 페이지로 이동합니다.
+                            [프로필 설정] 페이지에서 사진과 닉네임을 자유롭게 변경할 수 있어요. 탈퇴는 [마이페이지 > 탈퇴하기] 에서 탈퇴할 수 있어요.
                             탈퇴하면 모든 게시글과 채팅 내용이 삭제되고 복구할 수 없으니 신중하게 탈퇴해 주세요.</p>
                         </div>
 
                         <div class="col-md-6 mb-4">
                             <h5 class="font-weight-bold mb-3">관심 지역 변경은 어떻게 하나요?</h5>
-                            <p class="text-muted">[마이페이지 > 관심지역 설정하기] 에서 변경가능합니다. 
+                            <p class="text-muted">[마이페이지 > 관심지역 설정하기] 에서 변경가능합니다.
                             관심지역은 3곳까지 설정 가능하며, 동네도 변경/추가해 보세요.</p>
                         </div>
 
                         <div class="col-md-6 mb-4">
                             <h5 class="font-weight-bold mb-3">ON동네에 대해 알려주세요.</h5>
-                            <p class="text-muted">동네의 장소와 직거래, 소모임 등을 이웃과 함께 공유하기 때문에 믿을 수 있고 편리합니다. 
+                            <p class="text-muted">동네의 장소와 직거래, 소모임 등을 이웃과 함께 공유하기 때문에 믿을 수 있고 편리합니다.
                             동네의 이웃과 함께인 만큼 무엇보다 '매너'를 중요하게 생각해요.</p>
                         </div>
                     </div>
 
-                    <div class="row dark-grey-text">
+                    <%-- <div class="row dark-grey-text">
 
                         <div class="col-md-6 mb-5">
                             <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
@@ -283,7 +283,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --%>
 
                 </section>
             </div>

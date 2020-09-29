@@ -28,8 +28,8 @@
             <div class="col-xs-6 col-md-3">
                 <h6>프로젝트</h6>
                 <ul class="footer-links">
-                    <li><a href="project.ondongne">프로젝트소개</a></li>
-                    <li><a href="team.ondongne">Team Avengers</a></li>
+                    <%-- <li><a href="project.ondongne">프로젝트소개</a></li> --%>
+                    <li><a href="team.ondongne">ON동네팀</a></li>
                     <li><a href="index.admin">관리자페이지</a></li>
                 </ul>
             </div>
