@@ -79,7 +79,10 @@
                         </div>
                          <div class="form-group col-md-6">
                             <label for="pictures">사진</label><br/>
-                            <input type="file" name="pictures" id="pictures" value="<%=picturesName%>"/>
+                             <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="pictures" name="pictures" aria-describedby="inputFile" onchange="imgChecker(this);" accept=".jpg, .png, .jpeg"/>
+                                <label class="custom-file-label" for="pictures">사진 선택</label>
+                            </div>
                         </div>
                     </div>
 
