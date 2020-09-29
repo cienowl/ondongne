@@ -157,10 +157,10 @@
                     <div class="row ">
                         <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                             <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.circle';">
-                                <div class="card-img-top zoom" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/58.jpg'); background-position: center; background-size: cover; height: 250px;"></div>
+                                <div class="card-img-top zoom" style="background-image: url('img/index/circleIndex.jpg'); background-position: center; background-size: cover; height: 250px;"></div>
                                 <div class="card-body">
                                     <a href="#!" class="dark-grey-text"><h3>우리동네 소모임</h3></a>
-                                    <p class="card-title text-muted font-small mt-3 mb-2">
+                                    <p class="card-title text-muted mt-3 mb-2">
 	                                    근처 가까운 곳에서 만들어진 동네 모임부터, 내가 원한 주제의 모임까지!
 										나와 같은 관심사를 가진 사람들과 함께 다양한 모임 동호회 활동을 하면서 천천히 스며들 듯 친해질 수 있어요. 다양한 지역과 관심사의 동호회를 찾아 여가시간을 의미 있게 보내세요!
 									</p>
@@ -172,7 +172,7 @@
                                 <div class="card-img-top zoom" style="background-image: url('img/index/fleemarket.png'); background-position: center; background-size: cover; height: 250px;"></div>
                                 <div class="card-body">
                                     <a href="#!" class="dark-grey-text"><h3>우리동네 장터</h3></a>
-                                    <p class="card-title text-muted font-small mt-3 mb-2">
+                                    <p class="card-title text-muted mt-3 mb-2">
                                     	동네 주민들과 가깝고 따뜻한 거래를 원하신다면 지금 시작해보세요!
 										나에게 필요 없어진 물건을 팔고 싶을 때, 갖고 싶은 제품을 저렴한 가격에 사고 싶을 때 '온동네'를 통해 가까운 곳에서 물건을 사고 팔수 있어요. 우리 동네 장터를 지금 바로 둘러보세요!
                                     </p>
@@ -184,7 +184,7 @@
                                 <div class="card-img-top zoom" style="background-image: url('img/index/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg'); background-position: center; background-size: cover; height: 250px;"></div>
                                 <div class="card-body">
                                     <a href="#!" class="dark-grey-text"><h3>우리동네 명소</h3></a>
-                                    <p class="card-title text-muted font-small mt-3 mb-2">
+                                    <p class="card-title text-muted mt-3 mb-2">
                                     	주위 맛집부터 명소까지 한번에! 내 주변의 맛집과 명소 위치를 지도로 확인하고 스크랩해서 볼 수 있어요. 
                                     	우리 동네는 물론, 가고싶었던 곳의 맛집과 명소까지 찾아볼 수 있어요. 지금 바로 온동네에서 우리 동네 맛집과 명소를 둘러보세요! 
                                     </p>
@@ -206,45 +206,45 @@
                         <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">질문이 생겼나요? ON동네에 궁금한점을 찾아보세요!</p>
                         <div class="row text-center text-md-left pt-3">
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-bold mb-3">동네 소모임은 어떻게 만드나요?</h5>
-                                <p class="text-muted">좌측 상단의 동네 소모임으로 이동하여 소모임 글쓰기를 클릭 후 모임이름,
+                                <h4 class="font-weight-bold mb-3">동네 소모임은 어떻게 만드나요?</h4>
+                                <p class="text-muted ">좌측 상단의 동네 소모임으로 이동하여 소모임 글쓰기를 클릭 후 모임이름,
                                 관심사, 설명, 지역 등을 고르신 후 모임만들기를 누르시면 됩니다.</p>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-bold mb-3">모임 가입은 어떻게 하나요?</h5>
+                                <h4 class="font-weight-bold mb-3">모임 가입은 어떻게 하나요?</h4>
                                 <p class="text-muted">내가 관심있는 분야를 검색합니다. 그런 뒤 가입하실 모임을 클릭하면 해당 모임의 내용이 나옵니다.
                                 하단의 모임 가입하기 버튼을 누르면 참여 완료됩니다. 인원이 다 찼을 경우에는 참여가 불가능 합니다.</p>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-bold mb-3">동네 장터의 거래 및 환불은 어떻게 이루어지나요?</h5>
+                                <h4 class="font-weight-bold mb-3">동네 장터의 거래 및 환불은 어떻게 이루어지나요?</h4>
                                 <p class="text-muted">동네 장터에서는 거래 당사자들끼리 자유롭게 진행할 수 있습니다.
                                 구매자의 무리한 요구와 비매너적인 언행에는 거절할 권리가 있어요. 환불 관련 문제가 생겼을 때,
                                 판매자의 실수나 잘못이 없는 다음과 같은 상황이라면 거부할 권리가 있습니다.</p>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-bold mb-3">동네 명소가 뭐에요?</h5>
+                                <h4 class="font-weight-bold mb-3">동네 명소가 뭐에요?</h4>
                                 <p class="text-muted">동네 명소에서는 우리동네에서 가볼만한 곳이나, 유명한 점포들을 검색해 볼 수 있어요!
                                 내가 아직까지 알지 못했던 힙한 장소를 찾아보고 이용해 보세요. 만약 너무나 만족스러웠다면 마이페이지로 스크랩 할 수 있습니다.</p>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-bold mb-3">게시글들은 어떻게 수정하나요?</h5>
+                                <h4 class="font-weight-bold mb-3">게시글들은 어떻게 수정하나요?</h4>
                                 <p class="text-muted">게시글 수정하는 방법은 아주 간단해요.
                                 [마이페이지 > 수정하려는 게시글의 수정 버튼 > 수정] 에서 내용을 자유롭게 수정해 주시면 됩니다.
                                 또는 자신의 글에서 수정할 수도 있습니다. 이때 게시글 내용, 사진, 가격, 카테고리를 수정할 수 있어요.</p>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-bold mb-3">회원정보 수정 및 탈퇴는 어떻게 하나요?</h5>
+                                <h4 class="font-weight-bold mb-3">회원정보 수정 및 탈퇴는 어떻게 하나요?</h4>
                                 <p class="text-muted">[마이페이지 > 프로필 사진] 을 클릭해 보세요. [프로필 설정] 페이지로 이동합니다.
                                 [프로필 설정] 페이지에서 사진과 닉네임을 자유롭게 변경할 수 있어요. 탈퇴는 [마이페이지 > 탈퇴하기] 에서 탈퇴할 수 있어요.
                                 탈퇴하면 모든 게시글과 채팅 내용이 삭제되고 복구할 수 없으니 신중하게 탈퇴해 주세요.</p>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-bold mb-3">관심 지역 변경은 어떻게 하나요?</h5>
+                                <h4 class="font-weight-bold mb-3">관심 지역 변경은 어떻게 하나요?</h4>
                                 <p class="text-muted">[마이페이지 > 관심지역 설정하기] 에서 변경가능합니다.
                                 관심지역은 3곳까지 설정 가능하며, 동네도 변경/추가해 보세요.</p>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <h5 class="font-weight-bold mb-3">ON동네에 대해 알려주세요.</h5>
+                                <h4 class="font-weight-bold mb-3">ON동네에 대해 알려주세요.</h4>
                                 <p class="text-muted">동네의 장소와 직거래, 소모임 등을 이웃과 함께 공유하기 때문에 믿을 수 있고 편리합니다.
                                 동네의 이웃과 함께인 만큼 무엇보다 '매너'를 중요하게 생각해요.</p>
                             </div>
