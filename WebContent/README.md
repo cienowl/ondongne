@@ -180,7 +180,7 @@ CREATE TABLE `notice` (
   `title` varchar(100) NOT NULL,
   `content` text NOT NULL,
   `postdate` datetime NOT NULL,
-  `author` varchar(45) DEFAULT NULL,
+  `author` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `author_notice_idx` (`author`),
   CONSTRAINT `author_notice` FOREIGN KEY (`author`) REFERENCES `admin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
