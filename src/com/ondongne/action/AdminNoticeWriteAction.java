@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ondongne.dto.ActionForward;
 import com.ondongne.dto.NoticeBean;
@@ -14,15 +15,18 @@ public class AdminNoticeWriteAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
+		
 		ActionForward forward = null;
 
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		String adminId = (String) session.getAttribute("adminId");		
 
 		NoticeBean noticeBean = new NoticeBean();
 		noticeBean.setTitle(title);
 		noticeBean.setContent(content);
+		noticeBean.setAuthor(adminId);
 
 		AdminService adminService = new AdminService();
 		boolean writeSuccess = adminService.postNotice(noticeBean);

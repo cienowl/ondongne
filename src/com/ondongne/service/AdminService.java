@@ -2,6 +2,7 @@ package com.ondongne.service;
 
 import java.util.List;
 
+import com.ondongne.dao.DataAccessAdmin;
 import com.ondongne.dao.DataAccessCircle;
 import com.ondongne.dao.DataAccessHotplace;
 import com.ondongne.dao.DataAccessNotice;
@@ -16,17 +17,26 @@ import com.ondongne.dto.NoticeBean;
 
 public class AdminService {
 
-//	Admin ID and Password
-    final String ADMIN_ID = "admin";
-    final String ADMIN_PASSWORD = "1111";
-
-	public boolean signin(AdminBean adminBean) {
-//		Admin 정보는 DB에 관리하지 않으므로 DB ACCESS가 없음 SERVICE에서 결과 처리함
+	public boolean signin(AdminBean adminInfo) {
 		boolean signinSuccess = false;
-
-	    if (adminBean.getAdminId().equals(ADMIN_ID) && adminBean.getAdminPassword().equals(ADMIN_PASSWORD)) {
-	    	signinSuccess = true;
-	    }
+		
+		String dbAdminId = null;
+		String dbAdminPw = null;
+		
+		String adminId = adminInfo.getId();
+		String adminPw = adminInfo.getPassword();
+		
+		DataAccessAdmin daoAdmin = DataAccessAdmin.getInstance();
+		AdminBean adminBean = daoAdmin.adminSelectOne(adminId);
+		
+		if (adminBean != null) {
+			dbAdminId = adminBean.getId();
+			dbAdminPw = adminBean.getPassword();
+			
+			if (adminId.equals(dbAdminId) && adminPw.equals(dbAdminPw)) {
+		    	signinSuccess = true;
+		    }
+		}
 
 		return signinSuccess;
 	}
@@ -62,28 +72,50 @@ public class AdminService {
 	public boolean updateNotice(NoticeBean noticeBean, String adminId, String adminPw) {
 
 		boolean updateSuccess = false;
+		
+		String dbAdminId = null;
+		String dbAdminPw = null;
+		
+		DataAccessAdmin daoAdmin = DataAccessAdmin.getInstance();
+		AdminBean adminBean = daoAdmin.adminSelectOne(adminId);
+		
+		if (adminBean != null) {
+			dbAdminId = adminBean.getId();
+			dbAdminPw = adminBean.getPassword();
 
-		if (adminId.equals(ADMIN_ID) && adminPw.equals(ADMIN_PASSWORD)) {
-			DataAccessNotice daoNotice = DataAccessNotice.getinstance();
-			int updateCount = daoNotice.updateNotice(noticeBean);
+			if (adminId.equals(dbAdminId) && adminPw.equals(dbAdminPw)) {
+				DataAccessNotice daoNotice = DataAccessNotice.getinstance();
+				int updateCount = daoNotice.updateNotice(noticeBean);
 
-			if (updateCount > 0) updateSuccess = true;
-	    }		
+				if (updateCount > 0) updateSuccess = true;
+		    }
+		}
 
 		return updateSuccess;
 	}
 
 	public boolean deleteNoticeOne(String noticeId, String adminId, String adminPw) {
 
-		boolean deleteSuccess = false;
+		boolean deleteSuccess = false;		
 
-		if (adminId.equals(ADMIN_ID) && adminPw.equals(ADMIN_PASSWORD)) {
-			DataAccessNotice daoNotice = DataAccessNotice.getinstance();
-			int deleteCount = daoNotice.deleteNoticeOne(noticeId);
+		String dbAdminId = null;
+		String dbAdminPw = null;
+		
+		DataAccessAdmin daoAdmin = DataAccessAdmin.getInstance();
+		AdminBean adminBean = daoAdmin.adminSelectOne(adminId);
+		
+		if (adminBean != null) {
+			dbAdminId = adminBean.getId();
+			dbAdminPw = adminBean.getPassword();
 
-			if (deleteCount > 0) deleteSuccess = true;
-	    }		
+			if (adminId.equals(dbAdminId) && adminPw.equals(dbAdminPw)) {
+				DataAccessNotice daoNotice = DataAccessNotice.getinstance();
+				int deleteCount = daoNotice.deleteNoticeOne(noticeId);
 
+				if (deleteCount > 0) deleteSuccess = true;
+		    }	
+		}
+			
 		return deleteSuccess;
 	}
 	
@@ -115,13 +147,24 @@ public class AdminService {
 	public boolean updateHotplace(HotplaceBean hotplaceBean, String adminId, String adminPw) {
 				
 		boolean updateSuccess = false;
-		
-		if (adminId.equals(ADMIN_ID) && adminPw.equals(ADMIN_PASSWORD)) {
-			DataAccessHotplace daoHotplace = DataAccessHotplace.getInstance();
-			int updateCount = daoHotplace.updateHotplace(hotplaceBean);
 
-			if (updateCount > 0) updateSuccess = true;
-	    }		
+		String dbAdminId = null;
+		String dbAdminPw = null;		
+		
+		DataAccessAdmin daoAdmin = DataAccessAdmin.getInstance();
+		AdminBean adminBean = daoAdmin.adminSelectOne(adminId);
+		
+		if (adminBean != null) {
+			dbAdminId = adminBean.getId();
+			dbAdminPw = adminBean.getPassword();
+			
+			if (adminId.equals(dbAdminId) && adminPw.equals(dbAdminPw)) {
+				DataAccessHotplace daoHotplace = DataAccessHotplace.getInstance();
+				int updateCount = daoHotplace.updateHotplace(hotplaceBean);
+	
+				if (updateCount > 0) updateSuccess = true;
+		    }			
+		}		
 		
 		return updateSuccess;
 	}
@@ -129,13 +172,24 @@ public class AdminService {
 	public boolean deleteHotplaceOne(String hotplaceId, String adminId, String adminPw) {
 		
 		boolean deleteSuccess = false;
+		
+		String dbAdminId = null;
+		String dbAdminPw = null;
+		
+		DataAccessAdmin daoAdmin = DataAccessAdmin.getInstance();
+		AdminBean adminBean = daoAdmin.adminSelectOne(adminId);
+		
+		if (adminBean != null) {
+			dbAdminId = adminBean.getId();
+			dbAdminPw = adminBean.getPassword();
 
-		if (adminId.equals(ADMIN_ID) && adminPw.equals(ADMIN_PASSWORD)) {
-			DataAccessHotplace daoHotpalce = DataAccessHotplace.getInstance();
-			int deleteCount = daoHotpalce.deleteHotplaceOne(hotplaceId);
+			if (adminId.equals(dbAdminId) && adminPw.equals(dbAdminPw)) {
+				DataAccessHotplace daoHotpalce = DataAccessHotplace.getInstance();
+				int deleteCount = daoHotpalce.deleteHotplaceOne(hotplaceId);
 
-			if (deleteCount > 0) deleteSuccess = true;
-	    }		
+				if (deleteCount > 0) deleteSuccess = true;
+		    }	
+		}
 
 		return deleteSuccess;
 	}

@@ -1,21 +1,26 @@
 package com.ondongne.dto;
 
 public class AdminBean {
+	private String id;
+	private String password;
+	private int level;
 	
-	private String adminId;
-	private String adminPassword;
-	
-	public String getAdminId() {
-		return adminId;
+	public String getId() {
+		return id;
 	}
-	public void setAdminId(String adminId) {
-		this.adminId = adminId;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getAdminPassword() {
-		return adminPassword;
+	public String getPassword() {
+		return password;
 	}
-	public void setAdminPassword(String adminPassword) {
-		this.adminPassword = adminPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
 }

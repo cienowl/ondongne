@@ -84,7 +84,6 @@ public class MainFrontController extends HttpServlet {
 			}
 		}
 
-		
 		if (forward != null) {		//forward 내 값이 있으면
 			if (forward.isRedirect()) {		//forward의 isRedirect() 값이 true 면
 				response.sendRedirect(forward.getPath());	//forward객체에 새로 setting 된 경로로 이동, sendRedirect는 get, post 방식이 아니기때문에 @WebServlet 항목으로 결정

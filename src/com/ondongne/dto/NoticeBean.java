@@ -6,6 +6,7 @@ public class NoticeBean {
 	private String title;
 	private String content;
 	private String postdate;
+	private String author;
 
 	public int getId() {
 		return id;
@@ -31,5 +32,11 @@ public class NoticeBean {
 	public void setPostdate(String postdate) {
 		this.postdate = postdate;
 	}
-
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	
 }

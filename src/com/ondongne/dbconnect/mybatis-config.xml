@@ -24,6 +24,7 @@
 	<mapper resource="com/ondongne/dbconnect/mapper_joincircle.xml"/>
 	<mapper resource="com/ondongne/dbconnect/mapper_joinsell.xml"/>
 	<mapper resource="com/ondongne/dbconnect/mapper_notice.xml"/>
+	<mapper resource="com/ondongne/dbconnect/mapper_admin.xml"/>
 </mappers>
 
 </configuration>

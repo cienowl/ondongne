@@ -154,7 +154,7 @@ hotplace: 동네장소 테이블
 
 ~~~sql
 CREATE TABLE `hotplace` (
-  `admin_id` varchar(50) NOT NULL,
+  `admin_id` varchar(20) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `pictures` text NOT NULL,
@@ -166,8 +166,10 @@ CREATE TABLE `hotplace` (
   `lastupdate` datetime DEFAULT NULL,
   `description` text,
   `post_count` int(11) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+  PRIMARY KEY (`id`),
+  KEY `hotplace_author_idx` (`admin_id`),
+  CONSTRAINT `hotplace_author` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT DEFAULT CHARSET=utf8
 ~~~
 
 notice: 공지사항 테이블
@@ -178,8 +180,11 @@ CREATE TABLE `notice` (
   `title` varchar(100) NOT NULL,
   `content` text NOT NULL,
   `postdate` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `author` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `author_notice_idx` (`author`),
+  CONSTRAINT `author_notice` FOREIGN KEY (`author`) REFERENCES `admin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAUTL DEFAULT CHARSET=utf8
 ~~~
 
 helper_circle : 참여한 소모임 테이블
@@ -219,4 +224,15 @@ CREATE TABLE `helper_hotplace` (
   CONSTRAINT `scrap_email` FOREIGN KEY (`scrap_email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `scrap_id` FOREIGN KEY (`scrap_id`) REFERENCES `hotplace` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+~~~
+
+admin : 어드민 정보
+
+~~~sql
+CREATE TABLE `admin` (
+  `id` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `level` int(11) DEFAULT '5',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ~~~

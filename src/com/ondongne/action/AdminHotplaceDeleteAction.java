@@ -17,7 +17,7 @@ public class AdminHotplaceDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String realFolder = "";
-		String saveFolder = "/img/hotplace/storepics";
+		String saveFolder = "/img/hotplace";
 		int fileSize = 5 * 1024 * 1024;
 		
 		ServletContext context = request.getServletContext();
@@ -43,7 +43,7 @@ public class AdminHotplaceDeleteAction implements Action {
 		} else {
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("../dongneposts.admin");
+			forward.setPath("../hotplace.admin");
 		}
 		
 		return forward;

@@ -14,12 +14,10 @@ public class AdminSearchNoticeAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		ActionForward forward = null;
 		
-		if(session.getAttribute("adminId") != null) {
-			
+		if (session.getAttribute("adminId") != null) {
 			String searchWord = (String) request.getParameter("search");
 			AdminService adminService = new AdminService();
 			
@@ -29,13 +27,10 @@ public class AdminSearchNoticeAction implements Action{
 			
 			forward = new ActionForward();
 			forward.setPath("admin_dashboard.jsp");
-		
-		}else {
-			
+		} else {
 			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath("index.admin");
-			
 		}
 		
 		return forward;

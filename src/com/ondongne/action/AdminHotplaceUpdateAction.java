@@ -18,8 +18,6 @@ public class AdminHotplaceUpdateAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-//		HttpSession session = request.getSession();
-		
 		String realFolder = "";
 		String saveFolder = "/img/hotplace";
 		int fileSize = 5 * 1024 * 1024;

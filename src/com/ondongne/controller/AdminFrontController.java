@@ -54,7 +54,6 @@ public class AdminFrontController extends HttpServlet {
 		}
 
 		else if (command.equals("/signin.admin")) {
-//			TODO: RSA 암호화 필요
 //			admin 페이지 로그인 action
 			action = new AdminSigninAction();
 			try {
@@ -263,9 +262,6 @@ public class AdminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
 		
 		if (forward != null) {		//forward 내 값이 있으면
 			if (forward.isRedirect()) {		//forward의 isRedirect() 값이 true 면

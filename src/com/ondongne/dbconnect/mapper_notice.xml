@@ -5,8 +5,8 @@
 <mapper namespace="notice">
 
 	<insert id="insertNotice" parameterType="com.ondongne.dto.NoticeBean">
-		insert into notice(title, content, postdate)
-		values(#{title}, #{content}, now())
+		insert into notice(title, content, postdate, author)
+		values(#{title}, #{content}, now(), #{author})
 	</insert>
 	
 	<select id="selectNoticeAll" resultType="com.ondongne.dto.NoticeBean">
@@ -18,7 +18,7 @@
 	</delete>
 	
 	<update id="updateNotice" parameterType="com.ondongne.dto.NoticeBean">
-		update notice set title=#{title}, content=#{content}, postdate=now() where id=#{id}
+		update notice set title=#{title}, content=#{content}, postdate=now(), author=#{author} where id=#{id}
 	</update>
 	
 	<select id="searchNoticeList" resultType="com.ondongne.dto.NoticeBean" parameterType="String">

@@ -24,11 +24,13 @@ public class AdminNoticeUpdateAction implements Action {
 			String adminPw = request.getParameter("adminPw");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+			String author = (String) session.getAttribute("adminId");
 
 			NoticeBean noticeBean = new NoticeBean();
 			noticeBean.setId(noticeId);
 			noticeBean.setTitle(title);
 			noticeBean.setContent(content);
+			noticeBean.setAuthor(author);
 
 			AdminService adminService = new AdminService();
 			boolean updateSuccess = adminService.updateNotice(noticeBean, adminId, adminPw);
