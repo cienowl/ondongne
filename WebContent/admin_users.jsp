@@ -128,9 +128,6 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-        <script type="text/javascript">
-            jQuery.noConflict();
-        </script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
@@ -144,6 +141,15 @@
             new WOW().init();
         </script>
 
+        <!-- 게시물 전체 보기 -->
+       	<script>
+	       	$(document).ready(function(){
+	       		$("#viewAllBtn").on('click',function(){
+	       			window.location.reload();
+	       		});
+	       	})
+       	</script>
+
         <!-- 회원 삭제 확인 -->
         <script>
 			function delete_check_circle(form) {
@@ -155,15 +161,6 @@
 					alert("삭제가 취소되었습니다.");
 				}
 			}
-       	</script>
-
-       	<!-- 게시물 전체 보기 -->
-       	<script>
-	       	$(document).ready(function(){
-	       		$("#viewAllBtn").on('click',function(){
-	       			window.location.reload();
-	       		})
-	       	})
        	</script>
     </body>
 </html>

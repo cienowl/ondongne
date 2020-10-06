@@ -207,9 +207,6 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-        <script type="text/javascript">
-            jQuery.noConflict();
-        </script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
@@ -222,6 +219,15 @@
             // Animations initialization
             new WOW().init();
         </script>
+
+        <!-- 게시물 전체 보기 -->
+       	<script>
+	       	$(document).ready(function(){
+	       		$("#viewAllBtn").on('click',function(){
+	       			window.location.reload();
+	       		});
+	       	})
+       	</script>
 
         <!-- kakao 우편번호 서비스 http://postcode.map.daum.net/guide -->
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -282,14 +288,5 @@
                 }).open();
             }
         </script>
-
-        <!-- 게시물 전체 보기 -->
-       	<script>
-	       	$(document).ready(function(){
-	       		$("#viewAllBtn").on('click',function(){
-	       			window.location.reload();
-	       		})
-	       	})
-       	</script>
     </body>
 </html>
