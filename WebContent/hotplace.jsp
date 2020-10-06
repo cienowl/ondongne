@@ -82,7 +82,7 @@
 			<%} %>
 
             <!-- 페이지 화면 헤더 -->
-            <section class="wow fadeIn" style="background-image: url('img/index/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <section class="wow fadeIn" style="background-image: url('img/hotplace/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
                 <div class="mask rgba-black-strong py-5">
                     <div class="container text-center my-5">
                         <h1 class="font-weight-bold text-center white-text pt-5 pb-3">우리동네 명소</h1>

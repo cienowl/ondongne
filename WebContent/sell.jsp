@@ -79,7 +79,7 @@
                 writeButtonSelector = "<a type=\"button\" class=\"btn btn-outline-white btn-lg\" href=\"postform.sell\">판매장터 글쓰기</a>";
             }
             %>
-            <section class="wow fadeIn" style="background-image: url('img/index/fleemarket.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <section class="wow fadeIn" style="background-image: url('img/sell/fleemarket.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
                 <div class="mask rgba-black-strong py-5">
                     <div class="container text-center my-5">
                         <h1 class="font-weight-bold text-center white-text pt-5 pb-3">우리동네 판매장터</h1>

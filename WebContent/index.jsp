@@ -157,7 +157,7 @@
                     <div class="row ">
                         <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                             <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.circle';">
-                                <div class="card-img-top zoom" style="background-image: url('img/index/circleIndex.jpg'); background-position: center; background-size: cover; height: 250px;"></div>
+                                <div class="card-img-top zoom" style="background-image: url('img/circle/circleIndex.jpg'); background-position: center; background-size: cover; height: 250px;"></div>
                                 <div class="card-body">
                                     <a href="#!" class="dark-grey-text"><h3>우리동네 소모임</h3></a>
                                     <p class="card-title text-muted mt-3 mb-2">
@@ -169,7 +169,7 @@
                         </div>
                         <div class="col-lg-4 col-md-12 mb-md-0 mb-4">
                             <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.sell';">
-                                <div class="card-img-top zoom" style="background-image: url('img/index/fleemarket.png'); background-position: center; background-size: cover; height: 250px;"></div>
+                                <div class="card-img-top zoom" style="background-image: url('img/sell/fleemarket.png'); background-position: center; background-size: cover; height: 250px;"></div>
                                 <div class="card-body">
                                     <a href="#!" class="dark-grey-text"><h3>우리동네 장터</h3></a>
                                     <p class="card-title text-muted mt-3 mb-2">
@@ -181,7 +181,7 @@
                         </div>
                         <div class="col-lg-4 col-md-12 mb-0">
                             <div class="card hoverable" style="cursor: pointer;" onclick="javascript:location.href='view.hotplace';">
-                                <div class="card-img-top zoom" style="background-image: url('img/index/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg'); background-position: center; background-size: cover; height: 250px;"></div>
+                                <div class="card-img-top zoom" style="background-image: url('img/hotplace/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg'); background-position: center; background-size: cover; height: 250px;"></div>
                                 <div class="card-body">
                                     <a href="#!" class="dark-grey-text"><h3>우리동네 명소</h3></a>
                                     <p class="card-title text-muted mt-3 mb-2">
