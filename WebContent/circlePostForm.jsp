@@ -175,6 +175,44 @@
                     <div class="clearfix mb-4"></div>
                 </form>
 
+                <section class="dark-grey-text my-5 py-5">
+                    <h2 class="font-weight-bold dark-grey-text px-4 mb-3">ON동네 서비스</h2>
+                    <hr class="mb-5"/>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img3.jpg" class="img-fluid" alt="Sample image">
+                                <div class="mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.circle">
+                                        우리동네 소모임 <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src=" https://mdbootstrap.com/img/Photos/Others/img4.jpg" class="img-fluid" alt="Sample image">
+                                <div class=" mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.sell">
+                                        우리동네 장터 <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <div class="view overlay z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/img8.jpg" class="img-fluid" alt="Sample image">
+                                <div class="mask flex-center peach-gradient-rgba">
+                                    <a class="btn btn-lg btn-outline-white btn-rounded" href="view.hotplace">
+                                        우리동네 명소 <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
             </div>
 
         </main>
@@ -185,13 +223,13 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
         <!-- Initializations -->
         <script type="text/javascript">
             // Animations initialization

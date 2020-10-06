@@ -42,7 +42,7 @@
     </head>
 
     <body>
-        <div class="view full-page-intro" style="background-image: url('img/admin/admin_index_backgroundimg.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view full-page-intro wow fadeIn" style="background-image: url('img/admin/admin_index_backgroundimg.jpg'); background-repeat: no-repeat; background-size: cover;">
             <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
                 <div class="container">
                     <div class="row wow fadeIn">
@@ -106,6 +106,7 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
         <!-- Initializations -->
         <script type="text/javascript">
             // Animations initialization

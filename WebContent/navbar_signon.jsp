@@ -13,7 +13,7 @@
 </style>
 
 <!--Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar wow fadeIn">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.ondongne">ON동네</a>
 

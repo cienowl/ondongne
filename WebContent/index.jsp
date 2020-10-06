@@ -198,7 +198,7 @@
 
             <!-- Section: QnA -->
             <div class="faq-background-color my-5 py-5">
-                <div class="container my-5 pt-5 fadeIn">
+                <div class="container my-5 pt-5 wow fadeIn">
                     <section class="pb-5">
                         <%-- <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">FAQ</h6> --%>
                         <h1 class="font-weight-bold dark-grey-text mb-4 pb-2 text-center">자주 묻는 질문</h1>
@@ -255,7 +255,7 @@
             <!-- /Section: QnA -->
 
             <!-- Section: Call to action -->
-            <div class="container my-5 py-5">
+            <div class="container my-5 py-5 wow fadeIn">
                 <section class="text-center px-md-5 mx-md-5 my-5 py-5 dark-grey-text fadeIn">
                     <h1 class="font-weight-bold mb-5 display-4">나에게 딱 맞는 동네정보 찾기</h1>
                     <h4 class="text-center mx-auto">회원가입 후, 지금 가장 인기있는 동네 소식을 찾아보세요.</h4>
@@ -273,6 +273,27 @@
             </div>
             <!-- /Section: Call to action -->
 
+            <!-- Button trigger modal -->
+            <%-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#frameModalBottom">
+                Launch demo modal
+            </button> --%>
+
+            <!-- Frame Modal Bottom -->
+            <div class="modal fade top" id="portfolioInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <!-- Add class .modal-frame and then add class .modal-bottom (or other classes from list above) to set a position to the modal -->
+                <div class="modal-dialog modal-frame modal-top" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row d-flex justify-content-center align-items-center">
+                                <p class="pt-3 pr-2 h4 dark-grey-text">이 웹사이트는 팀 포트폴리오 목적으로 제작 되었습니다.</p>
+                                <%-- <button type="button" class="btn btn-info" data-dismiss="modal">닫기</button> --%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Frame Modal Bottom -->
+
         </main>
 
         <!-- Footer import -->
@@ -281,6 +302,7 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
         <!-- Initializations -->
         <script type="text/javascript">
             new WOW().init();
@@ -294,6 +316,11 @@
 
         <!-- Optional JavaScript -->
         <script>
+            //시작 모달업
+            $(window).on('load',function(){
+                $('#portfolioInfoModal').modal('show');
+            });
+
             //Signin Form Checker
             function signinValidate() {
                 var inputEmail = document.getElementById("signinEmail");

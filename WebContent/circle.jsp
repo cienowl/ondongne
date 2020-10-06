@@ -211,7 +211,7 @@
                 writeButtonSelector = "<a type=\"button\" class=\"btn btn-outline-white btn-lg\" href=\"postform.circle\">소모임 글쓰기</a>";
             }
             %>
-            <section style="background-image: url('img/index/circleIndex.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <section class="wow fadeIn" style="background-image: url('img/index/circleIndex.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
                 <div class="mask rgba-black-strong py-5">
                     <div class="container text-center my-5">
                         <h1 class="font-weight-bold text-center white-text pt-5 pb-3">우리동네 소모임</h1>
@@ -281,7 +281,7 @@
 				
 				<!-- Circle 카드 상세 내용 -->
 				<div class="tab-content mb-5">
-	                <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
+	                <div class="tab-pane fade show active" id="panel31" role="tabpanel">
 	                    <div class="row" id="cardContents">
 	                        <!-- 모달 내용 들어가는 곳 -->
 	                    </div>
@@ -568,8 +568,9 @@
 
 		<!-- SCRIPTS -->
 		<!-- JQuery -->
-		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-				<!-- Initializations -->
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>		
+        <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
+		<!-- Initializations -->
 		<script type="text/javascript">
 			// Animations initialization
 			new WOW().init();
@@ -667,7 +668,7 @@
                                 var buttonSelector = 'checkSessionEmail'+(index+pageOffset);
                                 //게시물 카드 plot
                                 $('#cardContents').append(
-                                    '<div class="col-md-6 col-lg-3">'+
+                                    '<div class="col-md-6 col-lg-3 wow fadeIn">'+
                                         '<a class="card hoverable mb-4" data-toggle="modal" data-target="#circleList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+','+(index+pageOffset)+')">'+
                                             '<div class="card-img-top zoom circleCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
@@ -807,7 +808,7 @@
                                 var buttonSelector = 'checkSessionEmail'+(index+pageOffset);
                                 //게시물 카드 plot
                                 $('#cardContents').append(
-                                    '<div class="col-md-6 col-lg-3">'+
+                                    '<div class="col-md-6 col-lg-3 wow fadeIn">'+
                                         '<a class="card hoverable mb-4" data-toggle="modal" data-target="#circleList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+','+(index+pageOffset)+')">'+
                                             '<div class="card-img-top zoom circleCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+

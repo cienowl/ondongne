@@ -68,7 +68,7 @@
 
         <main>
 
-            <div class="container my-5 pt-5">
+            <div class="container my-5 pt-5 wow fadeIn">
                 <!--Section: Content-->
                 <section class="dark-grey-text">
                     <h2 class="font-weight-bold mb-3">ON동네 개인정보처리방침</h2>
@@ -743,6 +743,7 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
         <!-- Initializations -->
         <script type="text/javascript">
             // Animations initialization

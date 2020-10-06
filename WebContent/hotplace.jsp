@@ -82,7 +82,7 @@
 			<%} %>
 
             <!-- 페이지 화면 헤더 -->
-            <section style="background-image: url('img/index/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <section class="wow fadeIn" style="background-image: url('img/index/yonghyun-lee-cJKfMvJGHD0-unsplash.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
                 <div class="mask rgba-black-strong py-5">
                     <div class="container text-center my-5">
                         <h1 class="font-weight-bold text-center white-text pt-5 pb-3">우리동네 명소</h1>
@@ -118,7 +118,7 @@
                 <section>
                     <!-- Hotplace 카드 -->
                     <div class="tab-content my-5">
-                        <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
+                        <div class="tab-pane fade show active" id="panel31" role="tabpanel">
                             <div class="row" id="cardContents">
                                 <!-- 페이지 카드 들어가는 곳 -->
                             </div>
@@ -142,6 +142,7 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
         <!-- Initializations -->
         <script type="text/javascript">
             // Animations initialization
@@ -224,7 +225,7 @@
 
                                 //게시물 카드 plot
                                 $('#cardContents').append(
-                                    '<div class="col-md-6 col-lg-3">'+
+                                    '<div class="col-md-6 col-lg-3 wow fadeIn">'+
                                         '<a class="card hoverable mb-4" data-toggle="modal" data-target="#hotplaceList'+(index+pageOffset)+'" onclick="post_count('+cardResult.id+','+(index+pageOffset)+')">'+
                                             '<div class="card-img-top zoom hotplaceCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
@@ -332,7 +333,7 @@
 
                                 //게시물 카드 plot
                                 $('#cardContents').append(
-                                    '<div class="col-md-6 col-lg-3">'+
+                                    '<div class="col-md-6 col-lg-3 wow fadeIn">'+
                                         '<a class="card hoverable mb-4" data-toggle="modal" data-target="#hotplaceList'+(index+pageOffset)+'">'+
                                             '<div class="card-img-top zoom hotplaceCardBg'+(index+pageOffset)+'"></div>'+
                                             '<div class="card-body">'+
