@@ -33,11 +33,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="hotplace.admin" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-map mr-3"></i>핫플레이스 관리
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="circle.admin" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-map mr-3"></i>소모임 관리
                 </a>
@@ -45,6 +40,11 @@
             <li class="nav-item">
                 <a href="sell.admin" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-map mr-3"></i>판매장터 관리
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="hotplace.admin" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-map mr-3"></i>핫플레이스 관리
                 </a>
             </li>
         </ul>
