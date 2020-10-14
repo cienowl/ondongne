@@ -302,7 +302,7 @@
                                                         '<div class="row">'+
                                                             '<div class="col">'+
                                                                 '<p class="text-uppercase mb-2"><strong>설명</strong></p>'+
-                                                                '<p class="text-muted">'+cardResult.description+'</p>'+
+                                                                '<p class="text-muted" style="white-space:pre-line;">'+cardResult.description+'</p>'+
                                                             '</div>'+
                                                         '</div>'+
                                                     '</div>'+
@@ -443,7 +443,7 @@
                                                         '<div class="row">'+
                                                             '<div class="col">'+
                                                                 '<p class="text-uppercase mb-2"><strong>설명</strong></p>'+
-                                                                '<p class="text-muted">'+cardResult.description+'</p>'+
+                                                                '<p class="text-muted" style="white-space:pre-line;">'+cardResult.description+'</p>'+
                                                             '</div>'+
                                                         '</div>'+
                                                     '</div>'+

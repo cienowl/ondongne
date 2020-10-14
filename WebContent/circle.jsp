@@ -735,7 +735,7 @@
                                                         '<div class="row">'+
                                                             '<div class="col">'+
                                                                 '<p class="text-uppercase mb-2"><strong>설명</strong></p>'+
-                                                                '<p class="text-muted" style="height: 100px; word-break: break-all;">'+cardResult.description+'</p>'+
+                                                                '<p class="text-muted" style="height: 100px; word-break: break-all; white-space:pre-line;">'+cardResult.description+'</p>'+
                                                             '</div>'+
                                                         '</div>'+
                                                     '</div>'+
@@ -875,7 +875,7 @@
                                                         '<div class="row">'+
                                                             '<div class="col">'+
                                                                 '<p class="text-uppercase mb-2"><strong>설명</strong></p>'+
-                                                                '<p class="text-muted" style="height: 100px; word-break: break-all;">'+cardResult.description+'</p>'+
+                                                                '<p class="text-muted" style="height: 100px; word-break: break-all; white-space:pre-line;">'+cardResult.description+'</p>'+
                                                             '</div>'+
                                                         '</div>'+
                                                     '</div>'+
