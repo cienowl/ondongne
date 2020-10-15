@@ -81,7 +81,7 @@
                             <h6 class="font-weight-bold deep-orange-text float-left"><%= noticeList.get(i).getAuthor() %></h6>
                             <p class="font-weight-bold dark-grey-text float-right"><i class="fas fa-clock-o pr-2"></i><%= noticeList.get(i).getPostdate().split(" ")[0] %></p>
                             <div class="clearfix"></div>
-                            <p class="dark-grey-text"><%= noticeList.get(i).getContent() %></p>
+                            <p class="dark-grey-text" style="white-space:pre-line;"><%= noticeList.get(i).getContent() %></p>
                         </div>
 
                         <div class="modal-footer">

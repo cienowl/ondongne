@@ -24,7 +24,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a href="dashboard.admin" class="list-group-item list-group-item-action active waves-effect">
-                    <i class="fas fa-chart-pie mr-3"></i>대시보드
+                    <i class="fas fa-chart-pie mr-3"></i>공지사항 관리
                 </a>
             </li>
             <li class="nav-item">
